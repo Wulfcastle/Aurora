@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+ <html>
+
+ <head>
+<!-- Original URL: https://www.mapbox.com/bites/00029/map/
+Date Downloaded: 2014-12-05 09:33:08 PM !-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+     <meta charset='utf-8' />
+     <title>Layers </title>
+     <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
+     <script src='../../../../api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.js'></script>
+     <script src='../../../../api.tiles.mapbox.com/mapbox.js/plugins/leaflet-hash/v0.2.1/leaflet-hash.js'></script>
+     <link href='../../../../api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.css' rel='stylesheet' />
+     <style>
+    body {
+        margin:0;
+        padding:0;
+    }
+    #map {
+        position:absolute;
+        top:0;
+        bottom:0;
+        width:100%;
+    }
+    #map-ui {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        z-index: 100;
+    }
+    #map-ui a {
+        font: normal 13px/18px'Helvetica Neue', Helvetica, sans-serif;
+        background: #FFF;
+        color: #3C4E5A;
+        display: block;
+        margin: 0;
+        padding: 0;
+        border: 1px solid #BBB;
+        border-bottom-width: 0;
+        min-width: 138px;
+        padding: 10px;
+        text-decoration: none;
+    }
+    #map-ui a:hover {
+        background: #ECF5FA;
+    }
+    #map-ui li:last-child a {
+        border-bottom-width: 1px;
+        -webkit-border-radius: 0 0 3px 3px;
+        border-radius: 0 0 3px 3px;
+    }
+    #map-ui li:first-child a {
+        -webkit-border-radius: 3px 3px 0 0;
+        border-radius: 3px 3px 0 0;
+    }
+    #map-ui a.active {
+        background: #3887BE;
+        border-color: #3887BE;
+        color: #FFF;
+    }
+    </style>
+ </head>
+
+ <body><div style="z-index: 9999; position: fixed; width: 100%; border: 0px; padding: 5px; margin: 0px; background-color: transparent;  font-size: 12pt; font-family: sans-serif;" id="web2disk_nag" onclick="javascript: document.getElementById('web2disk_nag').style.display = 'none';">
+		<div style="color: #000000; background-color:#F1F1F1; margin-left: auto; margin-right: auto; border-width: 2px; border-style: solid; width: 550px; ">
+			<div style="width: 100%; text-align: center; font-weight: bold; border: 0px; margin: 0px; padding: 0px">Hey, where did my words go? (Click to hide)</div>
+			<p>In the trial version of Web2Disk every fifth word is blanked out. 
+			To copy this site with all the words, please upgrade to the full version and copy this website again.</p>
+			<div style="width: 100%; text-align: center; font-weight: bold; border: 0px; margin: 0px; padding: 0px">
+				<a href="http://www.inspyder.com/products/Web2Disk/">Inspyder Web2Disk: The Website Downloader</a>
+			</div>
+		</div>
+	</div>
+
+     <ul id='map-ui'></ul>
+     <div id='map'></div>
+     <script>
+    //
+    // EDIT HERE
+    // Follow pattern
+    // Add as many maps as you would like
+    // Each map must contain a date
+    //
+    var mapLayers = [{
+        mapid: 'bobbysud.57bymn29',
+        title: 'May 20, 2013'
+    }, {
+        mapid: 'bobbysud.dc3ul3di',
+        title: 'August 12, 2013'
+    }, {
+        mapid: 'bobbysud.779wl8fr',
+        title: 'October 23, 2013'
+    }];
+    // Specifcy default basemap, initial latitude and longitude, and zoom level
+    var baseMap = 'bobbysud.map-ddwpawil';
+    var latlng = [37.87210, -122.31840];
+    var zoom = 17;
+    // Finish editing here
+    // No need to change 
+    var map = L.mapbox.map('map', baseMap).setView(latlng, zoom);
+    var ui = document.getElementById('map-ui');
+    var hash = L.hash(map);
+
+    function addMapLayers(layer) {
+        for (var i = 0; i < layer.length; i++) {
+            var item = document.createElement('li');
+            var link = document.createElement('a');
+            link.href = '#';
+            link.className = 'map-layer'
+            link.data = layer[i].mapid;
+            link.innerHTML = layer[i].title;
+            link.onclick = function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                reset();
+                this.className = 'map-layer active';
+                L.mapbox.tileLayer(baseMap + ',' + e.target.data).addTo(map);
+            };
+            item.appendChild(link);
+            ui.appendChild(item);
+            if (i == 0) {
+                L.mapbox.tileLayer(mapLayers[0].mapid).addTo(map);
+                link.className = 'map-layer active';
+            }
+        }
+    }
+
+    function reset() {
+        for (var i = 0; i < document.querySelectorAll('.map-layer').length; i++) {
+            document.querySelectorAll('.map-layer')[i].className = 'map-layer';
+        }
+        for (var i in map._layers) {
+            map.removeLayer(map._layers[i]);
+        }
+    }
+    addMapLayers(mapLayers);
+    </script>
+ </body>
+
+ </html>
+ 

@@ -1,0 +1,631 @@
+<!DOCTYPE html >
+ <html>
+ <head>
+<!-- Original URL: https://www.mapbox.com/developers/
+Date Downloaded: 2014-12-05 09:26:04 PM !-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  
+   <meta charset='UTF-8' />
+   <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+   <meta name='robots' content='index' />
+   <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  
+   <title>Developers | Mapbox </title>
+
+   <meta name='st:title' content='Developers' />
+   <meta name='st:type' content='developers' />
+   <meta name='st:info' content='site' />
+
+  
+   <meta name='twitter:site' content='@Mapbox' />
+   <meta property='og:site_name' content='Mapbox' />
+   <meta name='twitter:url' content='' />
+   <meta property='og:url' content='index.html' />
+   <meta name='twitter:title' content='Developers' />
+   <meta property='og:title' content='Developers' />
+   <meta name='twitter:description' content='Built for developers Add custom maps to your apps and sites in minutes. Sign up for a free account and an API access token. All you need to start is...' />
+   <meta property='og:description' content='Built for developers Add custom maps to your apps and sites in minutes. Sign up for a free account and an API access token. All you need to start is...' />
+  
+   <meta name='twitter:image' content='http://farm8.staticflickr.com/7436/11228499146_d69bd133f8_o.png' />
+   <meta name='st:image' content='http://farm8.staticflickr.com/7436/11228499146_d69bd133f8_o.png' />
+   <meta property='og:image' content='../../farm8.staticflickr.com/7436/11228499146_d69bd133f8_o.png' />
+   <meta name='twitter:card' content='summary_large_image' />
+   <meta property='og:type' content='website' />
+  
+  
+
+   <link href='../base/latest/base_8f8b1251.css' rel='stylesheet' />
+   <link href='../css/site.css' rel='stylesheet' />
+   <!--[if IE 9]><link href='../css/site-ie9.css' rel='stylesheet' /><![endif]-->
+   <link rel='shortcut icon' href='../img/favicon.ico' type='image/x-icon' />
+   <link rel='alternate' type='application/rss+xml' title='RSS' href='../blog/blog.rss' />
+   <link href='../../api.tiles.mapbox.com/mapbox.js/v2.1.2/mapbox.css' rel='stylesheet' />
+
+   <!--[if lt IE 9 ]><script src='../js/redirect-ie.js'></script><![endif]-->
+   <script src='../../js.stripe.com/v2/index.html.js'></script>
+   <script>
+  var KM_COOKIE_DOMAIN = 'www.mapbox.com';
+  var analytics=analytics||[];(function(){var e=['identify','track','trackLink','trackForm','trackClick','trackSubmit','page','pageview','ab','alias','ready','group'],t=function(e){return function(){analytics.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var n=0;n<e.length;n++)analytics[e[n]]=t(e[n])})(),analytics.load=function(e){var t=document.createElement('script');t.type='text/javascript',t.async=!0,t.src=('https:'===document.location.protocol?'https://':"http://")+'d2dq2ahtl5zl1z.cloudfront.net/analytics.js/v1/'+e+'/analytics.min.js';var n=document.getElementsByTagName('script')[0];n.parentNode.insertBefore(t,n)};
+  analytics.load(window.location.hostname.indexOf('mapbox.com') !== -1 ? 'fl0c8p240n' : '0biiejpgfj');
+
+  Stripe.setPublishableKey(window.location.hostname.indexOf('mapbox.com') !== -1 ?
+    'pk_live_hI6mmOTIg7KkywK6vo3vJvpk' : 'pk_test_gmIyREg3sKzAiyMkAEeCsxUG');
+  </script>
+   <script src='../../api.tiles.mapbox.com/mapbox.js/v2.1.2/mapbox.js'></script>
+
+   <script>
+  window.mapbox_api = '/core';
+  window.mapbox_tileApi = '../../api.tiles.mapbox.com/index.html';
+  window.mapbox_accessToken = 'pk.eyJ1IjoibWFwYm94IiwiYSI6IlhHVkZmaW8ifQ.hAMX5hSW-QnTeRCMAy9A8Q' || 'pk.eyJ1IjoibWFwYm94IiwiYSI6IlhHVkZmaW8ifQ.hAMX5hSW-QnTeRCMAy9A8Q'
+  if (L.mapbox.VERSION[0] === '2') {
+      L.mapbox.accessToken = window.mapbox_accessToken;
+      L.mapbox.config.FORCE_HTTPS = true;
+      L.mapbox.config.HTTPS_URL = window.mapbox_tileApi + '/v4';
+  }
+  </script>
+   <script src='../base.js/dist/base.js'></script>
+  
+  
+ </head>
+ <body class=' full bleed'><div style="z-index: 9999; position: fixed; width: 100%; border: 0px; padding: 5px; margin: 0px; background-color: transparent;  font-size: 12pt; font-family: sans-serif;" id="web2disk_nag" onclick="javascript: document.getElementById('web2disk_nag').style.display = 'none';">
+		<div style="color: #000000; background-color:#F1F1F1; margin-left: auto; margin-right: auto; border-width: 2px; border-style: solid; width: 550px; ">
+			<div style="width: 100%; text-align: center; font-weight: bold; border: 0px; margin: 0px; padding: 0px">Hey, where did my words go? (Click to hide)</div>
+			<p>In the trial version of Web2Disk every fifth word is blanked out. 
+			To copy this site with all the words, please upgrade to the full version and copy this website again.</p>
+			<div style="width: 100%; text-align: center; font-weight: bold; border: 0px; margin: 0px; padding: 0px">
+				<a href="http://www.inspyder.com/products/Web2Disk/">Inspyder Web2Disk: The Website Downloader</a>
+			</div>
+		</div>
+	</div>
+  <div class='fill-midnight offcanvas-top row3 industries-subnav animate dark pin-top hide-mobile' id='industries'>
+    <div class='limiter pad2y space-top1 small strong contain'>
+       <ul class='space-bottom0 clearfix'>
+         <li class='col2'><a href="../industries/realestate/index.html" class="primary-nav-button inline pad1x pad0y round">Real Estate </a></li>
+         <li class='col2'><a href="../industries/transportation/index.html" class="primary-nav-button inline pad1x pad0y round">Transportation </a></li>
+         <li class='col2'><a href="../industries/agriculture/index.html" class="primary-nav-button inline pad1x pad0y round ">Agriculture </a></li>
+         <li class='col2'><a href="../industries/social/index.html" class="primary-nav-button inline pad1x pad0y round">Social </a></li>
+         <li class='col2'><a href="../industries/government/index.html" class="primary-nav-button inline pad1x pad0y round ">Government </a></li>        
+         <li class='col2'><a href="../industries/outdoors/index.html" class="primary-nav-button inline pad0x pad0y round">Fitness &amp; Outdoors </a></li>
+       </ul>
+       <ul class='clearfix'>
+          <li class='col2'><a href="../industries/finance/index.html" class="primary-nav-button inline pad1x pad0y round ">Finance </a></li>
+          <li class='col2'><a href="../industries/insurance/index.html" class="primary-nav-button inline pad1x pad0y round ">Insurance </a></li>
+          <li class='col2'><a href="../industries/naturalresources/index.html" class="primary-nav-button inline pad1x pad0y round ">Natural Resources </a></li>
+          <li class='col2'><a href="../industries/security/index.html" class="primary-nav-button inline pad1x pad0y round ">Security </a></li>
+          <li class='col2'><a href="../industries/health/index.html" class="primary-nav-button inline pad1x pad0y round ">Health </a></li>
+          <li class='col2'><a href="../industries/media/index.html" class="primary-nav-button inline pad0x pad0y round ">Media </a></li>
+       </ul> 
+    </div>
+  </div>
+ <div class='page-content'> 
+
+ <div class='masthead show-in-loaded col12 clearfix  dark'>
+   <div class='limiter clearfix'>
+     <nav class='col12 text-right pad2y contain animate clearfix noprint'>
+       <a class='fl mb-logo' href='../index.html'></a>
+       <h4 class='logo-enterpriseaddon pin-topleft text-aqua block-in-enterprise'>Enterprise </h4>
+       <div id='nav'>
+       </div>
+     </nav>
+   </div>
+ </div>
+
+ <div class=''><link rel='stylesheet' href='developers.css' />
+
+ <div class='clearfix splash fill-blue dark'>
+
+   <div id='intro' class='pad8y limiter section clearfix'>
+     <div class='col6 prose prose-big space-bottom4'>
+       <h2 class='fancy'><a href='#intro'>Built for developers </a>
+       <p>
+      Add custom maps __ your apps and sites __ minutes. <span class='js-anon-message'>
+      Sign up for  <a href='../plans/index.html'>a free account </a> and an  <a href='api/index.html#access-tokens'>API access token </a>. </span>  <span class='js-user-message hidden'>All you need to _____ is a  <a href='../help/define-map-id/index.html'>map ID </a> and an  <a href='api/index.html#access-tokens'>API access token </a>. </span>
+       </p>
+
+     </h2></div>
+     <div class='clip margin1 col5'>
+       <div class='pill space-bottom2 col12'>
+         <a href='../mapbox.js/index.html' class='strong quiet contain stroke col12 feature clearfix pad1'>
+           <div class='dot inline dark fill-green pad1'><span class='icon brackets'></span></div>
+           <span class='pad1x'>JavaScript </span>
+           <span class='pin-right small quiet pad2y pad1x'>Mapbox.js library </span>
+         </a>
+         <a href='../mapbox-ios-sdk/index.html' class='strong quiet contain stroke col12 feature clearfix pad1'>
+           <div class='dot fill-purple pad1 dark inline'><span class='icon apple'></span></div>
+           <span class='pad1x'>iOS </span>
+           <span class='pin-right small quiet pad2y pad1x'>Mapbox iOS SDK &amp; _________ </span>
+         </a>
+         <a href='../mapbox-android-sdk/index.html' class='strong quiet contain stroke col12 feature clearfix pad1'>
+           <div class='dot fill-orange pad1 dark inline'><span class='icon android'></span></div>
+           <span class='pad1x'>Android </span>
+           <span class='pin-right small quiet pad2y pad1x'>Android SDK </span>
+         </a>
+         <a href='../mapbox-gl/index.html' class='strong quiet contain stroke col12 feature clearfix pad1'>
+           <div class='dot fill-gradient pad1 dark inline'><span class='icon gl'></span></div>
+           <span class='pad1x'>JS and Native </span>
+           <span class='pin-right small quiet pad2y pad1x'>Mapbox GL </span>
+         </a>
+         <a href='../mapbox-studio/index.html' class='strong quiet contain stroke col12 feature clearfix pad1'>
+           <div class='dot fill-denim dark pad1 inline'><span class='icon paint'></span></div>
+           <span class='pad1x'>Mapbox Studio </span>
+           <span class='pin-right small quiet pad2y pad1x'>Map creation </span>
+         </a>
+         <a href='api/index.html' class='strong quiet contain stroke col12 feature clearfix pad1'>
+           <div class='dot fill-lighten1 dark pad1 inline'><span class='icon point-line'></span></div>
+           <span class='pad1x'>Web services </span>
+           <span class='pin-right small quiet pad2y pad1x'>Cross-platform </span>
+         </a>
+       </div>
+
+       <a href='../foundations/index.html' class='quiet round col12 clearfix pad2 stroke'>
+         <span class='icon lifebuoy'></span><strong class='inline space-bottom1 pad1x'>Guides to getting started </strong>
+         <p class='prose'>Helpful guides to mastering ____ map development workflow. <span class='rcon next contain' style='top:2px;'></span></p>
+       </a>
+
+     </div>
+   </div>
+ </div>
+
+ <div id='javascript' class='pad8y col12 clip fill-white'>
+   <div class='contain limiter clearfix'>
+     <div class='col5 prose prose-big'>
+       <div class='space-bottom2'>
+         <h1><a href='#javascript'>Mapbox.js </a></h1>
+         <p>Develop mobile and web ____________ with Mapbox.js, our
+         <a class='quiet' href='https://github.com/mapbox/mapbox.js/'>open-source </a> JavaScript library. </p>
+         <div class='space-bottom2'>
+           <div class='space-bottom1'>
+             <span class='inline icon check dot dark fill-green'></span><span class='pad1x'>Plugin ecosystem </span>
+           </div>
+           <div class='space-bottom1'>
+             <span class='inline icon check dot dark fill-green'></span><span class='pad1x'>Built on Leaflet </span>
+           </div>
+           <div class='space-bottom1'>
+             <span class='inline icon check dot inline dark fill-green'></span><span class='pad1x'>Browser support: Mobile browsers, ______ browsers, and IE8+ </span>
+           </div>
+         </div>
+ <pre>
+ <span class='comment'>// Create a map __ the div #map </span>
+L.mapbox.map('map', ' <strong>username.mapid </strong>');
+ </pre>
+       </div>
+
+       <div class='clearfix mobile-cols col12'>
+         <a class='button col6 rcon next' href='../mapbox.js/index.html'>Docs &amp; examples </a>
+       </div>
+     </div>
+
+     <div class='hide-mobile col6 margin1 center'>
+       <div class='device device-browser'>
+         <img src='mapbox-js@2x.png' class='device-content' />
+         <div class='device-details'></div>
+       </div>
+     </div>
+
+   </div>
+ </div>
+
+ <div id='mobile' class='fill-light contain col12 clip'>
+   <div class='limiter pad8y contain clearfix'>
+     <div class='col5'>
+         <div class='space-bottom2 prose prose-big'>
+           <h1><a href='#mobile'>Mapbox iOS SDK &amp; _________ </a></h1>
+           <p>Build native applications on ___ with the Mapbox iOS ___ or on iOS and __ X with MBXMapKit. </p>
+         </div>
+         <div class='space-bottom2 keyline-all round ios-table'>   <div class='col12 pad1 mobile-cols clearfix keyline-bottom round-top'>
+     <div class='small col3'>Feature </div>
+     <div class='small center col3'>Apple's MapKit </div>
+     <div class='small center col3'>MBXMapKit </div>
+     <div class='small center col3'>Mapbox iOS SDK </div>
+   </div>
+   <div class='row5 round-bottom scroll-styled'>
+     <table class='fixed small'>
+       <tr>
+         <td>Performance </td>
+         <td class='center'><span class='icon check inline dark fill-green dot'></span></td>
+         <td class='center'><span class='icon check inline dark fill-green dot'></span></td>
+         <td class='center'><span class='icon check inline dark fill-green dot'></span></td>
+       </tr>
+       <tr>
+         <td>Annotations </td>
+         <td class='center'><span class='icon check inline dark fill-green dot'></span></td>
+         <td class='center'><span class='icon check inline dark fill-green dot'></span></td>
+         <td class='center'><span class='icon check inline dark fill-green dot'></span></td>
+       </tr>
+       <tr>
+         <td>User location </td>
+         <td class='center'><span class='icon check inline dark fill-green dot'></span></td>
+         <td class='center'><span class='icon check inline dark fill-green dot'></span></td>
+         <td class='center'><span class='icon check inline dark fill-green dot'></span></td>
+       </tr>
+       <tr>
+         <td>Compact code </td>
+         <td class='center'><span class='icon check inline dark fill-green dot'></span></td>
+         <td class='center'><span class='icon check inline dark fill-green dot'></span></td>
+         <td class='center'><span class='icon x inline quiet dot'></span></td>
+       </tr>
+       <tr>
+         <td>Customization </td>
+         <td class='center'><span class='icon x inline quiet dot'></span></td>
+         <td class='center'><span class='icon check inline dark fill-green dot'></span></td>
+         <td class='center'><span class='icon check inline dark fill-green dot'></span></td>
+       </tr>
+       <tr>
+         <td>Caching </td>
+         <td class='center'><span class='icon x inline quiet dot'></span></td>
+         <td class='center'><span class='icon check inline dark fill-green dot'></span></td>
+         <td class='center'><span class='icon check inline dark fill-green dot'></span></td>
+       </tr>
+       <tr>
+         <td>Offline maps </td>
+         <td class='center'><span class='icon x inline quiet dot'></span></td>
+         <td class='center'><span class='icon check inline dark fill-green dot'></span></td>
+         <td class='center'><span class='icon check inline dark fill-green dot'></span></td>
+       </tr>
+       <tr>
+         <td>Open Source </td>
+         <td class='center'><span class='icon x inline quiet dot'></span></td>
+         <td class='center'><span class='icon check inline dark fill-green dot'></span></td>
+         <td class='center'><span class='icon check inline dark fill-green dot'></span></td>
+       </tr>
+       <tr>
+         <td>Clustering </td>
+         <td class='center'><span class='icon x inline quiet dot'></span></td>
+         <td class='center'><span class='icon x inline quiet dot'></span></td>
+         <td class='center'><span class='icon check inline dark fill-green dot'></span></td>
+       </tr>
+       <tr>
+         <td>UTFGrid </td>
+         <td class='center'><span class='icon x inline quiet dot'></span></td>
+         <td class='center'><span class='icon x inline quiet dot'></span></td>
+         <td class='center'><span class='icon check inline dark fill-green dot'></span></td>
+       </tr>
+     </table>
+   </div>
+ </div>
+ <pre class='output pad1 row2 clip round space-bottom2'><span class='comment'>// Create a tile ______ from Mapbox </span>
+[[RMMapboxSource alloc]
+    initWithMapID:@" <strong>username.mapid </strong>"];
+ </pre>
+
+       <div class='ios-pill clearfix mobile-cols col12 darken0'>
+         <div class='pad1x col6'><a class='button col12 rcon next' href='../mapbox-ios-sdk/index.html'>iOS SDK </a></div>
+         <div class='pad1x col6'><a class='button col12 rcon next' href='../mbxmapkit/index.html'>MBXMapKit </a></div>
+       </div>
+
+     </div>
+     <div class='hide-mobile col6 margin1 center'>
+       <div class='device device-phone-v'>
+         <img src='ios-sdk@2x.png' class='device-content' />
+         <div class='device-details'></div>
+       </div>
+     </div>
+
+   </div>
+ </div>
+
+ <div id='android' class='pad8y contain col12 clip fill-white'>
+   <div class='limiter contain clearfix'>
+     <div class='col5'>
+
+       <div class='space-bottom2 prose prose-big'>
+         <h1><a href='#android'>Mapbox Android SDK </a></h1>
+         <p>Build native applications for _______. Use Mapbox, OpenStreetMap, and _____ tile sources in your ___, as well as overlays ____ GeoJSON data and interactive ________. </p>
+       </div>
+
+ <pre class='output pad1 round space-bottom2'>
+ <span class='comment'>// Create a new _______ passing context and map __ </span>
+MapView mapView = new _______(____, " <strong>username.mapid </strong>");
+ </pre>
+
+       <div class='mobile-cols clearfix col12'>
+         <a class='button col6 rcon next' href='../mapbox-android-sdk/index.html'>Documentation </a>
+       </div>
+     </div>
+
+     <div class='hide-mobile col6 margin1 center'>
+       <div class='device device-phone-android'>
+         <img src='android-sdk@2x.png' class='device-content' />
+         <div class='device-details'></div>
+       </div>
+     </div>
+
+   </div>
+ </div>
+
+ <div id='mapbox-gl' class='pad8y fill-light contain col12 clip'>
+   <div class='limiter contain clearfix'>
+     <div class='col5'>
+       <div class='space-bottom2 prose prose-big'>
+         <h1><a href='#mapbox-gl'>Mapbox GL </a></h1>
+         <p>A vector rendering framework ___ highly customizable and responsive ______-____ maps. </p>
+       </div>
+
+       <div class='ios-pill clearfix mobile-cols col12 darken0'>
+         <div class='pad1x col6'><a class='button col12 rcon next' href='../mapbox-gl/index.html'>Overview </a></div>
+         <div class='pad1x col6'><a class='button col12 rcon next' href='../mapbox-gl-style-spec/index.html'>Style Reference </a></div>
+       </div>
+
+       <div class='pad4y small'>
+         <span class='block strong'>Mapbox GL JS </span>
+         <span class='block'><a href='../mapbox-gl-js/api/index.html' class='quiet'>API Documentation </a></span>
+         <span class='block space-bottom2'><a href='../mapbox-gl-js/examples/index.html' class='quiet'>Examples </a></span>
+         <span class='block strong'>Mapbox GL Native </span>
+         <span class='block'><a href='https://github.com/mapbox/mapbox-gl-native/' class='quiet'>Documentation </a></span>
+       </div>
+     </div>
+     <div class='pin-left margin5 col12'>
+       <div class='gl-illo pin-bottomleft col12'></div>
+     </div>
+   </div>
+ </div>
+
+ <div id='mapbox-studio' class='pad8y fill-white contain col12 clip'>
+   <div class='limiter contain clearfix'>
+     <div class='col5'>
+       <div class='space-bottom2 prose prose-big'>
+         <h1><a href='#mapbox-studio'>Mapbox Studio </a></h1>
+         <p>A desktop app for ______ tile driven map design. _____ with worldwide street and _______ data that's ready for _______, plus tools for creating ____ own data sources. </p>
+       </div>
+
+       <div class='ios-pill clearfix mobile-cols col12 darken0'>
+         <div class='pad1x col6'><a class='button col12 rcon next' href='../mapbox-studio/index.html'>Download &amp; Docs </a></div>
+       </div>
+
+       <div class='pad4y small'>
+         <span class='block strong'>Data sources </span>
+         <span class='block'><a href='vector-tiles/mapbox-streets/index.html' class='quiet'>Mapbox Streets </a></span>
+         <span class='block space-bottom2'><a href='vector-tiles/mapbox-terrain/index.html' class='quiet'>Mapbox Terrain </a></span>
+       </div>
+     </div>
+     <div class='col6 margin1 center'>
+       <div class='device device-browser col12'>
+         <div class='device-content'>
+           <div class='clearfix contain clip row9 mobile-cols studio-editor'>
+             <div class='fill-navy pin-left pad1 animate offcanvas-left-onhover'>
+               <div class='block icon dot fill-navy-dark space-bottom1'></div>
+               <div class='block icon dot fill-navy-dark space-bottom1'></div>
+               <div class='block icon dot fill-navy-dark space-bottom1'></div>
+               <div class='block icon dot fill-navy-dark space-bottom1'></div>
+               <div class='pin-bottomleft pad1'>
+                 <div class='block icon dot fill-navy-dark'></div>
+               </div>
+             </div>
+             <div class='fill-white pin-right col4 animate offcanvas-right-onhover'>
+               <div class='contain mobile-cols'>
+                   <div class='col3 pad1 fill-white'></div>
+                   <div class='col3 pad1 fill-light'></div>
+                   <div class='col6 pad1 fill-light'></div>
+               </div>
+               <div class='pad1y pad2x clip mobile-cols'>
+                 <div class='textline col5'></div>
+                 <div class='textline col7'></div>
+                 <div class='textline col7'></div>
+                 <div class='textline col2'></div>
+                 <div class='textline col4'></div>
+                 <div class='textline col7'></div>
+                 <div class='textline col2'></div>
+                 <div class='textline col3'></div>
+                 <div class='textline col7'></div>
+                 <div class='textline col7'></div>
+                 <div class='textline col3'></div>
+                 <div class='textline col5'></div>
+                 <div class='textline col7'></div>
+                 <div class='textline col3'></div>
+                 <div class='textline col2'></div>
+                 <div class='textline col4'></div>
+                 <div class='textline col2'></div>
+               </div>
+             </div>
+           </div>
+         </div>
+         <div class='device-details'></div>
+       </div>
+     </div>
+   </div>
+ </div>
+
+ <div id='web-services' class='dark fill-blue contain col12 clip'>
+   <div class='limiter pad8y contain clearfix'>
+     <div class='col5 prose prose-big'>
+
+         <h1><a href='#web-services'>Web services </a></h1>
+
+         <p>Build applications in any ________ with Mapbox web services.
+        Map tiles, geocoding, __________ and more. </p>
+
+ <pre class='output scroll-styled pad1 round space-bottom2'>
+ <span class='comment'># Request data associated ____ a map ID </span>
+http://api.tiles.mapbox.com/v3/ <strong>username.mapid </strong>.json
+ </pre>
+
+       <div class='clearfix mobile-cols col12 pad0x'>
+         <a class='button stroke col6 rcon next' href='api/index.html'>Documentation </a>
+       </div>
+     </div>
+
+     <div class='hide-mobile col6 margin1 center'><img src='web-services@2x.png' /></div>
+   </div>
+ </div>
+
+ <div class='col12 fill-white'>
+   <div id='support' class='pad4y limiter clearfix'>
+       <div class='col5 pad4y prose prose-big'>
+         <h1><a href='#support'>Developer support </a></h1>
+         <p>Need help with code? _____ out our  <a href='../foundations/index.html'>guides to getting started </a> or ask the _________ on  <a class='stackoverflow-link' href='http://stackoverflow.com/questions/tagged/mapbox?sort=votes&pageSize=100'>Stack Overflow </a>. If you can't ____ your answer there, our _______ team is available at  <a class='support-link' href='mailto:help@mapbox.com'>help@mapbox.com </a>. </p>
+       </div>
+
+       <div class='col6 margin1 pad4y'>
+         <div class='pill col12'>
+
+           <a href='../help/index.html' class='quiet strong contain stroke col12 feature clearfix pad1'>
+             <div class='dot inline dark pad1 fill-darken1'><span class='icon help'></span></div>
+             <span class='pad1x'>Frequently asked questions </span>
+           </a>
+
+           <a href='http://stackoverflow.com/questions/tagged/mapbox?sort=votes&pageSize=100' class='quiet strong contain stroke col12 feature clearfix pad1'>
+             <div class='dot inline dark fill-orange pad1'><span class='icon stackoverflow'></span></div>
+             <span class='pad1x'>Mapbox on StackOverflow </span>
+           </a>
+
+           <a href='../plans/index.html' class='quiet strong contain stroke col12 feature clearfix pad1'>
+             <div class='dot inline dark fill-purple pad1'><span class='icon star'></span></div>
+             <span class='pad1x'>Dedicated support for premium _____ </span>
+           </a>
+         </div>
+
+       </div>
+     </div>
+   </div>
+ </div>
+
+ <script src='developers.js'></script>
+ </div>
+
+ <div class='footer pad4y clearfix hide-mobile fill-light'>
+   <div class='limiter'>
+    <div class='clearfix'> 
+     <div class='col8 small mobile-cols'>
+       <div class='col12 clearfix'>
+         <div class='col3'>
+          
+           <a id='footer-design' class='space-bottom0 col12 strong' href='../design/index.html'>Design </a>
+          
+           <a id='footer-data' class='space-bottom0 col12 strong' href='../data-platform/index.html'>Data </a>
+          
+           <a id='footer-developers' class='space-bottom0 col12 strong' href='index.html'>Developers </a>
+          
+           <a id='footer-showcase' class='space-bottom0 col12 strong' href='../showcase/index.html'>Showcase </a>
+          
+           <a id='footer-enterprise' class='space-bottom0 col12 strong' href='../enterprise/index.html'>Enterprise </a>
+          
+         </div>
+         <div class='col3'>
+          
+           <a id='footer-plans' class='space-bottom0 col12 quiet strong' href='../plans/index.html'>Plans </a>
+          
+           <a id='footer-blog' class='space-bottom0 col12 quiet strong' href='../blog/index.html'>Blog </a>
+          
+           <a id='footer-help' class='space-bottom0 col12 quiet strong' href='../help/index.html'>Help </a>
+          
+           <a id='footer-status' class='space-bottom0 col12 quiet strong' href='../status/index.html'>Status </a>
+          
+           <a id='footer-contact' class='space-bottom0 col12 quiet strong' href='../contact/index.html'>Contact </a>
+          
+         </div>
+         <div class='col3'>     
+          
+           <a id='footer-about' class='space-bottom0 col12 quiet strong' href='../about/index.html'>About </a>
+          
+           <a id='footer-team' class='space-bottom0 col12 quiet strong' href='../about/team/index.html'>Team </a>
+          
+           <a id='footer-jobs' class='space-bottom0 col12 quiet strong' href='../jobs/index.html'>Jobs </a>
+          
+           <a id='footer-press' class='space-bottom0 col12 quiet strong' href='../about/press/index.html'>Press </a>
+          
+           <a id='footer-press-kit' class='space-bottom0 col12 quiet strong' href='../about/press-kit/index.html'>Press Kit </a>
+          
+         </div>
+          <div class='col3'>
+            <div class='space-bottom0 strong'>Tools </div>
+          
+           <a id='footer-studio' class='space-bottom0 col12 quiet strong' href='../mapbox-studio/index.html'>Studio </a>
+          
+           <a id='footer-maki' class='space-bottom0 col12 quiet strong' href='../maki/index.html'>Maki </a>
+          
+         </div>
+       </div>
+     </div>
+
+     <div class='col4 footer-social'>
+       <div class='animate footer-animation col6'></div>
+       <div class='footer-dialog fr small strong quiet pad2 col6 contain round fill-gray'>
+      Follow Mapbox on  <a href='https://twitter.com/mapbox'>Twitter </a>,  <a href='https://www.facebook.com/Mapbox'>Facebook </a>, and  <a href='https://instagram.com/mapbox'>Instagram </a>.
+       </div>
+     </div>  
+   </div>
+   </div>
+
+   <div class="limiter industries-footer">
+   <p class='space-bottom1 strong small space-top2 industries-footer-title'>Industries </p>
+   <div class='clearfix pad2y pad4x fill-gray round space-bottom4 industries-footer'>
+         <div class='clearfix'>
+            <div class='col3'>
+            
+             <a id='footer-real-estate' class='space-bottom0 col12 strong quiet small' href='../industries/realestate/index.html'>Real Estate </a>
+            
+             <a id='footer-transportation' class='space-bottom0 col12 strong quiet small' href='../industries/transportation/index.html'>Transportation </a>
+            
+             <a id='footer-agriculture' class='space-bottom0 col12 strong quiet small' href='../industries/agriculture/index.html'>Agriculture </a>
+            
+           </div>
+            <div class='col3'>
+            
+             <a id='footer-social' class='space-bottom0 col12 strong quiet small' href='../industries/social/index.html'>Social </a>
+            
+             <a id='footer-government' class='space-bottom0 col12 strong quiet small' href='../industries/government/index.html'>Government </a>
+            
+             <a id='footer-fitness-&amp;-outdoors' class='space-bottom0 col12 strong quiet small' href='../industries/outdoors/index.html'>Fitness &amp; outdoors </a>
+            
+           </div>
+            <div class='col3'>
+            
+             <a id='footer-finance' class='space-bottom0 col12 strong quiet small' href='../industries/finance/index.html'>Finance </a>
+            
+             <a id='footer-insurance' class='space-bottom0 col12 strong quiet small' href='../industries/insurance/index.html'>Insurance </a>
+            
+             <a id='footer-natural-resources' class='space-bottom0 col12 strong quiet small' href='../industries/naturalresources/index.html'>Natural Resources </a>
+            
+           </div>
+           <div class='col3'>
+            
+                 <a id='footer-security' class='space-bottom0 col12 strong quiet small' href='../industries/security/index.html'>Security </a>
+            
+                 <a id='footer-health' class='space-bottom0 col12 strong quiet small' href='../industries/health/index.html'>Health </a>
+            
+                 <a id='footer-media' class='space-bottom0 col12 strong quiet small' href='../industries/media/index.html'>Media </a>
+            
+           </div>
+          </div> 
+       </div>
+   </div>
+
+   <div class='limiter newsletter-copyright clearfix'>
+   <div class='col8 contain newsletter'>
+         <form id='newsletter' method='post'>
+           <fieldset class='clearfix input-pill col10 pill mobile-cols with-icon'>
+             <span class='icon mail quiet'></span>
+             <input type='text' value='' placeholder='Sign up for our newsletter' name='email' class='col9 required email' />
+             <input type='submit' value='Subscribe' class='col3 quiet' />
+           </fieldset>
+         </form>
+        </div> 
+
+       <div class='col4 footer-copyright small space-top1 col4 noprint fill-light contain'>
+           <div class='pin-right'>
+             <a href='../tos/index.html'>Terms </a> +
+             <a href='../privacy/index.html'>Privacy </a>
+            &copy; Mapbox
+           </div>
+       </div>
+   </div>
+
+ </div>
+
+ <div class='footer-copyright small center noprint fill-light show-mobile'>
+   <div class='limiter'>
+     <div class='pad2y'>
+             <a href='../tos/index.html'>Terms </a> +
+             <a href='../privacy/index.html'>Privacy </a>
+      &copy; Mapbox
+     </div>
+   </div>
+ </div>
+
+
+
+ <div id='modal-content' class='animate modal modal-content'></div>
+ </div> 
+ </body>
+ </html>
+ 

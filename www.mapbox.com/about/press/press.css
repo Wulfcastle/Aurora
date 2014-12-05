@@ -1,0 +1,59 @@
+.contain > .pin-topright {
+    top: 80px;
+}
+
+section.article {
+    padding: 75px 0px;
+    color: #fff;
+}
+
+section.article a {
+    color: #fff;
+}
+
+section.article a:hover {
+    color: #DBDBDB;
+}
+
+section.article:first-of-type {
+    padding-top: 150px;
+}
+
+h1.article-title {
+    font-size: 40px;
+    line-height: 1.35em;
+}
+
+h2.article-readMore {
+    display: inline-block;
+}
+
+p.article-quote {
+    font-size: 28px;
+    line-height: 1.5em;
+}
+
+[class*='news-logo-'] {
+  display: block;
+  width: 100%;
+  height: 0;
+  padding-bottom: 30%;
+  background: url(img/news.png) 0 0 no-repeat;
+  background-size: cover;
+  overflow: hidden;
+  text-indent: 100%;
+  white-space: nowrap;
+}
+
+a[class*='news-logo-']:hover {
+  opacity: .75;
+}
+
+.news-logo-economist          { background-position: 0 0; }
+.news-logo-tpm                { background-position: 0 14.2857%; }
+.news-logo-techcrunch         { background-position: 0 28.5714%; }
+.news-logo-atlantic           { background-position: 0 42.8571%; }
+.news-logo-mashable           { background-position: 0 57.1428%; }
+.news-logo-fastco             { background-position: 0 71.4286%; }
+.news-logo-wired              { background-position: 0 85.7142852%; }
+.news-logo-wsj                { background-position: 0 100%; }

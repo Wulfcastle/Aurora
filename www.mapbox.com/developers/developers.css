@@ -1,0 +1,85 @@
+
+/* Base overrides + addons
+-------------------------------------------------- */
+code .comment,
+pre .comment {
+  color:rgba(0,0,0,.5);
+  }
+
+.dark code strong,
+.dark pre strong {
+  color:#fff;
+  }
+.dark code .comment,
+.dark pre .comment {
+  color:#ccc;
+  }
+
+code { display:block; }
+
+.dark code,
+.dark pre    { background:rgba(0,0,0,0.25); }
+
+pre.response {
+  background:rgba(255,255,255,0.05);
+  overflow:auto;
+}
+
+a.feature,
+a.feature:hover {
+  height: auto !important;
+  font-size: 15px;
+}
+
+.prose .dot .icon {
+  line-height: 20px;
+}
+
+.ios-table table {
+  margin-bottom: 0;
+}
+
+.ios-table table th,
+.ios-table table td {
+  padding: 10px;
+}
+
+.ios-table table td {
+  border-style: dashed;
+}
+
+.ios-table table tr:last-child td {
+  border-bottom: 0;
+}
+
+.ios-pill > *:first-child { padding-left: 0; }
+.ios-pill > *:last-child  { padding-right: 0;}
+
+/* Browser contents
+-------------------------------------------------- */
+
+.gl-illo {
+  height: 440px;
+  left: -40px;
+  background: url(gl.png) no-repeat left top;
+  background-size: 760px 440px;
+}
+
+.design {
+  padding-top: 80px;
+  background: url(../home/studio-1.jpg) 0 0 no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
+.studio-editor {
+    background:url(../home/studio-editor-1.jpg) 50% 50% no-repeat;
+    background-size:cover;
+}
+
+
+.fill-gradient { background: linear-gradient(to bottom right, #5E5E8A, #2F709E); }
+
+@media only screen and (max-width:640px) {
+}
+

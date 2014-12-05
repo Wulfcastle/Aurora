@@ -1,0 +1,510 @@
+<!DOCTYPE html >
+ <html>
+ <head>
+<!-- Original URL: https://www.mapbox.com/mapbox-studio/source-quickstart/
+Date Downloaded: 2014-12-05 09:27:36 PM !-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  
+   <meta charset='UTF-8' />
+   <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+   <meta name='robots' content='index' />
+   <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  
+   <title>Source Quickstart | Mapbox </title>
+
+   <meta name='st:title' content='Source Quickstart' />
+   <meta name='st:type' content='site' />
+   <meta name='st:info' content='site' />
+
+  
+
+   <link href='../../base/latest/base_8f8b1251.css' rel='stylesheet' />
+   <link href='../../css/site.css' rel='stylesheet' />
+   <!--[if IE 9]><link href='../../css/site-ie9.css' rel='stylesheet' /><![endif]-->
+   <link rel='shortcut icon' href='../../img/favicon.ico' type='image/x-icon' />
+   <link rel='alternate' type='application/rss+xml' title='RSS' href='../../blog/blog.rss' />
+   <link href='../../../api.tiles.mapbox.com/mapbox.js/v2.0.0/mapbox.css' rel='stylesheet' />
+
+   <!--[if lt IE 9 ]><script src='../../js/redirect-ie.js'></script><![endif]-->
+   <script src='../../../js.stripe.com/v2/index.html.js'></script>
+   <script>
+  var KM_COOKIE_DOMAIN = 'www.mapbox.com';
+  var analytics=analytics||[];(function(){var e=['identify','track','trackLink','trackForm','trackClick','trackSubmit','page','pageview','ab','alias','ready','group'],t=function(e){return function(){analytics.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var n=0;n<e.length;n++)analytics[e[n]]=t(e[n])})(),analytics.load=function(e){var t=document.createElement('script');t.type='text/javascript',t.async=!0,t.src=('https:'===document.location.protocol?'https://':"http://")+'d2dq2ahtl5zl1z.cloudfront.net/analytics.js/v1/'+e+'/analytics.min.js';var n=document.getElementsByTagName('script')[0];n.parentNode.insertBefore(t,n)};
+  analytics.load(window.location.hostname.indexOf('mapbox.com') !== -1 ? 'fl0c8p240n' : '0biiejpgfj');
+
+  Stripe.setPublishableKey(window.location.hostname.indexOf('mapbox.com') !== -1 ?
+    'pk_live_hI6mmOTIg7KkywK6vo3vJvpk' : 'pk_test_gmIyREg3sKzAiyMkAEeCsxUG');
+  </script>
+   <script src='../../../api.tiles.mapbox.com/mapbox.js/v2.0.0/mapbox.js'></script>
+
+   <script>
+  window.mapbox_api = 'https://www.mapbox.com/core';
+  window.mapbox_tileApi = '../../../api.tiles.mapbox.com/index.html';
+  window.mapbox_accessToken = '' || 'pk.eyJ1IjoibWFwYm94IiwiYSI6IlhHVkZmaW8ifQ.hAMX5hSW-QnTeRCMAy9A8Q'
+  if (L.mapbox.VERSION[0] === '2') {
+      L.mapbox.accessToken = window.mapbox_accessToken;
+      L.mapbox.config.FORCE_HTTPS = true;
+      L.mapbox.config.HTTPS_URL = window.mapbox_tileApi + '/v4';
+  }
+  </script>
+   <script src='../../base.js/dist/base.js'></script>
+  
+  
+ </head>
+ <body class=' full bleed'><div style="z-index: 9999; position: fixed; width: 100%; border: 0px; padding: 5px; margin: 0px; background-color: transparent;  font-size: 12pt; font-family: sans-serif;" id="web2disk_nag" onclick="javascript: document.getElementById('web2disk_nag').style.display = 'none';">
+		<div style="color: #000000; background-color:#F1F1F1; margin-left: auto; margin-right: auto; border-width: 2px; border-style: solid; width: 550px; ">
+			<div style="width: 100%; text-align: center; font-weight: bold; border: 0px; margin: 0px; padding: 0px">Hey, where did my words go? (Click to hide)</div>
+			<p>In the trial version of Web2Disk every fifth word is blanked out. 
+			To copy this site with all the words, please upgrade to the full version and copy this website again.</p>
+			<div style="width: 100%; text-align: center; font-weight: bold; border: 0px; margin: 0px; padding: 0px">
+				<a href="http://www.inspyder.com/products/Web2Disk/">Inspyder Web2Disk: The Website Downloader</a>
+			</div>
+		</div>
+	</div>
+  <div class='fill-midnight offcanvas-top row3 industries-subnav animate dark pin-top hide-mobile' id='industries'>
+    <div class='limiter pad2y space-top1 small strong contain'>
+       <ul class='space-bottom0 clearfix'>
+         <li class='col2'><a href="../../industries/realestate/index.html" class="primary-nav-button inline pad1x pad0y round">Real Estate </a></li>
+         <li class='col2'><a href="../../industries/transportation/index.html" class="primary-nav-button inline pad1x pad0y round">Transportation </a></li>
+         <li class='col2'><a href="../../industries/agriculture/index.html" class="primary-nav-button inline pad1x pad0y round ">Agriculture </a></li>
+         <li class='col2'><a href="../../industries/social/index.html" class="primary-nav-button inline pad1x pad0y round">Social </a></li>
+         <li class='col2'><a href="../../industries/government/index.html" class="primary-nav-button inline pad1x pad0y round ">Government </a></li>        
+         <li class='col2'><a href="../../industries/outdoors/index.html" class="primary-nav-button inline pad0x pad0y round">Fitness &amp; Outdoors </a></li>
+       </ul>
+       <ul class='clearfix'>
+          <li class='col2'><a href="../../industries/finance/index.html" class="primary-nav-button inline pad1x pad0y round ">Finance </a></li>
+          <li class='col2'><a href="../../industries/insurance/index.html" class="primary-nav-button inline pad1x pad0y round ">Insurance </a></li>
+          <li class='col2'><a href="../../industries/naturalresources/index.html" class="primary-nav-button inline pad1x pad0y round ">Natural Resources </a></li>
+          <li class='col2'><a href="../../industries/security/index.html" class="primary-nav-button inline pad1x pad0y round ">Security </a></li>
+          <li class='col2'><a href="../../industries/health/index.html" class="primary-nav-button inline pad1x pad0y round ">Health </a></li>
+          <li class='col2'><a href="../../industries/media/index.html" class="primary-nav-button inline pad0x pad0y round ">Media </a></li>
+       </ul> 
+    </div>
+  </div>
+ <div class='page-content'> 
+
+ <div class='masthead show-in-loaded col12 clearfix  dark'>
+   <div class='limiter clearfix'>
+     <nav class='col12 text-right pad2y contain animate clearfix noprint'>
+       <a class='fl mb-logo' href='../../index.html'></a>
+       <h4 class='logo-enterpriseaddon pin-topleft text-aqua block-in-enterprise'>Enterprise </h4>
+       <div id='nav'>
+       </div>
+     </nav>
+   </div>
+ </div>
+
+ <div class=''><style>
+.doc-content h1 { text-align:center; }
+</style>
+ <section class='fill-navy-dark pad8y'>
+     <div class='pad8y'>
+         <div class='limiter clearfix contain dark'>
+             <h3 class='fancy dark contain center'>
+                 <a href='../index.html'>Mapbox Studio </a>
+             </h3>
+         </div>
+         <div class='limiter clearfix contain dark'>
+             <div class='col8 margin2 prose doc-content'>
+             <h1 id="source-quickstart">Source quickstart </h1>
+
+ <p>Mapbox Studio does not _____ visual styles to geospatial ____ files directly. Instead, raw ____ is converted into Mapbox ______ Tiles. The  <em>Source editor </em> transforms traditional geodata _______ into vector tiles containing ___ appropriate layers and configurations ______ for styling. </p>
+
+ <p>In this tutorial we’ll ______ vector tiles from geodata ___ use it to create _ custom map style showing ___ data on a map. </p>
+
+ <h2 id="download-data">Download data </h2>
+
+ <p>In this crash course, __’__ use  <a href="http://earthquake.usgs.gov/earthquakes/feed/">earthquake data from the ____ </a> to make a ___ showing points for earthquakes ____ have occurred. </p>
+
+ <div class="clearfix space-bottom0">
+     <a class="button icon down fill-green margin3 col6" href="http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_month.csv">USGS Earthquakes CSV </a>
+ </div>
+ <div class="center small"><strong>right-click </strong> and save link __  <code>earthquakes.csv </code></div>
+
+ <h2 id="create-a-source-project">Create a source project </h2>
+
+ <p>Open Mapbox Studio and _____ on  <strong>Projects </strong> in the lower ____ - this will open __ a listing of your ________. Click the  <strong>New project </strong> button to open ___ New Style and Source ______. </p>
+
+ <p><img src="../../../cloud.githubusercontent.com/assets/134753/5308558/0b6aaf06-7bcd-11e4-94e1-6c4494bb81b6.png" alt="New Project" /></p>
+
+ <p>From this menu, create _ New Source by selecting _  <strong>Blank __Sources </strong>. </p>
+
+ <p><img src="../../../cloud.githubusercontent.com/assets/134753/5308702/d99fd210-7bce-11e4-83a1-f7139e9e88c0.png" alt="Blank Source" /></p>
+
+ <h2 id="adding-your-first-layer">Adding your first layer </h2>
+
+ <ol>
+   <li>
+     <p>Click the  <strong>New Layer </strong> button in Mapbox ______. Click the  <strong>Browse </strong> button and use ___ file browser to find ___ select  <code>earthquakes.csv </code>. </p>
+
+     <p><img src="../../../cloud.githubusercontent.com/assets/83384/3868306/de0d1a6a-2034-11e4-8c2d-0ddd75dfb4fb.png" alt="Add data" /></p>
+   </li>
+   <li>
+     <p>In the right panel ___’__ see the configuration view ___ your newly-added layer. The ____ of the layer will ________ with metadata from the ____. You can edit the _____ name by clicking the ______ icon. Leave it as  <code>earthquakes </code> for now. </p>
+   </li>
+   <li>
+     <p>Verify that projection is ___ correctly. This field will ____ autofill with metadata from ___ file, and it should _________ WGS84. </p>
+
+     <p><em>Mapbox Studio autodetects the __________ of most geodata files. __ you have data that ____ not have its projection ____________, report it as an  <a href="https://github.com/mapbox/mapbox-studio/issues">issue on GitHub </a>. </em></p>
+   </li>
+   <li>
+     <p>Set the  <strong>Buffer size </strong> slider to  <strong>32 </strong>. The vector tile ______ determines how much extra ____ is included around the _____ of each tile and ___ be used to prevent ______ clipping artifacts when styling ____. </p>
+   </li>
+   <li>
+     <p>Click  <strong>Done </strong> to see your ___ layer. It is automatically _____ a color and style __ the data preview. You ___ need to zoom and ___ a little to see ____ data in the preview.  </p>
+
+     <p><img src="../../../cloud.githubusercontent.com/assets/83384/3870117/ccf6bd8a-20bb-11e4-8000-5c0401a62292.png" alt="Layer settings" /></p>
+
+     <p><em>The layer settings panel _____ configured. </em></p>
+   </li>
+ </ol>
+
+ <h2 id="inspecting-data-properties">Inspecting data properties </h2>
+
+ <p>The map preview pane _____ points where each point __________ a distinct earthquake. Click __ any point on the ___ to inspect the data ___ that earthquake. The layer ____ and color are shown __ you can inspect multiple ______ if features overlap. You ____ use these data fields _____ when styling this source. </p>
+
+ <p><img src="../../../cloud.githubusercontent.com/assets/83384/3869950/9d005c08-20b1-11e4-924a-c056027f02e9.png" alt="Inspect layers" /></p>
+
+ <h2 id="field-descriptions">Field descriptions </h2>
+
+ <p>Click the  <strong>earthquakes </strong> layer. Then click __ the  <strong>Fields </strong> toggle to view ___ the fields present for ____ layer and descriptions of ____ field. </p>
+
+ <p><img src="../../../cloud.githubusercontent.com/assets/83384/3869955/66d2e4e2-20b2-11e4-9f6e-a854c2292673.png" alt="Fields" /></p>
+
+ <p>Enter descriptions for each _____ and then click  <strong>Done </strong>. Field descriptions are _ helpful guide to the ________ of each property and ___ it might be used ____ styling. The USGS website ________ a  <a href="http://earthquake.usgs.gov/earthquakes/feed/v1.0/glossary.php">Glossary </a> describing their data ______. </p>
+
+ <h2 id="project-settings--saving">Project settings &amp; saving </h2>
+
+ <p>Click on the  <strong>Settings </strong> button to bring __ the project settings panel. ___ can set information about ____ project as a whole, ____ as a name, description, ___ attribution info for your ____ sources. Change the name __ the project to  <em>Earthquakes </em> so when it’s ________ you will be able __ find it. </p>
+
+ <p><img src="../../../cloud.githubusercontent.com/assets/83384/3869969/13aeada4-20b3-11e4-821f-6cd084cf791f.png" alt="Settings pane" /></p>
+
+ <p>Save your project. Click ___  <strong>Save As </strong> button at the ___ of the window to ____ your source project a ____ and a save location. </p>
+
+ <p>Mapbox Studio source projects ___ saved as a directory __ files with a suffix __  <code>.tm2source </code> automatically appended to ___ name. </p>
+
+ <h2 id="uploading">Uploading </h2>
+
+ <p>Upload your project by _____ on the  <strong>Settings </strong> button, then  <strong>Upload to Mapbox </strong>. Uploading a Mapbox ______ source project to Mapbox.com ____ allow you to use ___ source for Mapbox Studio _____ projects.  </p>
+
+ <p><img src="../../../cloud.githubusercontent.com/assets/134753/5309044/63eb2cae-7bd3-11e4-86d8-510db64f2e57.png" alt="Upload source" /></p>
+
+ <p><img src="../../../cloud.githubusercontent.com/assets/83384/3869977/bc77bc78-20b3-11e4-9adb-73a6e28d0171.png" alt="Upload progress" /></p>
+
+ <p>Your project now has ____ converted to vector tiles ____ can be read from ___ Mapbox API. Once the ______ is done processing  <strong>Copy its Map ID </strong>. You will use ____ to add your custom ______ tiles to a custom ___ style. </p>
+
+ <h1 id="styling-custom-data">Styling custom data </h1>
+
+ <p>Click on  <strong>Projects </strong> in the lower ____ - this will open __ a listing of your ________. Switch the toggle at ___ top-right of the listing ____  <strong>Sources </strong> to  <strong>Styles </strong>, then click the  <strong>New style </strong> button at the ___. </p>
+
+ <p>Select the  <strong>Satellite Afternoon </strong> style to use _ starting point for your ___ style. </p>
+
+ <p><img src="../../../cloud.githubusercontent.com/assets/134753/5309083/fee3ad94-7bd3-11e4-9781-1bd1ba9e3193.png" alt="New Style" /></p>
+
+ <h2 id="changing-the-vector-tile-source">Changing the vector tile ______ </h2>
+
+ <p>Click on  <strong>Layers </strong> to open the ______ pane and then click  <strong>Change source </strong> to choose a ___ source for this style _______. </p>
+
+ <p><img src="../../../cloud.githubusercontent.com/assets/83384/3870136/1cd60c56-20bd-11e4-9b7d-e20599c7003b.png" alt="Change source" /></p>
+
+ <p>Add a comma and ___ Mapbox  <strong>Map ID </strong> of your vector ______ to the end of ___ list of sources in ___ input field. The Mapbox ___ will automatically composite the ________ sources (Mapbox Satellite, Mapbox _______, Mapbox Streets) with your ___ source. Click  <strong>Apply </strong> after you have _______ the full map ID. </p>
+
+ <pre><code>mapbox.satellite,mapbox.mapbox-terrain-v1,mapbox.mapbox-streets-v5,[Map ID]
+ </code></pre>
+
+ <p><em>The full composited list __ Map IDs that should __ in your source field </em></p>
+
+ <h2 id="add-a-stylesheet-tab">Add a stylesheet tab </h2>
+
+ <p>Click on the  <strong>+ </strong> button on the ___ right of the style ______ to add a new ___. Name your tab  <em>earthquakes </em>. </p>
+
+ <p><img src="../../../cloud.githubusercontent.com/assets/83384/3870168/cad0390c-20be-11e4-8050-7521ce362d77.png" alt="Add tab" /></p>
+
+ <h2 id="styling-points">Styling points </h2>
+
+ <p>Add the following CartoCSS __ your  <em>earthquakes </em> stylesheet and then _____  <strong>Save </strong>. </p>
+
+ <pre><code>#earthquakes {
+  marker-comp-op:screen;
+  marker-allow-overlap:true;
+  marker-line-width:0;
+  ______-____:#_20;
+  [zoom&gt;=0] { marker-width:[mag]*[mag]*0.1; }
+  [zoom&gt;=2] { marker-width:[mag]*[mag]*0.2; }
+  [zoom&gt;=3] { marker-width:[mag]*[mag]*0.4; }
+  [zoom&gt;=4] { marker-width:[mag]*[mag]*0.6; }
+  [zoom&gt;=5] { marker-width:[mag]*[mag]*1; }
+  [zoom&gt;=6] { marker-width:[mag]*[mag]*2; }
+  [zoom&gt;=7] { marker-width:[mag]*[mag]*4; }
+  [zoom&gt;=8] { marker-width:[mag]*[mag]*8; }
+  [zoom&gt;=9] { marker-width:[mag]*[mag]*12; }
+  [zoom&gt;=10] { marker-width:[mag]*[mag]*24; }
+  [zoom&gt;=11] { marker-width:[mag]*[mag]*48; }
+}
+ </code></pre>
+
+ <p><img src="../../../cloud.githubusercontent.com/assets/83384/3870179/5bf756a4-20bf-11e4-95cf-f18b370aa95c.png" alt="Styling points" /></p>
+
+ <ul>
+   <li><code>marker-width: [mag]*[mag]*n </code> properties draw each __________ point as a circle ______ by the  <code>[mag] </code> field. </li>
+   <li><code>[zoom&gt;=n] </code> selectors increase the ____ of each circle as ___ zoom in. </li>
+   <li><code>marker-allow-overlap: true </code> allows the circles __ be drawn over each _____. </li>
+   <li><code>marker-comp-op: screen </code> switches the blend ____ of the markers so ___________ circles create an interesting ______ affect. </li>
+ </ul>
+
+ <h2 id="styling-labels">Styling labels </h2>
+
+ <p>Next we will add ______ so that earthquakes with _ large magnitude are labeled _______ on the map. Add ___ following CartoCSS to your  <em>earthquakes </em> stylesheet and then _____  <strong>Save </strong>. </p>
+
+ <pre><code>#earthquakes::label[zoom&gt;=6][mag&gt;=4],
+#earthquakes::label[zoom&gt;=8][mag&gt;=3] {
+  text-allow-overlap:true;
+  text-size:14;
+  text-name:'[mag]';
+  ____-____-____:'____ Sans Regular';
+  text-fill:#fff;
+}
+ </code></pre>
+
+ <p><img src="../../../cloud.githubusercontent.com/assets/83384/3870195/37ba920a-20c0-11e4-99e5-93f1912e5f5b.png" alt="Styling labels" /></p>
+
+ <ul>
+   <li><code>#earthquakes::label </code> defines a new ________ attachment. The properties in ____ attachment will be drawn __ top of any previous  <code>#earthquake </code> layer rules. </li>
+   <li><code>text-allow-overlap: true </code> allows text to __ drawn on top of _______ and other labels. </li>
+   <li><code>text-name: '[mag]' </code> sets the layer _____ to use for the ________ of the text labels. </li>
+ </ul>
+
+ <h2 id="uploading-1">Uploading </h2>
+
+ <p>Upload your project by _____ on the  <strong>Settings </strong> button, then  <strong>Upload to Mapbox </strong>. You can change ________ here at anytime but ___’__ need to upload again __ reflect changes. </p>
+
+ <p><img src="../../../cloud.githubusercontent.com/assets/134753/5309187/219af670-7bd5-11e4-83a2-b0a42f32b0ed.png" alt="Upload style" /></p>
+
+ <h2 id="mission-complete">Mission complete </h2>
+
+ <p>Your map style is ___ deployed to Mapbox and ___ a  <strong>Map ID </strong>. You can use ____ map with any of ___ Mapbox Developer APIs to _________ into your apps and _____. </p>
+
+ <div class="clearfix">
+     <a class="button rcon next margin3 col6" href="../../developers/index.html">Developer docs </a>
+ </div>
+
+
+             </div>
+         </div>
+     </div>
+     <div class='limiter clearfix contain dark'>
+         <div class='fill-navy-dark small margin3 col6 round keyline-all'>
+
+ <h3 class='pad2x pad1y keyline-bottom center'>Documentation </h3>
+
+ <div class='clearfix pad2'>
+
+ <div class='col6'>
+ <a href='../index.html' class='block pad0 truncate'>
+     <span class='dot inline icon home pad0 fill-blue'></span>
+     <span class='pad0x'>Mapbox Studio 
+ </span></a>
+ <a href='../style-quickstart/index.html' class='block pad0 truncate'>
+     <span class='dot inline icon paint pad0 fill-blue'></span>
+     <span class='pad0x'>Style quickstart 
+ </span></a>
+ <a href='../style-manual/index.html' class='block pad0 truncate'>
+     <span class='dot inline icon book pad0 fill-blue'></span>
+     <span class='pad0x'>Style manual 
+ </span></a>
+ <a href='index.html' class='block pad0 truncate'>
+     <span class='dot inline icon polygon pad0 fill-purple'></span>
+     <span class='pad0x'>Source quickstart 
+ </span></a>
+ <a href='../source-manual/index.html' class='block pad0 truncate'>
+     <span class='dot inline icon book pad0 fill-purple'></span>
+     <span class='pad0x'>Source manual 
+ </span></a>
+ <a href='../common-questions/index.html' class='block pad0 truncate'>
+     <span class='dot inline icon lifebuoy pad0 fill-orange'></span>
+     <span class='pad0x'>Common questions 
+ </span></a>
+ </div>
+ <div class='col6'>
+ <a href='../styling-selectors/index.html' class='block pad0 truncate'>
+     <span class='dot inline icon brackets pad0 fill-navy'></span>
+     <span class='pad0x'>Styling selectors 
+ </span></a>
+ <a href='../styling-labels/index.html' class='block pad0 truncate'>
+     <span class='dot inline icon marker pad0 fill-navy'></span>
+     <span class='pad0x'>Styling labels 
+ </span></a>
+ <a href='../styling-lines/index.html' class='block pad0 truncate'>
+     <span class='dot inline icon polyline pad0 fill-navy'></span>
+     <span class='pad0x'>Styling lines 
+ </span></a>
+ <a href='../styling-polygons/index.html' class='block pad0 truncate'>
+     <span class='dot inline icon polygon pad0 fill-navy'></span>
+     <span class='pad0x'>Styling polygons 
+ </span></a>
+ <a href='../symbol-drawing-order/index.html' class='block pad0 truncate'>
+     <span class='dot inline icon layers pad0 fill-navy'></span>
+     <span class='pad0x'>Symbol drawing order 
+ </span></a>
+ <a href='../compositing-reference/index.html' class='block pad0 truncate'>
+     <span class='dot inline icon sun pad0 fill-navy'></span>
+     <span class='pad0x'>Compositing reference 
+ </span></a>
+ </div>
+
+ </div>
+
+ </div>
+
+     </div>
+ </section>
+
+ </div>
+
+ <div class='footer pad4y clearfix hide-mobile fill-light'>
+   <div class='limiter'>
+    <div class='clearfix'> 
+     <div class='col8 small mobile-cols'>
+       <div class='col12 clearfix'>
+         <div class='col3'>
+          
+           <a id='footer-design' class='space-bottom0 col12 strong' href='../../design/index.html'>Design </a>
+          
+           <a id='footer-data' class='space-bottom0 col12 strong' href='../../data-platform/index.html'>Data </a>
+          
+           <a id='footer-developers' class='space-bottom0 col12 strong' href='../../developers/index.html'>Developers </a>
+          
+           <a id='footer-showcase' class='space-bottom0 col12 strong' href='../../showcase/index.html'>Showcase </a>
+          
+           <a id='footer-enterprise' class='space-bottom0 col12 strong' href='../../enterprise/index.html'>Enterprise </a>
+          
+         </div>
+         <div class='col3'>
+          
+           <a id='footer-plans' class='space-bottom0 col12 quiet strong' href='../../plans/index.html'>Plans </a>
+          
+           <a id='footer-blog' class='space-bottom0 col12 quiet strong' href='../../blog/index.html'>Blog </a>
+          
+           <a id='footer-help' class='space-bottom0 col12 quiet strong' href='../../help/index.html'>Help </a>
+          
+           <a id='footer-status' class='space-bottom0 col12 quiet strong' href='../../status/index.html'>Status </a>
+          
+           <a id='footer-contact' class='space-bottom0 col12 quiet strong' href='../../contact/index.html'>Contact </a>
+          
+         </div>
+         <div class='col3'>     
+          
+           <a id='footer-about' class='space-bottom0 col12 quiet strong' href='../../about/index.html'>About </a>
+          
+           <a id='footer-team' class='space-bottom0 col12 quiet strong' href='../../about/team/index.html'>Team </a>
+          
+           <a id='footer-jobs' class='space-bottom0 col12 quiet strong' href='../../jobs/index.html'>Jobs </a>
+          
+           <a id='footer-press' class='space-bottom0 col12 quiet strong' href='../../about/press/index.html'>Press </a>
+          
+           <a id='footer-press-kit' class='space-bottom0 col12 quiet strong' href='../../about/press-kit/index.html'>Press Kit </a>
+          
+         </div>
+          <div class='col3'>
+            <div class='space-bottom0 strong'>Tools </div>
+          
+           <a id='footer-studio' class='space-bottom0 col12 quiet strong' href='../index.html'>Studio </a>
+          
+           <a id='footer-maki' class='space-bottom0 col12 quiet strong' href='../../maki/index.html'>Maki </a>
+          
+         </div>
+       </div>
+     </div>
+
+     <div class='col4 footer-social'>
+       <div class='animate footer-animation col6'></div>
+       <div class='footer-dialog fr small strong quiet pad2 col6 contain round fill-gray'>
+      Follow Mapbox on  <a href='https://twitter.com/mapbox'>Twitter </a>,  <a href='https://www.facebook.com/Mapbox'>Facebook </a>, and  <a href='https://instagram.com/mapbox'>Instagram </a>.
+       </div>
+     </div>  
+   </div>
+   </div>
+
+   <div class="limiter industries-footer">
+   <p class='space-bottom1 strong small space-top2 industries-footer-title'>Industries </p>
+   <div class='clearfix pad2y pad4x fill-gray round space-bottom4 industries-footer'>
+         <div class='clearfix'>
+            <div class='col3'>
+            
+             <a id='footer-real-estate' class='space-bottom0 col12 strong quiet small' href='../../industries/realestate/index.html'>Real Estate </a>
+            
+             <a id='footer-transportation' class='space-bottom0 col12 strong quiet small' href='../../industries/transportation/index.html'>Transportation </a>
+            
+             <a id='footer-agriculture' class='space-bottom0 col12 strong quiet small' href='../../industries/agriculture/index.html'>Agriculture </a>
+            
+           </div>
+            <div class='col3'>
+            
+             <a id='footer-social' class='space-bottom0 col12 strong quiet small' href='../../industries/social/index.html'>Social </a>
+            
+             <a id='footer-government' class='space-bottom0 col12 strong quiet small' href='../../industries/government/index.html'>Government </a>
+            
+             <a id='footer-fitness-&amp;-outdoors' class='space-bottom0 col12 strong quiet small' href='../../industries/outdoors/index.html'>Fitness &amp; outdoors </a>
+            
+           </div>
+            <div class='col3'>
+            
+             <a id='footer-finance' class='space-bottom0 col12 strong quiet small' href='../../industries/finance/index.html'>Finance </a>
+            
+             <a id='footer-insurance' class='space-bottom0 col12 strong quiet small' href='../../industries/insurance/index.html'>Insurance </a>
+            
+             <a id='footer-natural-resources' class='space-bottom0 col12 strong quiet small' href='../../industries/naturalresources/index.html'>Natural Resources </a>
+            
+           </div>
+           <div class='col3'>
+            
+                 <a id='footer-security' class='space-bottom0 col12 strong quiet small' href='../../industries/security/index.html'>Security </a>
+            
+                 <a id='footer-health' class='space-bottom0 col12 strong quiet small' href='../../industries/health/index.html'>Health </a>
+            
+                 <a id='footer-media' class='space-bottom0 col12 strong quiet small' href='../../industries/media/index.html'>Media </a>
+            
+           </div>
+          </div> 
+       </div>
+   </div>
+
+   <div class='limiter newsletter-copyright clearfix'>
+   <div class='col8 contain newsletter'>
+         <form id='newsletter' method='post'>
+           <fieldset class='clearfix input-pill col10 pill mobile-cols with-icon'>
+             <span class='icon mail quiet'></span>
+             <input type='text' value='' placeholder='Sign up for our newsletter' name='email' class='col9 required email' />
+             <input type='submit' value='Subscribe' class='col3 quiet' />
+           </fieldset>
+         </form>
+        </div> 
+
+       <div class='col4 footer-copyright small space-top1 col4 noprint fill-light contain'>
+           <div class='pin-right'>
+             <a href='../../tos/index.html'>Terms </a> +
+             <a href='../../privacy/index.html'>Privacy </a>
+            &copy; Mapbox
+           </div>
+       </div>
+   </div>
+
+ </div>
+
+ <div class='footer-copyright small center noprint fill-light show-mobile'>
+   <div class='limiter'>
+     <div class='pad2y'>
+             <a href='../../tos/index.html'>Terms </a> +
+             <a href='../../privacy/index.html'>Privacy </a>
+      &copy; Mapbox
+     </div>
+   </div>
+ </div>
+
+
+
+ <div id='modal-content' class='animate modal modal-content'></div>
+ </div>
+ </body>
+ </html>
+ 

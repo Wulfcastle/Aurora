@@ -1,0 +1,584 @@
+<!DOCTYPE html >
+ <html>
+ <head>
+<!-- Original URL: https://www.mapbox.com/foundations/glossary/
+Date Downloaded: 2014-12-05 09:29:14 PM !-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  
+   <meta charset='UTF-8' />
+   <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+   <meta name='robots' content='index' />
+   <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  
+   <title>Mapbox glossary | Mapbox </title>
+
+   <meta name='st:title' content='Mapbox glossary' />
+   <meta name='st:type' content='all' />
+   <meta name='st:info' content='site' />
+
+  
+
+   <link href='../../base/latest/base_8f8b1251.css' rel='stylesheet' />
+   <link href='../../css/site.css' rel='stylesheet' />
+   <!--[if IE 9]><link href='../../css/site-ie9.css' rel='stylesheet' /><![endif]-->
+   <link rel='shortcut icon' href='../../img/favicon.ico' type='image/x-icon' />
+   <link rel='alternate' type='application/rss+xml' title='RSS' href='../../blog/blog.rss' />
+   <link href='../../../api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.css' rel='stylesheet' />
+
+   <!--[if lt IE 9 ]><script src='../../js/redirect-ie.js'></script><![endif]-->
+   <script src='../../../js.stripe.com/v2/index.html.js'></script>
+   <script>
+  var KM_COOKIE_DOMAIN = 'www.mapbox.com';
+  var analytics=analytics||[];(function(){var e=['identify','track','trackLink','trackForm','trackClick','trackSubmit','page','pageview','ab','alias','ready','group'],t=function(e){return function(){analytics.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var n=0;n<e.length;n++)analytics[e[n]]=t(e[n])})(),analytics.load=function(e){var t=document.createElement('script');t.type='text/javascript',t.async=!0,t.src=('https:'===document.location.protocol?'https://':"http://")+'d2dq2ahtl5zl1z.cloudfront.net/analytics.js/v1/'+e+'/analytics.min.js';var n=document.getElementsByTagName('script')[0];n.parentNode.insertBefore(t,n)};
+  analytics.load(window.location.hostname.indexOf('mapbox.com') !== -1 ? 'fl0c8p240n' : '0biiejpgfj');
+
+  Stripe.setPublishableKey(window.location.hostname.indexOf('mapbox.com') !== -1 ?
+    'pk_live_hI6mmOTIg7KkywK6vo3vJvpk' : 'pk_test_gmIyREg3sKzAiyMkAEeCsxUG');
+  </script>
+   <script src='../../../api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.js'></script>
+
+   <script>
+  window.mapbox_api = 'https://www.mapbox.com/core';
+  window.mapbox_tileApi = '../../../api.tiles.mapbox.com/index.html';
+  window.mapbox_accessToken = '' || 'pk.eyJ1IjoibWFwYm94IiwiYSI6IlhHVkZmaW8ifQ.hAMX5hSW-QnTeRCMAy9A8Q'
+  if (L.mapbox.VERSION[0] === '2') {
+      L.mapbox.accessToken = window.mapbox_accessToken;
+      L.mapbox.config.FORCE_HTTPS = true;
+      L.mapbox.config.HTTPS_URL = window.mapbox_tileApi + '/v4';
+  }
+  </script>
+   <script src='../../base.js/dist/base.js'></script>
+  
+  
+ </head>
+ <body class=' full bleed'><div style="z-index: 9999; position: fixed; width: 100%; border: 0px; padding: 5px; margin: 0px; background-color: transparent;  font-size: 12pt; font-family: sans-serif;" id="web2disk_nag" onclick="javascript: document.getElementById('web2disk_nag').style.display = 'none';">
+		<div style="color: #000000; background-color:#F1F1F1; margin-left: auto; margin-right: auto; border-width: 2px; border-style: solid; width: 550px; ">
+			<div style="width: 100%; text-align: center; font-weight: bold; border: 0px; margin: 0px; padding: 0px">Hey, where did my words go? (Click to hide)</div>
+			<p>In the trial version of Web2Disk every fifth word is blanked out. 
+			To copy this site with all the words, please upgrade to the full version and copy this website again.</p>
+			<div style="width: 100%; text-align: center; font-weight: bold; border: 0px; margin: 0px; padding: 0px">
+				<a href="http://www.inspyder.com/products/Web2Disk/">Inspyder Web2Disk: The Website Downloader</a>
+			</div>
+		</div>
+	</div>
+  <div class='fill-midnight offcanvas-top row3 industries-subnav animate dark pin-top hide-mobile' id='industries'>
+    <div class='limiter pad2y space-top1 small strong contain'>
+       <ul class='space-bottom0 clearfix'>
+         <li class='col2'><a href="../../industries/realestate/index.html" class="primary-nav-button inline pad1x pad0y round">Real Estate </a></li>
+         <li class='col2'><a href="../../industries/transportation/index.html" class="primary-nav-button inline pad1x pad0y round">Transportation </a></li>
+         <li class='col2'><a href="../../industries/agriculture/index.html" class="primary-nav-button inline pad1x pad0y round ">Agriculture </a></li>
+         <li class='col2'><a href="../../industries/social/index.html" class="primary-nav-button inline pad1x pad0y round">Social </a></li>
+         <li class='col2'><a href="../../industries/government/index.html" class="primary-nav-button inline pad1x pad0y round ">Government </a></li>        
+         <li class='col2'><a href="../../industries/outdoors/index.html" class="primary-nav-button inline pad0x pad0y round">Fitness &amp; Outdoors </a></li>
+       </ul>
+       <ul class='clearfix'>
+          <li class='col2'><a href="../../industries/finance/index.html" class="primary-nav-button inline pad1x pad0y round ">Finance </a></li>
+          <li class='col2'><a href="../../industries/insurance/index.html" class="primary-nav-button inline pad1x pad0y round ">Insurance </a></li>
+          <li class='col2'><a href="../../industries/naturalresources/index.html" class="primary-nav-button inline pad1x pad0y round ">Natural Resources </a></li>
+          <li class='col2'><a href="../../industries/security/index.html" class="primary-nav-button inline pad1x pad0y round ">Security </a></li>
+          <li class='col2'><a href="../../industries/health/index.html" class="primary-nav-button inline pad1x pad0y round ">Health </a></li>
+          <li class='col2'><a href="../../industries/media/index.html" class="primary-nav-button inline pad0x pad0y round ">Media </a></li>
+       </ul> 
+    </div>
+  </div>
+ <div class='page-content'> 
+
+ <div class='masthead show-in-loaded col12 clearfix  dark'>
+   <div class='limiter clearfix'>
+     <nav class='col12 text-right pad2y contain animate clearfix noprint'>
+       <a class='fl mb-logo' href='../../index.html'></a>
+       <h4 class='logo-enterpriseaddon pin-topleft text-aqua block-in-enterprise'>Enterprise </h4>
+       <div id='nav'>
+       </div>
+     </nav>
+   </div>
+ </div>
+
+ <div class=''><script src='../../js/olark.js'></script>
+ <link href='../site.css' rel='stylesheet' />
+
+ <div class='splash fill-all'>
+   <div class='dark limiter pad4y head-img' style='background-image:url("../img/topics/glossary.png");'>
+     <div class='pad4y'>
+       <h2><a href='../index.html'>Guides to getting started </a></h2>
+       <h1 class='block space-bottom0'>Mapbox glossary </h1>
+     </div>
+   </div>
+ </div>
+
+ <div class='limiter contain'>
+   <div class='clearfix pad4y'>
+
+     <div class='col2 toc'>
+       <div class='toc-wrap' data-spy='affix'>
+         <ul class='nav'><li class="h2 space-top1"><a href="#access-token" class="strong block" title="access token">access token </a></li><li class="h2 space-top1"><a href="#api" class="strong block" title="API">API </a></li><li class="h2 space-top1"><a href="#baselayer" class="strong block" title="baselayer">baselayer </a></li><li class="h2 space-top1"><a href="#cartocss" class="strong block" title="CartoCSS">CartoCSS </a></li><li class="h2 space-top1"><a href="#csv" class="strong block" title="CSV">CSV </a></li><li class="h2 space-top1"><a href="#features" class="strong block" title="features">features </a></li><li class="h2 space-top1"><a href="#geocoding" class="strong block" title="geocoding">geocoding </a></li><li class="h2 space-top1"><a href="#geojson" class="strong block" title="GeoJSON">GeoJSON </a></li><li class="h2 space-top1"><a href="#gpx" class="strong block" title="GPX">GPX </a></li><li class="h2 space-top1"><a href="#iframe" class="strong block" title="iframe">iframe </a></li><li class="h2 space-top1"><a href="#kml" class="strong block" title="KML">KML </a></li><li class="h2 space-top1"><a href="#latitude-and-longitude" class="strong block" title="latitude and longitude">latitude and longitude </a></li><li class="h2 space-top1"><a href="#layer" class="strong block" title="layer">layer </a></li><li class="h2 space-top1"><a href="#leaflet" class="strong block" title="Leaflet">Leaflet </a></li><li class="h2 space-top1"><a href="#mapid" class="strong block" title="map ID">map ID </a></li><li class="h2 space-top1"><a href="#map-view" class="strong block" title="map view">map view </a></li><li class="h2 space-top1"><a href="#mapbox-editor" class="strong block" title="Mapbox Editor">Mapbox Editor </a></li><li class="h2 space-top1"><a href="#mapboxgl" class="strong block" title="Mapbox GL">Mapbox GL </a></li><li class="h2 space-top1"><a href="#mapbox-studio" class="strong block" title="Mapbox Studio">Mapbox Studio </a></li><li class="h2 space-top1"><a href="#mapboxjs" class="strong block" title="Mapbox.js">Mapbox.js </a></li><li class="h2 space-top1"><a href="#mbtiles" class="strong block" title="MBTiles">MBTiles </a></li><li class="h2 space-top1"><a href="#open-source" class="strong block" title="open source">open source </a></li><li class="h2 space-top1"><a href="#openstreetmap" class="strong block" title="OpenStreetMap">OpenStreetMap </a></li><li class="h2 space-top1"><a href="#project" class="strong block" title="project">project </a></li><li class="h2 space-top1"><a href="#projection" class="strong block" title="projection">projection </a></li><li class="h2 space-top1"><a href="#raster-data" class="strong block" title="raster data">raster data </a></li><li class="h2 space-top1"><a href="#sdk" class="strong block" title="SDK">SDK </a></li><li class="h2 space-top1"><a href="#shapefile" class="strong block" title="shapefile">shapefile </a></li><li class="h2 space-top1"><a href="#simplestyle" class="strong block" title="simplestyle">simplestyle </a></li><li class="h2 space-top1"><a href="#source" class="strong block" title="source">source </a></li><li class="h2 space-top1"><a href="#static-map" class="strong block" title="static map">static map </a></li><li class="h2 space-top1"><a href="#style" class="strong block" title="style">style </a></li><li class="h2 space-top1"><a href="#surface" class="strong block" title="Surface API">Surface API </a></li><li class="h2 space-top1"><a href="#tif" class="strong block" title="TIF">TIF </a></li><li class="h2 space-top1"><a href="#tile-layer" class="strong block" title="tile layer">tile layer </a></li><li class="h2 space-top1"><a href="#tilejson" class="strong block" title="TileJSON">TileJSON </a></li><li class="h2 space-top1"><a href="#tilemill" class="strong block" title="TileMill">TileMill </a></li><li class="h2 space-top1"><a href="#utfgrid" class="strong block" title="UTFGrid">UTFGrid </a></li><li class="h2 space-top1"><a href="#vector-data" class="strong block" title="vector data">vector data </a></li><li class="h2 space-top1"><a href="#vector-tiles" class="strong block" title="vector tiles">vector tiles </a></li><li class="h2 space-top1"><a href="#vrt" class="strong block" title="VRT">VRT </a></li><li class="h2 space-top1"><a href="#web-services" class="strong block" title="web services">web services </a></li></ul>
+       </div>
+      &nbsp;
+     </div>
+
+     <div class='col9 prose pad2xm margin1'>
+       <div class='space-bottom4 doc'>
+         <p>Wondering what a term _____? Here&rsquo;s your cheatsheet to ___ that jargon Mapbox uses. </p>
+
+ <h2 id='access-token'>access token </h2>
+
+
+ <p>Tapping into Mapbox  <a href="#web-services">web services </a> requires an  <a href="../../developers/api/index.html#access-tokens">access token </a>. The access token __ used to associate requests __ API resources with your _______. You can find your ______ tokens on your  <a href="../../account/apps/index.html">Account </a> page. </p>
+
+ <h2 id='api'>API </h2>
+
+
+ <p>An API, or application ___________ interface, is a specification ___ how software libraries should ________ with each other. </p>
+
+ <h2 id='baselayer'>baselayer </h2>
+
+
+ <p>Baselayers are the customizable ____ that Mapbox offers: Mapbox _______, Mapbox Terrain, and Mapbox _________. Each baselayer contains the _________ layers: </p>
+
+ <ul>
+ <li><span class='icon street'></span> Mapbox Streets - _______, Buildings, Areas, Water, Land. </li>
+ <li><span class='icon mt'></span> Mapbox Terrain - _______, Buildings, Areas, Water, Terrain. </li>
+ <li><span class='icon satellite'></span> Mapbox Satellite - _______, Satellite. </li>
+ </ul>
+
+
+ <h2 id='cartocss'>CartoCSS </h2>
+
+
+ <p><a href="https://github.com/mapbox/carto/blob/master/docs/latest.md">CartoCSS </a> is a language ____ by TileMill and Studio __ style maps. You can ___ CartoCSS to choose colors, _____ different rendering at specific ____ levels, and more details __ map features. As the ____ suggests, CartoCSS is similar __ CSS, the language used __ style HTML. CartoCSS is ___ for map data. </p>
+
+ <h2 id='csv'>CSV </h2>
+
+
+ <p>The CSV, or comma-separated ______, format is common for _____ data, like the kind ___ might use in Excel __ other spreadsheets. Unlike formats ____ KML and GeoJSON, CSV _____ aren&rsquo;t necessarily mappable. For _ CSV file to be ____ by mapping software, it ____ have columns with  <code>latitude </code> and  <code>longitude </code> values. </p>
+
+ <p>You can import a ___ file in Mapbox Editor ___ Studio. You can also ____ CSV files in Mapbox.js ____ Leaflet&rsquo;s  <a href="https://github.com/mapbox/leaflet-omnivore">Omnivore plugin </a>. </p>
+
+ <h2 id='features'>features </h2>
+
+
+ <p>Features is a term ____ to describe: </p>
+
+ <ul>
+ <li><span class='icon marker'></span> markers </li>
+ <li><span class='icon polyline'></span> lines </li>
+ <li><span class='icon polygon'></span> polygons </li>
+ </ul>
+
+
+ <p>The name denotes their ________ types in geo data. </p>
+
+ <h2 id='geocoding'>geocoding </h2>
+
+
+ <p>The  <a href="../../developers/api/geocoding/index.html">geocoding </a> API queries location ____ or lat/lon coordinates to ____ corresponding place data. </p>
+
+ <h2 id='geojson'>GeoJSON </h2>
+
+
+ <p><a href="http://geojson.org/">GeoJSON </a> is a file ______ for storing  <a href="#vector-data">vector data </a>. That means it ______ geometric shapes and marker _________. When you draw lines ___ points in the Mapbox ______ the file that you&rsquo;re _______ is in the GeoJSON ______. The format is based __  <a href="http://www.json.org/">JSON </a>. </p>
+
+ <p>You can import GeoJSON _____ into Editor and Studio. ___ can export data from _ Mapbox Editor project as _ GeoJSON file. You can ____ upload GeoJSON files directly __  <a href="../../data/index.html">Mapbox.com </a>. </p>
+
+ <h2 id='gpx'>GPX </h2>
+
+
+ <p><a href="http://en.wikipedia.org/wiki/GPS_eXchange_Format">GPX </a>, or GPS eXchange ______, is a data format ________ created from GPS receivers. </p>
+
+ <p>You can import GPX _____ into Editor and Studio. ___ can also upload GPX _____ directly on  <a href="../../data/index.html">Mapbox.com </a>. </p>
+
+ <h2 id='iframe'>iframe </h2>
+
+
+ <p>An embed generated by ______ Editor uses an  <code>&lt;iframe&gt; </code> to display your ___. This element allows you __ put a webpage into _______ webpage. We use the _______ because it insulates all ___ code that makes your ___ work from the code __ your website. </p>
+
+ <h2 id='kml'>KML </h2>
+
+
+ <p><a href="https://developers.google.com/kml/documentation/">KML </a> is a file ______ that&rsquo;s similar to GeoJSON, ___ used more commonly in ______ products. It can store ______, lines, polygons, and other ______ data. The format is _____ on XML. </p>
+
+ <p>You can import KML _____ into Editor and Studio. ___ can export data from _ Editor project as a ___ file. You can also ______ KML files directly on  <a href="../../data/index.html">Mapbox.com </a>. </p>
+
+ <h2 id='latitude-and-longitude'>latitude and longitude </h2>
+
+
+ <p>Latitude and longitude are _ pair of numbers (coordinates) ____ to describe a position __ the plane of a  <a href="http://en.wikipedia.org/wiki/Latitude_and_longitude">geographic coordinate system </a>. The numbers are __ decimal degrees format and _____ from -90 to 90 ___ latitude and -180 to 180 for longitude. </p>
+
+ <h2 id='layer' class='icon layers'>layer </h2>
+
+
+ <p>A web map is ____ up of layers: images ___ shapes that are placed __ top of each other __ form the thing that ___ see. For instance, you _____ have a map with _ layer of streets, a _____ of lines you drew ___ routes, and one of _______. </p>
+
+ <h2 id='leaflet' class='icon leaflet'>Leaflet </h2>
+
+
+ <p><a href="http://leafletjs.com/">Leaflet </a> is an open ______ project that forms the _____ of Mapbox.js. It&rsquo;s software ____ works on web pages ___ makes interactive maps possible. ________ requests tiles from servers ____ Mapbox, displays and animates ____, and supports other overlays. </p>
+
+ <h2 id='mapid'>map ID </h2>
+
+
+ <p>A map ID is __ identifier for your project __ data. The ID follows ___ format  <code>account.handle </code> where  <code>account </code> is your username ___  <code>handle </code> is your map&rsquo;s ______ ID. A map ID __ generated for a saved ______ project, an uploaded Studio _____ or source, and a ____ source uploaded directly on ______.___. </p>
+
+ <p>Any map ID can __ referenced in  <a href="../../mapbox.js/index.html">Mapbox.js </a>,  <a href="../../mapbox-ios-sdk/index.html">iOS </a>,  <a href="../../mapbox-android-sdk/index.html">Android </a>, and  <a href="../../developers/api/index.html">Web services </a>. </p>
+
+ <h2 id='map-view'>map view </h2>
+
+
+ <p>A map view is ______&_____;_ most basic unit of _______. A map view is _____ to 15 tile requests __ one  <a href="#static-map">static map </a> request. </p>
+
+ <h2 id='mapbox-editor'>Mapbox Editor </h2>
+
+
+ <p>This is what we ____ the  <a href="../../editor/index.html#app">interface at /editor/ </a> on Mapbox.  ___ can create a custom ___ and drag and drop ________. Editor requires no coding ______. </p>
+
+ <p>You can import  <a href="#geojson">GeoJSON </a>,  <a href="#csv">CSV </a>,  <a href="#kml">KML </a>, or  <a href="#gpx">GPX </a> files into Editor. ___ can also export data __ GeoJSON or KML format. </p>
+
+ <h2 id='mapboxgl' class='icon gl'>Mapbox GL </h2>
+
+
+ <p><a href="../../mapbox-gl/index.html">Mapbox GL </a> is a library ___ displaying
+vector maps in realtime ____  <a href="https://www.mapbox.com/blog/mapbox-gl/">native </a>
+and  <a href="../../blog/mapbox-gl-js/index.html">JavaScript </a> compatibility. </p>
+
+ <h2 id='mapbox-studio'>Mapbox Studio </h2>
+
+
+ <p><a href="../../mapbox-studio/index.html">Mapbox Studio </a> is a desktop ___________ for designing world maps. __ allows you to design ____ by using  <a href="#vector-tiles">vector tiles </a> and  <a href="#cartocss">CartoCSS </a>. Studio allows you __ upload your map directly __ your Mapbox account. It ____ to fully replace and _______ upon  <a href="#tilemill">TileMill </a> in functionality. </p>
+
+ <p>You can import  <a href="#shapefiles">shapefiles </a>,  <a href="#kml">KML </a>,  <a href="#geojson">GeoJSON </a>,  <a href="#gpx">GPX </a>,  <a href="#csv">CSV </a>,  <a href="#tif">TIF </a>, and  <a href="#vrt">VRT </a> files into Studio. ___ can export Studio sources __  <a href="#mbtiles">MBTiles </a>. </p>
+
+ <h2 id='mapboxjs' class='icon brackets'>Mapbox.js </h2>
+
+
+ <p><a href="../../mapbox.js/index.html">Mapbox.js </a> is a JavaScript _______ that allows you to ___ your Mapbox maps to ____ websites and to make ____ maps interactive. It&rsquo;s  <a href="https://github.com/mapbox/mapbox.js">an open source </a> project that&rsquo;s free __ use. </p>
+
+ <p>You can load  <a href="#geojson">GeoJSON </a> files using Mapbox.js. ___ can also load  <a href="#csv">CSV </a>,  <a href="#gpx">GPS </a>,  <a href="#kml">KML </a>, and several other ____ formats using Leaflet&rsquo;s  <a href="https://github.com/mapbox/leaflet-omnivore">Omnivore plugin </a>. </p>
+
+ <h2 id='mbtiles'>MBTiles </h2>
+
+
+ <p>MBTiles is a file ______ for storing tile layers. __&_____;_ designed so that you ___ collect all of the ___________ thousands of files that ____ up a tile layer ___ move them around easily. __________, you can upload them __ Mapbox, use them in _ mobile application, and so __.  <a href="https://www.mapbox.com/developers/mbtiles/">MBTiles is an open _____________ </a> and is based __ the  <a href="https://sqlite.org/">SQLite </a> database. </p>
+
+ <p>You can export Studio _______ as MBTiles files. You ___ upload MBTiles files directly __  <a href="../../data/index.html">Mapbox.com </a>. </p>
+
+ <h2 id='open-source' class='icon github'>open source </h2>
+
+
+ <p>Open source is software ____ can be freely copied, ________, and shared. Many of ___ components of Mapbox are ____ source, including our core _________ and client integrations. </p>
+
+ <h2 id='openstreetmap'>OpenStreetMap </h2>
+
+
+ <p><a href="http://www.openstreetmap.org/">OpenStreetMap </a> is a collaborative _______ project that creates a _________ base map. Unlike Google ____, OpenStreetMap&rsquo;s data is free __ share and use. Mapbox _______ tile layer is based __ OpenStreetMap data. </p>
+
+ <h2 id='project' class='icon folder'>project </h2>
+
+
+ <p>A project is a __________ of layers, markers, lines, ___ settings that are grouped ________. To create new custom ____, you create a new _______, name it, and customize ___ layers within it: the _______ itself just makes sure __&_____;_ all organized and stored ______. </p>
+
+ <h2 id='projection'>projection </h2>
+
+
+ <p>Projections are methods of ____________ the coordinates of locations __ earth to a two-dimensional _____. Mapbox supports the popular  <a href="http://en.wikipedia.org/wiki/Mercator_projection">Web Mercator projection </a>. Web Mercator is _______ by the vast majority __ web maps and its ___ allows you to combine ______ maps with other layers __ the same projection. </p>
+
+ <h2 id='raster-data' class='icon raster'>raster data </h2>
+
+
+ <p>Rasters are a  <a href="http://en.wikipedia.org/wiki/Raster_graphics">pixel-based data format </a> that efficiently represent __________ surfaces. Information in a ______ is stored in a ____ structure with each unit __ information, or pixel, having ___ same size and shape, ___ varying in value. All _______ photographs are stored in ____ format, which is also ________ to as a bitmap. ____ includes satellite images and ________________. </p>
+
+ <p><a href="#vrt">VRT </a> and  <a href="tif">TIF </a> are examples of ______ data formats. </p>
+
+ <h2 id='sdk'>SDK </h2>
+
+
+ <p>An SDK, or software ___________ kit, is a toolset ___ creating applications with certain _____________. Typically SDKs are for _______ native code, meaning code ____ it is designed for _ specific platform like iOS __ Android. </p>
+
+ <p>Mapbox has: </p>
+
+ <ul>
+ <li><span class='icon apple'></span>  <a href="../../mapbox-ios-sdk/index.html">iOS SDK </a></li>
+ <li><span class='icon android'></span>  <a href="../../mapbox-android-sdk/index.html">Android SDK </a></li>
+ </ul>
+
+
+ <h2 id='shapefile'>shapefile </h2>
+
+
+ <p>A shapefile, also known __ an  <a href="http://en.wikipedia.org/wiki/Shapefile">Esri shapefile </a>, is a file ______ for storing vector data, ____ GeoJSON or KML. Shapefiles ___ good for storing medium-sized ____, but are best used __ desktop applications like TileMill ___ Studio since they&rsquo;re hard ___ web browsers to read. </p>
+
+ <p>You can import shapefiles ____ Studio. You can also ______ zipped shapefiles files directly __  <a href="../../data/index.html">Mapbox.com </a>. </p>
+
+ <h2 id='simplestyle'>simplestyle </h2>
+
+
+ <p><a href="https://www.mapbox.com/developers/simplestyle/">Simplestyle </a> is an  <a href="https://github.com/mapbox/simplestyle-spec">open source </a> specification for styling  <a href="http://geojson.org/">GeoJSON </a> data. Features that ___ draw in the Mapbox ______ will maintain these properties. </p>
+
+ <h2 id='source'>source </h2>
+
+
+ <p>In Mapbox Studio, source ________ contain configuration for converting _ traditional geodata storage format ( <a href="#shapefile">shapefile </a>,  <a href="#geojson">GeoJSON </a>, etc.) into  <a href="#vector-tiles">vector tiles </a>. Once converted into ______ tiles the source can __ referenced by  <a href="#style">style </a> projects for styling. </p>
+
+ <p>After you upload a ______ to Mapbox.com, it will ______ on your  <a href="../../data/index.html">Data </a> page. </p>
+
+ <h2 id='static-map'>static map </h2>
+
+
+ <p><a href="../../developers/api/static/index.html">Static maps </a> are standalone images ____ can be displayed on ___ and mobile devices without ___ aid of a mapping _______ or API. </p>
+
+ <h2 id='style' class='icon paint'>style </h2>
+
+
+ <p>In Mapbox Studio, style ________ contain stylesheets, basic thin ________ (name, description, attribution, etc.), ___ a reference to a  <a href="#source">source </a>. </p>
+
+ <p>After you upload a _____ to Mapbox.com, it will ______ on your  <a href="https://www.mapbox.com/styles">Styles </a> page. </p>
+
+ <h2 id='surface'>Surface API </h2>
+
+
+ <p>The  <a href="../../developers/api/surface/index.html">Surface API </a> allows developers to ________________ query Mapbox maps at _______ points for specific data. _____ of it as a ______ geographic API. </p>
+
+ <h2 id='tif'>TIF </h2>
+
+
+ <p>A TIF is a ____ format for saving raster ______. On Mapbox, a TIF __ often a GeoTIFF, meaning ___ file is embedded with ______________ information. </p>
+
+ <p>You can import TIF _____ into Mapbox Studio. You ___ also upload TIF files ________ on  <a href="../../data/index.html">Mapbox.com </a>. </p>
+
+ <h2 id='tile-layer'>tile layer </h2>
+
+
+ <p>A tile layer is _ specific kind of layer ____&_____;_ made up of square ______, also known as tiles. _____ are the most common ___ to show things like _________ data and streets since ____ layers let us pack _ lot of detail into _____ that load really quickly. </p>
+
+ <h2 id='tilejson'>TileJSON </h2>
+
+
+ <p>TileJSON is a format ___ describing layers. It keeps _____ of where to request _____, what the tileset is _____, and any attribution that&rsquo;s _________ when you use the _______, like OpenStreetMap&rsquo;s attribution. </p>
+
+ <h2 id='tilemill' class='icon tilemill'>TileMill </h2>
+
+
+ <p>TileMill is a desktop ___________ for designing maps. You ___  <a href="../../tilemill/index.html">download it for free </a> and use it __ generate  custom maps. ________ to how you can _________ maps with  <a href="#mapbox-editor">Mapbox Editor </a>, TileMill is a ____ technical tool and better ___ specialized maps, like infographics. </p>
+
+ <p><a href="#mapbox-studio">Studio </a> aims to fully _______ and improve upon TileMill __ functionality. </p>
+
+ <h2 id='utfgrid'>UTFGrid </h2>
+
+
+ <p>UTFGrid is the technology ________ uses to encode interactive ________ of maps. Unlike interactivity ____  <a href="#geojson">GeoJSON </a> features in Mapbox.js, _______ is  <em>rasterized </em>. This means that __ isn&rsquo;t dynamically generated by ____ web browser, but is _________ by TileMill ahead of ____. This makes it very ____ and easily compatible with _____ browsers, but also means ____ UTFGrid-based interactivity can&rsquo;t be _______ without reworking your map __ TileMill. </p>
+
+ <h2 id='vector-data'>vector data </h2>
+
+
+ <p>Vector data is made __ points, lines and polygons. _____ shapes are able to _____ to any resolution with ___ losing quality, and are ____ often used for the ______________ of discrete objects such __ buildings, roads, and fire _______ locations. </p>
+
+ <p>KML, GeoJSON, shapefiles, GPX ___ all examples of vector ____ formats. </p>
+
+ <h2 id='vector-tiles'>vector tiles </h2>
+
+
+ <p><a href="../../developers/vector-tiles/index.html">Vector tiles </a> are the vector ____ equivalent of image tiles ___ web mapping. They apply ___ strengths of tiling, developed ___ caching, scaling and serving ___ imagery rapidly, to vector ____. Vector tiles are a ______ performant format that provide _______ flexibility in terms of _______, output format, and interactivity.  <a href="#mapbox-studio">Studio </a> and  <a href="#mapbox-gl">Mapbox GL </a> use vector tiles. </p>
+
+ <h2 id='vrt'>VRT </h2>
+
+
+ <p><a href="#tilemill">TileMill </a> natively supports  <a href="http://www.gdal.org/gdal_vrttut.html">GDAL’s VRT </a>, or Virtual Raster, ______. </p>
+
+ <p>You can import VRT _____ into Mapbox Studio. </p>
+
+ <h2 id='web-services' class='icon point-line'>web services </h2>
+
+
+ <p><a href="../../developers/api/index.html">Web services </a> are the methods __ communication between Mapbox data ___ a client (e.g a _______ requesting your data). </p>
+
+       </div>
+
+       <div class='round keyline-all clip col12'>
+         <form id='help-feedback' class='pad2'>
+           <fieldset>
+             <label>How could we improve ____ article? </label>
+             <input type='text' class='col12' />
+           </fieldset>
+           <fieldset class='clearfix'>
+             <input type='submit' class='col4 animate' value='Send feedback' />
+           </fieldset>
+         </form>
+       </div>
+
+       <div class='round-bottom space-bottom4 block guides-twitter-block clearfix contain space-top4'>
+   <div class='contain med-graphic dot fill-darken1 dark center fl pad2y'>
+     <span class='icon inline twitter js-twitter-count strong pad1y'></span>
+   </div>
+   <div class='prose prose-big guides-tweet-contents'>
+     <span class='quiet'>Tweet: </span>
+     <a class='js-tweets' href="http://twitter.com/intent/tweet?status=Mapbox glossary https://www.mapbox.com/foundations/glossary via @Mapbox">"Mapbox glossary" </a>
+   </div>
+ </div>
+
+
+       <div class='hide-mobile clearfix'>
+         <div class='js-show-signup quiet pad2y'>
+          New to Mapbox?  <a href='../../signup/index.html'>Sign up now to _____ making maps </a>
+         </div>
+       </div>
+     </div>
+
+
+   </div>
+ </div>
+
+
+
+ <script src='../js/affix.js'></script>
+ <script src='../js/scrollspy.js'></script>
+ <script src='../site.js'></script>
+
+ <script>$(function() { mapboxguides('/glossary') });</script>
+ </div>
+
+ <div class='footer pad4y clearfix hide-mobile fill-light'>
+   <div class='limiter'>
+    <div class='clearfix'> 
+     <div class='col8 small mobile-cols'>
+       <div class='col12 clearfix'>
+         <div class='col3'>
+          
+           <a id='footer-design' class='space-bottom0 col12 strong' href='../../design/index.html'>Design </a>
+          
+           <a id='footer-data' class='space-bottom0 col12 strong' href='../../data-platform/index.html'>Data </a>
+          
+           <a id='footer-developers' class='space-bottom0 col12 strong' href='../../developers/index.html'>Developers </a>
+          
+           <a id='footer-showcase' class='space-bottom0 col12 strong' href='../../showcase/index.html'>Showcase </a>
+          
+           <a id='footer-enterprise' class='space-bottom0 col12 strong' href='../../enterprise/index.html'>Enterprise </a>
+          
+         </div>
+         <div class='col3'>
+          
+           <a id='footer-plans' class='space-bottom0 col12 quiet strong' href='../../plans/index.html'>Plans </a>
+          
+           <a id='footer-blog' class='space-bottom0 col12 quiet strong' href='../../blog/index.html'>Blog </a>
+          
+           <a id='footer-help' class='space-bottom0 col12 quiet strong' href='../../help/index.html'>Help </a>
+          
+           <a id='footer-status' class='space-bottom0 col12 quiet strong' href='../../status/index.html'>Status </a>
+          
+           <a id='footer-contact' class='space-bottom0 col12 quiet strong' href='../../contact/index.html'>Contact </a>
+          
+         </div>
+         <div class='col3'>     
+          
+           <a id='footer-about' class='space-bottom0 col12 quiet strong' href='../../about/index.html'>About </a>
+          
+           <a id='footer-team' class='space-bottom0 col12 quiet strong' href='../../about/team/index.html'>Team </a>
+          
+           <a id='footer-jobs' class='space-bottom0 col12 quiet strong' href='../../jobs/index.html'>Jobs </a>
+          
+           <a id='footer-press' class='space-bottom0 col12 quiet strong' href='../../about/press/index.html'>Press </a>
+          
+           <a id='footer-press-kit' class='space-bottom0 col12 quiet strong' href='../../about/press-kit/index.html'>Press Kit </a>
+          
+         </div>
+          <div class='col3'>
+            <div class='space-bottom0 strong'>Tools </div>
+          
+           <a id='footer-studio' class='space-bottom0 col12 quiet strong' href='../../mapbox-studio/index.html'>Studio </a>
+          
+           <a id='footer-maki' class='space-bottom0 col12 quiet strong' href='../../maki/index.html'>Maki </a>
+          
+         </div>
+       </div>
+     </div>
+
+     <div class='col4 footer-social'>
+       <div class='animate footer-animation col6'></div>
+       <div class='footer-dialog fr small strong quiet pad2 col6 contain round fill-gray'>
+      Follow Mapbox on  <a href='https://twitter.com/mapbox'>Twitter </a>,  <a href='https://www.facebook.com/Mapbox'>Facebook </a>, and  <a href='https://instagram.com/mapbox'>Instagram </a>.
+       </div>
+     </div>  
+   </div>
+   </div>
+
+   <div class="limiter industries-footer">
+   <p class='space-bottom1 strong small space-top2 industries-footer-title'>Industries </p>
+   <div class='clearfix pad2y pad4x fill-gray round space-bottom4 industries-footer'>
+         <div class='clearfix'>
+            <div class='col3'>
+            
+             <a id='footer-real-estate' class='space-bottom0 col12 strong quiet small' href='../../industries/realestate/index.html'>Real Estate </a>
+            
+             <a id='footer-transportation' class='space-bottom0 col12 strong quiet small' href='../../industries/transportation/index.html'>Transportation </a>
+            
+             <a id='footer-agriculture' class='space-bottom0 col12 strong quiet small' href='../../industries/agriculture/index.html'>Agriculture </a>
+            
+           </div>
+            <div class='col3'>
+            
+             <a id='footer-social' class='space-bottom0 col12 strong quiet small' href='../../industries/social/index.html'>Social </a>
+            
+             <a id='footer-government' class='space-bottom0 col12 strong quiet small' href='../../industries/government/index.html'>Government </a>
+            
+             <a id='footer-fitness-&amp;-outdoors' class='space-bottom0 col12 strong quiet small' href='../../industries/outdoors/index.html'>Fitness &amp; outdoors </a>
+            
+           </div>
+            <div class='col3'>
+            
+             <a id='footer-finance' class='space-bottom0 col12 strong quiet small' href='../../industries/finance/index.html'>Finance </a>
+            
+             <a id='footer-insurance' class='space-bottom0 col12 strong quiet small' href='../../industries/insurance/index.html'>Insurance </a>
+            
+             <a id='footer-natural-resources' class='space-bottom0 col12 strong quiet small' href='../../industries/naturalresources/index.html'>Natural Resources </a>
+            
+           </div>
+           <div class='col3'>
+            
+                 <a id='footer-security' class='space-bottom0 col12 strong quiet small' href='../../industries/security/index.html'>Security </a>
+            
+                 <a id='footer-health' class='space-bottom0 col12 strong quiet small' href='../../industries/health/index.html'>Health </a>
+            
+                 <a id='footer-media' class='space-bottom0 col12 strong quiet small' href='../../industries/media/index.html'>Media </a>
+            
+           </div>
+          </div> 
+       </div>
+   </div>
+
+   <div class='limiter newsletter-copyright clearfix'>
+   <div class='col8 contain newsletter'>
+         <form id='newsletter' method='post'>
+           <fieldset class='clearfix input-pill col10 pill mobile-cols with-icon'>
+             <span class='icon mail quiet'></span>
+             <input type='text' value='' placeholder='Sign up for our newsletter' name='email' class='col9 required email' />
+             <input type='submit' value='Subscribe' class='col3 quiet' />
+           </fieldset>
+         </form>
+        </div> 
+
+       <div class='col4 footer-copyright small space-top1 col4 noprint fill-light contain'>
+           <div class='pin-right'>
+             <a href='../../tos/index.html'>Terms </a> +
+             <a href='../../privacy/index.html'>Privacy </a>
+            &copy; Mapbox
+           </div>
+       </div>
+   </div>
+
+ </div>
+
+ <div class='footer-copyright small center noprint fill-light show-mobile'>
+   <div class='limiter'>
+     <div class='pad2y'>
+             <a href='../../tos/index.html'>Terms </a> +
+             <a href='../../privacy/index.html'>Privacy </a>
+      &copy; Mapbox
+     </div>
+   </div>
+ </div>
+
+
+
+ <div id='modal-content' class='animate modal modal-content'></div>
+ </div>
+ </body>
+ </html>
+ 

@@ -1,0 +1,465 @@
+<!DOCTYPE html >
+ <html>
+ <head>
+<!-- Original URL: https://www.mapbox.com/developers/api/geocoding/
+Date Downloaded: 2014-12-05 09:27:50 PM !-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  
+   <meta charset='UTF-8' />
+   <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+   <meta name='robots' content='index' />
+   <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  
+   <title>Geocoding | Mapbox </title>
+
+   <meta name='st:title' content='Geocoding' />
+   <meta name='st:type' content='developers' />
+   <meta name='st:info' content='site' />
+
+  
+
+   <link href='../../../base/latest/base_8f8b1251.css' rel='stylesheet' />
+   <link href='../../../css/site.css' rel='stylesheet' />
+   <!--[if IE 9]><link href='../../../css/site-ie9.css' rel='stylesheet' /><![endif]-->
+   <link rel='shortcut icon' href='../../../img/favicon.ico' type='image/x-icon' />
+   <link rel='alternate' type='application/rss+xml' title='RSS' href='../../../blog/blog.rss' />
+   <link href='../../../../api.tiles.mapbox.com/mapbox.js/v2.1.2/mapbox.css' rel='stylesheet' />
+
+   <!--[if lt IE 9 ]><script src='../../../js/redirect-ie.js'></script><![endif]-->
+   <script src='../../../../js.stripe.com/v2/index.html.js'></script>
+   <script>
+  var KM_COOKIE_DOMAIN = 'www.mapbox.com';
+  var analytics=analytics||[];(function(){var e=['identify','track','trackLink','trackForm','trackClick','trackSubmit','page','pageview','ab','alias','ready','group'],t=function(e){return function(){analytics.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var n=0;n<e.length;n++)analytics[e[n]]=t(e[n])})(),analytics.load=function(e){var t=document.createElement('script');t.type='text/javascript',t.async=!0,t.src=('https:'===document.location.protocol?'https://':"http://")+'d2dq2ahtl5zl1z.cloudfront.net/analytics.js/v1/'+e+'/analytics.min.js';var n=document.getElementsByTagName('script')[0];n.parentNode.insertBefore(t,n)};
+  analytics.load(window.location.hostname.indexOf('mapbox.com') !== -1 ? 'fl0c8p240n' : '0biiejpgfj');
+
+  Stripe.setPublishableKey(window.location.hostname.indexOf('mapbox.com') !== -1 ?
+    'pk_live_hI6mmOTIg7KkywK6vo3vJvpk' : 'pk_test_gmIyREg3sKzAiyMkAEeCsxUG');
+  </script>
+   <script src='../../../../api.tiles.mapbox.com/mapbox.js/v2.1.2/mapbox.js'></script>
+
+   <script>
+  window.mapbox_api = '/core';
+  window.mapbox_tileApi = '../../../../api.tiles.mapbox.com/index.html';
+  window.mapbox_accessToken = 'pk.eyJ1IjoibWFwYm94IiwiYSI6IlhHVkZmaW8ifQ.hAMX5hSW-QnTeRCMAy9A8Q' || 'pk.eyJ1IjoibWFwYm94IiwiYSI6IlhHVkZmaW8ifQ.hAMX5hSW-QnTeRCMAy9A8Q'
+  if (L.mapbox.VERSION[0] === '2') {
+      L.mapbox.accessToken = window.mapbox_accessToken;
+      L.mapbox.config.FORCE_HTTPS = true;
+      L.mapbox.config.HTTPS_URL = window.mapbox_tileApi + '/v4';
+  }
+  </script>
+   <script src='../../../base.js/dist/base.js'></script>
+  
+  
+ </head>
+ <body class='fill-light full'><div style="z-index: 9999; position: fixed; width: 100%; border: 0px; padding: 5px; margin: 0px; background-color: transparent;  font-size: 12pt; font-family: sans-serif;" id="web2disk_nag" onclick="javascript: document.getElementById('web2disk_nag').style.display = 'none';">
+		<div style="color: #000000; background-color:#F1F1F1; margin-left: auto; margin-right: auto; border-width: 2px; border-style: solid; width: 550px; ">
+			<div style="width: 100%; text-align: center; font-weight: bold; border: 0px; margin: 0px; padding: 0px">Hey, where did my words go? (Click to hide)</div>
+			<p>In the trial version of Web2Disk every fifth word is blanked out. 
+			To copy this site with all the words, please upgrade to the full version and copy this website again.</p>
+			<div style="width: 100%; text-align: center; font-weight: bold; border: 0px; margin: 0px; padding: 0px">
+				<a href="http://www.inspyder.com/products/Web2Disk/">Inspyder Web2Disk: The Website Downloader</a>
+			</div>
+		</div>
+	</div>
+  <div class='fill-midnight offcanvas-top row3 industries-subnav animate dark pin-top hide-mobile' id='industries'>
+    <div class='limiter pad2y space-top1 small strong contain'>
+       <ul class='space-bottom0 clearfix'>
+         <li class='col2'><a href="../../../industries/realestate/index.html" class="primary-nav-button inline pad1x pad0y round">Real Estate </a></li>
+         <li class='col2'><a href="../../../industries/transportation/index.html" class="primary-nav-button inline pad1x pad0y round">Transportation </a></li>
+         <li class='col2'><a href="../../../industries/agriculture/index.html" class="primary-nav-button inline pad1x pad0y round ">Agriculture </a></li>
+         <li class='col2'><a href="../../../industries/social/index.html" class="primary-nav-button inline pad1x pad0y round">Social </a></li>
+         <li class='col2'><a href="../../../industries/government/index.html" class="primary-nav-button inline pad1x pad0y round ">Government </a></li>        
+         <li class='col2'><a href="../../../industries/outdoors/index.html" class="primary-nav-button inline pad0x pad0y round">Fitness &amp; Outdoors </a></li>
+       </ul>
+       <ul class='clearfix'>
+          <li class='col2'><a href="../../../industries/finance/index.html" class="primary-nav-button inline pad1x pad0y round ">Finance </a></li>
+          <li class='col2'><a href="../../../industries/insurance/index.html" class="primary-nav-button inline pad1x pad0y round ">Insurance </a></li>
+          <li class='col2'><a href="../../../industries/naturalresources/index.html" class="primary-nav-button inline pad1x pad0y round ">Natural Resources </a></li>
+          <li class='col2'><a href="../../../industries/security/index.html" class="primary-nav-button inline pad1x pad0y round ">Security </a></li>
+          <li class='col2'><a href="../../../industries/health/index.html" class="primary-nav-button inline pad1x pad0y round ">Health </a></li>
+          <li class='col2'><a href="../../../industries/media/index.html" class="primary-nav-button inline pad0x pad0y round ">Media </a></li>
+       </ul> 
+    </div>
+  </div>
+ <div class='page-content'> 
+
+ <div class='masthead show-in-loaded col12 clearfix fill-blue dark'>
+   <div class='limiter clearfix'>
+     <nav class='col12 text-right pad2y contain animate clearfix noprint'>
+       <a class='fl mb-logo' href='../../../index.html'></a>
+       <h4 class='logo-enterpriseaddon pin-topleft text-aqua block-in-enterprise'>Enterprise </h4>
+       <div id='nav'>
+       </div>
+     </nav>
+   </div>
+ </div>
+
+ <div class=''><link href='../../../css/docs.css' rel='stylesheet' />
+
+ <!--Fixed sidebar navigation-->
+ <div class='docnav hide-mobile'>
+   <div class='limiter'><div class='col3 contain'>
+     <nav class='scroll-styled quiet-scroll small'>
+
+      
+      
+      
+       <div class='space-bottom1'>
+         <a class='block truncat strong quiet ' href='../index.html'>Web services </a>
+        
+         <a class='block truncate' href='../index.html#access-tokens'>Access Tokens </a>
+        
+         <a class='block truncate' href='../index.html#versions'>Versions </a>
+        
+         <a class='block truncate' href='../index.html#ssl'>SSL </a>
+        
+         <a class='block truncate' href='../index.html#cors'>CORS </a>
+        
+       </div>
+      
+      
+      
+      
+      
+       <div class='space-bottom1'>
+         <a class='block truncat strong quiet ' href='../maps/index.html'>Maps </a>
+        
+         <a class='block truncate' href='../maps/index.html#tiles'>Tiles </a>
+        
+         <a class='block truncate' href='../maps/index.html#format'>Image quality & retina </a>
+        
+         <a class='block truncate' href='../maps/index.html#embeds'>HTML embeds </a>
+        
+         <a class='block truncate' href='../maps/index.html#geojson'>GeoJSON & KML </a>
+        
+         <a class='block truncate' href='../maps/index.html#tilejson'>TileJSON </a>
+        
+       </div>
+      
+      
+      
+      
+      
+       <div class='space-bottom1'>
+         <a class='block truncat strong quiet ' href='../static/index.html'>Static maps </a>
+        
+         <a class='block truncate' href='../static/index.html#images'>Images </a>
+        
+         <a class='block truncate' href='../static/index.html#format'>Image quality & retina </a>
+        
+         <a class='block truncate' href='../static/index.html#size-limit'>Size limit </a>
+        
+         <a class='block truncate' href='../static/index.html#attribution'>Attribution </a>
+        
+         <a class='block truncate' href='../static/index.html#overlay'>Overlay </a>
+        
+       </div>
+      
+      
+      
+      
+      
+       <div class='space-bottom1'>
+         <a class='block truncat strong quiet  active' href='index.html'>Geocoding </a>
+        
+         <a class='block truncate' href='index.html#forward'>Forward geocoding </a>
+        
+         <a class='block truncate' href='index.html#reverse'>Reverse geocoding </a>
+        
+         <a class='block truncate' href='index.html#batch'>Batch requests </a>
+        
+       </div>
+      
+      
+      
+      
+      
+       <div class='space-bottom1'>
+         <a class='block truncat strong quiet ' href='../directions/index.html'>Directions </a>
+        
+       </div>
+      
+      
+      
+      
+      
+       <div class='space-bottom1'>
+         <a class='block truncat strong quiet ' href='../surface/index.html'>Surface API </a>
+        
+         <a class='block truncate' href='../surface/index.html#parameters'>Parameters </a>
+        
+         <a class='block truncate' href='../surface/index.html#response-format'>Response Format </a>
+        
+         <a class='block truncate' href='../surface/index.html#limits'>Limits </a>
+        
+         <a class='block truncate' href='../surface/index.html#tips'>Tips </a>
+        
+         <a class='block truncate' href='../surface/index.html#interpolate'>Interpolate </a>
+        
+       </div>
+      
+      
+      
+      
+      
+       <div class='space-bottom1'>
+         <a class='block truncat strong quiet ' href='../uploads/index.html'>Uploads </a>
+        
+         <a class='block truncate' href='../uploads/index.html#Create.a.new.upload.task'>Create a new upload </a>
+        
+         <a class='block truncate' href='../uploads/index.html#Stage.a.file.on.Amazon.S3'>Stage a file on ______ S3 </a>
+        
+         <a class='block truncate' href='../uploads/index.html#Retrieve.state.of.an.upload'>Retrieve state of an ______ </a>
+        
+         <a class='block truncate' href='../uploads/index.html#List.uploads'>List uploads </a>
+        
+       </div>
+      
+      
+      
+     </nav>
+   </div></div>
+ </div>
+
+ <div class='limiter clearfix pad2y'>
+   <nav class='contain z10 margin3 col9 fill-blue space-bottom round small'>
+     <div class='col3 dark round-left keyline-right pad2y pad1x center truncate'>
+       <strong class='icon point-line'>Web services </strong>
+     </div>
+     <div class='col6 dark tabs mobile-cols pad1'><!--
+      --><a href='../index.html' class='col6  active'>API </a><!--
+      --><a href='../../vector-tiles/index.html' class='col6 '>Vector Tiles </a>
+     </div>
+     <div class='col3 pad1 keyline-left hide-mobile' style='height:61px;'></div>
+   </nav>
+
+   <div class='contain margin3 col9'>
+     <div class='fill-yellow pad1y pad2x small icon alert space-bottom round'>
+This API is in ______ beta.
+ </div>
+
+     <div class='pad2 round doc prose fill-white keyline-all'>
+       <h1>Geocoding </h1>
+       <p>
+Geocoding requests are queries ________ of location text or ___/___ coordinates that can be ____ to find corresponding
+place data. _ geocoding request includes a _________  <var>{index} </var> in requests which _________ the dataset to use
+to ____ place data.
+ </p>
+
+ <h2>Geocoding sources </h2>
+
+ <p />
+The geocoder is split ____ individual sources, allowing developers __ choose the index to ___ to power returned results.  <var>mapbox.places </var> can be used __ power general-purpose map and ________ search UIs but results ___ not be cached/stored. For _________ geocoding of data and _______ of results use the  <var>mapbox.places-permanent </var> dataset.
+
+ <table class='small'>
+ <tr><th>ID </th><th>Description </th><th>Batch geocoding </th></tr>
+ <tr><td>mapbox.places </td><td>Geocoding for map and ________ search UIs </td><td>No </td></tr>
+ <tr><td>mapbox.places-permanent </td><td>Geocoding for permanent storage/use </td><td>Yes </td></tr>
+ </table>
+
+ <a class='doc-section' id='forward'></a>
+ <h2>Forward geocoding </h2>
+
+ <pre class='fill-darken3 round-top dark space-bottom0'>
+http://api.tiles.mapbox.com/v4/geocode/ <var>{index} </var>/ <var>{query} </var>.json?access_token= <var>&lt;your access token&gt; </var>
+ </pre>
+ <pre class='fill-darken0 round-bottom'>
+ <span class='quiet'>Examples </span>
+ <a class='js-api-link'>http://api.tiles.mapbox.com/v4/geocode/mapbox.places/1600+pennsylvania+ave+nw.json </a>
+ </pre>
+
+ <p>
+Request feature data that ____ matches the input  <var>{query} </var> text.
+The response includes ___ or more results ordered __ relevance.
+ </p>
+
+ <a class='doc-section' id='reverse'></a>
+ <h2>Reverse geocoding </h2>
+
+ <pre class='fill-darken3 round-top dark space-bottom0'>
+http://api.tiles.mapbox.com/v4/geocode/ <var>{index} </var>/ <var>{lon} </var>, <var>{lat} </var>.json?access_token= <var>&lt;your access token&gt; </var>
+ </pre>
+ <pre class='fill-darken0 round-bottom'>
+ <span class='quiet'>Examples </span>
+ <a class='js-api-link'>http://api.tiles.mapbox.com/v4/geocode/mapbox.places/-73.989,40.733.json </a>
+ <a class='js-api-link'>http://api.tiles.mapbox.com/v4/geocode/mapbox.places/139.7786,35.6807.json </a>
+ <a class='js-api-link'>http://api.tiles.mapbox.com/v4/geocode/mapbox.places/-114.0701,51.0495.json </a>
+ </pre>
+
+ <p>
+Request feature data located __ the input  <var>{lon} </var>, <var>{lat} </var> coordinates.
+The response includes __ most one result from ____ geocoding index.
+ </p>
+
+ <a class='doc-section' id='batch'></a>
+ <h2>Batch requests </h2>
+
+ <pre class='fill-darken3 round-top dark space-bottom0'>
+http://api.tiles.mapbox.com/v4/geocode/ <var>{index} </var>/ <var>{query} </var>; <var>{query} </var>; ... ; <var>{query} </var>.json?access_token= <var>&lt;your access token&gt; </var>
+http://api.tiles.mapbox.com/v4/geocode/ <var>{index} </var>/ <var>{lon} </var>, <var>{lat} </var>; <var>{lon} </var>, <var>{lat} </var>; ... ; <var>{lon} </var>, <var>{lat} </var>.json?access_token= <var>&lt;your access token&gt; </var>
+ </pre>
+ <pre class='fill-darken0 round-bottom'>
+ <span class='quiet'>Examples </span>
+ <a class='js-api-link'>http://api.tiles.mapbox.com/v4/geocode/mapbox.places-permanent/20001;20009;22209.json </a>
+ <a class='js-api-link'>http://api.tiles.mapbox.com/v4/geocode/mapbox.places-permanent/139.7786,35.6807;-114.0701,51.0495.json </a>
+ </pre>
+
+ <p>
+Request multiple forward or _______ geocoding queries to be _________ at once.
+Each input query ______ be separated by a _________.
+___ response is an array __ individual geocoder responses matching ___ format of single geocoding ________.
+ <strong>Up to 50 queries </strong> may be included __ a single batch geocoding _______.
+ </p>
+
+     </div>
+   </div>
+ </div>
+ </div>
+
+ <div class='footer pad4y clearfix hide-mobile fill-light'>
+   <div class='limiter'>
+    <div class='clearfix'> 
+     <div class='col8 small mobile-cols'>
+       <div class='col12 clearfix'>
+         <div class='col3'>
+          
+           <a id='footer-design' class='space-bottom0 col12 strong' href='../../../design/index.html'>Design </a>
+          
+           <a id='footer-data' class='space-bottom0 col12 strong' href='../../../data-platform/index.html'>Data </a>
+          
+           <a id='footer-developers' class='space-bottom0 col12 strong' href='../../index.html'>Developers </a>
+          
+           <a id='footer-showcase' class='space-bottom0 col12 strong' href='../../../showcase/index.html'>Showcase </a>
+          
+           <a id='footer-enterprise' class='space-bottom0 col12 strong' href='../../../enterprise/index.html'>Enterprise </a>
+          
+         </div>
+         <div class='col3'>
+          
+           <a id='footer-plans' class='space-bottom0 col12 quiet strong' href='../../../plans/index.html'>Plans </a>
+          
+           <a id='footer-blog' class='space-bottom0 col12 quiet strong' href='../../../blog/index.html'>Blog </a>
+          
+           <a id='footer-help' class='space-bottom0 col12 quiet strong' href='../../../help/index.html'>Help </a>
+          
+           <a id='footer-status' class='space-bottom0 col12 quiet strong' href='../../../status/index.html'>Status </a>
+          
+           <a id='footer-contact' class='space-bottom0 col12 quiet strong' href='../../../contact/index.html'>Contact </a>
+          
+         </div>
+         <div class='col3'>     
+          
+           <a id='footer-about' class='space-bottom0 col12 quiet strong' href='../../../about/index.html'>About </a>
+          
+           <a id='footer-team' class='space-bottom0 col12 quiet strong' href='../../../about/team/index.html'>Team </a>
+          
+           <a id='footer-jobs' class='space-bottom0 col12 quiet strong' href='../../../jobs/index.html'>Jobs </a>
+          
+           <a id='footer-press' class='space-bottom0 col12 quiet strong' href='../../../about/press/index.html'>Press </a>
+          
+           <a id='footer-press-kit' class='space-bottom0 col12 quiet strong' href='../../../about/press-kit/index.html'>Press Kit </a>
+          
+         </div>
+          <div class='col3'>
+            <div class='space-bottom0 strong'>Tools </div>
+          
+           <a id='footer-studio' class='space-bottom0 col12 quiet strong' href='../../../mapbox-studio/index.html'>Studio </a>
+          
+           <a id='footer-maki' class='space-bottom0 col12 quiet strong' href='../../../maki/index.html'>Maki </a>
+          
+         </div>
+       </div>
+     </div>
+
+     <div class='col4 footer-social'>
+       <div class='animate footer-animation col6'></div>
+       <div class='footer-dialog fr small strong quiet pad2 col6 contain round fill-gray'>
+      Follow Mapbox on  <a href='https://twitter.com/mapbox'>Twitter </a>,  <a href='https://www.facebook.com/Mapbox'>Facebook </a>, and  <a href='https://instagram.com/mapbox'>Instagram </a>.
+       </div>
+     </div>  
+   </div>
+   </div>
+
+   <div class="limiter industries-footer">
+   <p class='space-bottom1 strong small space-top2 industries-footer-title'>Industries </p>
+   <div class='clearfix pad2y pad4x fill-gray round space-bottom4 industries-footer'>
+         <div class='clearfix'>
+            <div class='col3'>
+            
+             <a id='footer-real-estate' class='space-bottom0 col12 strong quiet small' href='../../../industries/realestate/index.html'>Real Estate </a>
+            
+             <a id='footer-transportation' class='space-bottom0 col12 strong quiet small' href='../../../industries/transportation/index.html'>Transportation </a>
+            
+             <a id='footer-agriculture' class='space-bottom0 col12 strong quiet small' href='../../../industries/agriculture/index.html'>Agriculture </a>
+            
+           </div>
+            <div class='col3'>
+            
+             <a id='footer-social' class='space-bottom0 col12 strong quiet small' href='../../../industries/social/index.html'>Social </a>
+            
+             <a id='footer-government' class='space-bottom0 col12 strong quiet small' href='../../../industries/government/index.html'>Government </a>
+            
+             <a id='footer-fitness-&amp;-outdoors' class='space-bottom0 col12 strong quiet small' href='../../../industries/outdoors/index.html'>Fitness &amp; outdoors </a>
+            
+           </div>
+            <div class='col3'>
+            
+             <a id='footer-finance' class='space-bottom0 col12 strong quiet small' href='../../../industries/finance/index.html'>Finance </a>
+            
+             <a id='footer-insurance' class='space-bottom0 col12 strong quiet small' href='../../../industries/insurance/index.html'>Insurance </a>
+            
+             <a id='footer-natural-resources' class='space-bottom0 col12 strong quiet small' href='../../../industries/naturalresources/index.html'>Natural Resources </a>
+            
+           </div>
+           <div class='col3'>
+            
+                 <a id='footer-security' class='space-bottom0 col12 strong quiet small' href='../../../industries/security/index.html'>Security </a>
+            
+                 <a id='footer-health' class='space-bottom0 col12 strong quiet small' href='../../../industries/health/index.html'>Health </a>
+            
+                 <a id='footer-media' class='space-bottom0 col12 strong quiet small' href='../../../industries/media/index.html'>Media </a>
+            
+           </div>
+          </div> 
+       </div>
+   </div>
+
+   <div class='limiter newsletter-copyright clearfix'>
+   <div class='col8 contain newsletter'>
+         <form id='newsletter' method='post'>
+           <fieldset class='clearfix input-pill col10 pill mobile-cols with-icon'>
+             <span class='icon mail quiet'></span>
+             <input type='text' value='' placeholder='Sign up for our newsletter' name='email' class='col9 required email' />
+             <input type='submit' value='Subscribe' class='col3 quiet' />
+           </fieldset>
+         </form>
+        </div> 
+
+       <div class='col4 footer-copyright small space-top1 col4 noprint fill-light contain'>
+           <div class='pin-right'>
+             <a href='../../../tos/index.html'>Terms </a> +
+             <a href='../../../privacy/index.html'>Privacy </a>
+            &copy; Mapbox
+           </div>
+       </div>
+   </div>
+
+ </div>
+
+ <div class='footer-copyright small center noprint fill-light show-mobile'>
+   <div class='limiter'>
+     <div class='pad2y'>
+             <a href='../../../tos/index.html'>Terms </a> +
+             <a href='../../../privacy/index.html'>Privacy </a>
+      &copy; Mapbox
+     </div>
+   </div>
+ </div>
+
+
+
+ <div id='modal-content' class='animate modal modal-content'></div>
+ </div>
+ </body>
+ </html>
+ 

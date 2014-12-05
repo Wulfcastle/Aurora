@@ -1,0 +1,122 @@
+
+.graph-statistics #mapviewchart .bar    { fill: #94d378;}
+.graph-statistics #geocodechart .bar    { fill: #FFE47E;}
+.graph-statistics #directionschart .bar { fill: #FFC67A;}
+.graph-statistics #staticchart .bar     { fill: #ec8d8d;}
+.graph-statistics #tilechart .bar       { fill: #eba5d8;}
+.graph-statistics #storagechart .bar    { fill: #7c8aa3;}
+
+.graph-statistics .mapview-fill    { background-color: #94d378;}
+.graph-statistics .geocode-fill    { background-color: #eceb7a;}
+.graph-statistics .directions-fill { background-color: #f6c28e;}
+.graph-statistics .static-fill     { background-color: #ec8d8d;}
+.graph-statistics .tile-fill       { background-color: #eba5d8;}
+.graph-statistics .storage-fill    { background-color: #7c8aa3;}
+
+/* D3 Bargraph */
+.graph-statistics svg     { font: 12px 'Open Sans'; }
+.graph-statistics .label  { font: 14px 'Open Sans'; }
+
+.graph-statistics .tooltip text,
+.graph-statistics .label {
+    fill: rgba(0,0,0,.5);
+}
+.graph-statistics .bold {
+  font: 12px 'Open Sans Bold';
+}
+.graph-statistics .text   { z-index: 1001; }
+.graph-statistics .axis text {
+    font: 10px 'Open Sans';
+    fill:#A4A4A4;
+}
+
+.graph-statistics .axis path,
+.graph-statistics .axis line {
+  fill: none;
+  stroke: #A4A4A4;
+  opacity: .8;
+  shape-rendering: crispEdges;
+}
+.graph-statistics .y.axis path,
+.graph-statistics .y.axis line {
+  display:none;
+}
+
+.graph-statistics .col2.chart {
+  padding-top: 20px;
+  height: 120px;
+  border-right: 5px solid rgba(0,0,0,.05);
+  padding-right: 10px;
+}
+
+.graph-statistics .select { margin-top: 22px; }
+
+.graph-statistics .has-tooltip rect { opacity:1; }
+.graph-statistics .has-tooltip rect:hover { opacity:0.5; }
+
+.graph-statistics .brush  { display: visible; }
+.graph-statistics .brush .background { fill:white; }
+.graph-statistics .brush .domain { display: none; }
+
+.graph-statistics .brush .bar {
+    fill:grey;
+    pointer-events:none;
+}
+
+/*
+    ability to select the brush text
+    and dots creates undesired behavior
+    re: resizing brush. If pointer-events
+    are allowed, a mouseevent on any of
+    the dots will move the only right most
+    brush handle
+*/
+.graph-statistics .brush text,
+.graph-statistics .dot{
+    pointer-events:none;
+}
+
+.graph-statistics .brush .extent {
+    fill: #3bb2d0;
+    fill-opacity: 0.30;
+    shape-rendering: crispEdges;
+}
+
+.graph-statistics .resize rect {
+    fill: #3887be !important;
+    fill-opacity: 1;
+}
+
+.graph-statistics .resize path {
+    fill: #eee;
+    fill-opacity: 1;
+    stroke: #404040;
+}
+
+.graph-statistics .future {
+  fill: #808080;
+  opacity: 0.5;
+}
+
+/*
+    Line Chart + Storage:
+*/
+
+.graph-statistics .storage .area {
+  fill: #7c8aa3;
+}
+
+.graph-statistics .circle {
+  fill: #808080;
+  opacity: 0;
+}
+
+.graph-statistics .circle:hover {
+  opacity: 0.4;
+}
+
+@media only screen and (max-width:640px) {
+    .graph-statistics .brush {
+        display: none;
+    }
+}

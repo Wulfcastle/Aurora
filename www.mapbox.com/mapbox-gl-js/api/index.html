@@ -1,0 +1,956 @@
+<!DOCTYPE html >
+ <html>
+ <head>
+<!-- Original URL: https://www.mapbox.com/mapbox-gl-js/api/
+Date Downloaded: 2014-12-05 09:26:45 PM !-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  
+   <meta charset='UTF-8' />
+   <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+   <meta name='robots' content='index' />
+   <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  
+   <title>Mapbox GL JS API | Mapbox </title>
+
+   <meta name='st:title' content='Mapbox GL JS API' />
+   <meta name='st:type' content='api' />
+   <meta name='st:info' content='site' />
+
+  
+
+   <link href='../../base/latest/base_8f8b1251.css' rel='stylesheet' />
+   <link href='../../css/site.css' rel='stylesheet' />
+   <!--[if IE 9]><link href='../../css/site-ie9.css' rel='stylesheet' /><![endif]-->
+   <link rel='shortcut icon' href='../../img/favicon.ico' type='image/x-icon' />
+   <link rel='alternate' type='application/rss+xml' title='RSS' href='../../blog/blog.rss' />
+   <link href='../../../api.tiles.mapbox.com/mapbox.js/v1.6.1/mapbox.css' rel='stylesheet' />
+
+   <!--[if lt IE 9 ]><script src='../../js/redirect-ie.js'></script><![endif]-->
+   <script src='../../../js.stripe.com/v2/index.html.js'></script>
+   <script>
+  var KM_COOKIE_DOMAIN = 'www.mapbox.com';
+  var analytics=analytics||[];(function(){var e=['identify','track','trackLink','trackForm','trackClick','trackSubmit','page','pageview','ab','alias','ready','group'],t=function(e){return function(){analytics.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var n=0;n<e.length;n++)analytics[e[n]]=t(e[n])})(),analytics.load=function(e){var t=document.createElement('script');t.type='text/javascript',t.async=!0,t.src=('https:'===document.location.protocol?'https://':"http://")+'d2dq2ahtl5zl1z.cloudfront.net/analytics.js/v1/'+e+'/analytics.min.js';var n=document.getElementsByTagName('script')[0];n.parentNode.insertBefore(t,n)};
+  analytics.load(window.location.hostname.indexOf('mapbox.com') !== -1 ? 'fl0c8p240n' : '0biiejpgfj');
+
+  Stripe.setPublishableKey(window.location.hostname.indexOf('mapbox.com') !== -1 ?
+    'pk_live_hI6mmOTIg7KkywK6vo3vJvpk' : 'pk_test_gmIyREg3sKzAiyMkAEeCsxUG');
+  </script>
+   <script src='../../../api.tiles.mapbox.com/mapbox.js/v1.6.1/mapbox.js'></script>
+
+   <script>
+  window.mapbox_api = 'https://www.mapbox.com/core';
+  window.mapbox_tileApi = '../../../api.tiles.mapbox.com/index.html';
+  window.mapbox_accessToken = '' || 'pk.eyJ1IjoibWFwYm94IiwiYSI6IlhHVkZmaW8ifQ.hAMX5hSW-QnTeRCMAy9A8Q'
+  if (L.mapbox.VERSION[0] === '2') {
+      L.mapbox.accessToken = window.mapbox_accessToken;
+      L.mapbox.config.FORCE_HTTPS = true;
+      L.mapbox.config.HTTPS_URL = window.mapbox_tileApi + '/v4';
+  }
+  </script>
+   <script src='../../base.js/dist/base.js'></script>
+  
+  
+ </head>
+ <body class='fill-light full'><div style="z-index: 9999; position: fixed; width: 100%; border: 0px; padding: 5px; margin: 0px; background-color: transparent;  font-size: 12pt; font-family: sans-serif;" id="web2disk_nag" onclick="javascript: document.getElementById('web2disk_nag').style.display = 'none';">
+		<div style="color: #000000; background-color:#F1F1F1; margin-left: auto; margin-right: auto; border-width: 2px; border-style: solid; width: 550px; ">
+			<div style="width: 100%; text-align: center; font-weight: bold; border: 0px; margin: 0px; padding: 0px">Hey, where did my words go? (Click to hide)</div>
+			<p>In the trial version of Web2Disk every fifth word is blanked out. 
+			To copy this site with all the words, please upgrade to the full version and copy this website again.</p>
+			<div style="width: 100%; text-align: center; font-weight: bold; border: 0px; margin: 0px; padding: 0px">
+				<a href="http://www.inspyder.com/products/Web2Disk/">Inspyder Web2Disk: The Website Downloader</a>
+			</div>
+		</div>
+	</div>
+  <div class='fill-midnight offcanvas-top row3 industries-subnav animate dark pin-top hide-mobile' id='industries'>
+    <div class='limiter pad2y space-top1 small strong contain'>
+       <ul class='space-bottom0 clearfix'>
+         <li class='col2'><a href="../../industries/realestate/index.html" class="primary-nav-button inline pad1x pad0y round">Real Estate </a></li>
+         <li class='col2'><a href="../../industries/transportation/index.html" class="primary-nav-button inline pad1x pad0y round">Transportation </a></li>
+         <li class='col2'><a href="../../industries/agriculture/index.html" class="primary-nav-button inline pad1x pad0y round ">Agriculture </a></li>
+         <li class='col2'><a href="../../industries/social/index.html" class="primary-nav-button inline pad1x pad0y round">Social </a></li>
+         <li class='col2'><a href="../../industries/government/index.html" class="primary-nav-button inline pad1x pad0y round ">Government </a></li>        
+         <li class='col2'><a href="../../industries/outdoors/index.html" class="primary-nav-button inline pad0x pad0y round">Fitness &amp; Outdoors </a></li>
+       </ul>
+       <ul class='clearfix'>
+          <li class='col2'><a href="../../industries/finance/index.html" class="primary-nav-button inline pad1x pad0y round ">Finance </a></li>
+          <li class='col2'><a href="../../industries/insurance/index.html" class="primary-nav-button inline pad1x pad0y round ">Insurance </a></li>
+          <li class='col2'><a href="../../industries/naturalresources/index.html" class="primary-nav-button inline pad1x pad0y round ">Natural Resources </a></li>
+          <li class='col2'><a href="../../industries/security/index.html" class="primary-nav-button inline pad1x pad0y round ">Security </a></li>
+          <li class='col2'><a href="../../industries/health/index.html" class="primary-nav-button inline pad1x pad0y round ">Health </a></li>
+          <li class='col2'><a href="../../industries/media/index.html" class="primary-nav-button inline pad0x pad0y round ">Media </a></li>
+       </ul> 
+    </div>
+  </div>
+ <div class='page-content'> 
+
+ <div class='masthead show-in-loaded col12 clearfix fill-blue dark'>
+   <div class='limiter clearfix'>
+     <nav class='col12 text-right pad2y contain animate clearfix noprint'>
+       <a class='fl mb-logo' href='../../index.html'></a>
+       <h4 class='logo-enterpriseaddon pin-topleft text-aqua block-in-enterprise'>Enterprise </h4>
+       <div id='nav'>
+       </div>
+     </nav>
+   </div>
+ </div>
+
+ <div class=''><link href='../../css/docs.css' rel='stylesheet' />
+ <link href='../site.css' rel='stylesheet' />
+ <script src='../js/site.js'></script>
+
+ <!--Fixed sidebar navigation-->
+ <div class='docnav hide-mobile'>
+   <div class='limiter'>
+     <div class='col3 contain'>
+       <nav class='scroll-styled quiet-scroll small'>
+        
+           <div class='space-bottom1'>
+             <span class='block truncate strong'>API </span>
+           </div>
+          
+            
+              
+                 <div class='space-bottom1'>
+                   <a class='block truncate strong quiet' href='index.html#new-mapboxgl-map-options-'>mapboxgl.Map </a>
+                  
+                   <a class='block truncate' href='index.html#new-mapboxgl-map-options--setting-map-state'>Setting map state </a>
+                  
+                   <a class='block truncate' href='index.html#new-mapboxgl-map-options--map-method-options'>Map method options </a>
+                  
+                   <a class='block truncate' href='index.html#new-mapboxgl-map-options--getting-map-state'>Getting map state </a>
+                  
+                   <a class='block truncate' href='index.html#new-mapboxgl-map-options--map-lifecycle'>Map lifecycle </a>
+                  
+                   <a class='block truncate' href='index.html#new-mapboxgl-map-options--working-with-sources'>Working with sources </a>
+                  
+                   <a class='block truncate' href='index.html#new-mapboxgl-map-options--working-with-controls'>Working with controls </a>
+                  
+                   <a class='block truncate' href='index.html#new-mapboxgl-map-options--events'>Events </a>
+                  
+                 </div>
+              
+                 <div class='space-bottom1'>
+                   <a class='block truncate strong quiet' href='index.html#new-mapboxgl-source-options-'>mapboxgl.Source </a>
+                  
+                   <a class='block truncate' href='index.html#new-mapboxgl-source-options--methods'>Methods </a>
+                  
+                   <a class='block truncate' href='index.html#new-mapboxgl-source-options--events'>Events </a>
+                  
+                 </div>
+              
+                 <div class='space-bottom1'>
+                   <a class='block truncate strong quiet' href='index.html#new-mapboxgl-geojsonsource-options-'>mapboxgl.GeoJSONSource </a>
+                  
+                   <a class='block truncate' href='index.html#new-mapboxgl-geojsonsource-options--methods'>Methods </a>
+                  
+                 </div>
+              
+                 <div class='space-bottom1'>
+                   <a class='block truncate strong quiet' href='index.html#new-mapboxgl-videosource-options-'>mapboxgl.VideoSource </a>
+                  
+                 </div>
+              
+                 <div class='space-bottom1'>
+                   <a class='block truncate strong quiet' href='index.html#new-mapboxgl-navigation-'>mapboxgl.Navigation </a>
+                  
+                 </div>
+              
+                 <div class='space-bottom1'>
+                   <a class='block truncate strong quiet' href='index.html#mapboxgl-evented'>mapboxgl.Evented </a>
+                  
+                   <a class='block truncate' href='index.html#mapboxgl-evented-methods'>Methods </a>
+                  
+                 </div>
+              
+                 <div class='space-bottom1'>
+                   <a class='block truncate strong quiet' href='index.html#new-mapboxgl-latlng-latitude-longitude-'>mapboxgl.LatLng </a>
+                  
+                 </div>
+              
+                 <div class='space-bottom1'>
+                   <a class='block truncate strong quiet' href='index.html#new-mapboxgl-latlngbounds-southwest-northeast-'>mapboxgl.LatLngBounds </a>
+                  
+                   <a class='block truncate' href='index.html#new-mapboxgl-latlngbounds-southwest-northeast--methods'>Methods </a>
+                  
+                 </div>
+              
+                 <div class='space-bottom1'>
+                   <a class='block truncate strong quiet' href='index.html#mapboxgl-util-supported-'>mapboxgl.util.supported </a>
+                  
+                 </div>
+              
+                 <div class='space-bottom1'>
+                   <a class='block truncate strong quiet' href='index.html#mapboxgl-util-getjson-url-callback-'>mapboxgl.util.getJSON </a>
+                  
+                 </div>
+              
+            
+          
+        
+       </nav>
+     </div>
+   </div>
+ </div>
+
+ <div class='limiter clearfix'>
+   <div class='pad2y'>
+     <nav class='contain z10 margin3 col9 fill-gradient space-bottom round small'>
+       <div class='col3 dark round-left keyline-right pad1 center truncate'>
+         <div class='pad0y'>
+           <span class='icon gl fill-lighten0 dot inline pad0'></span> Mapbox GL JS
+         </div>
+       </div>
+       <div class='col9 dark tabs mobile-cols pad1'><!--
+        --><a href='../../mapbox-gl/index.html' class='col3'>Overview </a><!--
+        --><a href='index.html' class='col3 active'>API </a><!--
+        --><a href='../../mapbox-gl-style-spec/index.html' class='col3'>Style Reference </a><!--
+        --><a href='../examples/index.html' class='col3 '>Examples </a>
+       </div>
+     </nav>
+   </div>
+
+   <div class='contain margin3 col9'>
+     <div class='pad2 prose round doc clip fill-white keyline-all'>
+       <div class='round note pad1 small space-bottom'>Note, the following API _____________ applies to  <code>mapbox-gl-js </code>. For  <code>mapbox-gl-cocoa </code> documentation and implementation ____________, view the  <a href='https://github.com/mapbox/mapbox-gl-cocoa/blob/master/README.md'>readme </a>. </div>
+
+ <h1 id="mapbox-gl-js-api-documentation">Mapbox GL JS API _____________ </h1><h2 id="new-mapboxgl-map-options-">new mapboxgl.Map(options) </h2><div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var </span>  <span class="nx">map </span>  <span class="o">= </span>  <span class="k">new </span>  <span class="nx">mapboxgl </span><span class="p">. </span><span class="nx">Map </span><span class="p">({ </span>
+     <span class="nx">container </span><span class="o">: </span>  <span class="s1">&#39;map&#39; </span><span class="p">, </span>
+     <span class="nx">center </span><span class="o">: </span>  <span class="p">[ </span><span class="mf">37.772537 </span><span class="p">, </span>  <span class="o">- </span><span class="mf">122.420679 </span><span class="p">], </span>
+     <span class="nx">zoom </span><span class="o">: </span>  <span class="mi">13 </span><span class="p">, </span>
+     <span class="nx">style </span><span class="o">: </span>  <span class="nx">style_object </span><span class="p">, </span>
+     <span class="nx">hash </span><span class="o">: </span>  <span class="kc">true </span>
+ <span class="p">}); </span></code></pre></div>
+ <p>Create a map instance _____ an options object with ___ following properties: </p>
+ <table>
+ <thead>
+ <tr>
+ <th>Option </th>
+ <th>Value </th>
+ <th>Description </th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td><code>container </code></td>
+ <td>string </td>
+ <td>HTML element to initialize ___ map in (or element __ as string) </td>
+ </tr>
+ <tr>
+ <td><code>minZoom </code></td>
+ <td>number </td>
+ <td>Minimum zoom of the ___, 0 by default </td>
+ </tr>
+ <tr>
+ <td><code>maxZoom </code></td>
+ <td>number </td>
+ <td>Maximum zoom of the ___, 20 by default </td>
+ </tr>
+ <tr>
+ <td><code>style </code></td>
+ <td>object </td>
+ <td>Map style and data ______ definition (either a JSON ______ or a JSON URL), _________ in the  <a href="https://mapbox.com/mapbox-gl-style-spec">style reference </a></td>
+ </tr>
+ <tr>
+ <td><code>hash </code></td>
+ <td>boolean </td>
+ <td>If  <code>true </code>, the map will _____ and update the page ___ according to map position (_______:  <code>false </code>) </td>
+ </tr>
+ <tr>
+ <td><code>interactive </code></td>
+ <td>boolean </td>
+ <td>If  <code>false </code>, no mouse, touch, __ keyboard listeners are attached __ the map, so it ____ not respond to input (_______:  <code>true </code>) </td>
+ </tr>
+ </tbody>
+ </table>
+ <p>Options that define the _______ position of the map (__  <code>hash </code> is set to  <code>true </code>, the position will __ set according to the ___ and options will be ____ by default): </p>
+ <table>
+ <thead>
+ <tr>
+ <th>Option </th>
+ <th>Value </th>
+ <th>Description </th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td><code>center </code></td>
+ <td>array </td>
+ <td>Latitude and longitude (passed __  <code>[lat, lng] </code>) </td>
+ </tr>
+ <tr>
+ <td><code>zoom </code></td>
+ <td>number </td>
+ <td>Map zoom level </td>
+ </tr>
+ <tr>
+ <td><code>bearing </code></td>
+ <td>number </td>
+ <td>Map rotation bearing in _______ counter-clockwise from north </td>
+ </tr>
+ </tbody>
+ </table>
+ <h3 id="new-mapboxgl-map-options--setting-map-state">Setting map state </h3><p>The following methods set ___ state of the map _______ performing any animation. </p>
+ <table>
+ <thead>
+ <tr>
+ <th>Method </th>
+ <th>Description </th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td><code>setView(center, zoom, bearing) </code></td>
+ <td>Set map position (center, ____, bearing) </td>
+ </tr>
+ <tr>
+ <td><code>setCenter(latlng) </code></td>
+ <td>Center the map view __ a location </td>
+ </tr>
+ <tr>
+ <td><code>setZoom(zoom) </code></td>
+ <td>Set the zoom level __ the map </td>
+ </tr>
+ <tr>
+ <td><code>setBearing(bearing) </code></td>
+ <td>Sets map rotation angle __ degrees </td>
+ </tr>
+ </tbody>
+ </table>
+ <p>The following methods set ___ state of the map ____ smooth animation. </p>
+ <table>
+ <thead>
+ <tr>
+ <th>Method </th>
+ <th>Description </th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td><code>panTo(latlng, animOptions?) </code></td>
+ <td>Pan to a certain ________ with easing </td>
+ </tr>
+ <tr>
+ <td><code>panBy(offset, animOptions?) </code></td>
+ <td>Pan by a certain ______ of pixels (offset is [_, y]) </td>
+ </tr>
+ <tr>
+ <td><code>zoomTo(zoom, animOptions?) </code></td>
+ <td>Zoom to a certain ____ level with easing </td>
+ </tr>
+ <tr>
+ <td><code>zoomIn(animOptions?) </code></td>
+ <td>Zoom in by 1 _____ </td>
+ </tr>
+ <tr>
+ <td><code>zoomOut(animOptions?) </code></td>
+ <td>Zoom out by 1 _____ </td>
+ </tr>
+ <tr>
+ <td><code>flyTo(latlng, zoom?, bearing?, flyOptions?) </code></td>
+ <td>Flying animation to a _________ location/zoom/bearing with automatic curve </td>
+ </tr>
+ <tr>
+ <td><code>fitBounds(bounds, fitBoundsOptions?) </code></td>
+ <td>Zoom to contain certain ____________ bounds ( <code>[[minLat, minLng], [maxLat, maxLng]] </code>) </td>
+ </tr>
+ <tr>
+ <td><code>rotateTo(bearing, animOptions?) </code></td>
+ <td>Rotate bearing by a _______ number of degrees with ______ </td>
+ </tr>
+ <tr>
+ <td><code>resetNorth(animOptions?) </code></td>
+ <td>Sets map bearing to 0 (north) with easing </td>
+ </tr>
+ <tr>
+ <td><code>stop() </code></td>
+ <td>Stop current animation </td>
+ </tr>
+ <tr>
+ <td><code>resize() </code></td>
+ <td>Detect the map container&#39;s ___ width and height and ______ the map to fit </td>
+ </tr>
+ <tr>
+ <td><code>setStyle(style) </code></td>
+ <td>Replaces the map&#39;s style ______ </td>
+ </tr>
+ </tbody>
+ </table>
+ <h3 id="new-mapboxgl-map-options--map-method-options">Map method options </h3><table>
+ <thead>
+ <tr>
+ <th>Object </th>
+ <th>Description </th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td><code>animOptions </code></td>
+ <td>An object with  <code>duration </code> (Number in ms),  <code>easing </code> (function),  <code>offset </code> (point, origin of ________ relative to map center) ___  <code>animate </code> (when set to _____, no animation happens) options </td>
+ </tr>
+ <tr>
+ <td><code>flyOptions </code></td>
+ <td>An object with  <code>speed </code> ( <code>1.2 </code> by default, how ____ animation occurs),  <code>curve </code> ( <code>1.42 </code> by default, defines ___ much zooming out occurs ______ animation), and  <code>easing </code> (function) options </td>
+ </tr>
+ <tr>
+ <td><code>fitBoundsOptions </code></td>
+ <td>The same as flyOptions ____ the additional  <code>padding </code> (number, defines how ____ padding there is around ___ given bounds on each ____ in pixels) and  <code>maxZoom </code> (number) options </td>
+ </tr>
+ </tbody>
+ </table>
+ <h3 id="new-mapboxgl-map-options--getting-map-state">Getting map state </h3><table>
+ <thead>
+ <tr>
+ <th>Method </th>
+ <th>Description </th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td><code>getBounds() </code></td>
+ <td>Get the map&#39;s geographical ______ (as  <code>LatLngBounds </code> object) </td>
+ </tr>
+ <tr>
+ <td><code>getCenter() </code></td>
+ <td>Get the current view ____________ point (as  <code>LatLng </code> object) </td>
+ </tr>
+ <tr>
+ <td><code>getZoom() </code></td>
+ <td>Get the current zoom </td>
+ </tr>
+ <tr>
+ <td><code>getBearing() </code></td>
+ <td>Get the current bearing __ degrees </td>
+ </tr>
+ <tr>
+ <td><code>project(latlng) </code></td>
+ <td>Get pixel coordinates (relative __ map container) given a ____________ location </td>
+ </tr>
+ <tr>
+ <td><code>unproject(point) </code></td>
+ <td>Get geographical coordinates given _____ coordinates </td>
+ </tr>
+ <tr>
+ <td><code>featuresAt(point, params, callback) </code></td>
+ <td>Get all features at _ point ([x, y]) where ______ is  <code>{radius, layer, type, geometry} </code> (all optional, radius __ 0 by default) </td>
+ </tr>
+ </tbody>
+ </table>
+ <p><em>Example: </em></p>
+ <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// get all features __ a point within a _______ radius </span>
+ <span class="nx">map </span><span class="p">. </span><span class="nx">featuresAt </span><span class="p">([ </span><span class="mi">100 </span><span class="p">, </span>  <span class="mi">100 </span><span class="p">], </span>  <span class="p">{ </span>
+     <span class="nx">radius </span><span class="o">: </span>  <span class="mi">30 </span><span class="p">, </span>           <span class="c1">// radius in pixels __ search in </span>
+     <span class="nx">bucket </span><span class="o">: </span>  <span class="s1">&#39;bucketname&#39; </span>  <span class="c1">// optional - if ___, only features from that ______ will be matched </span>
+ <span class="p">}, </span>  <span class="nx">callback </span><span class="p">); </span></code></pre></div>
+ <h3 id="new-mapboxgl-map-options--map-lifecycle">Map lifecycle </h3><table>
+ <thead>
+ <tr>
+ <th>Method </th>
+ <th>Description </th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td><code>remove() </code></td>
+ <td>Destroys the map&#39;s underlying _________, including web workers. </td>
+ </tr>
+ </tbody>
+ </table>
+ <h3 id="new-mapboxgl-map-options--working-with-sources">Working with sources </h3><table>
+ <thead>
+ <tr>
+ <th>Method </th>
+ <th>Description </th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td><code>addSource(id, source) </code></td>
+ <td>Adds a data source __ the map, specifying associated ______ id </td>
+ </tr>
+ <tr>
+ <td><code>removeSource(id) </code></td>
+ <td>Removes a data source ____ the map given the __ that was used when ______ </td>
+ </tr>
+ </tbody>
+ </table>
+ <h3 id="new-mapboxgl-map-options--working-with-controls">Working with controls </h3><table>
+ <thead>
+ <tr>
+ <th>Method </th>
+ <th>Description </th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td><code>addControl(control) </code></td>
+ <td>Adds a control to ___ map </td>
+ </tr>
+ </tbody>
+ </table>
+ <h3 id="new-mapboxgl-map-options--events">Events </h3><table>
+ <thead>
+ <tr>
+ <th>Event </th>
+ <th>Description </th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td><code>move </code></td>
+ <td>Fired during any movement __ the map (panning, zooming, ________, etc.) </td>
+ </tr>
+ <tr>
+ <td><code>movestart </code></td>
+ <td>Fired on start of ___ movement of the map </td>
+ </tr>
+ <tr>
+ <td><code>moveend </code></td>
+ <td>Fired after movement of ___ map, when it becomes ____ </td>
+ </tr>
+ <tr>
+ <td><code>zoom </code></td>
+ <td>Fired when the map ____ changes </td>
+ </tr>
+ <tr>
+ <td><code>rotate </code></td>
+ <td>Fired when the map _______ changes </td>
+ </tr>
+ <tr>
+ <td><code>click(point) </code></td>
+ <td>Fired on map click </td>
+ </tr>
+ <tr>
+ <td><code>hover(point) </code></td>
+ <td>Fired when the mouse _____ over the map </td>
+ </tr>
+ <tr>
+ <td><code>resize </code></td>
+ <td>Fired when the map _______ size </td>
+ </tr>
+ <tr>
+ <td><code>source.add(source) </code></td>
+ <td>Fired when a data ______ is added </td>
+ </tr>
+ <tr>
+ <td><code>source.remove(source) </code></td>
+ <td>Fired when a data ______ is removed </td>
+ </tr>
+ </tbody>
+ </table>
+ <h2 id="new-mapboxgl-source-options-">new mapboxgl.Source(options) </h2><div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var </span>  <span class="nx">sourceObj </span>  <span class="o">= </span>  <span class="k">new </span>  <span class="nx">mapboxgl </span><span class="p">. </span><span class="nx">Source </span><span class="p">({ </span>
+     <span class="nx">type </span><span class="o">: </span>  <span class="s1">&#39;vector&#39; </span><span class="p">, </span>
+     <span class="nx">url </span><span class="o">: </span>  <span class="s1">&#39;mapbox://mapbox.mapbox-streets-v5&#39; </span>
+ <span class="p">}); </span>
+ <span class="nx">map </span><span class="p">. </span><span class="nx">addSource </span><span class="p">( </span><span class="s1">&#39;some id&#39; </span><span class="p">, </span>  <span class="nx">sourceObj </span><span class="p">); </span>  <span class="c1">// add </span>
+ <span class="nx">map </span><span class="p">. </span><span class="nx">removeSource </span><span class="p">( </span><span class="s1">&#39;some id&#39; </span><span class="p">); </span>   <span class="c1">// remove </span></code></pre></div>
+ <p>Create a tiled data ______ instance given an options ______ with the following properties: </p>
+ <table>
+ <thead>
+ <tr>
+ <th>Option </th>
+ <th>Description </th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td><code>type </code></td>
+ <td>Either  <code>&#39;raster&#39; </code> or  <code>&#39;vector&#39; </code></td>
+ </tr>
+ <tr>
+ <td><code>url </code></td>
+ <td>A tile source URL. ____ should either be  <code>mapbox://{mapid} </code> or a full  <code>http[s] </code> url that points __ a TileJSON endpoint. </td>
+ </tr>
+ <tr>
+ <td><code>tiles </code></td>
+ <td>An array of tile _______. If  <code>url </code> is not specified,  <code>tiles </code> can be used _______ to specify tile sources, __ in the TileJSON spec. _____ TileJSON keys such as  <code>minzoom </code> and  <code>maxzoom </code> can be specified __ a source object if  <code>tiles </code> is used. </td>
+ </tr>
+ <tr>
+ <td><code>id </code></td>
+ <td>Optional id to assign __ the source </td>
+ </tr>
+ <tr>
+ <td><code>tileSize </code></td>
+ <td>Optional tile size (width ___ height in pixels, assuming _____ are square). Defaults to 512; only configurable for raster _______. </td>
+ </tr>
+ <tr>
+ <td><code>cacheSize </code></td>
+ <td>Optional max number of _____ to cache at any _____ time </td>
+ </tr>
+ </tbody>
+ </table>
+ <h3 id="new-mapboxgl-source-options--methods">Methods </h3><table>
+ <thead>
+ <tr>
+ <th>Method </th>
+ <th>Description </th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td><code>update() </code></td>
+ <td>Update tiles according to ___ viewport and render </td>
+ </tr>
+ <tr>
+ <td><code>render() </code></td>
+ <td>Render every existing tile </td>
+ </tr>
+ <tr>
+ <td><code>stats() </code></td>
+ <td>Return an object with ____ statistics </td>
+ </tr>
+ <tr>
+ <td><code>featuresAt(point, params, callback) </code></td>
+ <td>Get all features at _ point where params is {______, bucket, type, geometry} (all ________, radius is 0 by _______) </td>
+ </tr>
+ </tbody>
+ </table>
+ <h3 id="new-mapboxgl-source-options--events">Events </h3><table>
+ <thead>
+ <tr>
+ <th>Event </th>
+ <th>Description </th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td><code>tile.add(tile) </code></td>
+ <td>Fired when a tile __ added to the map </td>
+ </tr>
+ <tr>
+ <td><code>tile.load(tile) </code></td>
+ <td>Fired when a tile __ loaded </td>
+ </tr>
+ <tr>
+ <td><code>tile.remove(tile) </code></td>
+ <td>Fired when a tile __ removed from the map </td>
+ </tr>
+ </tbody>
+ </table>
+ <h2 id="new-mapboxgl-geojsonsource-options-">new mapboxgl.GeoJSONSource(options) </h2><div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var </span>  <span class="nx">sourceObj </span>  <span class="o">= </span>  <span class="k">new </span>  <span class="nx">mapboxgl </span><span class="p">. </span><span class="nx">GeoJSONSource </span><span class="p">({ </span>
+     <span class="nx">data </span><span class="o">: </span>  <span class="p">{ </span>
+         <span class="s2">&quot;type&quot; </span><span class="o">: </span>  <span class="s2">&quot;FeatureCollection&quot; </span><span class="p">, </span>
+         <span class="s2">&quot;features&quot; </span><span class="o">: </span>  <span class="p">[{ </span>
+             <span class="s2">&quot;type&quot; </span><span class="o">: </span>  <span class="s2">&quot;Feature&quot; </span><span class="p">, </span>
+             <span class="s2">&quot;geometry&quot; </span><span class="o">: </span>  <span class="p">{ </span>
+                 <span class="s2">&quot;type&quot; </span><span class="o">: </span>  <span class="s2">&quot;Point&quot; </span><span class="p">, </span>
+                 <span class="s2">&quot;coordinates&quot; </span><span class="o">: </span>  <span class="p">[ </span>
+                     <span class="o">- </span><span class="mf">76.53063297271729 </span><span class="p">, </span>
+                     <span class="mf">39.18174077994108 </span>
+                 <span class="p">] </span>
+             <span class="p">} </span>
+         <span class="p">}] </span>
+     <span class="p">} </span>
+ <span class="p">}); </span>
+ <span class="nx">map </span><span class="p">. </span><span class="nx">addSource </span><span class="p">( </span><span class="s1">&#39;some id&#39; </span><span class="p">, </span>  <span class="nx">sourceObj </span><span class="p">); </span>  <span class="c1">// add </span>
+ <span class="nx">map </span><span class="p">. </span><span class="nx">removeSource </span><span class="p">( </span><span class="s1">&#39;some id&#39; </span><span class="p">); </span>   <span class="c1">// remove </span></code></pre></div>
+ <p>Create a GeoJSON data ______ instance given an options ______ with the following properties: </p>
+ <table>
+ <thead>
+ <tr>
+ <th>Option </th>
+ <th>Description </th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td><code>data </code></td>
+ <td>A GeoJSON data object __ an URL to it. ___ latter is preferable in ____ of large GeoJSON files. </td>
+ </tr>
+ </tbody>
+ </table>
+ <h3 id="new-mapboxgl-geojsonsource-options--methods">Methods </h3><table>
+ <thead>
+ <tr>
+ <th>Method </th>
+ <th>Description </th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td><code>setData(data) </code></td>
+ <td>Update source geojson data ___ rerender map </td>
+ </tr>
+ </tbody>
+ </table>
+ <h2 id="new-mapboxgl-videosource-options-">new mapboxgl.VideoSource(options) </h2><div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var </span>  <span class="nx">sourceObj </span>  <span class="o">= </span>  <span class="k">new </span>  <span class="nx">mapboxgl </span><span class="p">. </span><span class="nx">VideoSource </span><span class="p">({ </span>
+     <span class="nx">url </span><span class="o">: </span>  <span class="p">[ </span>
+         <span class="s1">&#39;https://www.mapbox.com/videos/baltimore-smoke.mp4&#39; </span><span class="p">, </span>
+         <span class="s1">&#39;https://www.mapbox.com/videos/baltimore-smoke.webm&#39; </span>
+     <span class="p">], </span>
+     <span class="nx">coordinates </span><span class="o">: </span>  <span class="p">[ </span>
+         <span class="p">[ </span><span class="mf">39.18579907229748 </span><span class="p">, </span>  <span class="o">- </span><span class="mf">76.54335737228394 </span><span class="p">], </span>
+         <span class="p">[ </span><span class="mf">39.1838364847587 </span><span class="p">, </span>  <span class="o">- </span><span class="mf">76.52803659439087 </span><span class="p">], </span>
+         <span class="p">[ </span><span class="mf">39.17683392507606 </span><span class="p">, </span>  <span class="o">- </span><span class="mf">76.5295386314392 </span><span class="p">], </span>
+         <span class="p">[ </span><span class="mf">39.17876344106642 </span><span class="p">, </span>  <span class="o">- </span><span class="mf">76.54520273208618 </span><span class="p">] </span>
+     <span class="p">] </span>
+ <span class="p">}); </span>
+ <span class="nx">map </span><span class="p">. </span><span class="nx">addSource </span><span class="p">( </span><span class="s1">&#39;some id&#39; </span><span class="p">, </span>  <span class="nx">sourceObj </span><span class="p">); </span>  <span class="c1">// add </span>
+ <span class="nx">map </span><span class="p">. </span><span class="nx">removeSource </span><span class="p">( </span><span class="s1">&#39;some id&#39; </span><span class="p">); </span>   <span class="c1">// remove </span></code></pre></div>
+ <p>Create a Video data ______ instance given an options ______ with the following properties: </p>
+ <table>
+ <thead>
+ <tr>
+ <th>Option </th>
+ <th>Description </th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td><code>url </code></td>
+ <td>A string or array __ URL(s) to video files </td>
+ </tr>
+ <tr>
+ <td><code>coordinates </code></td>
+ <td>lat,lng coordinates in order _________ starting at the top ____: tl, tr, br, bl </td>
+ </tr>
+ </tbody>
+ </table>
+ <h2 id="new-mapboxgl-navigation-">new mapboxgl.Navigation() </h2><p>Creates a navigation control ____ zoom buttons and a _______. </p>
+ <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">map </span><span class="p">. </span><span class="nx">addControl </span><span class="p">( </span><span class="k">new </span>  <span class="nx">mapboxgl </span><span class="p">. </span><span class="nx">Navigation </span><span class="p">()); </span></code></pre></div>
+ <h2 id="mapboxgl-evented">mapboxgl.Evented </h2><p>A class inherited by ____ other classes ( <code>Map </code>,  <code>Source </code> etc.) to get _____ capabilities. </p>
+ <h3 id="mapboxgl-evented-methods">Methods </h3><table>
+ <thead>
+ <tr>
+ <th>Method </th>
+ <th>Description </th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td><code>fire(type, data?) </code></td>
+ <td>Fire event of a _____ string type with the _____ data object </td>
+ </tr>
+ <tr>
+ <td><code>on(type, listener) </code></td>
+ <td>Subscribe to a specified _____ with a listener function ___ latter gets the data ______ that was passed to  <code>fire </code> and additionally  <code>target </code> and  <code>type </code> properties. </td>
+ </tr>
+ <tr>
+ <td><code>off(type?, listener?) </code></td>
+ <td>Remove a listener; remove ___ listeners of a type __ listener is not specified ______ all listeners if no _________ specified. </td>
+ </tr>
+ <tr>
+ <td><code>listens(type) </code></td>
+ <td>Returns true if the ______ listens to an event __ a particular type </td>
+ </tr>
+ </tbody>
+ </table>
+ <h2 id="new-mapboxgl-latlng-latitude-longitude-">new mapboxgl.LatLng(latitude, longitude) </h2><div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var </span>  <span class="nx">latlng </span>  <span class="o">= </span>  <span class="k">new </span>  <span class="nx">mapboxgl </span><span class="p">. </span><span class="nx">LatLng </span><span class="p">( </span><span class="mf">37.76 </span><span class="p">, </span>  <span class="o">- </span><span class="mf">122.44 </span><span class="p">); </span></code></pre></div>
+ <p>A representation of a ________ and longitude point, in _______.
+______ a latitude, longitude object ____ a given latitude and _________ pair in degrees. </p>
+ <h2 id="new-mapboxgl-latlngbounds-southwest-northeast-">new mapboxgl.LatLngBounds([southwest, northeast]) </h2><div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var </span>  <span class="nx">latlng </span>  <span class="o">= </span>  <span class="k">new </span>  <span class="nx">mapboxgl </span><span class="p">. </span><span class="nx">LatLng </span><span class="p">([[ </span><span class="mf">37.70 </span><span class="p">, </span><span class="o">- </span><span class="mf">122.51 </span><span class="p">],[ </span><span class="mf">37.83 </span><span class="p">, </span><span class="o">- </span><span class="mf">122.35 </span><span class="p">]]); </span></code></pre></div>
+ <p>A representation of rectangular ___ on the earth, defined __ its southwest
+and northeast points __ latitude and longitude
+Creates a ________ box from the given ____ of points.  <code>southwest </code> and  <code>northeast </code> can be ommitted __ create a null bounding ___. </p>
+ <h3 id="new-mapboxgl-latlngbounds-southwest-northeast--methods">Methods </h3><table>
+ <thead>
+ <tr>
+ <th>Method </th>
+ <th>Description </th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td><code>extend(latlng) </code></td>
+ <td>Enlarge the bounds to _______ a given point </td>
+ </tr>
+ <tr>
+ <td><code>getCenter() </code></td>
+ <td>Get the point equidistant ____ this box&#39;s corners, as _  <code>LatLng </code> object </td>
+ </tr>
+ <tr>
+ <td><code>getSouthWest() </code></td>
+ <td>Get the southwest corner __ a  <code>LatLng </code> object </td>
+ </tr>
+ <tr>
+ <td><code>getSouthEast() </code></td>
+ <td>Get the southeast corner __ a  <code>LatLng </code> object </td>
+ </tr>
+ <tr>
+ <td><code>getNorthWest() </code></td>
+ <td>Get the northwest corner __ a  <code>LatLng </code> object </td>
+ </tr>
+ <tr>
+ <td><code>getNorthEast() </code></td>
+ <td>Get the northeast corner __ a  <code>LatLng </code> object </td>
+ </tr>
+ <tr>
+ <td><code>getNorth() </code></td>
+ <td>Get the north edge&#39;s ________ as a number </td>
+ </tr>
+ <tr>
+ <td><code>getSouth() </code></td>
+ <td>Get the south edge&#39;s ________ as a number </td>
+ </tr>
+ <tr>
+ <td><code>getWest() </code></td>
+ <td>Get the south edge&#39;s _________ as a number </td>
+ </tr>
+ <tr>
+ <td><code>getEast() </code></td>
+ <td>Get the south edge&#39;s _________ as a number </td>
+ </tr>
+ </tbody>
+ </table>
+ <h2 id="mapboxgl-util-supported-">mapboxgl.util.supported() </h2><div class="highlight"><pre><code class="language-js" data-lang="js"><span class="k">if </span>  <span class="p">( </span><span class="o">! </span><span class="nx">mapboxgl </span><span class="p">. </span><span class="nx">util </span><span class="p">. </span><span class="nx">supported </span><span class="p">()) </span>  <span class="p">{ </span>
+     <span class="nx">console </span><span class="p">. </span><span class="nx">log </span><span class="p">( </span><span class="s1">&#39;Your browser does not _______ Mapbox GL&#39; </span><span class="p">); </span>
+ <span class="p">} </span></code></pre></div>
+ <p>Tests whether the basic __________ and DOM features required ___ Mapbox GL are present. _______ true if Mapbox GL ______ be expected to work, ___ false if not. </p>
+ <h2 id="mapboxgl-util-getjson-url-callback-">mapboxgl.util.getJSON(url, callback) </h2><div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">mapboxgl </span><span class="p">. </span><span class="nx">util </span><span class="p">. </span><span class="nx">getJSON </span><span class="p">( </span><span class="s1">&#39;https://www.mapbox.com/mapbox-gl-styles/styles/outdoors-v3.json&#39; </span><span class="p">, </span>  <span class="kd">function </span>  <span class="p">( </span><span class="nx">err </span><span class="p">, </span>  <span class="nx">style </span><span class="p">) </span>  <span class="p">{ </span>
+     <span class="k">if </span>  <span class="p">( </span><span class="nx">err </span><span class="p">) </span>  <span class="k">throw </span>  <span class="nx">err </span><span class="p">; </span>
+     <span class="nx">map </span><span class="p">. </span><span class="nx">setStyle </span><span class="p">( </span><span class="nx">style </span><span class="p">); </span>
+ <span class="p">}); </span></code></pre></div>
+ <p>Get JSON data from _ url. </p>
+
+
+     </div>
+   </div>
+ </div>
+ </div>
+
+ <div class='footer pad4y clearfix hide-mobile fill-light'>
+   <div class='limiter'>
+    <div class='clearfix'> 
+     <div class='col8 small mobile-cols'>
+       <div class='col12 clearfix'>
+         <div class='col3'>
+          
+           <a id='footer-design' class='space-bottom0 col12 strong' href='../../design/index.html'>Design </a>
+          
+           <a id='footer-data' class='space-bottom0 col12 strong' href='../../data-platform/index.html'>Data </a>
+          
+           <a id='footer-developers' class='space-bottom0 col12 strong' href='../../developers/index.html'>Developers </a>
+          
+           <a id='footer-showcase' class='space-bottom0 col12 strong' href='../../showcase/index.html'>Showcase </a>
+          
+           <a id='footer-enterprise' class='space-bottom0 col12 strong' href='../../enterprise/index.html'>Enterprise </a>
+          
+         </div>
+         <div class='col3'>
+          
+           <a id='footer-plans' class='space-bottom0 col12 quiet strong' href='../../plans/index.html'>Plans </a>
+          
+           <a id='footer-blog' class='space-bottom0 col12 quiet strong' href='../../blog/index.html'>Blog </a>
+          
+           <a id='footer-help' class='space-bottom0 col12 quiet strong' href='../../help/index.html'>Help </a>
+          
+           <a id='footer-status' class='space-bottom0 col12 quiet strong' href='../../status/index.html'>Status </a>
+          
+           <a id='footer-contact' class='space-bottom0 col12 quiet strong' href='../../contact/index.html'>Contact </a>
+          
+         </div>
+         <div class='col3'>     
+          
+           <a id='footer-about' class='space-bottom0 col12 quiet strong' href='../../about/index.html'>About </a>
+          
+           <a id='footer-team' class='space-bottom0 col12 quiet strong' href='../../about/team/index.html'>Team </a>
+          
+           <a id='footer-jobs' class='space-bottom0 col12 quiet strong' href='../../jobs/index.html'>Jobs </a>
+          
+           <a id='footer-press' class='space-bottom0 col12 quiet strong' href='../../about/press/index.html'>Press </a>
+          
+           <a id='footer-press-kit' class='space-bottom0 col12 quiet strong' href='../../about/press-kit/index.html'>Press Kit </a>
+          
+         </div>
+          <div class='col3'>
+            <div class='space-bottom0 strong'>Tools </div>
+          
+           <a id='footer-studio' class='space-bottom0 col12 quiet strong' href='../../mapbox-studio/index.html'>Studio </a>
+          
+           <a id='footer-maki' class='space-bottom0 col12 quiet strong' href='../../maki/index.html'>Maki </a>
+          
+         </div>
+       </div>
+     </div>
+
+     <div class='col4 footer-social'>
+       <div class='animate footer-animation col6'></div>
+       <div class='footer-dialog fr small strong quiet pad2 col6 contain round fill-gray'>
+      Follow Mapbox on  <a href='https://twitter.com/mapbox'>Twitter </a>,  <a href='https://www.facebook.com/Mapbox'>Facebook </a>, and  <a href='https://instagram.com/mapbox'>Instagram </a>.
+       </div>
+     </div>  
+   </div>
+   </div>
+
+   <div class="limiter industries-footer">
+   <p class='space-bottom1 strong small space-top2 industries-footer-title'>Industries </p>
+   <div class='clearfix pad2y pad4x fill-gray round space-bottom4 industries-footer'>
+         <div class='clearfix'>
+            <div class='col3'>
+            
+             <a id='footer-real-estate' class='space-bottom0 col12 strong quiet small' href='../../industries/realestate/index.html'>Real Estate </a>
+            
+             <a id='footer-transportation' class='space-bottom0 col12 strong quiet small' href='../../industries/transportation/index.html'>Transportation </a>
+            
+             <a id='footer-agriculture' class='space-bottom0 col12 strong quiet small' href='../../industries/agriculture/index.html'>Agriculture </a>
+            
+           </div>
+            <div class='col3'>
+            
+             <a id='footer-social' class='space-bottom0 col12 strong quiet small' href='../../industries/social/index.html'>Social </a>
+            
+             <a id='footer-government' class='space-bottom0 col12 strong quiet small' href='../../industries/government/index.html'>Government </a>
+            
+             <a id='footer-fitness-&amp;-outdoors' class='space-bottom0 col12 strong quiet small' href='../../industries/outdoors/index.html'>Fitness &amp; outdoors </a>
+            
+           </div>
+            <div class='col3'>
+            
+             <a id='footer-finance' class='space-bottom0 col12 strong quiet small' href='../../industries/finance/index.html'>Finance </a>
+            
+             <a id='footer-insurance' class='space-bottom0 col12 strong quiet small' href='../../industries/insurance/index.html'>Insurance </a>
+            
+             <a id='footer-natural-resources' class='space-bottom0 col12 strong quiet small' href='../../industries/naturalresources/index.html'>Natural Resources </a>
+            
+           </div>
+           <div class='col3'>
+            
+                 <a id='footer-security' class='space-bottom0 col12 strong quiet small' href='../../industries/security/index.html'>Security </a>
+            
+                 <a id='footer-health' class='space-bottom0 col12 strong quiet small' href='../../industries/health/index.html'>Health </a>
+            
+                 <a id='footer-media' class='space-bottom0 col12 strong quiet small' href='../../industries/media/index.html'>Media </a>
+            
+           </div>
+          </div> 
+       </div>
+   </div>
+
+   <div class='limiter newsletter-copyright clearfix'>
+   <div class='col8 contain newsletter'>
+         <form id='newsletter' method='post'>
+           <fieldset class='clearfix input-pill col10 pill mobile-cols with-icon'>
+             <span class='icon mail quiet'></span>
+             <input type='text' value='' placeholder='Sign up for our newsletter' name='email' class='col9 required email' />
+             <input type='submit' value='Subscribe' class='col3 quiet' />
+           </fieldset>
+         </form>
+        </div> 
+
+       <div class='col4 footer-copyright small space-top1 col4 noprint fill-light contain'>
+           <div class='pin-right'>
+             <a href='../../tos/index.html'>Terms </a> +
+             <a href='../../privacy/index.html'>Privacy </a>
+            &copy; Mapbox
+           </div>
+       </div>
+   </div>
+
+ </div>
+
+ <div class='footer-copyright small center noprint fill-light show-mobile'>
+   <div class='limiter'>
+     <div class='pad2y'>
+             <a href='../../tos/index.html'>Terms </a> +
+             <a href='../../privacy/index.html'>Privacy </a>
+      &copy; Mapbox
+     </div>
+   </div>
+ </div>
+
+
+
+ <div id='modal-content' class='animate modal modal-content'></div>
+ </div>
+ </body>
+ </html>
+ 

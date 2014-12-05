@@ -1,0 +1,188 @@
+/* Illustrations
+------------------------------------------------------- */
+
+.graphic-splash {
+  background: url(about-graphic-splash.png) 0 100% no-repeat;
+  background-size: 100% auto;
+  height: 350px;
+  bottom: 0px;
+}
+
+@media only screen and (max-width: 900px) {
+  .graphic-splash { right: 20px;}
+}
+
+.timeline { position:relative; }
+.timeline:before {
+  display:block;
+  content:'';
+  position:absolute;
+  top:20px; bottom:40px; left:50%; width:4px;
+  margin:0px 0px 0px -2px;
+  background:#3c4e5a;
+  }
+
+.year {
+  position:relative;
+  margin:0 auto 100px;
+  padding:5px;
+  border-radius:4px;
+  background:#3c4e5a; color:#fff;
+  line-height:40px;
+  width:100px; height:50px;
+  top:20px;
+  }
+
+
+.event { width:50%; position:relative; }
+.event > div { min-height:120px; position:relative; }
+.event.even { margin:-60px 0px 0px 0px; }
+.event.even > div { margin-right:30px; }
+.event.even:before,
+.event.odd:before {
+  display:block;
+  content:'';
+  position:absolute;
+  top:50%; right: 5px;
+  left:auto;
+  height:0px; width:0px;
+  border: 0px;
+  width: 50px ;
+  margin: 0px - 15px 0px 0px;
+  border-bottom: 1px solid #efefef;
+  }
+
+.event.odd:before {
+  right:auto; left: 0px;
+  }
+
+.event.even:after,
+.event.odd:after {
+  display:block;
+  content:'';
+  position:absolute;
+  top:50%; right:0px; left:auto;
+  height:12px; width:12px;
+  margin:-6px -6px 0px 0px;
+  border-radius:50%;
+  border:4px solid #3c4e5a;
+  background:#fff;
+  box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  -webkit-box-sizing:border-box;
+  }
+.event.odd:after {
+  right:auto; left:0px;
+  margin:-6px 0px 0px -6px;
+  }
+
+.event.odd  { margin:-60px 0px 0px 50%; }
+.event.odd > div { margin-left:30px; }
+
+.event > div { background:#fff; }
+.event h3 { margin:0px 0px 10px; }
+
+.event.feature > div { background:transparent; }
+.event.feature:before {
+  border:0px;
+  width:31px;
+  margin:-2px -5px 0px 0px;
+  border-bottom:4px solid #3c4e5a;
+  }
+.event.odd.feature:before { margin:-2px 0px 0px 0px; }
+
+.event .image {
+  background-position:50% 0%;
+  background-repeat:no-repeat;
+  background-color:#ffffff;
+  -webkit-background-size:cover;
+          background-size:cover;
+  }
+
+.event.feature .image {
+  margin:0px auto 0px;
+  height:200px;
+  }
+
+.event.normal .image {
+  position:absolute;
+  left:0px; top:0px; bottom:0px;
+  width:100px;
+  }
+.event.odd.normal .image { left:auto; right:0px; }
+
+
+.event .image {
+  background-position:50% 0%;
+  background-repeat:no-repeat;
+  background-color:#ffffff;
+  -webkit-background-size:cover;
+          background-size:cover;
+  }
+
+.event.feature .image {
+  margin:0px auto 0px;
+  height:200px;
+  }
+
+.event.normal .image {
+  position:absolute;
+  left:0px; top:0px; bottom:0px;
+  width:100px;
+  }
+.event.odd.normal .image { left:auto; right:0px; }
+
+.event.even.normal > div { padding-left:120px; }
+.event.odd.normal > div { padding-right:120px; }
+
+.button.final {
+  font-size:15px;
+  line-height:25px;
+  display:block;
+  margin:40px auto 0;
+  width: 280px;
+  height: 80px;
+  padding:20px;
+  position:relative;
+  }
+
+@media (max-width:640px) {
+  .year { margin-right:-2px; margin-left:auto; margin-bottom:40px; }
+  .big.button.final { margin-right:-2px; margin-left:auto; }
+  .event { width:auto; }
+  .event.even,
+  .event.odd { margin:20px 0px 0px 0px; }
+  .event.even > div,
+  .event.odd > div { margin-left:0px; margin-right:30px; }
+  .event.even:after,
+  .event.odd:after {
+    right:0px; left:auto;
+    margin:-6px -6px 0px 0px;
+    }
+  .event.even:before,
+  .event.odd:before {
+    right:10px; left:auto;
+    border-left:10px solid #fff;
+    border-right:10px solid transparent;
+    }
+  .event.even.feature:before,
+  .event.odd.feature:before {
+    margin:-2px -5px 0px 0px;
+    border:0px;
+    border-bottom:4px solid #3c4e5a;
+    }
+
+  .event.odd.normal .image { left:0px; right:auto; }
+  .event.odd.normal > div { padding-left:120px; padding-right:20px; }
+
+  .timeline:before { right:0px; left:auto; margin:0px -2px; }
+  }
+
+  @media (max-width: 400px) {
+      .event.odd.normal > div, .event.even.normal > div {
+        padding-left: 0px;
+      }
+      .event.odd.normal .image, .event.even.normal .image {
+        display: none;
+      }
+  }

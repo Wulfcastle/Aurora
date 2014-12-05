@@ -1,0 +1,184 @@
+#order{
+	color:red;
+	display:none;
+}
+html, body, #map {
+	width:100%;
+	height:100%;
+	padding:0;
+	margin:0;
+	font-family:Verdana,Arial,Helvetica,sans-serif;
+	font-size:12px;
+	overflow:hidden;
+}
+#form{
+	position:absolute;
+	top:90px;
+	left:10px;
+	width:275px;
+	overflow:visible;
+}
+#borough{
+	width:146px;
+}
+#error{
+	margin:30px 0 0 0;
+	color:#ff0000;
+	position:absolute;
+	top:148px;
+	left:10px;
+}
+#button{
+	position:absolute;
+	top:173px;
+	left:219px;
+	font-size:10px;
+}
+#banner {
+    background-image: url("../img/bg.png");
+    background-repeat: repeat-x;
+    font-size: 24px;
+    font-weight: bold;
+    height: 44px;
+}
+#banner img{
+	float:left;
+	margin:4px;
+}
+#appTitle {
+    padding: 6px 0 0 60px;
+}
+#appTitle a {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+.ctl{
+	position:absolute;
+	left:10px;
+	font-weight:bold;
+	border: 1px solid #BBBBBB;
+    border-radius:5px;
+    padding:3px;
+    background-color: #ffffff;
+	text-align:center;
+	vertical-align:middle;
+	cursor:pointer;
+	z-index:100;
+}
+#searchAgain{
+	top:46px;
+	width:62px;
+}
+#legend{
+	top:86px;
+	width:62px;
+}
+#legend:HOVER{
+	color:#237fd0;
+}
+#close{
+	top:325px;
+	display:none;
+	z-index:10000001;
+}
+.zoomin{
+	border-radius:5px;
+	margin-left:10px;
+	background-position: -30px 0;
+} 
+.zoomout{
+	border-radius:5px;
+	background-position: -60px 0;
+} 
+#searchAgain a{
+	text-decoration:none;
+	color:#000000;
+}
+#searchAgain a:HOVER{
+	text-decoration:none;
+	color:#237fd0;
+}
+.map-legends{
+	display:none;
+}
+#legendPane{
+	position:absolute;
+	right:10px;
+	bottom:10px;
+	background-color:#ffffff;
+	padding:5px;
+	z-index:10000000;
+	width:275px;
+	font-weight:normal;
+	text-align:left;
+}
+#legendContent{
+	width:250px;
+}
+#legendContent img{
+	margin:0 6px -2px 0;
+}
+#legendContent div{
+	margin: 10px 3px 3px 10px;
+}
+.map-attribution{
+  right: 10px;
+  left: auto;
+}
+
+/* Interactive markers */
+img.center-marker {
+  margin-left: -9px;
+  margin-top: -9px;
+  position: absolute;
+  pointer-events: all;
+  cursor: pointer;
+  }
+  .marker-tooltip .name,
+  .marker-tooltip .role {
+    font-weight: bold;
+  }
+	/* ------- Smartphones (portrait and landscape) ------ */
+
+	@media screen
+	and (min-width:320px)
+	and (max-width:480px) { 
+		#banner{
+			font-size:12px;
+		}
+		#borough{
+			width:146px;
+		}
+		#legend{
+			top:91px;
+		}
+		#legendPane{
+			font-size:10px;
+		}
+		#button{
+			top:178px;
+		}
+		#appTitle {
+		    padding: 15px 0 0 60px;
+		}
+		#legendPane{
+			display:none;
+			font-size:10px;
+			width:100% !important;
+			position:absolute;
+			top:0;
+			left:0;
+			height:100%;
+		}
+		.map-tooltip{
+			left:0;
+			top:auto;
+			bottom:0;
+			width:100% !important;
+		}
+		.order{
+			top:auto !important;
+			bottom:2px;
+			left:10px !important;
+		}
+	}

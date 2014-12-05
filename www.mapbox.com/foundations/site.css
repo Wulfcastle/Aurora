@@ -1,0 +1,230 @@
+/* Illustrations
+------------------------------------------------------- */
+
+.graphic-splash {
+  background: url(img/header-small.png) 0 0% no-repeat;
+  background-size: 100% auto;
+  padding-bottom: 30%;
+  height: 0;
+  bottom: 40px;
+  opacity: .85;
+}
+
+
+@media only screen and (max-width: 900px) {
+  .graphic-splash { right: 20px;}
+}
+
+/* Base candidates */
+h1 a.dark:hover,
+h2 a.dark:hover,
+h3 a.dark:hover { color:#fff; }
+a:hover .button { background-color:rgba(0,0,0,0.5); }
+h2.rcon:after, h2.icon:after { vertical-align:middle; }
+.z1000 { z-index:1000; }
+.inline.show-mobile { display:none; }
+@media only screen and (max-width: 640px) {
+  strong.show-mobile  { display:inline!important; }
+  .inline.show-mobile { display:inline-block; }
+}
+
+/* TOC group spacing */
+.nav .active a { color:#444; }
+
+/* iframes have captions so we want to
+ * make this clear and override the default */
+.prose iframe {
+  margin-bottom:10px;
+  border:1px solid rgba(0,0,0,0.1);
+  }
+
+.prose p > img { background-color:transparent; }
+.prose aside {
+  font-size:15px;
+  line-height:25px;
+  padding: 20px;
+  background:#f8f8f8;
+}
+
+
+@media only screen and (min-width:840px) {
+  .prose aside {
+    float: right;
+    width: 250px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+  }
+}
+
+@media only screen and (max-width:640px) {
+  .head-img{
+    background-size: cover;
+  }
+}
+
+.main-head{
+  background: rgba(255,255,255,.5) url(img/grid-tile.png) 0 0 repeat;
+  }
+
+
+.lesson-image{
+  max-height:100%;
+  width:auto;
+  }
+
+/* Lesson-specific page header image */
+.head-img{
+  background-repeat:no-repeat;
+  background-position:right top;
+  background-size:35%;
+  }
+
+/* Read next block on guide pages */
+.next-block .strong { color:rgba(0,0,0,0.75); }
+.next-block .button { padding:28px 40px; }
+.next-block:hover .button { background-color:inherit; }
+
+.next-block .truncate { width: calc(100% - 141px); }
+
+/* Category fills */
+.fill-basics, .fill-basics:hover  { background-color:#83c4af; }
+.fill-intermediate  { background-color:#609dbc; }
+.fill-all           { background-color:#d7cd73; }
+.fill-advanced      { background-color:#ed937b; }
+
+/* Front page blocks */
+.fill-hover.quiet { color:rgba(0,0,0,0.75); }
+.blocks .fill-hover > div { min-height:90px; }
+
+.next-block:hover,
+.blocks .keyline-all:hover { border-color:rgba(0,0,0,0.5); }
+
+/* Foundation guides */
+.highlight {
+  max-height:280px;
+  overflow:auto;
+  }
+.prose .demo {
+  position:relative;
+  height:320px;
+  margin:0 0 40px;
+  overflow:hidden;
+  }
+  .prose .demo iframe,
+  .prose .demo .map {
+    position:absolute;
+    top:0;bottom:0;
+    width:100%;
+    height:280px;
+    padding:0;
+    border:none;
+    }
+  .prose .demo .highlight {
+    background-color:#f8f8f8;
+    z-index:1000;
+    position:relative;
+    min-height:280px;
+    margin:0;
+     -webkit-transition:all .125s;
+        -moz-transition:all .125s;
+         -ms-transition:all .125s;
+             transition:all .125s;
+    -webkit-transform:translateY(100%);
+       -moz-transform:translateY(100%);
+        -ms-transform:translateY(100%);
+            transform:translateY(100%);
+    }
+    .prose .demo .highlight.active {
+      -webkit-transform:translateY(0);
+         -moz-transform:translateY(0);
+          -ms-transform:translateY(0);
+              transform:translateY(0);
+      }
+      .prose .demo .highlight pre { word-wrap:break-word; }
+
+/* Overrides */
+.masthead.keyline-bottom { border-bottom:none; }
+
+.highlight pre {
+  overflow:auto;
+  white-space:pre;
+  word-break:normal;
+  word-wrap:normal;
+  }
+
+p .icon, li .icon { /* align inlined icons with text */
+  display: inline-block;
+}
+
+/* Mobile tweaks */
+@media only screen and (max-width: 640px) {
+  .blocks > div { width:100%; }
+  .blocks .fill-hover > div { min-height:initial; }
+  .next-block > div { position:static; background-color:transparent; }
+  .next-block { height:auto; }
+  .toc {
+    border:1px solid rgba(0,0,0,0.10);
+    margin-bottom:20px;
+    }
+  .toc li   { padding:0; margin:0; }
+  .toc li a { padding:10px; }
+  .toc li:not(:last-child) a { border-bottom:1px solid rgba(0,0,0,0.10);}
+  .lesson-image{
+    background-position:center bottom;
+    background-size:70%;
+    }
+  .head-img{
+    background-position:right bottom;
+    }
+  }
+
+  .main-head{
+    padding-bottom: 20px;
+  }
+
+/* Table of Contents */
+.toc-wrap.affix,
+.toc-wrap.affix-bottom {
+  width:16.6666%;
+  overflow:auto;
+  }
+@media (min-width: 640px) {
+  .toc-wrap {
+    max-width: 167px;
+    font-size: 13px;
+    }
+}
+.toc-wrap.affix {
+  position:fixed;
+  bottom:0;
+  top:0;
+  }
+.toc-wrap.affix-bottom {
+  position:absolute;
+  top:auto !important;
+  bottom:265px;
+  }
+@media only screen and (max-width: 640px) {
+  .toc-wrap.affix-bottom,
+  .toc-wrap.affix {
+    position:static;
+    width:100%;
+    }
+  }
+
+
+/* Twitter */
+
+.med-graphic {
+  height: 80px;
+  width: 80px;
+  }
+
+.guides-tweet-contents {
+  margin-left: 100px;
+  }
+@media (min-width: 640px) {
+  .guides-tweet-contents {
+    line-height: 80px;
+  }
+  }

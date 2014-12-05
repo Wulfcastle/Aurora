@@ -1,0 +1,53 @@
+<html>
+   <head>
+<!-- Original URL: https://www.mapbox.com/labs/surface/sf-bikecrime/?embed=true
+Date Downloaded: 2014-12-05 09:32:51 PM !-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+     <meta charset='UTF-8' />
+     <title></title>
+     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no,minimal-ui' />
+     <link href='../../../../api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.css' rel='stylesheet' />
+     <link rel='stylesheet' href='../../../base/latest/base.css' />
+     <link rel='stylesheet' href='site.css' />
+   </head>
+   <body><div style="z-index: 9999; position: fixed; width: 100%; border: 0px; padding: 5px; margin: 0px; background-color: transparent;  font-size: 12pt; font-family: sans-serif;" id="web2disk_nag" onclick="javascript: document.getElementById('web2disk_nag').style.display = 'none';">
+		<div style="color: #000000; background-color:#F1F1F1; margin-left: auto; margin-right: auto; border-width: 2px; border-style: solid; width: 550px; ">
+			<div style="width: 100%; text-align: center; font-weight: bold; border: 0px; margin: 0px; padding: 0px">Hey, where did my words go? (Click to hide)</div>
+			<p>In the trial version of Web2Disk every fifth word is blanked out. 
+			To copy this site with all the words, please upgrade to the full version and copy this website again.</p>
+			<div style="width: 100%; text-align: center; font-weight: bold; border: 0px; margin: 0px; padding: 0px">
+				<a href="http://www.inspyder.com/products/Web2Disk/">Inspyder Web2Disk: The Website Downloader</a>
+			</div>
+		</div>
+	</div>
+     <div class='col12 clearfix'>
+       <div id='map' class='maphold pin-left'></div>
+       <div class='sidebar pin-right fill-denim dark center'>
+         <div class='col12 pad2'>
+           <h3 class='fancy'>SF Bike Crime </h3>
+           <h4 class='fancy'>Surface API </h4>
+           <p class='quiet small'>Bike crime data from  <a href='https://data.sfgov.org'>data.sfgov.org </a>. Brighter red, higher ____ crime. </p>
+             <table class='table prose.fixed dark quiet small'>
+               <tbody>
+                 <tr><td><p>Maximum Elevation </p></td><td id='max-elev' class='fixWid'> -  </td></tr>
+                 <tr><td>Minimum Elevation </td><td id='min-elev' class='fixWid'> -  </td></tr>
+                 <tr><td>Highest Bike Crime </td><td id='max-temp' class='fixWid'> -  </td></tr>
+                 <tr><td>Lowest Bike Crime </td><td id='min-temp' class='fixWid'> -  </td></tr>
+               </tbody>
+             </table>
+         </div>
+         <div class='col12 row4 pin-bottom js-chartdiv'>
+           <div id='chart'></div>
+         </div>
+       </div>
+     </div>
+   </body>
+   <script src='js/jquery-2.1.1.js'></script>
+   <script src='js/d3.js'></script>
+   <script src='js/polyline.js'></script>
+   <script src='../../../../api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.js'></script>
+   <script src='../../../../api.tiles.mapbox.com/mapbox.js/plugins/leaflet-hash/v0.2.1/leaflet-hash.js'></script>
+   <script src='js/utils.js'></script>
+   <script src='js/site.js'></script>
+ </html>
+ 

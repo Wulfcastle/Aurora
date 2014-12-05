@@ -1,0 +1,211 @@
+#government {
+  background: url(header.jpg) center center no-repeat;
+  background-size: cover;
+}
+
+/* this should be in base */
+.fill-midnight {
+  background-color: #142736;
+}
+.fill-midnight-lighten {
+  background-color: #192d3f;
+}
+
+/*********  STICKY NAV  *********/
+.sticky-nav ul li {
+  float: right;
+  text-align: right;
+}
+.sticky-nav ul li:first-of-type {
+  padding-right: 0px;
+}
+
+.sticky-nav ul li a {
+  color: #909090;
+}
+
+.sticky-nav ul li a.active {
+  color: rgba(55, 132, 186, 1.000);
+}
+
+.sticky {  
+    position: fixed;  
+    width: 100%;  
+    left: 0;  
+    top: 0;  
+    z-index: 100;  
+    border-top: 0;  
+} 
+
+/* industry-government-logos */
+.industry-government-logos {
+  width: 12%;
+  float: left;
+}
+
+a.block:hover .quiet {
+  color: white;
+}
+
+.blog-item-small span.upper {
+  display: block;
+  text-transform: uppercase;
+}
+
+.demo-fcc {
+  position: absolute;
+  left: -40%;
+  top: 0px;
+}
+.demo-worldbank {
+  position: absolute;
+  right: -40%;
+  top: -20px;
+}
+
+.demo-nyc {
+  position: absolute;
+  left: -25%;
+  top: 20px;
+}
+.demo-electionmonitoring {
+  position: absolute;
+  right: -30%;
+  top: 65px;
+}
+.demo-electionmonitoring2 {
+  position: absolute;
+  left: -45%;
+  top: 50px;
+}
+
+.demo-mobile {
+  position: absolute;
+  right: -35%;
+}
+.device.device-browser {
+  width: 100%;
+}
+.device.device-tablet-h {
+  width: 100%;
+}
+
+/* tablet */
+.demo-fcc  .device.device-tablet-h .device-content  {
+    max-width: 800px;
+}
+
+/* rounded corners */
+.device-content img {
+  border-radius: 0 0 10px 10px;
+}
+
+
+/* Afghanistan */
+.afghanistan-intro {
+  background: url(afghanistan.jpg) no-repeat;
+  background-size: cover;
+}
+
+.enterprise-ad {
+  background: url(enterprise.png) left bottom no-repeat;
+  background-size: auto 100%;
+  width: 900px;
+  left: -23%;
+}
+
+/********** CONTACT SECTION **********/
+#contact .half {
+  z-index: -10;
+  position: absolute;
+  width: 50%;
+  height: 320px;
+}
+
+.second-half {
+  left: 50%;
+}
+
+
+/* Retina Screens @2x icons
+------------------------------------------------------- */
+
+@media only screen and (max-width: 1024px){
+  .text-rearrange {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+  .sticky-nav ul li.pad2x {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .enterprise-ad {
+   left: -39%;
+  }
+}
+
+
+@media only screen and (max-width: 950px){
+  .text-rearrange {
+    margin-left: 0px;
+    width: 100%;
+    margin-bottom: 65%;
+    max-width: 100%;
+  }
+  .demo-rearrange {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    top: 310px;
+    width: 95%;
+  }
+  #worldbank .demo-rearrange { top: 370px;}
+  #nyc .demo-rearrange { top: 410px;}
+  .industry-government-logos {
+    width: 25%;
+  } 
+  .demo-electionmonitoring, .demo-electionmonitoring2 {
+    display: none;
+  }
+  #electionmonitoring .text-rearrange {
+    margin-bottom: 40px;
+    margin-top: 40px;
+  }
+}
+
+@media only screen and (max-width: 850px){
+  .demo-mobile {
+    right: -32%;
+    top: 130px;
+  }
+
+  #mobile .iphone, #mobile .android {
+    padding: 40px;
+  }
+}
+
+@media only screen and (max-width: 750px){
+  #fcc .demo-rearrange {
+    top: 360px;
+  }
+  #nyc .demo-rearrange { top: 500px;}
+  .enterprise-ad { background: none;}
+
+  .sticky-nav ul li a.mail {
+    display: none;
+  }
+  .hide-in-enterprise .col5 {
+    width: 100%;
+    margin-left: 0px;
+  }
+}
+
+@media only screen and (max-width: 640px){
+  .text-rearrange {
+    margin-bottom: 40px;
+  }
+}

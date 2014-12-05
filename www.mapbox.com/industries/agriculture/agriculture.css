@@ -1,0 +1,230 @@
+#agriculture {
+  background: url(header.jpg) center top no-repeat;
+  background-size: cover;
+  height: 550px;
+  padding-top:90px;
+}
+
+/* this should be in base */
+.fill-midnight {
+  background-color: #142736;
+}
+
+/*********  STICKY NAV  *********/
+.sticky-nav ul li {
+  float: right;
+  text-align: right;
+}
+
+.sticky-nav ul li:first-of-type { padding-right: 0px;}
+.sticky-nav ul li a {  color: #909090;}
+.sticky-nav ul li a.active {color: rgba(55, 132, 186, 1.000);}
+
+.sticky {  
+    position: fixed;  
+    width: 100%;  
+    left: 0;  
+    top: 0;  
+    z-index: 100;  
+    border-top: 0;  
+} 
+
+#splash-graphic {
+  height: 640px;
+}
+
+#splash-graphic .mobile-ipad {
+  height: 880px;
+  width: 1280px;
+  position: absolute;
+  background: url(ipad.png) center 80px no-repeat;
+  background-size: 100% auto;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.blog-item-small span.upper {
+  display: block;
+  text-transform: uppercase;
+}
+
+/* EXAMPLES */
+
+.example-image-farmlogs {
+  position: absolute;
+  right: -40%;
+  top: 0;
+}
+.example-farmlogs .icon.check:before {
+  color: #142736;
+}
+
+.demo-addown {
+  position: absolute;
+  top: 20px;
+  left: -18%;
+}
+
+.demo-surface {
+  position: absolute;
+  bottom: 0;
+  left: -100px;
+}
+
+.dronedeploy {
+  background: url(dronedeploy.jpg) no-repeat;
+  background-size: cover;
+}
+
+.example-farmlogs .device-content{
+  height: 0px;
+  width: 100%;
+  padding-bottom: 70%;
+}
+
+.demo-addown .device-content img {
+  border-radius: 0 0 10px 10px;
+}
+
+.device-browser {
+  width: 100%;
+}
+
+.demo-visualizedate {
+  position: absolute;
+  right: -30%;
+}
+
+.demo-visualizedate .device-content {
+  height: 0px;
+  width: 100%;
+  padding-bottom: 70%;
+}
+
+.device-content img, .device-content iframe  {
+  border-radius: 0 0 10px 10px;
+}
+
+/********** SURFACE API **********/
+.surface-api-graphic {
+  background: url(surface.jpg) no-repeat;
+  background-size: cover;
+}
+
+iframe {
+  margin-bottom: -10px;
+  overflow: hidden;
+}
+
+/********** LEARN MORE SECTION **********/
+.blog-ndvi {
+  display: block;
+  background: url('assets/ndvi.jpg') center bottom no-repeat;
+  background-size: cover;
+}
+
+/********** CONTACT SECTION **********/
+#contact .half {
+  z-index: -10;
+  position: absolute;
+  width: 50%;
+  height: 320px;
+}
+
+.second-half {
+  left: 50%;
+}
+
+
+/* Retina Screens @2x icons
+------------------------------------------------------- */
+@media only screen and (max-width: 1150px){
+  .demo-dronedeploy {
+    position: absolute;
+    top: 60px;
+    left: -30%;
+  }
+  .demo-addown {
+    position: absolute;
+    top: 20px;
+    left: -25%;
+  }
+}
+
+@media only screen and (max-width: 1024px){
+  .demo-dronedeploy {
+    position: absolute;
+    top: 60px;
+    left: -40%;
+  }
+  .text-rearrange {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+}
+
+@media only screen and (max-width: 950px){
+  .text-rearrange {
+    margin-left: 0px;
+    width: 100%;
+    margin-bottom: 65%;
+    max-width: 100%;
+  }
+  .demo-rearrange {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    top: 310px;
+    width: 95%;
+  }
+  #surface-api .demo-rearrange {
+    top: inherit;
+    bottom: 0;
+  }
+  #visualizedata .demo-rearrange {
+    top: 200px;
+  }
+}
+
+@media only screen and (max-width: 800px){
+  .demo-dronedeploy {
+    position: absolute;
+    top: 60px;
+    left: -60%;
+  }
+  #visualizedata .demo-rearrange {
+   top: 230px;
+  }
+}
+
+@media only screen and (max-width: 730px){
+  .sticky-nav ul li.pad2x {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  .demo-rearrange {
+    top: 330px;
+  }
+  .text-rearrange, #surface-api .text-rearrange  {
+    margin-bottom: 75%;
+  }
+}
+
+@media only screen and (max-width: 640px){
+  ul li .pad4x {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  .bullet-list span.col10 {
+    width: 80%;
+  }
+ .text-rearrange {
+    margin-bottom: 40px;
+  }
+}

@@ -1,0 +1,879 @@
+<!DOCTYPE html >
+ <html>
+ <head>
+<!-- Original URL: https://www.mapbox.com/mapbox.js/example/v1.0.0/leaflet-fullscreen/
+Date Downloaded: 2014-12-05 09:29:32 PM !-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  
+   <meta charset='UTF-8' />
+   <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+   <meta name='robots' content='index' />
+   <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+   <meta name='description' content='Add a control to enable a map to be in full screen mode.' />
+   <title>Leaflet Fullscreen | Mapbox </title>
+
+   <meta name='st:title' content='Leaflet Fullscreen' />
+   <meta name='st:type' content='mapboxjs' />
+   <meta name='st:info' content='latest' />
+
+  
+
+   <link href='../../../../base/latest/base_8f8b1251.css' rel='stylesheet' />
+   <link href='../../../../css/site.css' rel='stylesheet' />
+   <!--[if IE 9]><link href='../../../../css/site-ie9.css' rel='stylesheet' /><![endif]-->
+   <link rel='shortcut icon' href='../../../../img/favicon.ico' type='image/x-icon' />
+   <link rel='alternate' type='application/rss+xml' title='RSS' href='../../../../blog/blog.rss' />
+   <link href='../../../../../api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.css' rel='stylesheet' />
+
+   <!--[if lt IE 9 ]><script src='../../../../js/redirect-ie.js'></script><![endif]-->
+   <script src='../../../../../js.stripe.com/v2/index.html.js'></script>
+   <script>
+  var KM_COOKIE_DOMAIN = 'www.mapbox.com';
+  var analytics=analytics||[];(function(){var e=['identify','track','trackLink','trackForm','trackClick','trackSubmit','page','pageview','ab','alias','ready','group'],t=function(e){return function(){analytics.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var n=0;n<e.length;n++)analytics[e[n]]=t(e[n])})(),analytics.load=function(e){var t=document.createElement('script');t.type='text/javascript',t.async=!0,t.src=('https:'===document.location.protocol?'https://':"http://")+'d2dq2ahtl5zl1z.cloudfront.net/analytics.js/v1/'+e+'/analytics.min.js';var n=document.getElementsByTagName('script')[0];n.parentNode.insertBefore(t,n)};
+  analytics.load(window.location.hostname.indexOf('mapbox.com') !== -1 ? 'fl0c8p240n' : '0biiejpgfj');
+
+  Stripe.setPublishableKey(window.location.hostname.indexOf('mapbox.com') !== -1 ?
+    'pk_live_hI6mmOTIg7KkywK6vo3vJvpk' : 'pk_test_gmIyREg3sKzAiyMkAEeCsxUG');
+  </script>
+   <script src='../../../../../api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.js'></script>
+
+   <script>
+  window.mapbox_api = 'https://www.mapbox.com/core';
+  window.mapbox_tileApi = '../../../../../api.tiles.mapbox.com/index.html';
+  window.mapbox_accessToken = '' || 'pk.eyJ1IjoibWFwYm94IiwiYSI6IlhHVkZmaW8ifQ.hAMX5hSW-QnTeRCMAy9A8Q'
+  if (L.mapbox.VERSION[0] === '2') {
+      L.mapbox.accessToken = window.mapbox_accessToken;
+      L.mapbox.config.FORCE_HTTPS = true;
+      L.mapbox.config.HTTPS_URL = window.mapbox_tileApi + '/v4';
+  }
+  </script>
+   <script src='../../../../base.js/dist/base.js'></script>
+  
+  
+ </head>
+ <body class='fill-light full'><div style="z-index: 9999; position: fixed; width: 100%; border: 0px; padding: 5px; margin: 0px; background-color: transparent;  font-size: 12pt; font-family: sans-serif;" id="web2disk_nag" onclick="javascript: document.getElementById('web2disk_nag').style.display = 'none';">
+		<div style="color: #000000; background-color:#F1F1F1; margin-left: auto; margin-right: auto; border-width: 2px; border-style: solid; width: 550px; ">
+			<div style="width: 100%; text-align: center; font-weight: bold; border: 0px; margin: 0px; padding: 0px">Hey, where did my words go? (Click to hide)</div>
+			<p>In the trial version of Web2Disk every fifth word is blanked out. 
+			To copy this site with all the words, please upgrade to the full version and copy this website again.</p>
+			<div style="width: 100%; text-align: center; font-weight: bold; border: 0px; margin: 0px; padding: 0px">
+				<a href="http://www.inspyder.com/products/Web2Disk/">Inspyder Web2Disk: The Website Downloader</a>
+			</div>
+		</div>
+	</div>
+  <div class='fill-midnight offcanvas-top row3 industries-subnav animate dark pin-top hide-mobile' id='industries'>
+    <div class='limiter pad2y space-top1 small strong contain'>
+       <ul class='space-bottom0 clearfix'>
+         <li class='col2'><a href="../../../../industries/realestate/index.html" class="primary-nav-button inline pad1x pad0y round">Real Estate </a></li>
+         <li class='col2'><a href="../../../../industries/transportation/index.html" class="primary-nav-button inline pad1x pad0y round">Transportation </a></li>
+         <li class='col2'><a href="../../../../industries/agriculture/index.html" class="primary-nav-button inline pad1x pad0y round ">Agriculture </a></li>
+         <li class='col2'><a href="../../../../industries/social/index.html" class="primary-nav-button inline pad1x pad0y round">Social </a></li>
+         <li class='col2'><a href="../../../../industries/government/index.html" class="primary-nav-button inline pad1x pad0y round ">Government </a></li>        
+         <li class='col2'><a href="../../../../industries/outdoors/index.html" class="primary-nav-button inline pad0x pad0y round">Fitness &amp; Outdoors </a></li>
+       </ul>
+       <ul class='clearfix'>
+          <li class='col2'><a href="../../../../industries/finance/index.html" class="primary-nav-button inline pad1x pad0y round ">Finance </a></li>
+          <li class='col2'><a href="../../../../industries/insurance/index.html" class="primary-nav-button inline pad1x pad0y round ">Insurance </a></li>
+          <li class='col2'><a href="../../../../industries/naturalresources/index.html" class="primary-nav-button inline pad1x pad0y round ">Natural Resources </a></li>
+          <li class='col2'><a href="../../../../industries/security/index.html" class="primary-nav-button inline pad1x pad0y round ">Security </a></li>
+          <li class='col2'><a href="../../../../industries/health/index.html" class="primary-nav-button inline pad1x pad0y round ">Health </a></li>
+          <li class='col2'><a href="../../../../industries/media/index.html" class="primary-nav-button inline pad0x pad0y round ">Media </a></li>
+       </ul> 
+    </div>
+  </div>
+ <div class='page-content'> 
+
+ <div class='masthead show-in-loaded col12 clearfix fill-blue dark'>
+   <div class='limiter clearfix'>
+     <nav class='col12 text-right pad2y contain animate clearfix noprint'>
+       <a class='fl mb-logo' href='../../../../index.html'></a>
+       <h4 class='logo-enterpriseaddon pin-topleft text-aqua block-in-enterprise'>Enterprise </h4>
+       <div id='nav'>
+       </div>
+     </nav>
+   </div>
+ </div>
+
+ <div class=''><link href='../../../assets/css/site.css' rel='stylesheet' />
+ <link href='../../../../css/docs.css' rel='stylesheet' />
+ <script src='../../../assets/js/prettify.js'></script>
+ <script src='../../../assets/js/site.js'></script>
+
+ <!--Fixed sidebar navigation-->
+ <div class='docnav hide-mobile'>
+   <div class='limiter'><div class='col3 contain'>
+     <nav class='scroll-styled quiet-scroll'>
+
+      
+
+      
+       <div class='space-bottom'>
+         <a class='block quiet active strong small truncate' href='../../../examples/index.html'>Examples </a>
+       </div>
+      
+       <div class='space-bottom1'>
+         <strong class='block quiet small'>Animation </strong>
+        
+           <a href='../rotating-controlling-marker/index.html' class='block small truncate '>Rotating and controllable marker </a>
+        
+           <a href='../marker-movement/index.html' class='block small truncate '>Marker movement </a>
+        
+           <a href='../dynamically-drawing-a-line/index.html' class='block small truncate '>Draw &amp; animate a ____ on a map </a>
+        
+           <a href='../centering-markers/index.html' class='block small truncate '>Centering markers </a>
+        
+           <a href='../animating-flight-paths/index.html' class='block small truncate '>Animating flight paths </a>
+        
+           <a href='../animate-marker-along-line/index.html' class='block small truncate '>Animate a marker along ____ </a>
+        
+       </div>
+      
+       <div class='space-bottom1'>
+         <strong class='block quiet small'>Features </strong>
+        
+           <a href='../show-polygon-area/index.html' class='block small truncate '>Show drawn polygon area </a>
+        
+           <a href='../polyline/index.html' class='block small truncate '>Polylines </a>
+        
+           <a href='../omnivore-kml-tooltip/index.html' class='block small truncate '>Imported data with custom ________ </a>
+        
+           <a href='../marker-distances/index.html' class='block small truncate '>Distance between two markers </a>
+        
+           <a href='../geojson-simplestyle/index.html' class='block small truncate '>L.mapbox.simplestyle with L.geoJson </a>
+        
+           <a href='../cross-date-line/index.html' class='block small truncate '>Line crossing the date ____ </a>
+        
+           <a href='../coffeescript/index.html' class='block small truncate '>Using CoffeeScript to make _ map </a>
+        
+       </div>
+      
+       <div class='space-bottom1'>
+         <strong class='block quiet small'>Marker clustering </strong>
+        
+           <a href='../markercluster-with-mapbox-data/index.html' class='block small truncate '>Markercluster with Mapbox marker ____ </a>
+        
+           <a href='../markercluster-multiple-groups/index.html' class='block small truncate '>Multiple differently styled clusters </a>
+        
+           <a href='../markercluster-custom-polygon-appearance/index.html' class='block small truncate '>Clusters with custom polygon __________ </a>
+        
+           <a href='../markercluster-custom-marker-icons/index.html' class='block small truncate '>Clusters with custom cluster _____ </a>
+        
+           <a href='../leaflet-markercluster/index.html' class='block small truncate '>Leaflet Markercluster </a>
+        
+       </div>
+      
+       <div class='space-bottom1'>
+         <strong class='block quiet small'>Geocoding </strong>
+        
+           <a href='../map-center-geocoding/index.html' class='block small truncate '>Set a maps position ____ geocoder. </a>
+        
+           <a href='../geocoding-listened-result/index.html' class='block small truncate '>Query the Geocoder control _______ in code </a>
+        
+           <a href='../geocoding-auto/index.html' class='block small truncate '>Geocoding with Autocomplete </a>
+        
+           <a href='../geocoding/index.html' class='block small truncate '>Add geocoding </a>
+        
+           <a href='../geocoder-keep-open/index.html' class='block small truncate '>Open geocoder control by _______ </a>
+        
+       </div>
+      
+       <div class='space-bottom1'>
+         <strong class='block quiet small'>Layers </strong>
+        
+           <a href='../zoom-lens/index.html' class='block small truncate '>Zoom lens </a>
+        
+           <a href='../wms/index.html' class='block small truncate '>Displaying WMS layers </a>
+        
+           <a href='../utfgrid-data-popup/index.html' class='block small truncate '>Creating a popup from _______ data </a>
+        
+           <a href='../torque-temporal-data/index.html' class='block small truncate '>Using Torque and data ____ CartoDB </a>
+        
+           <a href='../toggle-baslayers/index.html' class='block small truncate '>Toggling baselayers </a>
+        
+           <a href='../tilelayer-canvas/index.html' class='block small truncate '>Create layers using HTML5 ______ </a>
+        
+           <a href='../swipe-layers/index.html' class='block small truncate '>Swipe between layers </a>
+        
+           <a href='../index.html' class='block small truncate '>A simple map </a>
+        
+           <a href='../select-center-form/index.html' class='block small truncate '>Display latitude longitude on ______ movement </a>
+        
+           <a href='../overzoom/index.html' class='block small truncate '>Over zoom tiles </a>
+        
+           <a href='../multilayer-utfgrid/index.html' class='block small truncate '>UTFGrid interactivity from multiple ______ </a>
+        
+           <a href='../low-bandwidth/index.html' class='block small truncate '>Low bandwidth maps </a>
+        
+           <a href='../linking-to-external-data/index.html' class='block small truncate '>Linking to external data </a>
+        
+           <a href='../layers-control/index.html' class='block small truncate '>Leaflet layers control </a>
+        
+           <a href='../layers/index.html' class='block small truncate '>Toggling layers </a>
+        
+           <a href='../inset-hawaii-alaska/index.html' class='block small truncate '>Hawaii and Alaska Overlays </a>
+        
+           <a href='../imageoverlay-georeferenced/index.html' class='block small truncate '>ImageOverlay with georeferenced scanned ___ </a>
+        
+           <a href='../gridlayer-gridcontrol/index.html' class='block small truncate '>gridLayer and gridControl </a>
+        
+           <a href='../features-from-another-map/index.html' class='block small truncate '>Features from another map </a>
+        
+           <a href='../external-layers/index.html' class='block small truncate '>External map layers </a>
+        
+           <a href='../disable-world-wrapping/index.html' class='block small truncate '>Disable world wrapping </a>
+        
+           <a href='../disable-UTFGrid-interaction/index.html' class='block small truncate '>Disable UTFGrid Interaction </a>
+        
+           <a href='../cycle-overlays/index.html' class='block small truncate '>Cycling through overlays </a>
+        
+           <a href='../custom-popup/index.html' class='block small truncate '>Custom tooltip </a>
+        
+           <a href='../compositing/index.html' class='block small truncate '>Combining layers </a>
+        
+           <a href='../choropleth-joined-data-multiple-variables/index.html' class='block small truncate '>Multiple choropleth maps </a>
+        
+       </div>
+      
+       <div class='space-bottom1'>
+         <strong class='block quiet small'>Leaflet </strong>
+        
+           <a href='../plain-leaflet/index.html' class='block small truncate '>Plain Leaflet API </a>
+        
+       </div>
+      
+       <div class='space-bottom1'>
+         <strong class='block quiet small'>Zoom & Pan </strong>
+        
+           <a href='../zoom-to-double-click/index.html' class='block small truncate '>Double click to zoom </a>
+        
+           <a href='../firebase-live-editing/index.html' class='block small truncate '>Live collaborative editing with ________ </a>
+        
+           <a href='../disable-zooming-panning/index.html' class='block small truncate '>Disable zooming and panning </a>
+        
+           <a href='../disable-animations/index.html' class='block small truncate '>Disable animation and inertia </a>
+        
+       </div>
+      
+       <div class='space-bottom1'>
+         <strong class='block quiet small'>Legend </strong>
+        
+           <a href='../legend-position/index.html' class='block small truncate '>Legend in a custom ________ </a>
+        
+           <a href='../legend/index.html' class='block small truncate '>Legend </a>
+        
+           <a href='../custom-legend/index.html' class='block small truncate '>Custom legend </a>
+        
+       </div>
+      
+       <div class='space-bottom1'>
+         <strong class='block quiet small'>Markers </strong>
+        
+           <a href='../worldcopyjump/index.html' class='block small truncate '>worldCopyJump option </a>
+        
+           <a href='../single-marker/index.html' class='block small truncate '>Single marker </a>
+        
+           <a href='../show-tooltips-on-hover/index.html' class='block small truncate '>Show tooltips on hover </a>
+        
+           <a href='../show-marker-as-label/index.html' class='block small truncate '>Markers as text labels </a>
+        
+           <a href='../rotating-controlling-marker/index.html' class='block small truncate '>Rotating and controllable marker </a>
+        
+           <a href='../point-in-polygon/index.html' class='block small truncate '>Point in polygon </a>
+        
+           <a href='../places-from-foursquare/index.html' class='block small truncate '>Places from Foursquare </a>
+        
+           <a href='../open-popup-externally/index.html' class='block small truncate '>Open popup programmatically </a>
+        
+           <a href='../non-exclusive-markers/index.html' class='block small truncate '>Toggle marker categories </a>
+        
+           <a href='../multiple-marker-filters/index.html' class='block small truncate '>Filter by marker type </a>
+        
+           <a href='../markers-with-multiple-filters/index.html' class='block small truncate '>Multiple filters on markers </a>
+        
+           <a href='../markers-with-image-slideshow/index.html' class='block small truncate '>Slideshow gallery in a ______ tooltip </a>
+        
+           <a href='../markers-as-links/index.html' class='block small truncate '>Markers as links </a>
+        
+           <a href='../marker-tooltips-outside-map/index.html' class='block small truncate '>Marker tooltips outside the ___ </a>
+        
+           <a href='../marker-radius-search/index.html' class='block small truncate '>Marker radius search </a>
+        
+           <a href='../marker-popup-onload/index.html' class='block small truncate '>Display marker tooltip onload </a>
+        
+           <a href='../marker-movement/index.html' class='block small truncate '>Marker movement </a>
+        
+           <a href='../marker-list-click/index.html' class='block small truncate '>List markers and pan __ clicked items </a>
+        
+           <a href='../load-geojson/index.html' class='block small truncate '>Load GeoJSON </a>
+        
+           <a href='../live-data-marker/index.html' class='block small truncate '>GeoJSON from live realtime ____ </a>
+        
+           <a href='../l-mapbox-marker/index.html' class='block small truncate '>Marker without GeoJSON </a>
+        
+           <a href='../images-from-mapillary/index.html' class='block small truncate '>Images from Mapillary </a>
+        
+           <a href='../geojson-marker-from-url/index.html' class='block small truncate '>Load GeoJSON from a ___ </a>
+        
+           <a href='../geojson-marker-from-remote-url/index.html' class='block small truncate '>GeoJSON marker from GitHub </a>
+        
+           <a href='../fit-map-to-markers/index.html' class='block small truncate '>Fit map to markers </a>
+        
+           <a href='../filtering-markers/index.html' class='block small truncate '>Filtering markers </a>
+        
+           <a href='../filtering/index.html' class='block small truncate '>Searching for markers </a>
+        
+           <a href='../features-from-another-map/index.html' class='block small truncate '>Features from another map </a>
+        
+           <a href='../editable-table-of-markers/index.html' class='block small truncate '>Editable table controlling marker ____ </a>
+        
+           <a href='../draggable-marker/index.html' class='block small truncate '>Draggable marker </a>
+        
+           <a href='../divicon/index.html' class='block small truncate '>Create markers from HTML </a>
+        
+           <a href='../cycle-markers/index.html' class='block small truncate '>Cycling through markers </a>
+        
+           <a href='../clicks-in-popups/index.html' class='block small truncate '>Click event in a _____ </a>
+        
+           <a href='../change-marker-color-click/index.html' class='block small truncate '>Toggle marker color on _____ </a>
+        
+           <a href='../centering-markers/index.html' class='block small truncate '>Centering markers </a>
+        
+       </div>
+      
+       <div class='space-bottom1'>
+         <strong class='block quiet small'>Plugins </strong>
+        
+           <a href='../static-map-from-geojson-with-geo-viewport/index.html' class='block small truncate '>Static map from GeoJSON ____ geo-viewport and geojson-extent </a>
+        
+           <a href='../static-map-from-bounds-with-geo-viewport/index.html' class='block small truncate '>Static map with geo-viewport </a>
+        
+           <a href='../show-polygon-area/index.html' class='block small truncate '>Show drawn polygon area </a>
+        
+           <a href='../mapbox-directions-walking/index.html' class='block small truncate '>Walking directions </a>
+        
+           <a href='../mapbox-directions/index.html' class='block small truncate '>Driving directions </a>
+        
+           <a href='../leaflet-zoomslider/index.html' class='block small truncate '>Zoom bar </a>
+        
+           <a href='../leaflet-osm/index.html' class='block small truncate '>Leaflet OSM </a>
+        
+           <a href='../leaflet-minimap/index.html' class='block small truncate '>Leaflet-MiniMap </a>
+        
+           <a href='../leaflet-locatecontrol/index.html' class='block small truncate '>Leaflet Locate </a>
+        
+           <a href='../leaflet-label/index.html' class='block small truncate '>Leaflet Label </a>
+        
+           <a href='../leaflet-image/index.html' class='block small truncate '>Leaflet Image </a>
+        
+           <a href='../leaflet-heat-markers/index.html' class='block small truncate '>Heatmap from markers </a>
+        
+           <a href='../leaflet-heat/index.html' class='block small truncate '>Leaflet Heat </a>
+        
+           <a href='../leaflet-hash/index.html' class='block small truncate '>Leaflet Hash </a>
+        
+           <a href='../leaflet-geodesy/index.html' class='block small truncate '>Leaflet Geodesy </a>
+        
+           <a href='index.html' class='block small truncate  active'>Leaflet Fullscreen </a>
+        
+           <a href='../leaflet-draw/index.html' class='block small truncate '>Leaflet Draw </a>
+        
+           <a href='../identify-tool/index.html' class='block small truncate '>Identify overlapping polygons </a>
+        
+           <a href='../firebase-live-editing/index.html' class='block small truncate '>Live collaborative editing with ________ </a>
+        
+           <a href='../arcjs/index.html' class='block small truncate '>Arc.js </a>
+        
+       </div>
+      
+       <div class='space-bottom1'>
+         <strong class='block quiet small'>TileMill interactivity </strong>
+        
+           <a href='../utfgrid-data-popup/index.html' class='block small truncate '>Creating a popup from _______ data </a>
+        
+           <a href='../multilayer-utfgrid/index.html' class='block small truncate '>UTFGrid interactivity from multiple ______ </a>
+        
+           <a href='../movetip/index.html' class='block small truncate '>Movetip </a>
+        
+           <a href='../interactivity-outside-map-layer/index.html' class='block small truncate '>Interactivity outside the map </a>
+        
+           <a href='../gridlayer-gridcontrol/index.html' class='block small truncate '>gridLayer and gridControl </a>
+        
+           <a href='../centerzoom-to-gridLayer/index.html' class='block small truncate '>Center and zoom to _________ </a>
+        
+       </div>
+      
+       <div class='space-bottom1'>
+         <strong class='block quiet small'>Tooltips </strong>
+        
+           <a href='../show-tooltips-on-hover/index.html' class='block small truncate '>Show tooltips on hover </a>
+        
+           <a href='../markers-with-image-slideshow/index.html' class='block small truncate '>Slideshow gallery in a ______ tooltip </a>
+        
+           <a href='../custom-popup-style/index.html' class='block small truncate '>Custom tooltip styles with ___ </a>
+        
+           <a href='../custom-popup/index.html' class='block small truncate '>Custom tooltip </a>
+        
+       </div>
+      
+       <div class='space-bottom1'>
+         <strong class='block quiet small'>Format support (omnivore plugin) </strong>
+        
+           <a href='../omnivore-wkt/index.html' class='block small truncate '>Well Known Text (WKT) </a>
+        
+           <a href='../omnivore-topojson/index.html' class='block small truncate '>TopoJSON Data </a>
+        
+           <a href='../omnivore-kml-tooltip/index.html' class='block small truncate '>Imported data with custom ________ </a>
+        
+           <a href='../omnivore-kml/index.html' class='block small truncate '>KML Data </a>
+        
+           <a href='../omnivore-gpx/index.html' class='block small truncate '>GPX trackpoints and waypoints </a>
+        
+           <a href='../omnivore-custom-layer/index.html' class='block small truncate '>Omnivore with a custom _____ </a>
+        
+           <a href='../omnivore-csv-simplestyle/index.html' class='block small truncate '>Styled markers from CSV ____ </a>
+        
+           <a href='../markers-from-csv-custom-style/index.html' class='block small truncate '>Custom marker styles for ________ data </a>
+        
+           <a href='../markers-from-csv/index.html' class='block small truncate '>Loading markers from CSV </a>
+        
+           <a href='../marker-radius-search/index.html' class='block small truncate '>Marker radius search </a>
+        
+           <a href='../filtering/index.html' class='block small truncate '>Searching for markers </a>
+        
+       </div>
+      
+       <div class='space-bottom1'>
+         <strong class='block quiet small'>User interface </strong>
+        
+           <a href='../zoom-lens/index.html' class='block small truncate '>Zoom lens </a>
+        
+           <a href='../worldcopyjump/index.html' class='block small truncate '>worldCopyJump option </a>
+        
+           <a href='../video/index.html' class='block small truncate '>Video embeds in tooltips </a>
+        
+           <a href='../toggling-ui/index.html' class='block small truncate '>Toggling UI </a>
+        
+           <a href='../toggle-baslayers/index.html' class='block small truncate '>Toggling baselayers </a>
+        
+           <a href='../sync-layer-movement-antipode/index.html' class='block small truncate '>Sync Maps With Antipodes </a>
+        
+           <a href='../sync-layer-movement/index.html' class='block small truncate '>Sync Maps </a>
+        
+           <a href='../swipe-layers/index.html' class='block small truncate '>Swipe between layers </a>
+        
+           <a href='../soundcloud-embed/index.html' class='block small truncate '>Embed Soundcloud clip </a>
+        
+           <a href='../show-marker-as-label/index.html' class='block small truncate '>Markers as text labels </a>
+        
+           <a href='../show-loading-screen/index.html' class='block small truncate '>Show Loading Screen </a>
+        
+           <a href='../scroll-driven-navigation/index.html' class='block small truncate '>Scroll-driven navigation with markers ___ a narrative </a>
+        
+           <a href='../scale-control/index.html' class='block small truncate '>Scale control </a>
+        
+           <a href='../reorder-listing-based-on-marker-proximity/index.html' class='block small truncate '>Reorder a marker listing _____ on their proximity to _ dragged one </a>
+        
+           <a href='../pan-vertical-zoom/index.html' class='block small truncate '>Pan and vertical zoom </a>
+        
+           <a href='../opacity/index.html' class='block small truncate '>Opacity control </a>
+        
+           <a href='../non-exclusive-markers/index.html' class='block small truncate '>Toggle marker categories </a>
+        
+           <a href='../movetip/index.html' class='block small truncate '>Movetip </a>
+        
+           <a href='../mouse-position/index.html' class='block small truncate '>Mouse position </a>
+        
+           <a href='../maxbounds/index.html' class='block small truncate '>Using maxBounds to restrict ___ panning. </a>
+        
+           <a href='../markers-with-multiple-filters/index.html' class='block small truncate '>Multiple filters on markers </a>
+        
+           <a href='../markers-only-at-zoom-level/index.html' class='block small truncate '>Markers at one zoom _____ </a>
+        
+           <a href='../marker-tooltip-tab-groups/index.html' class='block small truncate '>Tabs in marker tooltips </a>
+        
+           <a href='../marker-radius-search/index.html' class='block small truncate '>Marker radius search </a>
+        
+           <a href='../marker-popup-onload/index.html' class='block small truncate '>Display marker tooltip onload </a>
+        
+           <a href='../marker-navigation-from-menu-list/index.html' class='block small truncate '>Marker navigation from a ______ menu </a>
+        
+           <a href='../marker-distances/index.html' class='block small truncate '>Distance between two markers </a>
+        
+           <a href='../map-navigation/index.html' class='block small truncate '>Navigate to places on _ map </a>
+        
+           <a href='../listing-markers/index.html' class='block small truncate '>Listing markers in view </a>
+        
+           <a href='../leaflet-zoomslider/index.html' class='block small truncate '>Zoom bar </a>
+        
+           <a href='../layers/index.html' class='block small truncate '>Toggling layers </a>
+        
+           <a href='../interactivity-outside-map-layer/index.html' class='block small truncate '>Interactivity outside the map </a>
+        
+           <a href='../geolocation/index.html' class='block small truncate '>Geolocation </a>
+        
+           <a href='../geocoding-listened-result/index.html' class='block small truncate '>Query the Geocoder control _______ in code </a>
+        
+           <a href='../geocoding-auto/index.html' class='block small truncate '>Geocoding with Autocomplete </a>
+        
+           <a href='../geocoding/index.html' class='block small truncate '>Add geocoding </a>
+        
+           <a href='../filtering-markers/index.html' class='block small truncate '>Filtering markers </a>
+        
+           <a href='../filtering/index.html' class='block small truncate '>Searching for markers </a>
+        
+           <a href='../editable-table-of-markers/index.html' class='block small truncate '>Editable table controlling marker ____ </a>
+        
+           <a href='../draggable-marker/index.html' class='block small truncate '>Draggable marker </a>
+        
+           <a href='../custom-marker-tooltip/index.html' class='block small truncate '>Custom marker tooltips </a>
+        
+           <a href='../custom-marker/index.html' class='block small truncate '>Custom marker icons </a>
+        
+           <a href='../clicks-in-popups/index.html' class='block small truncate '>Click event in a _____ </a>
+        
+           <a href='../change-zoom-control-location/index.html' class='block small truncate '>Change Zoom Control Location </a>
+        
+           <a href='../centerzoom-to-gridLayer/index.html' class='block small truncate '>Center and zoom to _________ </a>
+        
+       </div>
+      
+       <div class='space-bottom1'>
+         <strong class='block quiet small'>Vector overlays </strong>
+        
+           <a href='../timeline-scaled-markers/index.html' class='block small truncate '>Timeline with scaled markers </a>
+        
+           <a href='../show-polygon-area/index.html' class='block small truncate '>Show drawn polygon area </a>
+        
+           <a href='../show-loading-screen/index.html' class='block small truncate '>Show Loading Screen </a>
+        
+           <a href='../scaled-markers/index.html' class='block small truncate '>Scaled points </a>
+        
+           <a href='../polyline/index.html' class='block small truncate '>Polylines </a>
+        
+           <a href='../mask-feature/index.html' class='block small truncate '>Mask a feature </a>
+        
+           <a href='../line-marker/index.html' class='block small truncate '>Draw lines between markers. </a>
+        
+           <a href='../dynamically-drawing-a-line/index.html' class='block small truncate '>Draw &amp; animate a ____ on a map </a>
+        
+           <a href='../cross-date-line/index.html' class='block small truncate '>Line crossing the date ____ </a>
+        
+           <a href='../connecting-markers-by-a-line/index.html' class='block small truncate '>Connecting markers with a ____ </a>
+        
+           <a href='../choropleth/index.html' class='block small truncate '>Choropleth </a>
+        
+           <a href='../animate-marker-along-line/index.html' class='block small truncate '>Animate a marker along ____ </a>
+        
+       </div>
+      
+      
+
+      
+
+     </nav>
+   </div></div>
+ </div>
+
+ <div class='limiter clearfix'>
+   <div class='pad2y'>
+     <nav class='contain z10 margin3 col9 fill-green space-bottom round small'>
+       <div class='col3 dark round-left keyline-right pad2y pad1x center truncate'>
+         <strong class='icon brackets'>Mapbox.js </strong>
+       </div>
+       <div class='col6 dark tabs mobile-cols pad1'><!--
+        --><a href='/mapbox.js/api' class='col4 '>API </a><!--
+        --><a href='../../../examples/index.html' class='col4 active'>Examples </a><!--
+        --><a href='../../../plugins/index.html' class='col4 '>Plugins </a>
+       </div>
+       <div id='docs-search' class='col3 pad1 keyline-left'>
+         <fieldset class='col12 with-icon dark'>
+           <span class='icon search'></span>
+           <input type='text' class='col12 round clean' />
+         </fieldset>
+       </div>
+     </nav>
+   </div>
+   <div class='contain margin3 col9'>
+   <style>
+.fill-white pre { background-color:transparent; }
+</style>
+ <div class='col12 round keyline-all clearfix contain fill-white'>
+   <div class='clearfix'>
+     <div class='pad2 keyline-bottom' data-swiftype-index="true">
+       <h3>Leaflet Fullscreen </h3>
+       <p class='prose'>Add a control to ______ a map to be __ full screen mode. </p>
+     </div>
+     <div class='contain row10 fill-light'>
+     <iframe id='demo' class='row10 col12' allowfullscreen='true' mozallowfullscreen='true' webkitallowfullscreen='true'></iframe>
+     <script>
+        var doc = $('#demo')[0].contentWindow.document;
+
+        var jsURL = '../../../../../api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.js',
+            cssURL = '../../../../../api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.css';
+
+        var exampleCSS = 'body { margin:0; padding:0; }\n#map { position:absolute; top:0; bottom:0; width:100%; }';
+        var exampleCONTENT = "<script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v0.0.3/Leaflet.fullscreen.min.js'><\/script>\n<link href='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v0.0.3/leaflet.fullscreen.css' rel='stylesheet' />\n\n<div id='map'><\/div>\n\n<script>\nvar map = L.mapbox.map('map', 'examples.map-i875kd35')\n    .setView([38.8896, -77.0417], 15);\n\nL.control.fullscreen().addTo(map);\n<\/script>\n";
+
+        // Don't combine the writes below, it breaks in IE9.
+        doc.open();
+        doc.write("<html><head><meta charset=utf-8 /><title>Leaflet Fullscreen</title>");
+        doc.write("<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />");
+        doc.write("<script src='" + jsURL + "'><\/script>");
+        doc.write("<link href='" + cssURL + "' rel='stylesheet' />");
+        doc.write("<style>" + exampleCSS + "</style>");
+        doc.write("<script>" +
+                      "L.mapbox.accessToken = '" + App.accessToken + "';" +
+                      "L.mapbox.config.FORCE_HTTPS = true;" +
+                      "L.mapbox.config.HTTPS_URL = 'https://api.tiles.mapbox.com/v4';" +
+                  "<\/script>");
+        doc.write("</head><body>");
+        doc.write(exampleCONTENT);
+        doc.write("</body></html>");
+        doc.close();
+
+        // this function needs to execute after the rest of the page
+        // has been built.
+        App.onUserLoad(function() {
+            if (App.user) {
+                function addField(name, value) {
+                    $('<input />').attr({
+                        type: 'hidden',
+                        name: name,
+                        value: value
+                    }).appendTo($('#fiddle-form'));
+                }
+
+                var scriptRegex = /<script>((.|\n)*)<\/script>/,
+                    html = exampleCONTENT.replace(scriptRegex, ''),
+                    match = exampleCONTENT.match(scriptRegex),
+                    js = 'L.mapbox.accessToken = \'' + App.user.accessToken + '\';' + match[1];
+
+                addField('html', html);
+                addField('js', js);
+                addField('css', exampleCSS);
+                addField('resources', jsURL + ',' + cssURL);
+                addField('wrap', 'b');
+                addField('title', 'Leaflet Fullscreen');
+            } else {
+                $('#fiddle-form').remove();
+            }
+        });
+    </script>
+     </div>
+     <div id='snippet'>
+     <div id='code' class='fill-white'><div class='code-header keyline-top quiet'><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE html&gt; </span>
+ <span class="nt">&lt;html&gt; </span>
+ <span class="nt">&lt;head&gt; </span>
+ <span class="nt">&lt;meta </span>  <span class="na">charset= </span><span class="s">utf-8 </span>  <span class="nt">/&gt; </span>
+ <span class="nt">&lt;title&gt; </span>Leaflet Fullscreen <span class="nt">&lt;/title&gt; </span>
+ <span class="nt">&lt;meta </span>  <span class="na">name= </span><span class="s">&#39;viewport&#39; </span>  <span class="na">content= </span><span class="s">&#39;initial-scale=1,maximum-scale=1,user-scalable=no&#39; </span>  <span class="nt">/&gt; </span>
+ <span class="nt">&lt;script  </span><span class="na">src= </span><span class="s">&#39;https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.js&#39; </span><span class="nt">&gt;&lt;/script&gt; </span>
+ <span class="nt">&lt;link </span>  <span class="na">href= </span><span class="s">&#39;https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.css&#39; </span>  <span class="na">rel= </span><span class="s">&#39;stylesheet&#39; </span>  <span class="nt">/&gt; </span>
+ <span class="nt">&lt;style&gt; </span>
+   <span class="nt">body </span>  <span class="p">{ </span>  <span class="k">margin </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="k">padding </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="p">} </span>
+   <span class="nf">#map </span>  <span class="p">{ </span>  <span class="k">position </span><span class="o">: </span><span class="k">absolute </span><span class="p">; </span>  <span class="k">top </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="k">bottom </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="k">width </span><span class="o">: </span><span class="m">100% </span><span class="p">; </span>  <span class="p">} </span>
+ <span class="nt">&lt;/style&gt; </span>
+ <span class="nt">&lt;/head&gt; </span>
+ <span class="nt">&lt;body&gt; </span></code></pre></div>
+ </div>
+ <div class="js-replace-token">
+ <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script  </span><span class="na">src= </span><span class="s">&#39;https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v0.0.3/Leaflet.fullscreen.min.js&#39; </span><span class="nt">&gt;&lt;/script&gt; </span>
+ <span class="nt">&lt;link </span>  <span class="na">href= </span><span class="s">&#39;https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v0.0.3/leaflet.fullscreen.css&#39; </span>  <span class="na">rel= </span><span class="s">&#39;stylesheet&#39; </span>  <span class="nt">/&gt; </span>
+
+ <span class="nt">&lt;div </span>  <span class="na">id= </span><span class="s">&#39;map&#39; </span><span class="nt">&gt;&lt;/div&gt; </span>
+
+ <span class="nt">&lt;script&gt; </span>
+ <span class="nx">L </span><span class="p">. </span><span class="nx">mapbox </span><span class="p">. </span><span class="nx">accessToken </span>  <span class="o">= </span>  <span class="s1">&#39;&lt;your access token here&gt;&#39; </span><span class="p">; </span>
+ <span class="kd">var </span>  <span class="nx">map </span>  <span class="o">= </span>  <span class="nx">L </span><span class="p">. </span><span class="nx">mapbox </span><span class="p">. </span><span class="nx">map </span><span class="p">( </span><span class="s1">&#39;map&#39; </span><span class="p">, </span>  <span class="s1">&#39;examples.map-i875kd35&#39; </span><span class="p">) </span>
+     <span class="p">. </span><span class="nx">setView </span><span class="p">([ </span><span class="mf">38.8896 </span><span class="p">, </span>  <span class="o">- </span><span class="mf">77.0417 </span><span class="p">], </span>  <span class="mi">15 </span><span class="p">); </span>
+
+ <span class="nx">L </span><span class="p">. </span><span class="nx">control </span><span class="p">. </span><span class="nx">fullscreen </span><span class="p">(). </span><span class="nx">addTo </span><span class="p">( </span><span class="nx">map </span><span class="p">); </span>
+ <span class="nt">&lt;/script&gt; </span></code></pre></div>
+ </div>
+ <div class='code-footer'>
+ <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;/body&gt; </span>
+ <span class="nt">&lt;/html&gt; </span></code></pre></div>
+ </div></div><!-- end #code -->
+   <div id='logged-out-help' class='center pad2 keyline-top prose'>
+     <a class='icon check js-signup' href='../../../../plans/index.html'>Get a free Mapbox _______ </a> to create your ___ custom map and use __ in this example.
+   </div>
+
+   <div id='logged-in-help' class='quiet pad2 keyline-top prose'>
+    ___ this example by copying ___ source into your own ____ page and
+    replacing the  <a href='../../../../help/define-map-id/index.html'>Map ID </a>
+    ____
+     <a href='http://mapbox.com/projects/'>one of your own ____ your projects. </a>
+    ______ trouble with JavaScript? Try ___  <a href='http://www.codecademy.com/tracks/javascript'>Codecademy </a>
+    __  <a href='mailto:support@mapbox.com'>contact our support team. </a>
+   </div>
+ </div>
+   <form id='fiddle-form' action='http://jsfiddle.net/api/post/library/pure/' method='POST'>
+     <input type='submit' class='unround quiet col12' value='Edit in jsFiddle' />
+   </form></div>
+   <a class='button icon clipboard col12 round-bottom js-clipboard' href='#' data-clipboard-target='code' id='copy'>Copy example </a>
+   </div>
+   </div>
+   <script>
+  App.onUserLoad(function() {
+      var loggedOut = document.getElementById('logged-out-help');
+      var loggedIn = document.getElementById('logged-in-help');
+      if (App.user) {
+          loggedOut.parentNode.removeChild(loggedOut);
+      } else {
+          loggedIn.parentNode.removeChild(loggedIn);
+      }
+  });
+  </script>
+ </div>
+
+   </div>
+ </div>
+ </div> 
+
+ <div class='footer pad4y clearfix hide-mobile fill-light'>
+   <div class='limiter'>
+    <div class='clearfix'> 
+     <div class='col8 small mobile-cols'>
+       <div class='col12 clearfix'>
+         <div class='col3'>
+          
+           <a id='footer-design' class='space-bottom0 col12 strong' href='../../../../design/index.html'>Design </a>
+          
+           <a id='footer-data' class='space-bottom0 col12 strong' href='../../../../data-platform/index.html'>Data </a>
+          
+           <a id='footer-developers' class='space-bottom0 col12 strong' href='../../../../developers/index.html'>Developers </a>
+          
+           <a id='footer-showcase' class='space-bottom0 col12 strong' href='../../../../showcase/index.html'>Showcase </a>
+          
+           <a id='footer-enterprise' class='space-bottom0 col12 strong' href='../../../../enterprise/index.html'>Enterprise </a>
+          
+         </div>
+         <div class='col3'>
+          
+           <a id='footer-plans' class='space-bottom0 col12 quiet strong' href='../../../../plans/index.html'>Plans </a>
+          
+           <a id='footer-blog' class='space-bottom0 col12 quiet strong' href='../../../../blog/index.html'>Blog </a>
+          
+           <a id='footer-help' class='space-bottom0 col12 quiet strong' href='../../../../help/index.html'>Help </a>
+          
+           <a id='footer-status' class='space-bottom0 col12 quiet strong' href='../../../../status/index.html'>Status </a>
+          
+           <a id='footer-contact' class='space-bottom0 col12 quiet strong' href='../../../../contact/index.html'>Contact </a>
+          
+         </div>
+         <div class='col3'>     
+          
+           <a id='footer-about' class='space-bottom0 col12 quiet strong' href='../../../../about/index.html'>About </a>
+          
+           <a id='footer-team' class='space-bottom0 col12 quiet strong' href='../../../../about/team/index.html'>Team </a>
+          
+           <a id='footer-jobs' class='space-bottom0 col12 quiet strong' href='../../../../jobs/index.html'>Jobs </a>
+          
+           <a id='footer-press' class='space-bottom0 col12 quiet strong' href='../../../../about/press/index.html'>Press </a>
+          
+           <a id='footer-press-kit' class='space-bottom0 col12 quiet strong' href='../../../../about/press-kit/index.html'>Press Kit </a>
+          
+         </div>
+          <div class='col3'>
+            <div class='space-bottom0 strong'>Tools </div>
+          
+           <a id='footer-studio' class='space-bottom0 col12 quiet strong' href='../../../../mapbox-studio/index.html'>Studio </a>
+          
+           <a id='footer-maki' class='space-bottom0 col12 quiet strong' href='../../../../maki/index.html'>Maki </a>
+          
+         </div>
+       </div>
+     </div>
+
+     <div class='col4 footer-social'>
+       <div class='animate footer-animation col6'></div>
+       <div class='footer-dialog fr small strong quiet pad2 col6 contain round fill-gray'>
+      Follow Mapbox on  <a href='https://twitter.com/mapbox'>Twitter </a>,  <a href='https://www.facebook.com/Mapbox'>Facebook </a>, and  <a href='https://instagram.com/mapbox'>Instagram </a>.
+       </div>
+     </div>  
+   </div>
+   </div>
+
+   <div class="limiter industries-footer">
+   <p class='space-bottom1 strong small space-top2 industries-footer-title'>Industries </p>
+   <div class='clearfix pad2y pad4x fill-gray round space-bottom4 industries-footer'>
+         <div class='clearfix'>
+            <div class='col3'>
+            
+             <a id='footer-real-estate' class='space-bottom0 col12 strong quiet small' href='../../../../industries/realestate/index.html'>Real Estate </a>
+            
+             <a id='footer-transportation' class='space-bottom0 col12 strong quiet small' href='../../../../industries/transportation/index.html'>Transportation </a>
+            
+             <a id='footer-agriculture' class='space-bottom0 col12 strong quiet small' href='../../../../industries/agriculture/index.html'>Agriculture </a>
+            
+           </div>
+            <div class='col3'>
+            
+             <a id='footer-social' class='space-bottom0 col12 strong quiet small' href='../../../../industries/social/index.html'>Social </a>
+            
+             <a id='footer-government' class='space-bottom0 col12 strong quiet small' href='../../../../industries/government/index.html'>Government </a>
+            
+             <a id='footer-fitness-&amp;-outdoors' class='space-bottom0 col12 strong quiet small' href='../../../../industries/outdoors/index.html'>Fitness &amp; outdoors </a>
+            
+           </div>
+            <div class='col3'>
+            
+             <a id='footer-finance' class='space-bottom0 col12 strong quiet small' href='../../../../industries/finance/index.html'>Finance </a>
+            
+             <a id='footer-insurance' class='space-bottom0 col12 strong quiet small' href='../../../../industries/insurance/index.html'>Insurance </a>
+            
+             <a id='footer-natural-resources' class='space-bottom0 col12 strong quiet small' href='../../../../industries/naturalresources/index.html'>Natural Resources </a>
+            
+           </div>
+           <div class='col3'>
+            
+                 <a id='footer-security' class='space-bottom0 col12 strong quiet small' href='../../../../industries/security/index.html'>Security </a>
+            
+                 <a id='footer-health' class='space-bottom0 col12 strong quiet small' href='../../../../industries/health/index.html'>Health </a>
+            
+                 <a id='footer-media' class='space-bottom0 col12 strong quiet small' href='../../../../industries/media/index.html'>Media </a>
+            
+           </div>
+          </div> 
+       </div>
+   </div>
+
+   <div class='limiter newsletter-copyright clearfix'>
+   <div class='col8 contain newsletter'>
+         <form id='newsletter' method='post'>
+           <fieldset class='clearfix input-pill col10 pill mobile-cols with-icon'>
+             <span class='icon mail quiet'></span>
+             <input type='text' value='' placeholder='Sign up for our newsletter' name='email' class='col9 required email' />
+             <input type='submit' value='Subscribe' class='col3 quiet' />
+           </fieldset>
+         </form>
+        </div> 
+
+       <div class='col4 footer-copyright small space-top1 col4 noprint fill-light contain'>
+           <div class='pin-right'>
+             <a href='../../../../tos/index.html'>Terms </a> +
+             <a href='../../../../privacy/index.html'>Privacy </a>
+            &copy; Mapbox
+           </div>
+       </div>
+   </div>
+
+ </div>
+
+ <div class='footer-copyright small center noprint fill-light show-mobile'>
+   <div class='limiter'>
+     <div class='pad2y'>
+             <a href='../../../../tos/index.html'>Terms </a> +
+             <a href='../../../../privacy/index.html'>Privacy </a>
+      &copy; Mapbox
+     </div>
+   </div>
+ </div>
+
+
+
+ <div id='modal-content' class='animate modal modal-content'></div>
+ </div> 
+ </body>
+ </html>
+ 

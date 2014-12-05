@@ -1,0 +1,1215 @@
+<!DOCTYPE html >
+ <html>
+ <head>
+<!-- Original URL: https://www.mapbox.com/foundations/extending-interactivity/
+Date Downloaded: 2014-12-05 09:31:42 PM !-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  
+   <meta charset='UTF-8' />
+   <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+   <meta name='robots' content='index' />
+   <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  
+   <title>Extending with Mapbox.js | ______ </title>
+
+   <meta name='st:title' content='Extending with Mapbox.js' />
+   <meta name='st:type' content='intermediate' />
+   <meta name='st:info' content='site' />
+
+  
+
+   <link href='../../base/latest/base_8f8b1251.css' rel='stylesheet' />
+   <link href='../../css/site.css' rel='stylesheet' />
+   <!--[if IE 9]><link href='../../css/site-ie9.css' rel='stylesheet' /><![endif]-->
+   <link rel='shortcut icon' href='../../img/favicon.ico' type='image/x-icon' />
+   <link rel='alternate' type='application/rss+xml' title='RSS' href='../../blog/blog.rss' />
+   <link href='../../../api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.css' rel='stylesheet' />
+
+   <!--[if lt IE 9 ]><script src='../../js/redirect-ie.js'></script><![endif]-->
+   <script src='../../../js.stripe.com/v2/index.html.js'></script>
+   <script>
+  var KM_COOKIE_DOMAIN = 'www.mapbox.com';
+  var analytics=analytics||[];(function(){var e=['identify','track','trackLink','trackForm','trackClick','trackSubmit','page','pageview','ab','alias','ready','group'],t=function(e){return function(){analytics.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var n=0;n<e.length;n++)analytics[e[n]]=t(e[n])})(),analytics.load=function(e){var t=document.createElement('script');t.type='text/javascript',t.async=!0,t.src=('https:'===document.location.protocol?'https://':"http://")+'d2dq2ahtl5zl1z.cloudfront.net/analytics.js/v1/'+e+'/analytics.min.js';var n=document.getElementsByTagName('script')[0];n.parentNode.insertBefore(t,n)};
+  analytics.load(window.location.hostname.indexOf('mapbox.com') !== -1 ? 'fl0c8p240n' : '0biiejpgfj');
+
+  Stripe.setPublishableKey(window.location.hostname.indexOf('mapbox.com') !== -1 ?
+    'pk_live_hI6mmOTIg7KkywK6vo3vJvpk' : 'pk_test_gmIyREg3sKzAiyMkAEeCsxUG');
+  </script>
+   <script src='../../../api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.js'></script>
+
+   <script>
+  window.mapbox_api = 'https://www.mapbox.com/core';
+  window.mapbox_tileApi = '../../../api.tiles.mapbox.com/index.html';
+  window.mapbox_accessToken = '' || 'pk.eyJ1IjoibWFwYm94IiwiYSI6IlhHVkZmaW8ifQ.hAMX5hSW-QnTeRCMAy9A8Q'
+  if (L.mapbox.VERSION[0] === '2') {
+      L.mapbox.accessToken = window.mapbox_accessToken;
+      L.mapbox.config.FORCE_HTTPS = true;
+      L.mapbox.config.HTTPS_URL = window.mapbox_tileApi + '/v4';
+  }
+  </script>
+   <script src='../../base.js/dist/base.js'></script>
+  
+  
+ </head>
+ <body class=' full bleed'><div style="z-index: 9999; position: fixed; width: 100%; border: 0px; padding: 5px; margin: 0px; background-color: transparent;  font-size: 12pt; font-family: sans-serif;" id="web2disk_nag" onclick="javascript: document.getElementById('web2disk_nag').style.display = 'none';">
+		<div style="color: #000000; background-color:#F1F1F1; margin-left: auto; margin-right: auto; border-width: 2px; border-style: solid; width: 550px; ">
+			<div style="width: 100%; text-align: center; font-weight: bold; border: 0px; margin: 0px; padding: 0px">Hey, where did my words go? (Click to hide)</div>
+			<p>In the trial version of Web2Disk every fifth word is blanked out. 
+			To copy this site with all the words, please upgrade to the full version and copy this website again.</p>
+			<div style="width: 100%; text-align: center; font-weight: bold; border: 0px; margin: 0px; padding: 0px">
+				<a href="http://www.inspyder.com/products/Web2Disk/">Inspyder Web2Disk: The Website Downloader</a>
+			</div>
+		</div>
+	</div>
+  <div class='fill-midnight offcanvas-top row3 industries-subnav animate dark pin-top hide-mobile' id='industries'>
+    <div class='limiter pad2y space-top1 small strong contain'>
+       <ul class='space-bottom0 clearfix'>
+         <li class='col2'><a href="../../industries/realestate/index.html" class="primary-nav-button inline pad1x pad0y round">Real Estate </a></li>
+         <li class='col2'><a href="../../industries/transportation/index.html" class="primary-nav-button inline pad1x pad0y round">Transportation </a></li>
+         <li class='col2'><a href="../../industries/agriculture/index.html" class="primary-nav-button inline pad1x pad0y round ">Agriculture </a></li>
+         <li class='col2'><a href="../../industries/social/index.html" class="primary-nav-button inline pad1x pad0y round">Social </a></li>
+         <li class='col2'><a href="../../industries/government/index.html" class="primary-nav-button inline pad1x pad0y round ">Government </a></li>        
+         <li class='col2'><a href="../../industries/outdoors/index.html" class="primary-nav-button inline pad0x pad0y round">Fitness &amp; Outdoors </a></li>
+       </ul>
+       <ul class='clearfix'>
+          <li class='col2'><a href="../../industries/finance/index.html" class="primary-nav-button inline pad1x pad0y round ">Finance </a></li>
+          <li class='col2'><a href="../../industries/insurance/index.html" class="primary-nav-button inline pad1x pad0y round ">Insurance </a></li>
+          <li class='col2'><a href="../../industries/naturalresources/index.html" class="primary-nav-button inline pad1x pad0y round ">Natural Resources </a></li>
+          <li class='col2'><a href="../../industries/security/index.html" class="primary-nav-button inline pad1x pad0y round ">Security </a></li>
+          <li class='col2'><a href="../../industries/health/index.html" class="primary-nav-button inline pad1x pad0y round ">Health </a></li>
+          <li class='col2'><a href="../../industries/media/index.html" class="primary-nav-button inline pad0x pad0y round ">Media </a></li>
+       </ul> 
+    </div>
+  </div>
+ <div class='page-content'> 
+
+ <div class='masthead show-in-loaded col12 clearfix  dark'>
+   <div class='limiter clearfix'>
+     <nav class='col12 text-right pad2y contain animate clearfix noprint'>
+       <a class='fl mb-logo' href='../../index.html'></a>
+       <h4 class='logo-enterpriseaddon pin-topleft text-aqua block-in-enterprise'>Enterprise </h4>
+       <div id='nav'>
+       </div>
+     </nav>
+   </div>
+ </div>
+
+ <div class=''><script src='../../js/olark.js'></script>
+ <link href='../site.css' rel='stylesheet' />
+
+ <div class='splash fill-intermediate'>
+   <div class='dark limiter pad4y head-img' style='background-image:url("../img/topics/extending-interactivity.png");'>
+     <div class='pad4y'>
+       <h2><a href='../index.html'>Guides to getting started </a></h2>
+       <h1 class='block space-bottom0'>Extending with Mapbox.js </h1>
+     </div>
+   </div>
+ </div>
+
+ <div class='limiter contain'>
+   <div class='clearfix pad4y'>
+
+     <div class='col2 toc'>
+       <div class='toc-wrap' data-spy='affix'>
+         <ul class='nav'><li class="h2 space-top1"><a href="#getting-started" class="strong block" title="Getting started">Getting started </a></li><li class="h2 space-top1"><a href="#initialize-a-map" class="strong block" title="Initialize a map">Initialize a map </a></li><li class="h3"><a href="#mapid" class="block" title="Map ID">Map ID </a></li><li class="h3"><a href="#set-coordinates" class="block" title="Set coordinates">Set coordinates </a></li><li class="h3"><a href="#disable-mouse-zooming" class="block" title="Disable mouse zooming">Disable mouse zooming </a></li><li class="h2 space-top1"><a href="#add-data" class="strong block" title="Add data">Add data </a></li><li class="h3"><a href="#geojson" class="block" title="GeoJSON">GeoJSON </a></li><li class="h3"><a href="#add-a-marker" class="block" title="Add a marker">Add a marker </a></li><li class="h3"><a href="#style-data" class="block" title="Style data">Style data </a></li><li class="h3"><a href="#add-a-line" class="block" title="Add a line">Add a line </a></li><li class="h2 space-top1"><a href="#add-a-legend" class="strong block" title="Add a legend">Add a legend </a></li><li class="h2 space-top1"><a href="#next-steps" class="strong block" title="Next steps">Next steps </a></li></ul>
+       </div>
+      &nbsp;
+     </div>
+
+     <div class='col9 prose pad2xm margin1'>
+       <div class='space-bottom4 doc'>
+         <p>In the  <a href="/foundations/share-your-map/">Sharing your map </a> guide, we described ____ of quickly publishing a ___ using a share URL __ embedding maps on a _______. But what if you ____ to extend the interactivity ____ further? </p>
+
+ <p>This guide walks through ___ basics of  <a href="../../mapbox.js/index.html">Mapbox.js </a>, a JavaScript API ___ rendering maps and creating ______ interactions. </p>
+
+ <h2 id='getting-started'>Getting started </h2>
+
+
+ <p>For this guide you ____ need: </p>
+
+ <ul>
+ <li><strong>Your API access token. </strong> If you&rsquo;re logged __, we automatically added your _____ to the examples in ____ guide. You can also ____ your access token on   <a href="../../account/apps/index.html">your account page </a>. </li>
+ <li><strong>A Map ID. </strong> Use your own ____________ map by getting a ___ ID from any of ____ Projects in your  <a href="../../projects/index.html">Projects page </a>. </li>
+ <li><strong>Your favorite text editor </strong>. You&rsquo;ll be writing ____ HTML and JavaScript, after ___. </li>
+ </ul>
+
+
+ <h2 id='initialize-a-map'>Initialize a map </h2>
+
+
+ <p>First, you&rsquo;ll need the ______ version of Mapbox.js. You ___ link directly to the ______ hosted version by copying ____ snippet into your HTML: </p>
+
+ <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script  </span><span class="na">src= </span><span class="s">&#39;https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.js&#39; </span><span class="nt">&gt;&lt;/script&gt; </span>
+ <span class="nt">&lt;link </span>  <span class="na">href= </span><span class="s">&#39;https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.css&#39; </span>  <span class="na">rel= </span><span class="s">&#39;stylesheet&#39; </span>  <span class="nt">/&gt; </span></code></pre></div>
+
+
+ <p>We&rsquo;re going to start __ creating a blank HTML ____. Here&rsquo;s the simplest example __ put a map on _ page: </p>
+
+ <div class='demo round'>
+
+ <div id='map-one' class='map'>  </div>
+ <script>
+L.mapbox.map('map-one', 'examples.map-i86l3621');
+</script>
+
+ <div class='js-replace-token'>
+
+ <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE html&gt; </span>
+ <span class="nt">&lt;html&gt; </span>
+ <span class="nt">&lt;head&gt; </span>
+   <span class="nt">&lt;meta </span>  <span class="na">charset= </span><span class="s">utf-8 </span>  <span class="nt">/&gt; </span>
+   <span class="nt">&lt;title&gt;&lt;/title&gt; </span>
+   <span class="nt">&lt;script  </span><span class="na">src= </span><span class="s">&#39;https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.js&#39; </span><span class="nt">&gt;&lt;/script&gt; </span>
+   <span class="nt">&lt;link </span>  <span class="na">href= </span><span class="s">&#39;https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.css&#39; </span>  <span class="na">rel= </span><span class="s">&#39;stylesheet&#39; </span>  <span class="nt">/&gt; </span>
+   <span class="nt">&lt;style&gt; </span>
+     <span class="nt">body </span>  <span class="p">{ </span>  <span class="k">margin </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="k">padding </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="p">} </span>
+     <span class="nc">.map </span>  <span class="p">{ </span>  <span class="k">position </span><span class="o">: </span><span class="k">absolute </span><span class="p">; </span>  <span class="k">top </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="k">bottom </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="k">width </span><span class="o">: </span><span class="m">100% </span><span class="p">; </span>  <span class="p">} </span>
+   <span class="nt">&lt;/style&gt; </span>
+ <span class="nt">&lt;/head&gt; </span>
+ <span class="nt">&lt;body&gt; </span>
+ <span class="nt">&lt;div </span>  <span class="na">id= </span><span class="s">&#39;map-one&#39; </span>  <span class="na">class= </span><span class="s">&#39;map&#39; </span><span class="nt">&gt; </span>  <span class="nt">&lt;/div&gt; </span>
+ <span class="nt">&lt;script&gt; </span>
+ <span class="nx">L </span><span class="p">. </span><span class="nx">mapbox </span><span class="p">. </span><span class="nx">accessToken </span>  <span class="o">= </span>  <span class="s1">&#39;&lt;your access token here&gt;&#39; </span><span class="p">; </span>
+ <span class="nx">L </span><span class="p">. </span><span class="nx">mapbox </span><span class="p">. </span><span class="nx">map </span><span class="p">( </span><span class="s1">&#39;map-one&#39; </span><span class="p">, </span>  <span class="s1">&#39;examples.map-i86l3621&#39; </span><span class="p">); </span>
+ <span class="nt">&lt;/script&gt; </span>
+ <span class="nt">&lt;/body&gt; </span>
+ <span class="nt">&lt;/html&gt; </span></code></pre></div>
+
+ </div>
+
+ <a href='#' class='pin-bottom col12 button round-bottom z1000 pad1 js-view-source'>View source </a>
+
+ </div>
+
+
+ <p>Click the  <strong>View source </strong> button to toggle __ the code used for ____ example. </p>
+
+ <p>You can copy and _____ the source code into ____ text editor. If you&rsquo;re ___ logged in, be sure __ replace  <code>&lt;your access token here&gt; </code> with your own ______ token. </p>
+
+ <h3 id='mapid'>Map ID </h3>
+
+
+ <p>When working with Mapbox.js, ___ need to specify a ___ ID. We put a ___________ in for you,  <code>examples.map-i86l3621 </code>, but you should ____ it out. </p>
+
+ <p>Remember  <a href="../make-your-first-map/index.html">your first map </a> or the  <a href="../customizing-the-map/index.html">map that you customized </a>? Every Project you ____ with Mapbox Editor or ______ to your Mapbox account ___ a Map ID. With ______.__ you can reference that ___ and make your styled ___ interactive &ndash; all with ____ Map ID. </p>
+
+ <h3 id='set-coordinates'>Set coordinates </h3>
+
+
+ <p>Let&rsquo;s give this map _ specific geographic coordinate in ___ world by adding  <code>setView </code> to  <code>L.mapbox.map() </code>. </p>
+
+ <p>And now our map _____ up to Washington, DC: </p>
+
+ <div class='demo round'>
+
+ <div id='map-two' class='map'>  </div>
+ <script>
+L.mapbox.map('map-two', 'examples.map-i86l3621').setView([38.8929,-77.0252], 14);
+</script>
+
+ <div class='js-replace-token'>
+
+ <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE html&gt; </span>
+ <span class="nt">&lt;html&gt; </span>
+ <span class="nt">&lt;head&gt; </span>
+   <span class="nt">&lt;meta </span>  <span class="na">charset= </span><span class="s">utf-8 </span>  <span class="nt">/&gt; </span>
+   <span class="nt">&lt;title&gt;&lt;/title&gt; </span>
+   <span class="nt">&lt;script  </span><span class="na">src= </span><span class="s">&#39;https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.js&#39; </span><span class="nt">&gt;&lt;/script&gt; </span>
+   <span class="nt">&lt;link </span>  <span class="na">href= </span><span class="s">&#39;https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.css&#39; </span>  <span class="na">rel= </span><span class="s">&#39;stylesheet&#39; </span>  <span class="nt">/&gt; </span>
+   <span class="nt">&lt;style&gt; </span>
+     <span class="nt">body </span>  <span class="p">{ </span>  <span class="k">margin </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="k">padding </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="p">} </span>
+     <span class="nc">.map </span>  <span class="p">{ </span>  <span class="k">position </span><span class="o">: </span><span class="k">absolute </span><span class="p">; </span>  <span class="k">top </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="k">bottom </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="k">width </span><span class="o">: </span><span class="m">100% </span><span class="p">; </span>  <span class="p">} </span>
+   <span class="nt">&lt;/style&gt; </span>
+ <span class="nt">&lt;/head&gt; </span>
+ <span class="nt">&lt;body&gt; </span>
+ <span class="nt">&lt;div </span>  <span class="na">id= </span><span class="s">&#39;map-two&#39; </span>  <span class="na">class= </span><span class="s">&#39;map&#39; </span><span class="nt">&gt; </span>  <span class="nt">&lt;/div&gt; </span>
+ <span class="nt">&lt;script&gt; </span>
+ <span class="nx">L </span><span class="p">. </span><span class="nx">mapbox </span><span class="p">. </span><span class="nx">accessToken </span>  <span class="o">= </span>  <span class="s1">&#39;&lt;your access token here&gt;&#39; </span><span class="p">; </span>
+ <span class="nx">L </span><span class="p">. </span><span class="nx">mapbox </span><span class="p">. </span><span class="nx">map </span><span class="p">( </span><span class="s1">&#39;map-two&#39; </span><span class="p">, </span>  <span class="s1">&#39;examples.map-i86l3621&#39; </span><span class="p">). </span><span class="nx">setView </span><span class="p">([ </span><span class="mf">38.8929 </span><span class="p">, </span><span class="o">- </span><span class="mf">77.0252 </span><span class="p">], </span>  <span class="mi">14 </span><span class="p">); </span>
+ <span class="nt">&lt;/script&gt; </span>
+ <span class="nt">&lt;/body&gt; </span>
+ <span class="nt">&lt;/html&gt; </span></code></pre></div>
+
+ </div>
+
+ <a href='#' class='pin-bottom col12 button round-bottom z1000 pad1 js-view-source'>View source </a>
+
+ </div>
+
+
+
+
+ <h3 id='disable-mouse-zooming'>Disable mouse zooming </h3>
+
+
+ <p>Scrolling down a page ____ has a map can _____ unwanted scroll zooming. For ___ purpose of this guide, ___&_____;_ disable that interaction by _______  <code>scrollWheelZoom </code> to false. </p>
+
+ <p>Try scroll zooming on ___ map (you can&rsquo;t!): </p>
+
+ <div class='demo round'>
+
+ <div id='map-three' class='map'>  </div>
+ <script>
+L.mapbox.map('map-three', 'examples.map-i86l3621', {
+    scrollWheelZoom: false
+}).setView([38.8929,-77.0252], 14);
+</script>
+
+ <div class='js-replace-token'>
+
+ <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE html&gt; </span>
+ <span class="nt">&lt;html&gt; </span>
+ <span class="nt">&lt;head&gt; </span>
+   <span class="nt">&lt;meta </span>  <span class="na">charset= </span><span class="s">utf-8 </span>  <span class="nt">/&gt; </span>
+   <span class="nt">&lt;title&gt;&lt;/title&gt; </span>
+   <span class="nt">&lt;script  </span><span class="na">src= </span><span class="s">&#39;https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.js&#39; </span><span class="nt">&gt;&lt;/script&gt; </span>
+   <span class="nt">&lt;link </span>  <span class="na">href= </span><span class="s">&#39;https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.css&#39; </span>  <span class="na">rel= </span><span class="s">&#39;stylesheet&#39; </span>  <span class="nt">/&gt; </span>
+   <span class="nt">&lt;style&gt; </span>
+     <span class="nt">body </span>  <span class="p">{ </span>  <span class="k">margin </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="k">padding </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="p">} </span>
+     <span class="nc">.map </span>  <span class="p">{ </span>  <span class="k">position </span><span class="o">: </span><span class="k">absolute </span><span class="p">; </span>  <span class="k">top </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="k">bottom </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="k">width </span><span class="o">: </span><span class="m">100% </span><span class="p">; </span>  <span class="p">} </span>
+   <span class="nt">&lt;/style&gt; </span>
+ <span class="nt">&lt;/head&gt; </span>
+ <span class="nt">&lt;body&gt; </span>
+ <span class="nt">&lt;div </span>  <span class="na">id= </span><span class="s">&#39;map-three&#39; </span>  <span class="na">class= </span><span class="s">&#39;map&#39; </span><span class="nt">&gt; </span>  <span class="nt">&lt;/div&gt; </span>
+ <span class="nt">&lt;script&gt; </span>
+ <span class="nx">L </span><span class="p">. </span><span class="nx">mapbox </span><span class="p">. </span><span class="nx">accessToken </span>  <span class="o">= </span>  <span class="s1">&#39;&lt;your access token here&gt;&#39; </span><span class="p">; </span>
+ <span class="nx">L </span><span class="p">. </span><span class="nx">mapbox </span><span class="p">. </span><span class="nx">map </span><span class="p">( </span><span class="s1">&#39;map-three&#39; </span><span class="p">, </span>  <span class="s1">&#39;examples.map-i86l3621&#39; </span><span class="p">, </span>  <span class="p">{ </span>
+     <span class="nx">scrollWheelZoom </span><span class="o">: </span>  <span class="kc">false </span>
+ <span class="p">}). </span><span class="nx">setView </span><span class="p">([ </span><span class="mf">38.8929 </span><span class="p">, </span><span class="o">- </span><span class="mf">77.0252 </span><span class="p">], </span>  <span class="mi">14 </span><span class="p">); </span>
+ <span class="nt">&lt;/script&gt; </span>
+ <span class="nt">&lt;/body&gt; </span>
+ <span class="nt">&lt;/html&gt; </span></code></pre></div>
+
+ </div>
+
+ <a href='#' class='pin-bottom col12 button round-bottom z1000 pad1 js-view-source'>View source </a>
+
+ </div>
+
+
+
+
+ <h2 id='add-data'>Add data </h2>
+
+
+ <p>We can add data __ our map to help ____ a story. Mapbox.js supports _ few different formats, including  <a href="../glossary/index.html#geojson">GeoJSON </a>,  <a href="../glossary/index.html#kml">KML </a>, and  <a href="../glossary/index.html#csv">CSV </a>. </p>
+
+ <p>Let&rsquo;s kick it off ____ GeoJSON. </p>
+
+ <h3 id='geojson'>GeoJSON </h3>
+
+
+ <p>GeoJSON is a format ___ storing geometric shapes and ______ positions. Here&rsquo;s what a ______ point looks like in _______: </p>
+
+ <div class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{ </span>
+   <span class="nt">&quot;type&quot; </span><span class="p">: </span>  <span class="s2">&quot;FeatureCollection&quot; </span><span class="p">, </span>
+   <span class="nt">&quot;features&quot; </span><span class="p">: </span>  <span class="p">[ </span>
+     <span class="p">{ </span>
+       <span class="nt">&quot;type&quot; </span><span class="p">: </span>  <span class="s2">&quot;Feature&quot; </span><span class="p">, </span>
+       <span class="nt">&quot;geometry&quot; </span><span class="p">: </span>  <span class="p">{ </span>
+         <span class="nt">&quot;type&quot; </span><span class="p">: </span>  <span class="s2">&quot;Point&quot; </span><span class="p">, </span>
+         <span class="nt">&quot;coordinates&quot; </span><span class="p">: </span>  <span class="p">[ </span>
+           <span class="mf">-77.0366048812866 </span><span class="p">, </span>
+           <span class="mf">38.89784666877921 </span>
+         <span class="p">] </span>
+       <span class="p">}, </span>
+       <span class="nt">&quot;properties&quot; </span><span class="p">: </span>  <span class="p">{} </span>
+     <span class="p">} </span>
+   <span class="p">] </span>
+ <span class="p">} </span></code></pre></div>
+
+
+ <p>Does GeoJSON look like _____________ to you? Don&rsquo;t sweat __. Once you learn the ________, it becomes easier to _____. If you need some ____, there&rsquo;s an awesome tool ______  <a href="http://geojson.io/">geojson.io </a> that writes GeoJSON ___ you. </p>
+
+ <h3 id='add-a-marker'>Add a marker </h3>
+
+
+ <p>Let&rsquo;s store the GeoJSON __ an array called  <code>geojson </code> and create a  <code>featureLayer </code> to add it __ the map. </p>
+
+ <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var </span>  <span class="nx">myLayer </span>  <span class="o">= </span>  <span class="nx">L </span><span class="p">. </span><span class="nx">mapbox </span><span class="p">. </span><span class="nx">featureLayer </span><span class="p">(). </span><span class="nx">addTo </span><span class="p">( </span><span class="nx">map </span><span class="p">); </span>
+ <span class="nx">myLayer </span><span class="p">. </span><span class="nx">setGeoJSON </span><span class="p">( </span><span class="nx">geojson </span><span class="p">); </span></code></pre></div>
+
+
+ <p>Now we have the ______ on the map: </p>
+
+ <div class='demo round'>
+
+ <div id='map-four' class='map'>  </div>
+ <script>
+var geojson = [
+  {
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.0366048812866,
+          38.89784666877921
+        ]
+      },
+      "properties": {}
+    }
+  ]
+}
+
+];
+var map = L.mapbox.map('map-four', 'examples.map-i86l3621', {
+    scrollWheelZoom: false
+}).setView([38.8929,-77.0252], 14);
+
+var myLayer = L.mapbox.featureLayer().addTo(map);
+myLayer.setGeoJSON(geojson);
+</script>
+
+ <div class='js-replace-token'>
+
+ <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE html&gt; </span>
+ <span class="nt">&lt;html&gt; </span>
+ <span class="nt">&lt;head&gt; </span>
+   <span class="nt">&lt;meta </span>  <span class="na">charset= </span><span class="s">utf-8 </span>  <span class="nt">/&gt; </span>
+   <span class="nt">&lt;title&gt;&lt;/title&gt; </span>
+   <span class="nt">&lt;script  </span><span class="na">src= </span><span class="s">&#39;https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.js&#39; </span><span class="nt">&gt;&lt;/script&gt; </span>
+   <span class="nt">&lt;link </span>  <span class="na">href= </span><span class="s">&#39;https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.css&#39; </span>  <span class="na">rel= </span><span class="s">&#39;stylesheet&#39; </span>  <span class="nt">/&gt; </span>
+   <span class="nt">&lt;style&gt; </span>
+     <span class="nt">body </span>  <span class="p">{ </span>  <span class="k">margin </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="k">padding </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="p">} </span>
+     <span class="nc">.map </span>  <span class="p">{ </span>  <span class="k">position </span><span class="o">: </span><span class="k">absolute </span><span class="p">; </span>  <span class="k">top </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="k">bottom </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="k">width </span><span class="o">: </span><span class="m">100% </span><span class="p">; </span>  <span class="p">} </span>
+   <span class="nt">&lt;/style&gt; </span>
+ <span class="nt">&lt;/head&gt; </span>
+ <span class="nt">&lt;body&gt; </span>
+ <span class="nt">&lt;div </span>  <span class="na">id= </span><span class="s">&#39;map-four&#39; </span>  <span class="na">class= </span><span class="s">&#39;map&#39; </span><span class="nt">&gt; </span>  <span class="nt">&lt;/div&gt; </span>
+ <span class="nt">&lt;script&gt; </span>
+ <span class="nx">L </span><span class="p">. </span><span class="nx">mapbox </span><span class="p">. </span><span class="nx">accessToken </span>  <span class="o">= </span>  <span class="s1">&#39;&lt;your access token here&gt;&#39; </span><span class="p">; </span>
+ <span class="kd">var </span>  <span class="nx">geojson </span>  <span class="o">= </span>  <span class="p">[ </span>
+   <span class="p">{ </span>
+   <span class="s2">&quot;type&quot; </span><span class="o">: </span>  <span class="s2">&quot;FeatureCollection&quot; </span><span class="p">, </span>
+   <span class="s2">&quot;features&quot; </span><span class="o">: </span>  <span class="p">[ </span>
+     <span class="p">{ </span>
+       <span class="s2">&quot;type&quot; </span><span class="o">: </span>  <span class="s2">&quot;Feature&quot; </span><span class="p">, </span>
+       <span class="s2">&quot;geometry&quot; </span><span class="o">: </span>  <span class="p">{ </span>
+         <span class="s2">&quot;type&quot; </span><span class="o">: </span>  <span class="s2">&quot;Point&quot; </span><span class="p">, </span>
+         <span class="s2">&quot;coordinates&quot; </span><span class="o">: </span>  <span class="p">[ </span>
+           <span class="o">- </span><span class="mf">77.0366048812866 </span><span class="p">, </span>
+           <span class="mf">38.89784666877921 </span>
+         <span class="p">] </span>
+       <span class="p">}, </span>
+       <span class="s2">&quot;properties&quot; </span><span class="o">: </span>  <span class="p">{} </span>
+     <span class="p">} </span>
+   <span class="p">] </span>
+ <span class="p">} </span>
+
+ <span class="p">]; </span>
+ <span class="kd">var </span>  <span class="nx">map </span>  <span class="o">= </span>  <span class="nx">L </span><span class="p">. </span><span class="nx">mapbox </span><span class="p">. </span><span class="nx">map </span><span class="p">( </span><span class="s1">&#39;map-four&#39; </span><span class="p">, </span>  <span class="s1">&#39;examples.map-i86l3621&#39; </span><span class="p">, </span>  <span class="p">{ </span>
+     <span class="nx">scrollWheelZoom </span><span class="o">: </span>  <span class="kc">false </span>
+ <span class="p">}). </span><span class="nx">setView </span><span class="p">([ </span><span class="mf">38.8929 </span><span class="p">, </span><span class="o">- </span><span class="mf">77.0252 </span><span class="p">], </span>  <span class="mi">14 </span><span class="p">); </span>
+
+ <span class="kd">var </span>  <span class="nx">myLayer </span>  <span class="o">= </span>  <span class="nx">L </span><span class="p">. </span><span class="nx">mapbox </span><span class="p">. </span><span class="nx">featureLayer </span><span class="p">(). </span><span class="nx">addTo </span><span class="p">( </span><span class="nx">map </span><span class="p">); </span>
+ <span class="nx">myLayer </span><span class="p">. </span><span class="nx">setGeoJSON </span><span class="p">( </span><span class="nx">geojson </span><span class="p">); </span>
+ <span class="nt">&lt;/script&gt; </span>
+ <span class="nt">&lt;/body&gt; </span>
+ <span class="nt">&lt;/html&gt; </span></code></pre></div>
+
+ </div>
+
+ <a href='#' class='pin-bottom col12 button round-bottom z1000 pad1 js-view-source'>View source </a>
+
+ </div>
+
+
+ <p>If you have a ___ of features, then you&rsquo;ll ____ to move the GeoJSON __ it&rsquo;s own file. You ___ then load the  <a href="../../mapbox.js/example/v1.0.0/geojson-marker-from-url/index.html">URL by specifying the ____ </a>. You can also ____ a file from  <a href="../../mapbox.js/example/v1.0.0/geojson-marker-from-remote-url/index.html">a remote source like ______ </a>. </p>
+
+ <h3 id='style-data'>Style data </h3>
+
+
+ <p>The default grey style __ rather boring, let&rsquo;s customize __. You can specify your ___ styles within  <code>"properties": {} </code> found in the _______. Styles are defined according __  <a href="https://github.com/mapbox/simplestyle-spec">Simplestyle </a> rules. You can _____ more about the supported ________ names by browsing the  <a href="https://github.com/mapbox/simplestyle-spec/tree/master/1.1.0"> specification </a>. </p>
+
+ <p>You can also add _  <code>title </code> in the properties ______ to create a tooltip ____ the feature. </p>
+
+ <p>Here&rsquo;s what our GeoJSON _____ like with the styles ___ a title added to ___ marker: </p>
+
+ <div class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{ </span>
+   <span class="nt">&quot;type&quot; </span><span class="p">: </span>  <span class="s2">&quot;FeatureCollection&quot; </span><span class="p">, </span>
+   <span class="nt">&quot;features&quot; </span><span class="p">: </span>  <span class="p">[ </span>
+     <span class="p">{ </span>
+       <span class="nt">&quot;type&quot; </span><span class="p">: </span>  <span class="s2">&quot;Feature&quot; </span><span class="p">, </span>
+       <span class="nt">&quot;geometry&quot; </span><span class="p">: </span>  <span class="p">{ </span>
+         <span class="nt">&quot;type&quot; </span><span class="p">: </span>  <span class="s2">&quot;Point&quot; </span><span class="p">, </span>
+         <span class="nt">&quot;coordinates&quot; </span><span class="p">: </span>  <span class="p">[ </span>
+           <span class="mf">-77.0366048812866 </span><span class="p">, </span>
+           <span class="mf">38.89784666877921 </span>
+         <span class="p">] </span>
+       <span class="p">}, </span>
+       <span class="nt">&quot;properties&quot; </span><span class="p">: </span>  <span class="p">{ </span>
+         <span class="nt">&quot;title&quot; </span><span class="p">: </span>  <span class="s2">&quot;The White House&quot; </span><span class="p">, </span>
+         <span class="nt">&quot;marker-color&quot; </span><span class="p">: </span>  <span class="s2">&quot;#9c89cc&quot; </span><span class="p">, </span>
+         <span class="nt">&quot;marker-size&quot; </span><span class="p">: </span>  <span class="s2">&quot;medium&quot; </span><span class="p">, </span>
+         <span class="nt">&quot;marker-symbol&quot; </span><span class="p">: </span>  <span class="s2">&quot;building&quot; </span>
+       <span class="p">} </span>
+     <span class="p">} </span>
+   <span class="p">] </span>
+ <span class="p">} </span></code></pre></div>
+
+
+ <p>And here&rsquo;s the styled ______ on the map: </p>
+
+ <div class='demo round'>
+
+ <div id='map-five' class='map'>  </div>
+ <script>
+var geojson = [
+  {
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.0366048812866,
+          38.89784666877921
+        ]
+      },
+      "properties": {
+        "title": "The White House",
+        "marker-color": "#9c89cc",
+        "marker-size": "medium",
+        "marker-symbol": "building"
+      }
+    }
+  ]
+}
+
+];
+var map = L.mapbox.map('map-five', 'examples.map-i86l3621', {
+    scrollWheelZoom: false
+}).setView([38.8929,-77.0252], 14);
+
+var myLayer = L.mapbox.featureLayer().addTo(map);
+myLayer.setGeoJSON(geojson);
+</script>
+
+ <div class='js-replace-token'>
+
+ <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE html&gt; </span>
+ <span class="nt">&lt;html&gt; </span>
+ <span class="nt">&lt;head&gt; </span>
+   <span class="nt">&lt;meta </span>  <span class="na">charset= </span><span class="s">utf-8 </span>  <span class="nt">/&gt; </span>
+   <span class="nt">&lt;title&gt;&lt;/title&gt; </span>
+   <span class="nt">&lt;script  </span><span class="na">src= </span><span class="s">&#39;https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.js&#39; </span><span class="nt">&gt;&lt;/script&gt; </span>
+   <span class="nt">&lt;link </span>  <span class="na">href= </span><span class="s">&#39;https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.css&#39; </span>  <span class="na">rel= </span><span class="s">&#39;stylesheet&#39; </span>  <span class="nt">/&gt; </span>
+   <span class="nt">&lt;style&gt; </span>
+     <span class="nt">body </span>  <span class="p">{ </span>  <span class="k">margin </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="k">padding </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="p">} </span>
+     <span class="nc">.map </span>  <span class="p">{ </span>  <span class="k">position </span><span class="o">: </span><span class="k">absolute </span><span class="p">; </span>  <span class="k">top </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="k">bottom </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="k">width </span><span class="o">: </span><span class="m">100% </span><span class="p">; </span>  <span class="p">} </span>
+   <span class="nt">&lt;/style&gt; </span>
+ <span class="nt">&lt;/head&gt; </span>
+ <span class="nt">&lt;body&gt; </span>
+ <span class="nt">&lt;div </span>  <span class="na">id= </span><span class="s">&#39;map-five&#39; </span>  <span class="na">class= </span><span class="s">&#39;map&#39; </span><span class="nt">&gt; </span>  <span class="nt">&lt;/div&gt; </span>
+ <span class="nt">&lt;script&gt; </span>
+ <span class="nx">L </span><span class="p">. </span><span class="nx">mapbox </span><span class="p">. </span><span class="nx">accessToken </span>  <span class="o">= </span>  <span class="s1">&#39;&lt;your access token here&gt;&#39; </span><span class="p">; </span>
+ <span class="kd">var </span>  <span class="nx">geojson </span>  <span class="o">= </span>  <span class="p">[ </span>
+   <span class="p">{ </span>
+   <span class="s2">&quot;type&quot; </span><span class="o">: </span>  <span class="s2">&quot;FeatureCollection&quot; </span><span class="p">, </span>
+   <span class="s2">&quot;features&quot; </span><span class="o">: </span>  <span class="p">[ </span>
+     <span class="p">{ </span>
+       <span class="s2">&quot;type&quot; </span><span class="o">: </span>  <span class="s2">&quot;Feature&quot; </span><span class="p">, </span>
+       <span class="s2">&quot;geometry&quot; </span><span class="o">: </span>  <span class="p">{ </span>
+         <span class="s2">&quot;type&quot; </span><span class="o">: </span>  <span class="s2">&quot;Point&quot; </span><span class="p">, </span>
+         <span class="s2">&quot;coordinates&quot; </span><span class="o">: </span>  <span class="p">[ </span>
+           <span class="o">- </span><span class="mf">77.0366048812866 </span><span class="p">, </span>
+           <span class="mf">38.89784666877921 </span>
+         <span class="p">] </span>
+       <span class="p">}, </span>
+       <span class="s2">&quot;properties&quot; </span><span class="o">: </span>  <span class="p">{ </span>
+         <span class="s2">&quot;title&quot; </span><span class="o">: </span>  <span class="s2">&quot;The White House&quot; </span><span class="p">, </span>
+         <span class="s2">&quot;marker-color&quot; </span><span class="o">: </span>  <span class="s2">&quot;#9c89cc&quot; </span><span class="p">, </span>
+         <span class="s2">&quot;marker-size&quot; </span><span class="o">: </span>  <span class="s2">&quot;medium&quot; </span><span class="p">, </span>
+         <span class="s2">&quot;marker-symbol&quot; </span><span class="o">: </span>  <span class="s2">&quot;building&quot; </span>
+       <span class="p">} </span>
+     <span class="p">} </span>
+   <span class="p">] </span>
+ <span class="p">} </span>
+
+ <span class="p">]; </span>
+ <span class="kd">var </span>  <span class="nx">map </span>  <span class="o">= </span>  <span class="nx">L </span><span class="p">. </span><span class="nx">mapbox </span><span class="p">. </span><span class="nx">map </span><span class="p">( </span><span class="s1">&#39;map-five&#39; </span><span class="p">, </span>  <span class="s1">&#39;examples.map-i86l3621&#39; </span><span class="p">, </span>  <span class="p">{ </span>
+     <span class="nx">scrollWheelZoom </span><span class="o">: </span>  <span class="kc">false </span>
+ <span class="p">}). </span><span class="nx">setView </span><span class="p">([ </span><span class="mf">38.8929 </span><span class="p">, </span><span class="o">- </span><span class="mf">77.0252 </span><span class="p">], </span>  <span class="mi">14 </span><span class="p">); </span>
+
+ <span class="kd">var </span>  <span class="nx">myLayer </span>  <span class="o">= </span>  <span class="nx">L </span><span class="p">. </span><span class="nx">mapbox </span><span class="p">. </span><span class="nx">featureLayer </span><span class="p">(). </span><span class="nx">addTo </span><span class="p">( </span><span class="nx">map </span><span class="p">); </span>
+ <span class="nx">myLayer </span><span class="p">. </span><span class="nx">setGeoJSON </span><span class="p">( </span><span class="nx">geojson </span><span class="p">); </span>
+ <span class="nt">&lt;/script&gt; </span>
+ <span class="nt">&lt;/body&gt; </span>
+ <span class="nt">&lt;/html&gt; </span></code></pre></div>
+
+ </div>
+
+ <a href='#' class='pin-bottom col12 button round-bottom z1000 pad1 js-view-source'>View source </a>
+
+ </div>
+
+
+ <p>Click on the marker __ see the tooltip! </p>
+
+ <h3 id='add-a-line'>Add a line </h3>
+
+
+ <p>Let&rsquo;s make our map _ little more interesting by ______  <em>another </em> marker and a ____ to connect them. </p>
+
+ <p>We&rsquo;ll add the marker ___ line to the GeoJSON _____ with some styles: </p>
+
+ <div class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{ </span>
+   <span class="nt">&quot;type&quot; </span><span class="p">: </span>  <span class="s2">&quot;FeatureCollection&quot; </span><span class="p">, </span>
+   <span class="nt">&quot;features&quot; </span><span class="p">: </span>  <span class="p">[ </span>
+     <span class="p">{ </span>
+       <span class="nt">&quot;type&quot; </span><span class="p">: </span>  <span class="s2">&quot;Feature&quot; </span><span class="p">, </span>
+       <span class="nt">&quot;geometry&quot; </span><span class="p">: </span>  <span class="p">{ </span>
+         <span class="nt">&quot;type&quot; </span><span class="p">: </span>  <span class="s2">&quot;Point&quot; </span><span class="p">, </span>
+         <span class="nt">&quot;coordinates&quot; </span><span class="p">: </span>  <span class="p">[ </span>
+           <span class="mf">-77.0366048812866 </span><span class="p">, </span>
+           <span class="mf">38.89784666877921 </span>
+         <span class="p">] </span>
+       <span class="p">}, </span>
+       <span class="nt">&quot;properties&quot; </span><span class="p">: </span>  <span class="p">{ </span>
+         <span class="nt">&quot;title&quot; </span><span class="p">: </span>  <span class="s2">&quot;The White House&quot; </span><span class="p">, </span>
+         <span class="nt">&quot;marker-color&quot; </span><span class="p">: </span>  <span class="s2">&quot;#9c89cc&quot; </span><span class="p">, </span>
+         <span class="nt">&quot;marker-size&quot; </span><span class="p">: </span>  <span class="s2">&quot;medium&quot; </span><span class="p">, </span>
+         <span class="nt">&quot;marker-symbol&quot; </span><span class="p">: </span>  <span class="s2">&quot;building&quot; </span>
+       <span class="p">} </span>
+     <span class="p">}, </span>
+     <span class="p">{ </span>
+       <span class="nt">&quot;type&quot; </span><span class="p">: </span>  <span class="s2">&quot;Feature&quot; </span><span class="p">, </span>
+       <span class="nt">&quot;geometry&quot; </span><span class="p">: </span>  <span class="p">{ </span>
+         <span class="nt">&quot;type&quot; </span><span class="p">: </span>  <span class="s2">&quot;Point&quot; </span><span class="p">, </span>
+         <span class="nt">&quot;coordinates&quot; </span><span class="p">: </span>  <span class="p">[ </span>
+           <span class="mf">-77.00905323028564 </span><span class="p">, </span>
+           <span class="mf">38.88981361419182 </span>
+         <span class="p">] </span>
+       <span class="p">}, </span>
+       <span class="nt">&quot;properties&quot; </span><span class="p">: </span>  <span class="p">{ </span>
+         <span class="nt">&quot;title&quot; </span><span class="p">: </span>  <span class="s2">&quot;U.S. Capitol&quot; </span><span class="p">, </span>
+         <span class="nt">&quot;marker-color&quot; </span><span class="p">: </span>  <span class="s2">&quot;#9c89cc&quot; </span><span class="p">, </span>
+         <span class="nt">&quot;marker-size&quot; </span><span class="p">: </span>  <span class="s2">&quot;medium&quot; </span><span class="p">, </span>
+         <span class="nt">&quot;marker-symbol&quot; </span><span class="p">: </span>  <span class="s2">&quot;town-hall&quot; </span>
+       <span class="p">} </span>
+     <span class="p">}, </span>
+     <span class="p">{ </span>
+       <span class="nt">&quot;type&quot; </span><span class="p">: </span>  <span class="s2">&quot;Feature&quot; </span><span class="p">, </span>
+       <span class="nt">&quot;geometry&quot; </span><span class="p">: </span>  <span class="p">{ </span>
+         <span class="nt">&quot;type&quot; </span><span class="p">: </span>  <span class="s2">&quot;LineString&quot; </span><span class="p">, </span>
+         <span class="nt">&quot;coordinates&quot; </span><span class="p">: </span>  <span class="p">[ </span>
+           <span class="p">[ </span>  <span class="mf">-77.0366048812866 </span><span class="p">, </span>  <span class="mf">38.89873175227713 </span><span class="p">], </span>
+           <span class="p">[ </span><span class="mf">-77.03364372253417 </span><span class="p">, </span>  <span class="mf">38.89876515143842 </span><span class="p">], </span>
+           <span class="p">[ </span><span class="mf">-77.03364372253417 </span><span class="p">, </span>  <span class="mf">38.89549195896866 </span><span class="p">], </span>
+           <span class="p">[ </span><span class="mf">-77.02982425689697 </span><span class="p">, </span>  <span class="mf">38.89549195896866 </span><span class="p">], </span>
+           <span class="p">[ </span><span class="mf">-77.02400922775269 </span><span class="p">, </span>  <span class="mf">38.89387200688839 </span><span class="p">], </span>
+           <span class="p">[ </span><span class="mf">-77.01519012451172 </span><span class="p">, </span>  <span class="mf">38.891416957534204 </span><span class="p">], </span>
+           <span class="p">[ </span><span class="mf">-77.01521158218382 </span><span class="p">, </span>  <span class="mf">38.892068305429156 </span><span class="p">], </span>
+           <span class="p">[ </span><span class="mf">-77.00813055038452 </span><span class="p">, </span>  <span class="mf">38.892051604275686 </span><span class="p">], </span>
+           <span class="p">[ </span><span class="mf">-77.00832366943358 </span><span class="p">, </span>  <span class="mf">38.89143365883688 </span><span class="p">], </span>
+           <span class="p">[ </span><span class="mf">-77.00818419456482 </span><span class="p">, </span>  <span class="mf">38.89082405874451 </span><span class="p">], </span>
+           <span class="p">[ </span><span class="mf">-77.00815200805664 </span><span class="p">, </span>  <span class="mf">38.88989712255097 </span><span class="p">] </span>
+         <span class="p">] </span>
+       <span class="p">}, </span>
+       <span class="nt">&quot;properties&quot; </span><span class="p">: </span>  <span class="p">{ </span>
+         <span class="nt">&quot;stroke&quot; </span><span class="p">: </span>  <span class="s2">&quot;#fa946e&quot; </span><span class="p">, </span>
+         <span class="nt">&quot;stroke-opacity&quot; </span><span class="p">: </span>  <span class="mi">1 </span><span class="p">, </span>
+         <span class="nt">&quot;stroke-width&quot; </span><span class="p">: </span>  <span class="mi">6 </span>
+       <span class="p">} </span>
+     <span class="p">} </span>
+   <span class="p">] </span>
+ <span class="p">} </span></code></pre></div>
+
+
+ <p>Our new styled features ____ fantastic on the map: </p>
+
+ <div class='demo round'>
+
+ <div id='map-six' class='map'>  </div>
+ <script>
+var geojson = [
+  {
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.0366048812866,
+          38.89784666877921
+        ]
+      },
+      "properties": {
+        "title": "The White House",
+        "marker-color": "#9c89cc",
+        "marker-size": "medium",
+        "marker-symbol": "building"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.00905323028564,
+          38.88981361419182
+        ]
+      },
+      "properties": {
+        "title": "U.S. Capitol",
+        "marker-color": "#9c89cc",
+        "marker-size": "medium",
+        "marker-symbol": "town-hall"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [ -77.0366048812866, 38.89873175227713],
+          [-77.03364372253417, 38.89876515143842],
+          [-77.03364372253417, 38.89549195896866],
+          [-77.02982425689697, 38.89549195896866],
+          [-77.02400922775269, 38.89387200688839],
+          [-77.01519012451172, 38.891416957534204],
+          [-77.01521158218382, 38.892068305429156],
+          [-77.00813055038452, 38.892051604275686],
+          [-77.00832366943358, 38.89143365883688],
+          [-77.00818419456482, 38.89082405874451],
+          [-77.00815200805664, 38.88989712255097]
+        ]
+      },
+      "properties": {
+        "stroke": "#fa946e",
+        "stroke-opacity": 1,
+        "stroke-width": 6
+      }
+    }
+  ]
+}
+
+];
+var map = L.mapbox.map('map-six', 'examples.map-i86l3621', {
+    scrollWheelZoom: false
+}).setView([38.8929,-77.0252], 14);
+
+var myLayer = L.mapbox.featureLayer().addTo(map);
+myLayer.setGeoJSON(geojson);
+</script>
+
+ <div class='js-replace-token'>
+
+ <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE html&gt; </span>
+ <span class="nt">&lt;html&gt; </span>
+ <span class="nt">&lt;head&gt; </span>
+   <span class="nt">&lt;meta </span>  <span class="na">charset= </span><span class="s">utf-8 </span>  <span class="nt">/&gt; </span>
+   <span class="nt">&lt;title&gt;&lt;/title&gt; </span>
+   <span class="nt">&lt;script  </span><span class="na">src= </span><span class="s">&#39;https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.js&#39; </span><span class="nt">&gt;&lt;/script&gt; </span>
+   <span class="nt">&lt;link </span>  <span class="na">href= </span><span class="s">&#39;https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.css&#39; </span>  <span class="na">rel= </span><span class="s">&#39;stylesheet&#39; </span>  <span class="nt">/&gt; </span>
+   <span class="nt">&lt;style&gt; </span>
+     <span class="nt">body </span>  <span class="p">{ </span>  <span class="k">margin </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="k">padding </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="p">} </span>
+     <span class="nc">.map </span>  <span class="p">{ </span>  <span class="k">position </span><span class="o">: </span><span class="k">absolute </span><span class="p">; </span>  <span class="k">top </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="k">bottom </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="k">width </span><span class="o">: </span><span class="m">100% </span><span class="p">; </span>  <span class="p">} </span>
+   <span class="nt">&lt;/style&gt; </span>
+ <span class="nt">&lt;/head&gt; </span>
+ <span class="nt">&lt;body&gt; </span>
+ <span class="nt">&lt;div </span>  <span class="na">id= </span><span class="s">&#39;map-six&#39; </span>  <span class="na">class= </span><span class="s">&#39;map&#39; </span><span class="nt">&gt; </span>  <span class="nt">&lt;/div&gt; </span>
+ <span class="nt">&lt;script&gt; </span>
+ <span class="nx">L </span><span class="p">. </span><span class="nx">mapbox </span><span class="p">. </span><span class="nx">accessToken </span>  <span class="o">= </span>  <span class="s1">&#39;&lt;your access token here&gt;&#39; </span><span class="p">; </span>
+ <span class="kd">var </span>  <span class="nx">geojson </span>  <span class="o">= </span>  <span class="p">[ </span>
+   <span class="p">{ </span>
+   <span class="s2">&quot;type&quot; </span><span class="o">: </span>  <span class="s2">&quot;FeatureCollection&quot; </span><span class="p">, </span>
+   <span class="s2">&quot;features&quot; </span><span class="o">: </span>  <span class="p">[ </span>
+     <span class="p">{ </span>
+       <span class="s2">&quot;type&quot; </span><span class="o">: </span>  <span class="s2">&quot;Feature&quot; </span><span class="p">, </span>
+       <span class="s2">&quot;geometry&quot; </span><span class="o">: </span>  <span class="p">{ </span>
+         <span class="s2">&quot;type&quot; </span><span class="o">: </span>  <span class="s2">&quot;Point&quot; </span><span class="p">, </span>
+         <span class="s2">&quot;coordinates&quot; </span><span class="o">: </span>  <span class="p">[ </span>
+           <span class="o">- </span><span class="mf">77.0366048812866 </span><span class="p">, </span>
+           <span class="mf">38.89784666877921 </span>
+         <span class="p">] </span>
+       <span class="p">}, </span>
+       <span class="s2">&quot;properties&quot; </span><span class="o">: </span>  <span class="p">{ </span>
+         <span class="s2">&quot;title&quot; </span><span class="o">: </span>  <span class="s2">&quot;The White House&quot; </span><span class="p">, </span>
+         <span class="s2">&quot;marker-color&quot; </span><span class="o">: </span>  <span class="s2">&quot;#9c89cc&quot; </span><span class="p">, </span>
+         <span class="s2">&quot;marker-size&quot; </span><span class="o">: </span>  <span class="s2">&quot;medium&quot; </span><span class="p">, </span>
+         <span class="s2">&quot;marker-symbol&quot; </span><span class="o">: </span>  <span class="s2">&quot;building&quot; </span>
+       <span class="p">} </span>
+     <span class="p">}, </span>
+     <span class="p">{ </span>
+       <span class="s2">&quot;type&quot; </span><span class="o">: </span>  <span class="s2">&quot;Feature&quot; </span><span class="p">, </span>
+       <span class="s2">&quot;geometry&quot; </span><span class="o">: </span>  <span class="p">{ </span>
+         <span class="s2">&quot;type&quot; </span><span class="o">: </span>  <span class="s2">&quot;Point&quot; </span><span class="p">, </span>
+         <span class="s2">&quot;coordinates&quot; </span><span class="o">: </span>  <span class="p">[ </span>
+           <span class="o">- </span><span class="mf">77.00905323028564 </span><span class="p">, </span>
+           <span class="mf">38.88981361419182 </span>
+         <span class="p">] </span>
+       <span class="p">}, </span>
+       <span class="s2">&quot;properties&quot; </span><span class="o">: </span>  <span class="p">{ </span>
+         <span class="s2">&quot;title&quot; </span><span class="o">: </span>  <span class="s2">&quot;U.S. Capitol&quot; </span><span class="p">, </span>
+         <span class="s2">&quot;marker-color&quot; </span><span class="o">: </span>  <span class="s2">&quot;#9c89cc&quot; </span><span class="p">, </span>
+         <span class="s2">&quot;marker-size&quot; </span><span class="o">: </span>  <span class="s2">&quot;medium&quot; </span><span class="p">, </span>
+         <span class="s2">&quot;marker-symbol&quot; </span><span class="o">: </span>  <span class="s2">&quot;town-hall&quot; </span>
+       <span class="p">} </span>
+     <span class="p">}, </span>
+     <span class="p">{ </span>
+       <span class="s2">&quot;type&quot; </span><span class="o">: </span>  <span class="s2">&quot;Feature&quot; </span><span class="p">, </span>
+       <span class="s2">&quot;geometry&quot; </span><span class="o">: </span>  <span class="p">{ </span>
+         <span class="s2">&quot;type&quot; </span><span class="o">: </span>  <span class="s2">&quot;LineString&quot; </span><span class="p">, </span>
+         <span class="s2">&quot;coordinates&quot; </span><span class="o">: </span>  <span class="p">[ </span>
+           <span class="p">[ </span>  <span class="o">- </span><span class="mf">77.0366048812866 </span><span class="p">, </span>  <span class="mf">38.89873175227713 </span><span class="p">], </span>
+           <span class="p">[ </span><span class="o">- </span><span class="mf">77.03364372253417 </span><span class="p">, </span>  <span class="mf">38.89876515143842 </span><span class="p">], </span>
+           <span class="p">[ </span><span class="o">- </span><span class="mf">77.03364372253417 </span><span class="p">, </span>  <span class="mf">38.89549195896866 </span><span class="p">], </span>
+           <span class="p">[ </span><span class="o">- </span><span class="mf">77.02982425689697 </span><span class="p">, </span>  <span class="mf">38.89549195896866 </span><span class="p">], </span>
+           <span class="p">[ </span><span class="o">- </span><span class="mf">77.02400922775269 </span><span class="p">, </span>  <span class="mf">38.89387200688839 </span><span class="p">], </span>
+           <span class="p">[ </span><span class="o">- </span><span class="mf">77.01519012451172 </span><span class="p">, </span>  <span class="mf">38.891416957534204 </span><span class="p">], </span>
+           <span class="p">[ </span><span class="o">- </span><span class="mf">77.01521158218382 </span><span class="p">, </span>  <span class="mf">38.892068305429156 </span><span class="p">], </span>
+           <span class="p">[ </span><span class="o">- </span><span class="mf">77.00813055038452 </span><span class="p">, </span>  <span class="mf">38.892051604275686 </span><span class="p">], </span>
+           <span class="p">[ </span><span class="o">- </span><span class="mf">77.00832366943358 </span><span class="p">, </span>  <span class="mf">38.89143365883688 </span><span class="p">], </span>
+           <span class="p">[ </span><span class="o">- </span><span class="mf">77.00818419456482 </span><span class="p">, </span>  <span class="mf">38.89082405874451 </span><span class="p">], </span>
+           <span class="p">[ </span><span class="o">- </span><span class="mf">77.00815200805664 </span><span class="p">, </span>  <span class="mf">38.88989712255097 </span><span class="p">] </span>
+         <span class="p">] </span>
+       <span class="p">}, </span>
+       <span class="s2">&quot;properties&quot; </span><span class="o">: </span>  <span class="p">{ </span>
+         <span class="s2">&quot;stroke&quot; </span><span class="o">: </span>  <span class="s2">&quot;#fa946e&quot; </span><span class="p">, </span>
+         <span class="s2">&quot;stroke-opacity&quot; </span><span class="o">: </span>  <span class="mi">1 </span><span class="p">, </span>
+         <span class="s2">&quot;stroke-width&quot; </span><span class="o">: </span>  <span class="mi">6 </span>
+       <span class="p">} </span>
+     <span class="p">} </span>
+   <span class="p">] </span>
+ <span class="p">} </span>
+
+ <span class="p">]; </span>
+ <span class="kd">var </span>  <span class="nx">map </span>  <span class="o">= </span>  <span class="nx">L </span><span class="p">. </span><span class="nx">mapbox </span><span class="p">. </span><span class="nx">map </span><span class="p">( </span><span class="s1">&#39;map-six&#39; </span><span class="p">, </span>  <span class="s1">&#39;examples.map-i86l3621&#39; </span><span class="p">, </span>  <span class="p">{ </span>
+     <span class="nx">scrollWheelZoom </span><span class="o">: </span>  <span class="kc">false </span>
+ <span class="p">}). </span><span class="nx">setView </span><span class="p">([ </span><span class="mf">38.8929 </span><span class="p">, </span><span class="o">- </span><span class="mf">77.0252 </span><span class="p">], </span>  <span class="mi">14 </span><span class="p">); </span>
+
+ <span class="kd">var </span>  <span class="nx">myLayer </span>  <span class="o">= </span>  <span class="nx">L </span><span class="p">. </span><span class="nx">mapbox </span><span class="p">. </span><span class="nx">featureLayer </span><span class="p">(). </span><span class="nx">addTo </span><span class="p">( </span><span class="nx">map </span><span class="p">); </span>
+ <span class="nx">myLayer </span><span class="p">. </span><span class="nx">setGeoJSON </span><span class="p">( </span><span class="nx">geojson </span><span class="p">); </span>
+ <span class="nt">&lt;/script&gt; </span>
+ <span class="nt">&lt;/body&gt; </span>
+ <span class="nt">&lt;/html&gt; </span></code></pre></div>
+
+ </div>
+
+ <a href='#' class='pin-bottom col12 button round-bottom z1000 pad1 js-view-source'>View source </a>
+
+ </div>
+
+
+
+
+ <h2 id='add-a-legend'>Add a legend </h2>
+
+
+ <p><aside><code>addLegend() </code> supports basic HTML. </aside></p>
+
+ <p>Legends are great for __________ data on a map. ______.__ allows you to add _ legend with  <code>map.legendControl.addLegend('Legend content') </code>. </p>
+
+ <p>By default, legends appear __ the bottom right of _ map. Since we&rsquo;re working __ a small space, let&rsquo;s _____ the legend up by _______  <code>position: 'topright' </code> when the map __ initialized. </p>
+
+ <p>The legend now appears __ the map: </p>
+
+ <div class='demo round'>
+
+ <div id='map-seven' class='map'>  </div>
+ <script>
+var geojson = [
+  {
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.0366048812866,
+          38.89784666877921
+        ]
+      },
+      "properties": {
+        "title": "The White House",
+        "marker-color": "#9c89cc",
+        "marker-size": "medium",
+        "marker-symbol": "building"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.00905323028564,
+          38.88981361419182
+        ]
+      },
+      "properties": {
+        "title": "U.S. Capitol",
+        "marker-color": "#9c89cc",
+        "marker-size": "medium",
+        "marker-symbol": "town-hall"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [ -77.0366048812866, 38.89873175227713],
+          [-77.03364372253417, 38.89876515143842],
+          [-77.03364372253417, 38.89549195896866],
+          [-77.02982425689697, 38.89549195896866],
+          [-77.02400922775269, 38.89387200688839],
+          [-77.01519012451172, 38.891416957534204],
+          [-77.01521158218382, 38.892068305429156],
+          [-77.00813055038452, 38.892051604275686],
+          [-77.00832366943358, 38.89143365883688],
+          [-77.00818419456482, 38.89082405874451],
+          [-77.00815200805664, 38.88989712255097]
+        ]
+      },
+      "properties": {
+        "stroke": "#fa946e",
+        "stroke-opacity": 1,
+        "stroke-width": 6
+      }
+    }
+  ]
+}
+
+];
+var map = L.mapbox.map('map-seven', 'examples.map-i86l3621', {
+    scrollWheelZoom: false,
+    legendControl: {
+        position: 'topright'
+    }
+}).setView([38.8929,-77.0252], 14)
+
+var myLayer = L.mapbox.featureLayer().addTo(map);
+myLayer.setGeoJSON(geojson);
+
+map.legendControl.addLegend('<strong>My walk from the White House to the hill!</strong>');
+</script>
+
+ <div class='js-replace-token'>
+
+ <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE html&gt; </span>
+ <span class="nt">&lt;html&gt; </span>
+ <span class="nt">&lt;head&gt; </span>
+   <span class="nt">&lt;meta </span>  <span class="na">charset= </span><span class="s">utf-8 </span>  <span class="nt">/&gt; </span>
+   <span class="nt">&lt;title&gt;&lt;/title&gt; </span>
+   <span class="nt">&lt;script  </span><span class="na">src= </span><span class="s">&#39;https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.js&#39; </span><span class="nt">&gt;&lt;/script&gt; </span>
+   <span class="nt">&lt;link </span>  <span class="na">href= </span><span class="s">&#39;https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.css&#39; </span>  <span class="na">rel= </span><span class="s">&#39;stylesheet&#39; </span>  <span class="nt">/&gt; </span>
+   <span class="nt">&lt;style&gt; </span>
+     <span class="nt">body </span>  <span class="p">{ </span>  <span class="k">margin </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="k">padding </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="p">} </span>
+     <span class="nc">.map </span>  <span class="p">{ </span>  <span class="k">position </span><span class="o">: </span><span class="k">absolute </span><span class="p">; </span>  <span class="k">top </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="k">bottom </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="k">width </span><span class="o">: </span><span class="m">100% </span><span class="p">; </span>  <span class="p">} </span>
+   <span class="nt">&lt;/style&gt; </span>
+ <span class="nt">&lt;/head&gt; </span>
+ <span class="nt">&lt;body&gt; </span>
+ <span class="nt">&lt;div </span>  <span class="na">id= </span><span class="s">&#39;map-seven&#39; </span>  <span class="na">class= </span><span class="s">&#39;map&#39; </span><span class="nt">&gt; </span>  <span class="nt">&lt;/div&gt; </span>
+ <span class="nt">&lt;script&gt; </span>
+ <span class="nx">L </span><span class="p">. </span><span class="nx">mapbox </span><span class="p">. </span><span class="nx">accessToken </span>  <span class="o">= </span>  <span class="s1">&#39;&lt;your access token here&gt;&#39; </span><span class="p">; </span>
+ <span class="kd">var </span>  <span class="nx">geojson </span>  <span class="o">= </span>  <span class="p">[ </span>
+   <span class="p">{ </span>
+   <span class="s2">&quot;type&quot; </span><span class="o">: </span>  <span class="s2">&quot;FeatureCollection&quot; </span><span class="p">, </span>
+   <span class="s2">&quot;features&quot; </span><span class="o">: </span>  <span class="p">[ </span>
+     <span class="p">{ </span>
+       <span class="s2">&quot;type&quot; </span><span class="o">: </span>  <span class="s2">&quot;Feature&quot; </span><span class="p">, </span>
+       <span class="s2">&quot;geometry&quot; </span><span class="o">: </span>  <span class="p">{ </span>
+         <span class="s2">&quot;type&quot; </span><span class="o">: </span>  <span class="s2">&quot;Point&quot; </span><span class="p">, </span>
+         <span class="s2">&quot;coordinates&quot; </span><span class="o">: </span>  <span class="p">[ </span>
+           <span class="o">- </span><span class="mf">77.0366048812866 </span><span class="p">, </span>
+           <span class="mf">38.89784666877921 </span>
+         <span class="p">] </span>
+       <span class="p">}, </span>
+       <span class="s2">&quot;properties&quot; </span><span class="o">: </span>  <span class="p">{ </span>
+         <span class="s2">&quot;title&quot; </span><span class="o">: </span>  <span class="s2">&quot;The White House&quot; </span><span class="p">, </span>
+         <span class="s2">&quot;marker-color&quot; </span><span class="o">: </span>  <span class="s2">&quot;#9c89cc&quot; </span><span class="p">, </span>
+         <span class="s2">&quot;marker-size&quot; </span><span class="o">: </span>  <span class="s2">&quot;medium&quot; </span><span class="p">, </span>
+         <span class="s2">&quot;marker-symbol&quot; </span><span class="o">: </span>  <span class="s2">&quot;building&quot; </span>
+       <span class="p">} </span>
+     <span class="p">}, </span>
+     <span class="p">{ </span>
+       <span class="s2">&quot;type&quot; </span><span class="o">: </span>  <span class="s2">&quot;Feature&quot; </span><span class="p">, </span>
+       <span class="s2">&quot;geometry&quot; </span><span class="o">: </span>  <span class="p">{ </span>
+         <span class="s2">&quot;type&quot; </span><span class="o">: </span>  <span class="s2">&quot;Point&quot; </span><span class="p">, </span>
+         <span class="s2">&quot;coordinates&quot; </span><span class="o">: </span>  <span class="p">[ </span>
+           <span class="o">- </span><span class="mf">77.00905323028564 </span><span class="p">, </span>
+           <span class="mf">38.88981361419182 </span>
+         <span class="p">] </span>
+       <span class="p">}, </span>
+       <span class="s2">&quot;properties&quot; </span><span class="o">: </span>  <span class="p">{ </span>
+         <span class="s2">&quot;title&quot; </span><span class="o">: </span>  <span class="s2">&quot;U.S. Capitol&quot; </span><span class="p">, </span>
+         <span class="s2">&quot;marker-color&quot; </span><span class="o">: </span>  <span class="s2">&quot;#9c89cc&quot; </span><span class="p">, </span>
+         <span class="s2">&quot;marker-size&quot; </span><span class="o">: </span>  <span class="s2">&quot;medium&quot; </span><span class="p">, </span>
+         <span class="s2">&quot;marker-symbol&quot; </span><span class="o">: </span>  <span class="s2">&quot;town-hall&quot; </span>
+       <span class="p">} </span>
+     <span class="p">}, </span>
+     <span class="p">{ </span>
+       <span class="s2">&quot;type&quot; </span><span class="o">: </span>  <span class="s2">&quot;Feature&quot; </span><span class="p">, </span>
+       <span class="s2">&quot;geometry&quot; </span><span class="o">: </span>  <span class="p">{ </span>
+         <span class="s2">&quot;type&quot; </span><span class="o">: </span>  <span class="s2">&quot;LineString&quot; </span><span class="p">, </span>
+         <span class="s2">&quot;coordinates&quot; </span><span class="o">: </span>  <span class="p">[ </span>
+           <span class="p">[ </span>  <span class="o">- </span><span class="mf">77.0366048812866 </span><span class="p">, </span>  <span class="mf">38.89873175227713 </span><span class="p">], </span>
+           <span class="p">[ </span><span class="o">- </span><span class="mf">77.03364372253417 </span><span class="p">, </span>  <span class="mf">38.89876515143842 </span><span class="p">], </span>
+           <span class="p">[ </span><span class="o">- </span><span class="mf">77.03364372253417 </span><span class="p">, </span>  <span class="mf">38.89549195896866 </span><span class="p">], </span>
+           <span class="p">[ </span><span class="o">- </span><span class="mf">77.02982425689697 </span><span class="p">, </span>  <span class="mf">38.89549195896866 </span><span class="p">], </span>
+           <span class="p">[ </span><span class="o">- </span><span class="mf">77.02400922775269 </span><span class="p">, </span>  <span class="mf">38.89387200688839 </span><span class="p">], </span>
+           <span class="p">[ </span><span class="o">- </span><span class="mf">77.01519012451172 </span><span class="p">, </span>  <span class="mf">38.891416957534204 </span><span class="p">], </span>
+           <span class="p">[ </span><span class="o">- </span><span class="mf">77.01521158218382 </span><span class="p">, </span>  <span class="mf">38.892068305429156 </span><span class="p">], </span>
+           <span class="p">[ </span><span class="o">- </span><span class="mf">77.00813055038452 </span><span class="p">, </span>  <span class="mf">38.892051604275686 </span><span class="p">], </span>
+           <span class="p">[ </span><span class="o">- </span><span class="mf">77.00832366943358 </span><span class="p">, </span>  <span class="mf">38.89143365883688 </span><span class="p">], </span>
+           <span class="p">[ </span><span class="o">- </span><span class="mf">77.00818419456482 </span><span class="p">, </span>  <span class="mf">38.89082405874451 </span><span class="p">], </span>
+           <span class="p">[ </span><span class="o">- </span><span class="mf">77.00815200805664 </span><span class="p">, </span>  <span class="mf">38.88989712255097 </span><span class="p">] </span>
+         <span class="p">] </span>
+       <span class="p">}, </span>
+       <span class="s2">&quot;properties&quot; </span><span class="o">: </span>  <span class="p">{ </span>
+         <span class="s2">&quot;stroke&quot; </span><span class="o">: </span>  <span class="s2">&quot;#fa946e&quot; </span><span class="p">, </span>
+         <span class="s2">&quot;stroke-opacity&quot; </span><span class="o">: </span>  <span class="mi">1 </span><span class="p">, </span>
+         <span class="s2">&quot;stroke-width&quot; </span><span class="o">: </span>  <span class="mi">6 </span>
+       <span class="p">} </span>
+     <span class="p">} </span>
+   <span class="p">] </span>
+ <span class="p">} </span>
+
+ <span class="p">]; </span>
+ <span class="kd">var </span>  <span class="nx">map </span>  <span class="o">= </span>  <span class="nx">L </span><span class="p">. </span><span class="nx">mapbox </span><span class="p">. </span><span class="nx">map </span><span class="p">( </span><span class="s1">&#39;map-seven&#39; </span><span class="p">, </span>  <span class="s1">&#39;examples.map-i86l3621&#39; </span><span class="p">, </span>  <span class="p">{ </span>
+     <span class="nx">scrollWheelZoom </span><span class="o">: </span>  <span class="kc">false </span><span class="p">, </span>
+     <span class="nx">legendControl </span><span class="o">: </span>  <span class="p">{ </span>
+         <span class="nx">position </span><span class="o">: </span>  <span class="s1">&#39;topright&#39; </span>
+     <span class="p">} </span>
+ <span class="p">}). </span><span class="nx">setView </span><span class="p">([ </span><span class="mf">38.8929 </span><span class="p">, </span><span class="o">- </span><span class="mf">77.0252 </span><span class="p">], </span>  <span class="mi">14 </span><span class="p">) </span>
+
+ <span class="kd">var </span>  <span class="nx">myLayer </span>  <span class="o">= </span>  <span class="nx">L </span><span class="p">. </span><span class="nx">mapbox </span><span class="p">. </span><span class="nx">featureLayer </span><span class="p">(). </span><span class="nx">addTo </span><span class="p">( </span><span class="nx">map </span><span class="p">); </span>
+ <span class="nx">myLayer </span><span class="p">. </span><span class="nx">setGeoJSON </span><span class="p">( </span><span class="nx">geojson </span><span class="p">); </span>
+
+ <span class="nx">map </span><span class="p">. </span><span class="nx">legendControl </span><span class="p">. </span><span class="nx">addLegend </span><span class="p">( </span><span class="s1">&#39;&lt;strong&gt;My walk from the _____ House to the hill!&lt;/strong&gt;&#39; </span><span class="p">); </span>
+ <span class="nt">&lt;/script&gt; </span>
+ <span class="nt">&lt;/body&gt; </span>
+ <span class="nt">&lt;/html&gt; </span></code></pre></div>
+
+ </div>
+
+ <a href='#' class='pin-bottom col12 button round-bottom z1000 pad1 js-view-source'>View source </a>
+
+ </div>
+
+
+
+
+ <h2 id='next-steps'>Next steps </h2>
+
+
+ <p><strong>You did it! </strong> This guide covered _ lot and we hope ___ leave feeling equipped with ___ right tools to expand __ your ideas. </p>
+
+ <p>Be sure to check ___  <a href="../../mapbox.js/examples/index.html">Mapbox examples </a> as it&rsquo;s a _____ resource for learning more _____ specific interactions. </p>
+
+       </div>
+
+       <div class='round keyline-all clip col12'>
+         <form id='help-feedback' class='pad2'>
+           <fieldset>
+             <label>How could we improve ____ article? </label>
+             <input type='text' class='col12' />
+           </fieldset>
+           <fieldset class='clearfix'>
+             <input type='submit' class='col4 animate' value='Send feedback' />
+           </fieldset>
+         </form>
+       </div>
+
+       <div class='round-bottom space-bottom4 block guides-twitter-block clearfix contain space-top4'>
+   <div class='contain med-graphic dot fill-darken1 dark center fl pad2y'>
+     <span class='icon inline twitter js-twitter-count strong pad1y'></span>
+   </div>
+   <div class='prose prose-big guides-tweet-contents'>
+     <span class='quiet'>Tweet: </span>
+     <a class='js-tweets' href="http://twitter.com/intent/tweet?status=Extending with Mapbox.js https://www.mapbox.com/foundations/extending-interactivity via @Mapbox">"Extending with Mapbox.js" </a>
+   </div>
+ </div>
+
+
+       <div class='hide-mobile clearfix'>
+         <div class='js-show-signup quiet pad2y'>
+          New to Mapbox?  <a href='../../signup/index.html'>Sign up now to _____ making maps </a>
+         </div>
+       </div>
+     </div>
+
+
+   </div>
+ </div>
+
+
+ <div class='limiter clearfix'>
+   <div class='col9 space-bottom4 margin3'>
+     <a class='next-block row2 clip contain col12 block animate round keyline-all fill-intermediate' href='../how-web-maps-work/index.html'>
+       <div class='fill-white animate round col12 pin-left'>
+         <div class='pad2x pad1y'>
+           <div class='pad0y'>
+             <strong class='show-mobile dark small'>Read next:  </strong>
+             <span class='small quiet strong inline'>How do web maps ____? </span>
+             <p class='small quiet truncate block'>Maps are more than ____ streets, markers, and labels. __ this guide, learn the ____ of how your computer _________ and displays maps. </p>
+           </div>
+         </div>
+       </div>
+       <div class='hide-mobile contain z10 button keyline-left animate dark unround fr row2 pad4x fill-intermediate'>Read next </div>
+     </a>
+   </div>
+ </div>
+
+
+ <script src='../js/affix.js'></script>
+ <script src='../js/scrollspy.js'></script>
+ <script src='../site.js'></script>
+
+ <script>$(function() { mapboxguides('/extending-interactivity') });</script>
+ </div>
+
+ <div class='footer pad4y clearfix hide-mobile fill-light'>
+   <div class='limiter'>
+    <div class='clearfix'> 
+     <div class='col8 small mobile-cols'>
+       <div class='col12 clearfix'>
+         <div class='col3'>
+          
+           <a id='footer-design' class='space-bottom0 col12 strong' href='../../design/index.html'>Design </a>
+          
+           <a id='footer-data' class='space-bottom0 col12 strong' href='../../data-platform/index.html'>Data </a>
+          
+           <a id='footer-developers' class='space-bottom0 col12 strong' href='../../developers/index.html'>Developers </a>
+          
+           <a id='footer-showcase' class='space-bottom0 col12 strong' href='../../showcase/index.html'>Showcase </a>
+          
+           <a id='footer-enterprise' class='space-bottom0 col12 strong' href='../../enterprise/index.html'>Enterprise </a>
+          
+         </div>
+         <div class='col3'>
+          
+           <a id='footer-plans' class='space-bottom0 col12 quiet strong' href='../../plans/index.html'>Plans </a>
+          
+           <a id='footer-blog' class='space-bottom0 col12 quiet strong' href='../../blog/index.html'>Blog </a>
+          
+           <a id='footer-help' class='space-bottom0 col12 quiet strong' href='../../help/index.html'>Help </a>
+          
+           <a id='footer-status' class='space-bottom0 col12 quiet strong' href='../../status/index.html'>Status </a>
+          
+           <a id='footer-contact' class='space-bottom0 col12 quiet strong' href='../../contact/index.html'>Contact </a>
+          
+         </div>
+         <div class='col3'>     
+          
+           <a id='footer-about' class='space-bottom0 col12 quiet strong' href='../../about/index.html'>About </a>
+          
+           <a id='footer-team' class='space-bottom0 col12 quiet strong' href='../../about/team/index.html'>Team </a>
+          
+           <a id='footer-jobs' class='space-bottom0 col12 quiet strong' href='../../jobs/index.html'>Jobs </a>
+          
+           <a id='footer-press' class='space-bottom0 col12 quiet strong' href='../../about/press/index.html'>Press </a>
+          
+           <a id='footer-press-kit' class='space-bottom0 col12 quiet strong' href='../../about/press-kit/index.html'>Press Kit </a>
+          
+         </div>
+          <div class='col3'>
+            <div class='space-bottom0 strong'>Tools </div>
+          
+           <a id='footer-studio' class='space-bottom0 col12 quiet strong' href='../../mapbox-studio/index.html'>Studio </a>
+          
+           <a id='footer-maki' class='space-bottom0 col12 quiet strong' href='../../maki/index.html'>Maki </a>
+          
+         </div>
+       </div>
+     </div>
+
+     <div class='col4 footer-social'>
+       <div class='animate footer-animation col6'></div>
+       <div class='footer-dialog fr small strong quiet pad2 col6 contain round fill-gray'>
+      Follow Mapbox on  <a href='https://twitter.com/mapbox'>Twitter </a>,  <a href='https://www.facebook.com/Mapbox'>Facebook </a>, and  <a href='https://instagram.com/mapbox'>Instagram </a>.
+       </div>
+     </div>  
+   </div>
+   </div>
+
+   <div class="limiter industries-footer">
+   <p class='space-bottom1 strong small space-top2 industries-footer-title'>Industries </p>
+   <div class='clearfix pad2y pad4x fill-gray round space-bottom4 industries-footer'>
+         <div class='clearfix'>
+            <div class='col3'>
+            
+             <a id='footer-real-estate' class='space-bottom0 col12 strong quiet small' href='../../industries/realestate/index.html'>Real Estate </a>
+            
+             <a id='footer-transportation' class='space-bottom0 col12 strong quiet small' href='../../industries/transportation/index.html'>Transportation </a>
+            
+             <a id='footer-agriculture' class='space-bottom0 col12 strong quiet small' href='../../industries/agriculture/index.html'>Agriculture </a>
+            
+           </div>
+            <div class='col3'>
+            
+             <a id='footer-social' class='space-bottom0 col12 strong quiet small' href='../../industries/social/index.html'>Social </a>
+            
+             <a id='footer-government' class='space-bottom0 col12 strong quiet small' href='../../industries/government/index.html'>Government </a>
+            
+             <a id='footer-fitness-&amp;-outdoors' class='space-bottom0 col12 strong quiet small' href='../../industries/outdoors/index.html'>Fitness &amp; outdoors </a>
+            
+           </div>
+            <div class='col3'>
+            
+             <a id='footer-finance' class='space-bottom0 col12 strong quiet small' href='../../industries/finance/index.html'>Finance </a>
+            
+             <a id='footer-insurance' class='space-bottom0 col12 strong quiet small' href='../../industries/insurance/index.html'>Insurance </a>
+            
+             <a id='footer-natural-resources' class='space-bottom0 col12 strong quiet small' href='../../industries/naturalresources/index.html'>Natural Resources </a>
+            
+           </div>
+           <div class='col3'>
+            
+                 <a id='footer-security' class='space-bottom0 col12 strong quiet small' href='../../industries/security/index.html'>Security </a>
+            
+                 <a id='footer-health' class='space-bottom0 col12 strong quiet small' href='../../industries/health/index.html'>Health </a>
+            
+                 <a id='footer-media' class='space-bottom0 col12 strong quiet small' href='../../industries/media/index.html'>Media </a>
+            
+           </div>
+          </div> 
+       </div>
+   </div>
+
+   <div class='limiter newsletter-copyright clearfix'>
+   <div class='col8 contain newsletter'>
+         <form id='newsletter' method='post'>
+           <fieldset class='clearfix input-pill col10 pill mobile-cols with-icon'>
+             <span class='icon mail quiet'></span>
+             <input type='text' value='' placeholder='Sign up for our newsletter' name='email' class='col9 required email' />
+             <input type='submit' value='Subscribe' class='col3 quiet' />
+           </fieldset>
+         </form>
+        </div> 
+
+       <div class='col4 footer-copyright small space-top1 col4 noprint fill-light contain'>
+           <div class='pin-right'>
+             <a href='../../tos/index.html'>Terms </a> +
+             <a href='../../privacy/index.html'>Privacy </a>
+            &copy; Mapbox
+           </div>
+       </div>
+   </div>
+
+ </div>
+
+ <div class='footer-copyright small center noprint fill-light show-mobile'>
+   <div class='limiter'>
+     <div class='pad2y'>
+             <a href='../../tos/index.html'>Terms </a> +
+             <a href='../../privacy/index.html'>Privacy </a>
+      &copy; Mapbox
+     </div>
+   </div>
+ </div>
+
+
+
+ <div id='modal-content' class='animate modal modal-content'></div>
+ </div>
+ </body>
+ </html>
+ 

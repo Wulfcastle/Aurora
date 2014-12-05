@@ -1,0 +1,574 @@
+<!DOCTYPE html >
+ <html>
+ <head>
+<!-- Original URL: https://www.mapbox.com/mapbox.js/api/v2.1.2/l-tilelayer-canvas/
+Date Downloaded: 2014-12-05 09:29:45 PM !-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  
+   <meta charset='UTF-8' />
+   <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+   <meta name='robots' content='index' />
+   <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  
+   <title>v2.1.2 JavaScript Library: L.TileLayer.Canvas | Mapbox </title>
+
+   <meta name='st:title' content='v2.1.2 JavaScript Library: L.TileLayer.Canvas' />
+   <meta name='st:type' content='mapboxjs' />
+   <meta name='st:info' content='v2.1.2' />
+
+  
+
+   <link href='../../../../base/latest/base_8f8b1251.css' rel='stylesheet' />
+   <link href='../../../../css/site.css' rel='stylesheet' />
+   <!--[if IE 9]><link href='../../../../css/site-ie9.css' rel='stylesheet' /><![endif]-->
+   <link rel='shortcut icon' href='../../../../img/favicon.ico' type='image/x-icon' />
+   <link rel='alternate' type='application/rss+xml' title='RSS' href='../../../../blog/blog.rss' />
+   <link href='../../../../../api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.css' rel='stylesheet' />
+
+   <!--[if lt IE 9 ]><script src='../../../../js/redirect-ie.js'></script><![endif]-->
+   <script src='../../../../../js.stripe.com/v2/index.html.js'></script>
+   <script>
+  var KM_COOKIE_DOMAIN = 'www.mapbox.com';
+  var analytics=analytics||[];(function(){var e=['identify','track','trackLink','trackForm','trackClick','trackSubmit','page','pageview','ab','alias','ready','group'],t=function(e){return function(){analytics.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var n=0;n<e.length;n++)analytics[e[n]]=t(e[n])})(),analytics.load=function(e){var t=document.createElement('script');t.type='text/javascript',t.async=!0,t.src=('https:'===document.location.protocol?'https://':"http://")+'d2dq2ahtl5zl1z.cloudfront.net/analytics.js/v1/'+e+'/analytics.min.js';var n=document.getElementsByTagName('script')[0];n.parentNode.insertBefore(t,n)};
+  analytics.load(window.location.hostname.indexOf('mapbox.com') !== -1 ? 'fl0c8p240n' : '0biiejpgfj');
+
+  Stripe.setPublishableKey(window.location.hostname.indexOf('mapbox.com') !== -1 ?
+    'pk_live_hI6mmOTIg7KkywK6vo3vJvpk' : 'pk_test_gmIyREg3sKzAiyMkAEeCsxUG');
+  </script>
+   <script src='../../../../../api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.js'></script>
+
+   <script>
+  window.mapbox_api = 'https://www.mapbox.com/core';
+  window.mapbox_tileApi = '../../../../../api.tiles.mapbox.com/index.html';
+  window.mapbox_accessToken = '' || 'pk.eyJ1IjoibWFwYm94IiwiYSI6IlhHVkZmaW8ifQ.hAMX5hSW-QnTeRCMAy9A8Q'
+  if (L.mapbox.VERSION[0] === '2') {
+      L.mapbox.accessToken = window.mapbox_accessToken;
+      L.mapbox.config.FORCE_HTTPS = true;
+      L.mapbox.config.HTTPS_URL = window.mapbox_tileApi + '/v4';
+  }
+  </script>
+   <script src='../../../../base.js/dist/base.js'></script>
+  
+  
+ </head>
+ <body class='fill-light full'><div style="z-index: 9999; position: fixed; width: 100%; border: 0px; padding: 5px; margin: 0px; background-color: transparent;  font-size: 12pt; font-family: sans-serif;" id="web2disk_nag" onclick="javascript: document.getElementById('web2disk_nag').style.display = 'none';">
+		<div style="color: #000000; background-color:#F1F1F1; margin-left: auto; margin-right: auto; border-width: 2px; border-style: solid; width: 550px; ">
+			<div style="width: 100%; text-align: center; font-weight: bold; border: 0px; margin: 0px; padding: 0px">Hey, where did my words go? (Click to hide)</div>
+			<p>In the trial version of Web2Disk every fifth word is blanked out. 
+			To copy this site with all the words, please upgrade to the full version and copy this website again.</p>
+			<div style="width: 100%; text-align: center; font-weight: bold; border: 0px; margin: 0px; padding: 0px">
+				<a href="http://www.inspyder.com/products/Web2Disk/">Inspyder Web2Disk: The Website Downloader</a>
+			</div>
+		</div>
+	</div>
+  <div class='fill-midnight offcanvas-top row3 industries-subnav animate dark pin-top hide-mobile' id='industries'>
+    <div class='limiter pad2y space-top1 small strong contain'>
+       <ul class='space-bottom0 clearfix'>
+         <li class='col2'><a href="../../../../industries/realestate/index.html" class="primary-nav-button inline pad1x pad0y round">Real Estate </a></li>
+         <li class='col2'><a href="../../../../industries/transportation/index.html" class="primary-nav-button inline pad1x pad0y round">Transportation </a></li>
+         <li class='col2'><a href="../../../../industries/agriculture/index.html" class="primary-nav-button inline pad1x pad0y round ">Agriculture </a></li>
+         <li class='col2'><a href="../../../../industries/social/index.html" class="primary-nav-button inline pad1x pad0y round">Social </a></li>
+         <li class='col2'><a href="../../../../industries/government/index.html" class="primary-nav-button inline pad1x pad0y round ">Government </a></li>        
+         <li class='col2'><a href="../../../../industries/outdoors/index.html" class="primary-nav-button inline pad0x pad0y round">Fitness &amp; Outdoors </a></li>
+       </ul>
+       <ul class='clearfix'>
+          <li class='col2'><a href="../../../../industries/finance/index.html" class="primary-nav-button inline pad1x pad0y round ">Finance </a></li>
+          <li class='col2'><a href="../../../../industries/insurance/index.html" class="primary-nav-button inline pad1x pad0y round ">Insurance </a></li>
+          <li class='col2'><a href="../../../../industries/naturalresources/index.html" class="primary-nav-button inline pad1x pad0y round ">Natural Resources </a></li>
+          <li class='col2'><a href="../../../../industries/security/index.html" class="primary-nav-button inline pad1x pad0y round ">Security </a></li>
+          <li class='col2'><a href="../../../../industries/health/index.html" class="primary-nav-button inline pad1x pad0y round ">Health </a></li>
+          <li class='col2'><a href="../../../../industries/media/index.html" class="primary-nav-button inline pad0x pad0y round ">Media </a></li>
+       </ul> 
+    </div>
+  </div>
+ <div class='page-content'> 
+
+ <div class='masthead show-in-loaded col12 clearfix fill-blue dark'>
+   <div class='limiter clearfix'>
+     <nav class='col12 text-right pad2y contain animate clearfix noprint'>
+       <a class='fl mb-logo' href='../../../../index.html'></a>
+       <h4 class='logo-enterpriseaddon pin-topleft text-aqua block-in-enterprise'>Enterprise </h4>
+       <div id='nav'>
+       </div>
+     </nav>
+   </div>
+ </div>
+
+ <div class=''><link href='../../../assets/css/site.css' rel='stylesheet' />
+ <link href='../../../../css/docs.css' rel='stylesheet' />
+ <script src='../../../assets/js/prettify.js'></script>
+ <script src='../../../assets/js/site.js'></script>
+
+ <!--Fixed sidebar navigation-->
+ <div class='docnav hide-mobile'>
+   <div class='limiter'><div class='col3 contain'>
+     <nav class='scroll-styled quiet-scroll'>
+
+      
+      
+
+
+ <div class='space-bottom'>
+   <a class='block quiet strong small truncate ' href='../index.html'>API v2.1.2 </a>
+ </div>
+
+ <div class='space-bottom1'>
+   <strong class='block quiet small'>Map Object </strong>
+  
+   <a class='block small truncate ' href='../l-mapbox-map/index.html'>L.mapbox.map </a>
+  
+ </div>
+
+ <div class='space-bottom1'>
+   <strong class='block quiet small'>Layers </strong>
+  
+   <a class='block small truncate ' href='../l-mapbox-tilelayer/index.html'>L.mapbox.tileLayer </a>
+  
+   <a class='block small truncate ' href='../l-mapbox-gridlayer/index.html'>L.mapbox.gridLayer </a>
+  
+   <a class='block small truncate ' href='../l-mapbox-featurelayer/index.html'>L.mapbox.featureLayer </a>
+  
+ </div>
+
+ <div class='space-bottom1'>
+   <strong class='block quiet small'>Geocoding </strong>
+  
+   <a class='block small truncate ' href='../l-mapbox-geocoder/index.html'>L.mapbox.geocoder </a>
+  
+ </div>
+
+ <div class='space-bottom1'>
+   <strong class='block quiet small'>Controls </strong>
+  
+   <a class='block small truncate ' href='../l-mapbox-infocontrol/index.html'>L.mapbox.infoControl </a>
+  
+   <a class='block small truncate ' href='../l-mapbox-legendcontrol/index.html'>L.mapbox.legendControl </a>
+  
+   <a class='block small truncate ' href='../l-mapbox-gridcontrol/index.html'>L.mapbox.gridControl </a>
+  
+   <a class='block small truncate ' href='../l-mapbox-geocodercontrol/index.html'>L.mapbox.geocoderControl </a>
+  
+   <a class='block small truncate ' href='../l-mapbox-sharecontrol/index.html'>L.mapbox.shareControl </a>
+  
+ </div>
+
+ <div class='space-bottom1'>
+   <strong class='block quiet small'>Markers </strong>
+  
+   <a class='block small truncate ' href='../l-mapbox-marker-icon/index.html'>L.mapbox.marker.icon </a>
+  
+   <a class='block small truncate ' href='../l-mapbox-marker-style/index.html'>L.mapbox.marker.style </a>
+  
+ </div>
+
+ <div class='space-bottom1'>
+   <strong class='block quiet small'>Simplestyle </strong>
+  
+   <a class='block small truncate ' href='../l-mapbox-simplestyle-style/index.html'>L.mapbox.simplestyle.style </a>
+  
+ </div>
+
+ <div class='space-bottom1'>
+   <strong class='block quiet small'>Utility </strong>
+  
+   <a class='block small truncate ' href='../l-mapbox-sanitize/index.html'>L.mapbox.sanitize </a>
+  
+   <a class='block small truncate ' href='../l-mapbox-template/index.html'>L.mapbox.template </a>
+  
+ </div>
+
+ <div class='space-bottom1'>
+   <strong class='block quiet small'>Configuration </strong>
+  
+   <a class='block small truncate ' href='../l-mapbox-accesstoken/index.html'>L.mapbox.accessToken </a>
+  
+   <a class='block small truncate ' href='../l-mapbox-config-force_https/index.html'>L.mapbox.config.FORCE_HTTPS </a>
+  
+   <a class='block small truncate ' href='../l-mapbox-config-http_url/index.html'>L.mapbox.config.HTTP_URL </a>
+  
+   <a class='block small truncate ' href='../l-mapbox-config-https_url/index.html'>L.mapbox.config.HTTPS_URL </a>
+  
+ </div>
+
+ <div class='space-bottom1'>
+   <strong class='block quiet small'>Guides </strong>
+  
+   <a class='block small truncate ' href='../api-access-tokens/index.html'>API access tokens </a>
+  
+   <a class='block small truncate ' href='../upgrading-from-mapbox-js-v1/index.html'>Upgrading from Mapbox.js v1 </a>
+  
+   <a class='block small truncate ' href='../mobile/index.html'>Mobile </a>
+  
+   <a class='block small truncate ' href='../theming/index.html'>Theming </a>
+  
+ </div>
+
+ <div class='space-bottom1'>
+   <strong class='block quiet small'>Leaflet </strong>
+  
+   <a class='block small truncate ' href='../l-map-class/index.html'>L.Map </a>
+  
+   <a class='block small truncate ' href='../l-marker/index.html'>L.Marker </a>
+  
+   <a class='block small truncate ' href='../l-popup/index.html'>L.Popup </a>
+  
+   <a class='block small truncate ' href='../l-tilelayer/index.html'>L.TileLayer </a>
+  
+   <a class='block small truncate ' href='../l-tilelayer-wms/index.html'>L.TileLayer.WMS </a>
+  
+   <a class='block small truncate active' href='index.html'>L.TileLayer.Canvas </a>
+  
+   <a class='block small truncate ' href='../l-imageoverlay/index.html'>L.ImageOverlay </a>
+  
+   <a class='block small truncate ' href='../l-path/index.html'>L.Path </a>
+  
+   <a class='block small truncate ' href='../l-polyline/index.html'>L.Polyline </a>
+  
+   <a class='block small truncate ' href='../l-multipolyline/index.html'>L.MultiPolyline </a>
+  
+   <a class='block small truncate ' href='../l-polygon/index.html'>L.Polygon </a>
+  
+   <a class='block small truncate ' href='../l-multipolygon/index.html'>L.MultiPolygon </a>
+  
+   <a class='block small truncate ' href='../l-rectangle/index.html'>L.Rectangle </a>
+  
+   <a class='block small truncate ' href='../l-circle/index.html'>L.Circle </a>
+  
+   <a class='block small truncate ' href='../l-circlemarker/index.html'>L.CircleMarker </a>
+  
+   <a class='block small truncate ' href='../l-layergroup/index.html'>L.LayerGroup </a>
+  
+   <a class='block small truncate ' href='../l-featuregroup/index.html'>L.FeatureGroup </a>
+  
+   <a class='block small truncate ' href='../l-geojson/index.html'>L.GeoJson </a>
+  
+   <a class='block small truncate ' href='../l-latlng/index.html'>L.LatLng </a>
+  
+   <a class='block small truncate ' href='../l-latlngbounds/index.html'>L.LatLngBounds </a>
+  
+   <a class='block small truncate ' href='../l-point/index.html'>L.Point </a>
+  
+   <a class='block small truncate ' href='../l-bounds/index.html'>L.Bounds </a>
+  
+   <a class='block small truncate ' href='../l-icon/index.html'>L.Icon </a>
+  
+   <a class='block small truncate ' href='../l-divicon/index.html'>L.DivIcon </a>
+  
+   <a class='block small truncate ' href='../l-control/index.html'>L.Control </a>
+  
+   <a class='block small truncate ' href='../l-control-zoom/index.html'>L.Control.zoom </a>
+  
+   <a class='block small truncate ' href='../l-control-attribution/index.html'>L.Control.Attribution </a>
+  
+   <a class='block small truncate ' href='../l-control-layers/index.html'>L.Control.Layers </a>
+  
+   <a class='block small truncate ' href='../l-control-scale/index.html'>L.Control.Scale </a>
+  
+   <a class='block small truncate ' href='../l-events/index.html'>Events methods </a>
+  
+   <a class='block small truncate ' href='../l-event-objects/index.html'>Event objects </a>
+  
+   <a class='block small truncate ' href='../l-class/index.html'>L.Class </a>
+  
+   <a class='block small truncate ' href='../l-browser/index.html'>L.Browser </a>
+  
+   <a class='block small truncate ' href='../l-util/index.html'>L.Util </a>
+  
+   <a class='block small truncate ' href='../l-transformation/index.html'>L.Transformation </a>
+  
+   <a class='block small truncate ' href='../l-lineutil/index.html'>L.LineUtil </a>
+  
+   <a class='block small truncate ' href='../l-polyutil/index.html'>L.PolyUtil </a>
+  
+   <a class='block small truncate ' href='../l-domevent/index.html'>L.DomEvent </a>
+  
+   <a class='block small truncate ' href='../l-domutil/index.html'>L.DomUtil </a>
+  
+   <a class='block small truncate ' href='../l-posanimation/index.html'>L.PosAnimation </a>
+  
+   <a class='block small truncate ' href='../l-draggable/index.html'>L.Draggable </a>
+  
+   <a class='block small truncate ' href='../l-ihandler/index.html'>L.IHandler </a>
+  
+   <a class='block small truncate ' href='../l-ilayer/index.html'>L.ILayer </a>
+  
+   <a class='block small truncate ' href='../l-icontrol/index.html'>L.IControl </a>
+  
+   <a class='block small truncate ' href='../l-iprojection/index.html'>L.IProjection </a>
+  
+   <a class='block small truncate ' href='../l-icrs/index.html'>L.ICRS </a>
+  
+   <a class='block small truncate ' href='../l-global/index.html'>Global Switches </a>
+  
+   <a class='block small truncate ' href='../l-noconflict/index.html'>L.noConflict </a>
+  
+   <a class='block small truncate ' href='../l-version/index.html'>L.version </a>
+  
+ </div>
+
+
+
+      
+
+      
+
+      
+
+     </nav>
+   </div></div>
+ </div>
+
+ <div class='limiter clearfix'>
+   <div class='pad2y'>
+     <nav class='contain z10 margin3 col9 fill-green space-bottom round small'>
+       <div class='col3 dark round-left keyline-right pad2y pad1x center truncate'>
+         <strong class='icon brackets'>Mapbox.js </strong>
+       </div>
+       <div class='col6 dark tabs mobile-cols pad1'><!--
+        --><a href='/mapbox.js/api' class='col4 active'>API </a><!--
+        --><a href='../../../examples/index.html' class='col4 '>Examples </a><!--
+        --><a href='../../../plugins/index.html' class='col4 '>Plugins </a>
+       </div>
+       <div id='docs-search' class='col3 pad1 keyline-left'>
+         <fieldset class='col12 with-icon dark'>
+           <span class='icon search'></span>
+           <input type='text' class='col12 round clean' />
+         </fieldset>
+       </div>
+     </nav>
+   </div>
+   <div class='contain margin3 col9'>
+  
+ <div id='api' class='prose pad2 doc round fill-white keyline-all'>
+  
+
+
+
+   <div class='warning note round space-bottom2'>You are viewing an _____ version of Mapbox.js. Check ___  <a href='../../v2.1.4/l-tilelayer-canvas/index.html'>v2.1.4 for the latest </a>. </div>
+  
+   <div data-swiftype-index="true">
+     <h2 id="tilelayer-canvas">TileLayer.Canvas </h2>
+
+ <p>Used to create Canvas-based ____ layers where tiles get _____ on the browser side. _______  <a href="/mapbox.js/api/v2.1.2/l-tilelayer">TileLayer </a>. </p>
+
+ <h3>Usage example </h3>
+
+ <pre><code class="javascript">var canvasTiles = L.tileLayer.canvas();
+
+canvasTiles.drawTile = function(canvas, tilePoint, zoom) {
+	var ___ = canvas.getContext('2d');
+	// draw something __ the tile canvas
+} </code></pre>
+
+ <h3>Creation </h3>
+
+ <table data-id='tilelayer-canvas'>
+	 <tr>
+ <th class="width200">Factory </th>
+
+ <th>Description </th>
+	 </tr>
+	 <tr>
+ <td><code><b>L.tileLayer.canvas </b>(
+ <nobr>&lt; <a href="/mapbox.js/api/v2.1.2/l-tilelayer">TileLayer options </a>&gt;  <i>options? </i> ) </nobr>
+ </code></td>
+
+ <td>Instantiates a Canvas tile _____ object given an options ______ (optionally). </td>
+	 </tr>
+ </table>
+
+ <h3>Options </h3>
+ <table data-id='tilelayer-canvas'>
+	 <tr>
+ <th>Option </th>
+ <th>Type </th>
+ <th>Default </th>
+ <th>Description </th>
+	 </tr>
+	 <tr>
+ <td><code><b>async </b></code></td>
+ <td><code>Boolean </code></td>
+ <td><code><span class="literal">false </span></code></td>
+ <td>Indicates that tiles will __ drawn asynchronously.  <a href="/mapbox.js/api/v2.1.2/l-tilelayer">tileDrawn </a> method should be ______ for each tile after _______ completion. </td>
+	 </tr>
+ </table>
+
+ <h3>Methods </h3>
+
+ <table data-id='tilelayer-canvas'>
+	 <tr>
+ <th class="width200">Method </th>
+ <th>Returns </th>
+ <th>Description </th>
+	 </tr>
+	 <tr id="tilelayer-canvas-drawtile">
+ <td><code><b>drawTile </b>(
+ <nobr>&lt;HTMLCanvasElement&gt;  <i>canvas </i></nobr>,
+ <nobr>&lt; <a href="/mapbox.js/api/v2.1.2/l-point">Point </a>&gt;  <i>tilePoint </i></nobr>,
+ <nobr>&lt;Number&gt;  <i>zoom </i> ) </nobr>
+ </code></td>
+ <td><code><span class="keyword">this </span></code></td>
+ <td>You need to define ____ method after creating the ________ to draw tiles;  <code>canvas </code> is the actual ______ tile on which you ___ draw,  <code>tilePoint </code> represents the tile _______, and  <code>zoom </code> is the current ____. </td>
+	 </tr>
+	 <tr id="tilelayer-canvas-tiledrawn">
+ <td><code><b>tileDrawn </b>(  <nobr>&lt;HTMLCanvasElement&gt;  <i>canvas </i></nobr> ) </code></td>
+ <td>- </td>
+ <td>If  <code>async </code> option is defined, ____ function should be called ___ each tile after drawing __________.  <code>canvas </code> is the same ______ element, that was passed __  <a href="/mapbox.js/api/v2.1.2/l-tilelayer">drawTile </a>. </td>
+	 </tr>
+ </table>
+
+
+   </div>
+ </div>
+
+   </div>
+ </div>
+ </div>
+
+ <div class='footer pad4y clearfix hide-mobile fill-light'>
+   <div class='limiter'>
+    <div class='clearfix'> 
+     <div class='col8 small mobile-cols'>
+       <div class='col12 clearfix'>
+         <div class='col3'>
+          
+           <a id='footer-design' class='space-bottom0 col12 strong' href='../../../../design/index.html'>Design </a>
+          
+           <a id='footer-data' class='space-bottom0 col12 strong' href='../../../../data-platform/index.html'>Data </a>
+          
+           <a id='footer-developers' class='space-bottom0 col12 strong' href='../../../../developers/index.html'>Developers </a>
+          
+           <a id='footer-showcase' class='space-bottom0 col12 strong' href='../../../../showcase/index.html'>Showcase </a>
+          
+           <a id='footer-enterprise' class='space-bottom0 col12 strong' href='../../../../enterprise/index.html'>Enterprise </a>
+          
+         </div>
+         <div class='col3'>
+          
+           <a id='footer-plans' class='space-bottom0 col12 quiet strong' href='../../../../plans/index.html'>Plans </a>
+          
+           <a id='footer-blog' class='space-bottom0 col12 quiet strong' href='../../../../blog/index.html'>Blog </a>
+          
+           <a id='footer-help' class='space-bottom0 col12 quiet strong' href='../../../../help/index.html'>Help </a>
+          
+           <a id='footer-status' class='space-bottom0 col12 quiet strong' href='../../../../status/index.html'>Status </a>
+          
+           <a id='footer-contact' class='space-bottom0 col12 quiet strong' href='../../../../contact/index.html'>Contact </a>
+          
+         </div>
+         <div class='col3'>     
+          
+           <a id='footer-about' class='space-bottom0 col12 quiet strong' href='../../../../about/index.html'>About </a>
+          
+           <a id='footer-team' class='space-bottom0 col12 quiet strong' href='../../../../about/team/index.html'>Team </a>
+          
+           <a id='footer-jobs' class='space-bottom0 col12 quiet strong' href='../../../../jobs/index.html'>Jobs </a>
+          
+           <a id='footer-press' class='space-bottom0 col12 quiet strong' href='../../../../about/press/index.html'>Press </a>
+          
+           <a id='footer-press-kit' class='space-bottom0 col12 quiet strong' href='../../../../about/press-kit/index.html'>Press Kit </a>
+          
+         </div>
+          <div class='col3'>
+            <div class='space-bottom0 strong'>Tools </div>
+          
+           <a id='footer-studio' class='space-bottom0 col12 quiet strong' href='../../../../mapbox-studio/index.html'>Studio </a>
+          
+           <a id='footer-maki' class='space-bottom0 col12 quiet strong' href='../../../../maki/index.html'>Maki </a>
+          
+         </div>
+       </div>
+     </div>
+
+     <div class='col4 footer-social'>
+       <div class='animate footer-animation col6'></div>
+       <div class='footer-dialog fr small strong quiet pad2 col6 contain round fill-gray'>
+      Follow Mapbox on  <a href='https://twitter.com/mapbox'>Twitter </a>,  <a href='https://www.facebook.com/Mapbox'>Facebook </a>, and  <a href='https://instagram.com/mapbox'>Instagram </a>.
+       </div>
+     </div>  
+   </div>
+   </div>
+
+   <div class="limiter industries-footer">
+   <p class='space-bottom1 strong small space-top2 industries-footer-title'>Industries </p>
+   <div class='clearfix pad2y pad4x fill-gray round space-bottom4 industries-footer'>
+         <div class='clearfix'>
+            <div class='col3'>
+            
+             <a id='footer-real-estate' class='space-bottom0 col12 strong quiet small' href='../../../../industries/realestate/index.html'>Real Estate </a>
+            
+             <a id='footer-transportation' class='space-bottom0 col12 strong quiet small' href='../../../../industries/transportation/index.html'>Transportation </a>
+            
+             <a id='footer-agriculture' class='space-bottom0 col12 strong quiet small' href='../../../../industries/agriculture/index.html'>Agriculture </a>
+            
+           </div>
+            <div class='col3'>
+            
+             <a id='footer-social' class='space-bottom0 col12 strong quiet small' href='../../../../industries/social/index.html'>Social </a>
+            
+             <a id='footer-government' class='space-bottom0 col12 strong quiet small' href='../../../../industries/government/index.html'>Government </a>
+            
+             <a id='footer-fitness-&amp;-outdoors' class='space-bottom0 col12 strong quiet small' href='../../../../industries/outdoors/index.html'>Fitness &amp; outdoors </a>
+            
+           </div>
+            <div class='col3'>
+            
+             <a id='footer-finance' class='space-bottom0 col12 strong quiet small' href='../../../../industries/finance/index.html'>Finance </a>
+            
+             <a id='footer-insurance' class='space-bottom0 col12 strong quiet small' href='../../../../industries/insurance/index.html'>Insurance </a>
+            
+             <a id='footer-natural-resources' class='space-bottom0 col12 strong quiet small' href='../../../../industries/naturalresources/index.html'>Natural Resources </a>
+            
+           </div>
+           <div class='col3'>
+            
+                 <a id='footer-security' class='space-bottom0 col12 strong quiet small' href='../../../../industries/security/index.html'>Security </a>
+            
+                 <a id='footer-health' class='space-bottom0 col12 strong quiet small' href='../../../../industries/health/index.html'>Health </a>
+            
+                 <a id='footer-media' class='space-bottom0 col12 strong quiet small' href='../../../../industries/media/index.html'>Media </a>
+            
+           </div>
+          </div> 
+       </div>
+   </div>
+
+   <div class='limiter newsletter-copyright clearfix'>
+   <div class='col8 contain newsletter'>
+         <form id='newsletter' method='post'>
+           <fieldset class='clearfix input-pill col10 pill mobile-cols with-icon'>
+             <span class='icon mail quiet'></span>
+             <input type='text' value='' placeholder='Sign up for our newsletter' name='email' class='col9 required email' />
+             <input type='submit' value='Subscribe' class='col3 quiet' />
+           </fieldset>
+         </form>
+        </div> 
+
+       <div class='col4 footer-copyright small space-top1 col4 noprint fill-light contain'>
+           <div class='pin-right'>
+             <a href='../../../../tos/index.html'>Terms </a> +
+             <a href='../../../../privacy/index.html'>Privacy </a>
+            &copy; Mapbox
+           </div>
+       </div>
+   </div>
+
+ </div>
+
+ <div class='footer-copyright small center noprint fill-light show-mobile'>
+   <div class='limiter'>
+     <div class='pad2y'>
+             <a href='../../../../tos/index.html'>Terms </a> +
+             <a href='../../../../privacy/index.html'>Privacy </a>
+      &copy; Mapbox
+     </div>
+   </div>
+ </div>
+
+
+
+ <div id='modal-content' class='animate modal modal-content'></div>
+ </div>
+ </body>
+ </html>
+ 

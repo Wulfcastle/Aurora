@@ -1,0 +1,396 @@
+/* Base modifiers
+-------------------------------------------------- */
+
+.gradient {
+  background-image:-webkit-linear-gradient(bottom, rgba(40,53,61,.25), transparent);
+  background-image:        linear-gradient(to top, rgba(40,53,61,.25), transparent);
+  }
+
+a.button.white {
+  -webkit-transition:color .3s .15s;
+     -moz-transition:color .3s .15s;
+      -ms-transition:color .3s .15s;
+          transition:color .3s .15s;
+  background-color: white;
+}
+a.button.white:hover { background-color: rgba(255,255,255,.75);}
+
+/* Slideshow
+-------------------------------------------------- */
+
+.slideshow {
+  min-height: 400px;
+}
+
+.slideshow-container { margin: auto;}
+
+.underline {
+  width:250px;
+  height:40px;
+  color: white;
+  vertical-align: top;
+  display:inline-block;
+  position:relative;
+  }
+
+.underline-account {
+  display:block;
+  position:relative;
+  }
+
+.underline span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  -webkit-transition:opacity .3s;
+     -moz-transition:opacity .3s;
+      -ms-transition:opacity .3s;
+          transition:opacity .3s;
+  }
+
+.active1 .underline span:nth-child(1),
+.active2 .underline span:nth-child(2),
+.active3 .underline span:nth-child(3),
+.active4 .underline span:nth-child(4) {
+  opacity:1;
+  -webkit-transition:opacity .3s .15s;
+     -moz-transition:opacity .3s .15s;
+      -ms-transition:opacity .3s .15s;
+          transition:opacity .3s .15s;
+}
+
+/*
+Opacity transition divs instead
+of transitioning background color
+for performance
+*/
+.carousel-fill {
+  z-index: 0;
+  opacity: 0;
+  -webkit-transition:opacity .0s .6s;
+     -moz-transition:opacity .0s .6s;
+      -ms-transition:opacity .0s .6s;
+          transition:opacity .0s .6s;
+}
+
+.active1 .carousel-fill:nth-child(1),
+.active2 .carousel-fill:nth-child(2),
+.active3 .carousel-fill:nth-child(3),
+.active4 .carousel-fill:nth-child(4) {
+  z-index: 1;
+  opacity:1;
+  -webkit-transition:opacity .3s .15s;
+     -moz-transition:opacity .3s .15s;
+      -ms-transition:opacity .3s .15s;
+          transition:opacity .3s .15s;
+}
+
+.active1 a.button.white { color:#52b8cd;}
+.active2 a.button.white { color:#9d9fd3;}
+.active3 a.button.white { color:#469cc8;}
+.active4 a.button.white { color:#394b55;}
+
+
+.img-carousel {
+  top: -15%;
+  right: -4.2222%;
+}
+
+.img-carousel img {
+  display:block;
+  margin: auto;
+  opacity: 0;
+  max-width:100%;
+  position: absolute;
+  -webkit-transform:translateY(-40px);
+     -moz-transform:translateY(-40px);
+      -ms-transform:translateY(-40px);
+          transform:translateY(-40px);
+  -webkit-transition:all .3s;
+     -moz-transition:all .3s;
+      -ms-transition:all .3s;
+          transition:all .3s;
+}
+
+.active1 img:nth-child(1),
+.active2 img:nth-child(2),
+.active3 img:nth-child(3),
+.active4 img:nth-child(4) {
+  -webkit-transform:translateY(0px);
+     -moz-transform:translateY(0px);
+      -ms-transform:translateY(0px);
+          transform:translateY(0px);
+  opacity: 1;
+  -webkit-transition:all .3s .15s;
+     -moz-transition:all .3s .15s;
+      -ms-transition:all .3s .15s;
+          transition:all .3s .15s;
+}
+
+.active1 img:nth-child(2),
+.active2 img:nth-child(3),
+.active3 img:nth-child(4),
+.active4 img:nth-child(1) {
+  -webkit-transform:translateY(40px);
+     -moz-transform:translateY(40px);
+      -ms-transform:translateY(40px);
+          transform:translateY(40px);
+}
+
+.active1 img:nth-child(4) {
+  -webkit-transform:translateY(-40px);
+     -moz-transform:translateY(-40px);
+      -ms-transform:translateY(-40px);
+          transform:translateY(-40px);
+}
+
+.pager a {
+  width:14px;
+  height:14px;
+  border:2px solid #fff;
+  margin:0 2px;
+  }
+
+.pager a:hover,
+.pager a.active { background-color:white; }
+
+
+/* Brands
+-------------------------------------------------- */
+
+.sprite {
+  background-image:url(sprite@2x.png);
+  background-repeat:no-repeat;
+  background-size:1300px 2265px;
+  }
+
+@media only screen and (max-width:900px) {
+  .customer-logos .col4 {
+    width: 50%;
+  }
+}
+
+/* Industries ad
+------------------------------------------------------- */
+.industries-ad ul li {
+  max-width: none;
+}
+.industries-ad ul li a { display: block;}
+.industries-ad ul li a:hover p {  color: #3784ba;}
+.industries-ad ul li a h3 {  
+  font-size: 14px;
+  line-height: 12px;
+  color: white;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  top: 50%;
+}
+
+.industries-ad-industry {
+  position: relative;
+  width: 100%;
+  -ms-transition: all .2s ease-in-out; 
+  -moz-transition: all .2s ease-in-out; 
+  -webkit-transition: all .2s ease-in-out; 
+  transition: all .2s ease-in-out; 
+}
+.industries-ad-industry:before {
+  content: "";
+  display: block;
+  padding-top: 100%;
+}
+
+.industries-ad ul li a:hover .industries-ad-industry { 
+  -ms-transform: scale(1.1); 
+  -moz-transform: scale(1.1); 
+  -webkt-transform: scale(1.1); 
+  transform: scale(1.1); 
+}
+
+.industries-ad-industry.realestate       {  background: url(industries/realestate.jpg) center center no-repeat; background-size: cover }
+.industries-ad-industry.transportation    {  background: url(industries/transportation.jpg) center center no-repeat; background-size: cover }
+.industries-ad-industry.agriculture       {  background: url(industries/agriculture.jpg) center center no-repeat; background-size: cover }
+.industries-ad-industry.social            {  background: url(industries/social.jpg) center center no-repeat; background-size: cover }
+.industries-ad-industry.government        {  background: url(industries/government.jpg) center center no-repeat; background-size: cover }
+.industries-ad-industry.fitnessoutdoors          {  background: url(industries/outdoors.jpg) center center no-repeat; background-size: cover }
+.industries-ad-industry.finance           {  background: url(industries/finance.jpg) center center no-repeat; background-size: cover }
+.industries-ad-industry.insurance         {  background: url(industries/insurance.jpg) center center no-repeat; background-size: cover }
+.industries-ad-industry.naturalresources  {  background: url(industries/naturalresources.jpg) center center no-repeat; background-size: cover }
+.industries-ad-industry.security          {  background: url(industries/security.jpg) center center no-repeat; background-size: cover }
+.industries-ad-industry.health            {  background: url(industries/health.jpg) center center no-repeat; background-size: cover }
+.industries-ad-industry.media             {  background: url(industries/media.jpg) center center no-repeat; background-size: cover }
+
+@media only screen and (max-width:1200px) {
+  .industries-ad ul li.col2 {
+    width: 25%;
+  }
+}
+
+@media only screen and (max-width:800px) {
+  .industries-ad ul li.col2 {
+    width: 33%;
+  }
+}
+
+@media only screen and (max-width:640px) {
+  .industries-ad ul li.col2 {
+    width: 50%;
+  }
+}
+/* Design
+------------------------------------------------------- */
+
+.design {
+  padding-top: 80px;
+  background: url(studio-1.jpg) 0 0 no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
+.studio-editor {
+  background:url(studio-editor-1.jpg) 50% 50% no-repeat;
+  background-size:cover;
+}
+
+/* API
+------------------------------------------------------- */
+.api-illustration {
+  background: url(api.png) 0 0 no-repeat;
+  background-size: contain;
+  height: 0;
+  padding-bottom: 60%;
+}
+
+/* Scale
+------------------------------------------------------- */
+#map-datacenters { background: #3887be;}
+
+#map-datacenters .datacenter-marker {
+  cursor: pointer;
+  pointer-events: auto;
+  z-index: 10;
+  background: #fff;
+  border-radius: 50%;
+}
+
+#map-datacenters .datacenter-marker:hover { background: #8689ca;}
+
+#map-datacenters .leaflet-popup { z-index: 10; }
+#map-datacenters .leaflet-popup h6 { margin-bottom: 0;}
+#map-datacenters .leaflet-popup-content {
+  margin: 0;
+  width: 140px;
+  padding: 10px;
+  text-align: center;
+}
+
+/* Support
+------------------------------------------------------- */
+.support-illustration {
+  background: url(support.png) 0 0 no-repeat;
+  background-size: contain;
+  height: 0;
+  padding-bottom: 42%;
+}
+
+/* Press
+------------------------------------------------------- */
+.tablet { position:relative; }
+.tablet > div:before {
+  content:'';
+  display:block;
+	border-top:10px solid transparent;
+	border-bottom:10px solid transparent;
+  border-right:10px solid #f8f8f8;
+  position:absolute;
+  right:0;
+  top:50%;
+  margin-top: 0;
+  -webkit-transform:translateY(-50%);
+     -moz-transform:translateY(-50%);
+      -ms-transform:translateY(-50%);
+          transform:translateY(-50%);
+  }
+
+.press .logo-wrap {
+  position: absolute;
+  top: 50%;
+  -webkit-transform:translateY(-50%);
+     -moz-transform:translateY(-50%);
+      -ms-transform:translateY(-50%);
+          transform:translateY(-50%);
+}
+
+@media only screen and (max-width:900px) and (min-width: 641px) {
+  .slideshow-text { width: 41.6666%;}
+}
+
+@media only screen and (max-width:640px) {
+  .toolkit { position: relative;}
+  .slideshow-container {
+    top: 60px;
+    min-height: 0;
+  }
+  .img-carousel {
+    right: 6%;
+    bottom: auto;
+    top: 0;
+    height: 50%;
+  }
+  .design-illustration {
+    position: relative;
+    height: 250px;
+  }
+  .slideshow-text {
+    bottom: 0;
+    position: absolute;
+    left: 20px;
+    right: 20px;
+    width: auto;
+    padding-bottom: 10px;
+  }
+  .slideshow-text h2 { font-size: 22px; line-height: 1.25;}
+  .overlap {
+    margin-top:-20px;
+    margin-left:-20px;
+    }
+  .overlap .device-browser.dark {
+    top:40px;
+    left:40px;
+    }
+  .scale-feature:first-child { border-bottom: 1px solid rgba(0,0,0,.1);}
+  /* Mobile: showcase */
+  .mobile-showcase {
+    display:block;
+    width:100%;
+    height:280px;
+    text-align:center;
+    margin-bottom:20px;
+    background-size:cover;
+    }
+  .mobile-showcase:last-of-type {
+    margin-bottom:10px;
+    }
+  .mobile-showcase:first-of-type {
+    margin-top:10px;
+    }
+  .mobile-showcase.foursquare {
+    background-image:url(../../farm6.staticflickr.com/5539/14044139926_d9e1907335_b.jpg);
+    background-position-y:60px;
+    }
+  .mobile-showcase.pinterest {
+    background-image:url(../../farm3.staticflickr.com/2898/14064047191_c206bea5ec_b.jpg);
+    background-position-y:60px;
+    background-position-x:center;
+    }
+  .mobile-showcase.natgeo {
+    background-image:url(../../farm3.staticflickr.com/2914/14064089722_258a4c1fea_b.jpg);
+    background-position-y:60px;
+    background-position-x:center;
+    }
+}
+

@@ -1,0 +1,542 @@
+<!doctype html>
+ <html><head>
+<!-- Original URL: https://www.mapbox.com/labs/wirrida/index.html
+Date Downloaded: 2014-12-05 09:28:11 PM !-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+     <meta charset="utf-8" />
+     <title>Monitoring Mining in South _________: Wirrida Rail Siding </title>
+     <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+     <link href="../../../api.tiles.mapbox.com/mapbox-gl-js/v0.2.2/mapbox-gl.css" rel="stylesheet" />
+     <script src="../../../api.tiles.mapbox.com/mapbox-gl-js/v0.2.2/mapbox-gl.js"></script>
+     <link href="../../base/latest/base.css" rel="stylesheet" />
+     <style>
+      body { margin:0; padding:0; }
+      #map { position:absolute; top:0; bottom:0; width:100%; }
+    </style>
+     <script src="../../../use.typekit.net/ayp3ztr.js"></script>
+     <script>try{Typekit.load();}catch(e){}</script>
+   </head>
+   <body><div style="z-index: 9999; position: fixed; width: 100%; border: 0px; padding: 5px; margin: 0px; background-color: transparent;  font-size: 12pt; font-family: sans-serif;" id="web2disk_nag" onclick="javascript: document.getElementById('web2disk_nag').style.display = 'none';">
+		<div style="color: #000000; background-color:#F1F1F1; margin-left: auto; margin-right: auto; border-width: 2px; border-style: solid; width: 550px; ">
+			<div style="width: 100%; text-align: center; font-weight: bold; border: 0px; margin: 0px; padding: 0px">Hey, where did my words go? (Click to hide)</div>
+			<p>In the trial version of Web2Disk every fifth word is blanked out. 
+			To copy this site with all the words, please upgrade to the full version and copy this website again.</p>
+			<div style="width: 100%; text-align: center; font-weight: bold; border: 0px; margin: 0px; padding: 0px">
+				<a href="http://www.inspyder.com/products/Web2Disk/">Inspyder Web2Disk: The Website Downloader</a>
+			</div>
+		</div>
+	</div>
+
+     <style>
+      .full {
+        height: 100%;
+        width: 100%;
+      }
+
+      article {
+        position: absolute;
+        top: 0px;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
+        overflow: auto;
+      }
+
+      section {
+        color:rgba(153,205,222,.5);
+        margin: 0 !important;
+        height: 350px;
+        width: 100%;
+      }
+
+      section#cover{
+        height: 50px;
+      }
+
+      section.small {
+        height: 10px;
+      }
+
+      section > .inner {
+        /* background: rgba(205,105,5,0.2);*/
+      }
+
+      section.active > .inner {
+        background: none;
+      }
+      .left-b-logo {
+        position: fixed;
+        bottom: 4px;
+        left: 10px;
+      }
+
+      .prose h2.fancy {
+        padding-top: 15%;
+      }
+
+      /* NAV STYLES */
+
+      nav {
+        position: fixed;
+        left: -3em;
+      }
+      nav li {
+        position: relative;
+        font-family: "ocr-a-std", sans-serif;
+        text-transform: uppercase;
+        width: 20px;
+        height: 50px;
+        cursor: pointer;
+        background-image: url(nav-back.png);
+        background-repeat: repeat-y;
+      }
+
+      nav li:last-child {
+        background: none;
+      }
+
+      nav li a {
+        position: absolute;
+        font-size: .8em;
+        top: -.6em;
+        left: 7.5em;
+        padding: 0 10px;
+        border-radius: 0;
+        color: #fff;
+        opacity: 0;
+        -webkit-transform: translateX(0%);
+        transform: translateX(0%);
+        -webkit-transition: -webkit-transform 0.3s ease, opacity 0.3s ease, visibility 0s 0.3s ease;
+        transition: transform 0.3s ease, opacity 0.3s ease, visibility 0s 0.3s ease;
+      }
+
+      nav li:hover a,
+      nav li.current a {
+        z-index: 100;
+        visibility: visible;
+        opacity: 1;
+        -webkit-transform: translateX(-50%) translateY(0%);
+        transform: translateX(-50%) translateY(0%);
+        -webkit-transition: -webkit-transform 0.3s ease, opacity 0.3s ease;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+      }
+
+      nav li.current {
+        border-color: #c44d48;
+      }
+
+      nav li:hover {
+        z-index: 100;
+      }
+
+      .no-touch nav ul:hover li.current a {
+        opacity: 0.2;
+      }
+
+      nav ul li.current:hover a {
+        opacity: 1;
+      }
+
+
+      .notch {
+        width: 15px;
+        height: 1px;
+        background-color: #FFF;
+        transition: all .3s ease;
+      }
+
+      nav #scroll-pos {
+        position: absolute;
+        left: .25em;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background-color: #FFF;
+      }
+
+      nav li.current .notch,
+      nav ul li:hover .notch {
+        width: 32px;
+        height: 1px;
+      }
+
+      .marker img {
+        position: absolute;
+      }
+
+      .marker .text {
+        font-family: "ocr-a-std", sans-serif;
+        text-shadow: 1px 1px #000;
+        padding: 2em .5em;
+        position: absolute;
+        top: -.7em;
+        left: 1.5em;
+        width: 20em;
+      }
+
+      .clockwise {
+        -webkit-animation: spin;
+        -webkit-animation-duration: 10s;
+        -webkit-animation-timing-function: linear;
+        -webkit-animation-iteration-count: infinite;
+      }
+
+      @-moz-keyframes spin {
+          from { -moz-transform: rotate(0deg); }
+          to { -moz-transform: rotate(360deg); }
+      }
+      @-webkit-keyframes spin {
+          from { -webkit-transform: rotate(0deg); }
+          to { -webkit-transform: rotate(360deg); }
+      }
+      @keyframes spin {
+          from {transform:rotate(0deg);}
+          to {transform:rotate(360deg);}
+      }
+
+
+      .cover {
+        position: fixed;
+        padding: 3% 2%;
+        height: 100%;
+        width: 100%;
+        background-color: rgba(0,0,0,.7);
+      }
+
+      .typed-cursor {
+        display: none;
+      }
+
+      .cover .header {
+        text-transform: uppercase;
+        font-family: 'Open Sans Bold', sans-serif;
+        color: #FFF;
+        font-size: 1.75em;
+        background-color: rgba(255,255,255,.2);
+        padding: .25em;
+        width: 18em;
+        margin: .25em 0em 1em;
+        display: inline-block;
+        -webkit-animation: header-in 1s;
+        animation: header-in 2s;
+      }
+
+      @-webkit-keyframes header-in {
+        0% {
+          margin-left: -25em;
+          background-color: #FFF;
+        }
+
+        60% {
+          margin-left: 0em;
+          background-color: #FFF;
+        }
+
+        100% {
+          background-color: rgba(255,255,255,.2);
+        }
+      }
+
+      @keyframes header-in {
+        from {
+          margin-left: -25em;
+        }
+
+        to {
+          margin-left: 0em;
+        }
+      }
+
+      .cover .aus {
+        float: left;
+        width: 40%;
+      }
+
+      .font-small {
+        color: rgba(255,255,255,.7);
+        font-family: "ocr-a-std",sans-serif;
+        font-size: .8em;
+        line-height: 1.5em;
+        margin-bottom: 0em;
+      }
+
+      .cover .info {
+        float: left;
+        width: 60%;
+        padding-left: 8%;
+      }
+
+      .cover .scroll {
+        font-family: "Brandon",sans-serif;
+        text-transform: uppercase;
+        position: fixed;
+        bottom: 2em;
+        width: 33em;
+      }
+
+      .brief {
+        overflow: hidden;
+        width: 33em;
+        margin: 0 auto;
+      }
+
+      strong {
+        font-family: 'ocr-a-std';
+        font-weight: normal;
+        background-color: rgba(0, 0, 0, 0.4);
+        padding: .2em .25em .1em;
+      }
+    </style>
+     <div id="map" data-0="position:fixed;" data-50="position: fixed;" class="mapboxgl-map"><canvas class="mapboxgl-canvas" width="1954" height="1358" style="position: absolute; width: 977px; height: 679px;"></canvas><div class="mapboxgl-ctrl-attrib"></div></div>
+
+       <div class="cover dark">
+         <div class="brief">
+         <p class="font-small">objective </p>
+         <p class="header">Monitor Mining Operations </p>
+
+         <p class="font-small">location </p>
+         <p class="header">South Australia </p>
+
+         <div class="pad4y">
+           <div class="aus">
+           <img src="aus.png" class="" />
+           <p class="center font-small" style="padding: 2em 0em 1em;">LAT: -29.50647 </p>
+           <p class="center font-small">LNG: 134.56012 </p>
+           </div>
+           <p class="info font-small"><strong>Wirrida Rail Siding </strong> is a new ____ in the world's iron ______ chain. Built near a ____ ore deposit in the __________ Outback, it opened in ____ 2012 and has been _______ up operations. <br />  <br />The siding is a ________ point where  <strong>Arrium Ltd </strong>, the mine operator, _____ ore to trains owned __  <strong>Genesee &amp; Wyoming Australia </strong>. The trains carry ___ ore south to the ____ of Whyalla, meeting the ______ shipping network.  <br />  <br />Timely satellite imagery enables ________ analysis. </p>
+         </div>
+
+         <div class="center scroll">
+          scroll down to enter
+         </div>
+         </div>
+       </div>
+
+     <div style="width:5em" id="markers">
+     </div>
+
+     <article id="narrative" class="full">
+       <div class="sections prose ">
+         <section id="cover" class="animate round "></section>
+         <section id="activity" class="animate round "></section>
+         <section id="xfer" class="animate round "></section>
+         <section id="value" class="animate round "></section>
+         <section id="water" class="animate round "></section>
+         <section id="capacity" class="animate round "></section>
+         <section id="traffic" class="animate round "></section>
+         <section id="risk" class="animate round "></section>
+       </div>
+
+     </article>
+
+     <nav>
+       <div id="scroll-pos"></div>
+       <ul>
+         <li class="activity">
+           <div class="notch"></div>
+           <a href="#activity">Overview </a></li>
+         <li class="xfer">
+           <div class="notch"></div>
+           <div class="block"></div>
+           <a href="#xfer">Activity </a></li>
+         <li class="value">
+           <div class="notch"></div>
+           <a href="#value">Value <br /> Estimation </a></li>
+         <li class="water">
+           <div class="notch"></div>
+           <a href="#water">Compliance <br /> Monitoring </a></li>
+         <li class="capacity">
+           <div class="notch"></div>
+           <a href="#capacity">Capacity <br /> Estimation </a></li>
+         <li class="traffic">
+           <div class="notch"></div>
+           <a href="#traffic">Traffic <br /> Analysis </a></li>
+         <li class="risk">
+           <div class="notch"></div>
+           <a href="#risk">Risk <br /> Management </a></li>
+         <li class="close">
+           <div class="notch"></div>
+           <a href="../../data-platform/index.html#mapbox-satellite">Brought to you by <br />Mapbox Satellite </a></li>
+       </ul>
+     </nav>
+     <a>
+       <a href="../../../mapbox.com/index.html" class="mb-logo small white left-b-logo hide-mobile" target="_blank">Mapbox </a>
+       <script src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+       <script src="dataMarkers.js" type="text/javascript"></script>
+       <script src="placeCollection.js" type="text/javascript"></script>
+       <script>
+         mapboxgl.accessToken = 'pk.eyJ1IjoicGRnb29kbWFuIiwiYSI6IjdITEZQTVkifQ.jSHttbpZ0JNMYoM2cSK5MA';
+
+
+var placesLayer = new mapboxgl.GeoJSONSource({data: places});
+
+var map = new mapboxgl.Map({
+container: 'map',
+style: 'style.json',
+center: [-29.5060, 134.5569],
+zoom: 13
+});
+var narrative = document.getElementById('narrative'),
+    container = narrative.getElementsByClassName('sections')[0],
+    sections = narrative.getElementsByTagName('section'),
+    currentId = '';
+
+function setHeight() {
+  //  container.style.paddingBottom = (window.innerHeight/2.5) + 'px';
+}
+//setHeight();
+
+window.onresize = function(e) {
+  setHeight();
+};
+
+setTimeout(function() {
+    map.addSource('places', placesLayer);
+    setId('cover');
+    }, 800);
+
+function setId(newId) {
+  if (newId === currentId) return;
+
+  currentId = newId;
+
+  //Navigation toggling
+  if (newId !== 'cover'){
+    $('.cover').fadeOut();
+    showNav();
+  } else {
+    $('.cover').fadeIn();
+    hideNav();
+  }
+
+$('.current').removeClass('current');
+$('.'+currentId).addClass('current');
+
+//steps through all places, if the id matches the new id then stops the animation and flys to the new id
+for (var i = 0; i < places.features.length; i++) {
+  var layer = places.features[i];
+  var id = layer.properties.id;
+  if (id === newId) {
+    map.stop();
+    map.flyTo([layer.geometry.coordinates[1], layer.geometry.coordinates[0]], layer.properties.zoom || 14, layer.properties.bearing);
+  }
+};
+
+for (var i = 0; i < sections.length; i++) {
+  if (sections[i].id === newId) {
+    sections[i].classList.add('active');
+  } else {
+    sections[i].classList.remove('active');
+  }
+}
+
+}
+
+map.on("moveend", function(){
+  addData(currentId);
+});
+
+map.on("move", function(){
+  $('.marker').remove();
+})
+
+function addData(id) {
+    $('.marker').remove();
+    var markers = dataMarkers[currentId];
+
+    var markerGroup = document.getElementById('markers');
+
+      for(var i = 0; i < markers.length; i++){
+        var marker = document.createElement('div');
+
+        var xpos = markers[i].lat;
+        var ypos = markers[i].lng;
+        marker.className = 'marker';
+        var x= map.project([xpos,ypos])['x'];
+        var y= map.project([xpos,ypos])['y'];
+        marker.style.webkitTransform = 'translate('+x+'px, '+y+'px)';
+
+
+        var markerImg = document.createElement('img'),
+            text = document.createElement('p');
+
+        markerImg.src = 'marker.png';
+        text.innerHTML = markers[i].text;
+
+        markerImg.className = 'ring-2 clockwise';
+        text.className = 'dark text';
+
+        marker.appendChild(markerImg);
+        marker.appendChild(text);
+
+        markerGroup.appendChild(marker);
+      };
+};
+
+
+
+narrative.onscroll = function(e) {
+  var narrativeHeight = $('#narrative .sections').height();
+  var narrativeOffset = $('#narrative .sections').offset().top;
+  var scrollPosTop = Math.abs((narrativeOffset/narrativeHeight)*90)-3;
+  var newId = currentId;
+  for (var i = sections.length - 1; i >= 0; i--) {
+    var rect = $(sections[i]).offset().top;
+    var id = sections[i].id;
+    if (id === 'cover') {
+      if (rect <= 0 && rect >= -50) {
+        newId = sections[i].id;
+      }
+    } else if ($('#narrative .sections').offset().top === -2500) {
+      newId = 'cover';
+    } else if (rect <= 0 && rect >= -350) {
+      newId = sections[i].id;
+    }
+  };
+var scroller = $('#scroll-pos');
+  scroller.css("top", scrollPosTop+"%");
+
+  setId(newId);
+};
+
+
+$('nav li').on('click', function(e){
+    setId($(this)[0].classList[0]);
+
+    console.log($('#narrative')[0].scrollHeight);
+    
+    $('#scroll-pos').css('top',  e.pageY - $('nav')[0].offsetTop);
+
+    var height = $('nav')[0].offsetHeight + 36;
+    var percent = $('#scroll-pos')[0].offsetTop/height;
+
+    $('#narrative')[0].scrollTop = $('#narrative')[0].scrollHeight * percent;
+
+});
+
+
+function init() {
+  //add padding-bottom to sections based on screen size
+  var height = document.getElementById('narrative').offsetHeight;
+  var sections = document.querySelectorAll('.sections')[0];
+  sections.setAttribute("style", "padding-bottom:" + height +"px");
+};
+
+function showNav() {
+  //window height
+  var height = window.innerHeight/2 - 175;
+
+
+  $("nav").css('top', height+'px');
+  $("nav").animate({left: '2em'}, 300);
+};
+
+function hideNav() {
+  $("nav").animate({left: '-3em'}, 300);
+}
+
+init();
+      </script>
+     </a></body>
+   </html>
+ 

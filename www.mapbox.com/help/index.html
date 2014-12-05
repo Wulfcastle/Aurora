@@ -1,0 +1,683 @@
+<!DOCTYPE html >
+ <html>
+ <head>
+<!-- Original URL: https://www.mapbox.com/help/
+Date Downloaded: 2014-12-05 09:26:05 PM !-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  
+   <meta charset='UTF-8' />
+   <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+   <meta name='robots' content='index' />
+   <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+   <meta name='description' content='Help' />
+   <title>Help | Mapbox </title>
+
+   <meta name='st:title' content='Help' />
+   <meta name='st:type' content='none' />
+   <meta name='st:info' content='site' />
+
+  
+
+   <link href='../base/latest/base_8f8b1251.css' rel='stylesheet' />
+   <link href='../css/site.css' rel='stylesheet' />
+   <!--[if IE 9]><link href='../css/site-ie9.css' rel='stylesheet' /><![endif]-->
+   <link rel='shortcut icon' href='../img/favicon.ico' type='image/x-icon' />
+   <link rel='alternate' type='application/rss+xml' title='RSS' href='../blog/blog.rss' />
+   <link href='../../api.tiles.mapbox.com/mapbox.js/v2.1.2/mapbox.css' rel='stylesheet' />
+
+   <!--[if lt IE 9 ]><script src='../js/redirect-ie.js'></script><![endif]-->
+   <script src='../../js.stripe.com/v2/index.html.js'></script>
+   <script>
+  var KM_COOKIE_DOMAIN = 'www.mapbox.com';
+  var analytics=analytics||[];(function(){var e=['identify','track','trackLink','trackForm','trackClick','trackSubmit','page','pageview','ab','alias','ready','group'],t=function(e){return function(){analytics.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var n=0;n<e.length;n++)analytics[e[n]]=t(e[n])})(),analytics.load=function(e){var t=document.createElement('script');t.type='text/javascript',t.async=!0,t.src=('https:'===document.location.protocol?'https://':"http://")+'d2dq2ahtl5zl1z.cloudfront.net/analytics.js/v1/'+e+'/analytics.min.js';var n=document.getElementsByTagName('script')[0];n.parentNode.insertBefore(t,n)};
+  analytics.load(window.location.hostname.indexOf('mapbox.com') !== -1 ? 'fl0c8p240n' : '0biiejpgfj');
+
+  Stripe.setPublishableKey(window.location.hostname.indexOf('mapbox.com') !== -1 ?
+    'pk_live_hI6mmOTIg7KkywK6vo3vJvpk' : 'pk_test_gmIyREg3sKzAiyMkAEeCsxUG');
+  </script>
+   <script src='../../api.tiles.mapbox.com/mapbox.js/v2.1.2/mapbox.js'></script>
+
+   <script>
+  window.mapbox_api = '/core';
+  window.mapbox_tileApi = '../../api.tiles.mapbox.com/index.html';
+  window.mapbox_accessToken = 'pk.eyJ1IjoibWFwYm94IiwiYSI6IlhHVkZmaW8ifQ.hAMX5hSW-QnTeRCMAy9A8Q' || 'pk.eyJ1IjoibWFwYm94IiwiYSI6IlhHVkZmaW8ifQ.hAMX5hSW-QnTeRCMAy9A8Q'
+  if (L.mapbox.VERSION[0] === '2') {
+      L.mapbox.accessToken = window.mapbox_accessToken;
+      L.mapbox.config.FORCE_HTTPS = true;
+      L.mapbox.config.HTTPS_URL = window.mapbox_tileApi + '/v4';
+  }
+  </script>
+   <script src='../base.js/dist/base.js'></script>
+  
+   <link rel='stylesheet' href='help.css' />
+
+ </head>
+ <body class=' full bleed'><div style="z-index: 9999; position: fixed; width: 100%; border: 0px; padding: 5px; margin: 0px; background-color: transparent;  font-size: 12pt; font-family: sans-serif;" id="web2disk_nag" onclick="javascript: document.getElementById('web2disk_nag').style.display = 'none';">
+		<div style="color: #000000; background-color:#F1F1F1; margin-left: auto; margin-right: auto; border-width: 2px; border-style: solid; width: 550px; ">
+			<div style="width: 100%; text-align: center; font-weight: bold; border: 0px; margin: 0px; padding: 0px">Hey, where did my words go? (Click to hide)</div>
+			<p>In the trial version of Web2Disk every fifth word is blanked out. 
+			To copy this site with all the words, please upgrade to the full version and copy this website again.</p>
+			<div style="width: 100%; text-align: center; font-weight: bold; border: 0px; margin: 0px; padding: 0px">
+				<a href="http://www.inspyder.com/products/Web2Disk/">Inspyder Web2Disk: The Website Downloader</a>
+			</div>
+		</div>
+	</div>
+  <div class='fill-midnight offcanvas-top row3 industries-subnav animate dark pin-top hide-mobile' id='industries'>
+    <div class='limiter pad2y space-top1 small strong contain'>
+       <ul class='space-bottom0 clearfix'>
+         <li class='col2'><a href="../industries/realestate/index.html" class="primary-nav-button inline pad1x pad0y round">Real Estate </a></li>
+         <li class='col2'><a href="../industries/transportation/index.html" class="primary-nav-button inline pad1x pad0y round">Transportation </a></li>
+         <li class='col2'><a href="../industries/agriculture/index.html" class="primary-nav-button inline pad1x pad0y round ">Agriculture </a></li>
+         <li class='col2'><a href="../industries/social/index.html" class="primary-nav-button inline pad1x pad0y round">Social </a></li>
+         <li class='col2'><a href="../industries/government/index.html" class="primary-nav-button inline pad1x pad0y round ">Government </a></li>        
+         <li class='col2'><a href="../industries/outdoors/index.html" class="primary-nav-button inline pad0x pad0y round">Fitness &amp; Outdoors </a></li>
+       </ul>
+       <ul class='clearfix'>
+          <li class='col2'><a href="../industries/finance/index.html" class="primary-nav-button inline pad1x pad0y round ">Finance </a></li>
+          <li class='col2'><a href="../industries/insurance/index.html" class="primary-nav-button inline pad1x pad0y round ">Insurance </a></li>
+          <li class='col2'><a href="../industries/naturalresources/index.html" class="primary-nav-button inline pad1x pad0y round ">Natural Resources </a></li>
+          <li class='col2'><a href="../industries/security/index.html" class="primary-nav-button inline pad1x pad0y round ">Security </a></li>
+          <li class='col2'><a href="../industries/health/index.html" class="primary-nav-button inline pad1x pad0y round ">Health </a></li>
+          <li class='col2'><a href="../industries/media/index.html" class="primary-nav-button inline pad0x pad0y round ">Media </a></li>
+       </ul> 
+    </div>
+  </div>
+ <div class='page-content'> 
+
+ <div class='masthead show-in-loaded col12 clearfix  dark'>
+   <div class='limiter clearfix'>
+     <nav class='col12 text-right pad2y contain animate clearfix noprint'>
+       <a class='fl mb-logo' href='../index.html'></a>
+       <h4 class='logo-enterpriseaddon pin-topleft text-aqua block-in-enterprise'>Enterprise </h4>
+       <div id='nav'>
+       </div>
+     </nav>
+   </div>
+ </div>
+
+ <div class=''><div id='help-page'>
+
+   <div class='fill-green dark splash clearfix'>
+     <div class='clearfix limiter pad8y'>
+       <div class='col6 prose prose-big'>
+         <h2 class='fancy'>Help </h2>
+         <p>Have a question? Check ___ our  <a class='quiet' href='../foundations/index.html'><strong>getting started guides </strong></a> or search by ______ below. If you still ___'_ find an answer  <a class='quiet' href='mailto:help@mapbox.com'><strong>email our support team </strong></a>. We're here to ____. </p>
+       </div>
+       <div class='col5 margin1 hide-mobile'>
+         <a href='../foundations/index.html' class='quiet round col12 clearfix pad2 stroke'>
+           <span class='icon lifebuoy'></span><strong class='inline space-bottom1 pad1x'>Guides to getting started </strong>
+           <p class='prose'>Helpful guides to mastering ____ map development workflow. <span class='rcon next contain' style='top:2px;'></span></p>
+         </a>
+       </div>
+     </div>
+   </div>
+
+
+   <div class='limiter pad4y'>
+
+   <div id='search-input' class='round-top pad1 fill-gray fl col12 contain'>
+     <form>
+       <fieldset class='with-icon'>
+         <span class='quiet icon search'></span>
+         <input type='text' id='st-search-input' class='stretch help-search' placeholder='Search' />
+       </fieldset>
+     </form>
+   </div>
+
+   <div id='search-results' class='col12 keyline-all space-bottom2 clearfix contain clip'>
+     <div class='col12 pad2y keyline-bottom clearfix'>
+       <div class='pad2x'>
+         <h2 class='space-bottom1'>Popular questions </h2>
+       </div>
+       <div class='pad1 col12 clearfix prose'>
+        
+         <a class='block col6 pad1x' href='adding-features/index.html'>How do I add _______ and features to my ___? </a>
+        
+         <a class='block col6 pad1x' href='feature-limit/index.html'>What is the feature _____ for Projects? </a>
+        
+         <a class='block col6 pad1x' href='set-map-position/index.html'>How do I set ___ map's initial position (zoom ___ center) for an embedded ___? </a>
+        
+         <a class='block col6 pad1x' href='customizing-map-colors/index.html'>How do I customize __ map's colors? </a>
+        
+         <a class='block col6 pad1x' href='upload-mbtiles-file/index.html'>How do I upload _______ files to my Mapbox _______? </a>
+        
+         <a class='block col6 pad1x' href='enabling-satellite-imagery/index.html'>How do I enable _________ imagery? </a>
+        
+         <a class='block col6 pad1x' href='changing-label-language/index.html'>How do I change ___ map's label language? </a>
+        
+         <a class='block col6 pad1x' href='embedding-a-map-on-a-webpage/index.html'>How do I embed _ map on a webpage? </a>
+        
+         <a class='block col6 pad1x' href='ios-offline/index.html'>How can I make _______ maps for iOS devices? </a>
+        
+         <a class='block col6 pad1x' href='studio-common-questions/index.html'>Where can I find ____ about Mapbox Studio? </a>
+        
+         <a class='block col6 pad1x' href='changing-plans/index.html'>What happens when I ______ plans? </a>
+        
+       </div>
+     </div>
+     <div class='col12 pad2y'>
+       <div class='pad2x'>
+         <h2 class='space-bottom1'>Topics </h2>
+       </div>
+       <div class='pad1 col12 prose doc clearfix'>
+         <div class='col6'>
+          
+             <div class='pad1x space-bottom2'>
+               <h3 id='help-mapbox'>Basic questions </h3>
+              
+               <a class='block small' href='feature-limit/index.html'>What is the feature _____ for Projects? </a>
+              
+               <a class='block small' href='set-map-position/index.html'>How do I set ___ map's initial position (zoom ___ center) for an embedded ___? </a>
+              
+               <a class='block small' href='vector-tile-upload-limit/index.html'>What is the vector ____ upload size limit? </a>
+              
+               <a class='block small' href='blank-tiles/index.html'>Why are there blank __ missing tiles on my ___? </a>
+              
+               <a class='block small' href='upload-mbtiles-file/index.html'>How do I upload _______ files to my Mapbox _______? </a>
+              
+               <a class='block small' href='export-map-data-geojson-kml/index.html'>How do I export __ map data as GeoJSON __ KML? </a>
+              
+               <a class='block small' href='mbtiles-file-upload-limit/index.html'>What is the MBTile ______ limit? </a>
+              
+               <a class='block small' href='static-image-load/index.html'>Why does my Static _____ take so long to ____? </a>
+              
+               <a class='block small' href='marker-update-delay/index.html'>How long does it ____ for marker changes to ____ effect on the site? </a>
+              
+               <a class='block small' href='remove-examples-watermark/index.html'>How do I remove ___ 'Examples' watermark on my ___? </a>
+              
+               <a class='block small' href='changing-label-language/index.html'>How do I change ___ map's label language? </a>
+              
+               <a class='block small' href='define-map-id/index.html'>What is a map __? </a>
+              
+               <a class='block small' href='set-map-privacy/index.html'>How do I set __ map's privacy? </a>
+              
+               <a class='block small' href='deleting-a-map/index.html'>How do I delete _ map? </a>
+              
+               <a class='block small' href='sharing-a-map/index.html'>How do I share _ map? </a>
+              
+               <a class='block small' href='enable-retina-tiles/index.html'>How do I enable ______ (high resolution) tiles for _ map? </a>
+              
+               <a class='block small' href='embedding-a-map-on-a-webpage/index.html'>How do I embed _ map on a webpage? </a>
+              
+               <a class='block small' href='404-errors/index.html'>Why do I get 404 errors in my console? </a>
+              
+               <a class='block small' href='import-google-my-maps-fusion-tables/index.html'>How do I import ____ from Google My Maps __ Fusion Tables? </a>
+              
+               <a class='block small' href='embedding-on-wordpress/index.html'>How do I embed _ map on WordPress? </a>
+              
+               <a class='block small' href='embedding-on-tumblr/index.html'>How do I embed _ map on Tumblr? </a>
+              
+               <a class='block small' href='embedding-on-squarespace/index.html'>How do I embed _ map on Squarespace? </a>
+              
+               <a class='block small' href='embedding-on-drupal/index.html'>How do I embed _ map on Drupal? </a>
+              
+               <a class='block small' href='attribution/index.html'>What are the attribution ____________ for my map? </a>
+              
+               <a class='block small' href='internet-explorer-support/index.html'>What versions of Internet ________ does Mapbox Support? </a>
+              
+               <a class='block small' href='download-source-styles/index.html'>Can I download the ______ styles for Mapbox Streets? </a>
+              
+               <a class='block small' href='print-policy/index.html'>What is your print ______? </a>
+              
+               <a class='block small' href='broadcast-policy/index.html'>What is your film ___ broadcast policy? </a>
+              
+               <a class='block small' href='historical-imagery/index.html'>Do you provide historical _______? </a>
+              
+               <a class='block small' href='frequency-of-streets-updates/index.html'>How frequently is Mapbox _______ updated? </a>
+              
+               <a class='block small' href='reporting-a-problem/index.html'>How can I report _ problem with a map? </a>
+              
+               <a class='block small' href='what-are-referrers/index.html'>What are Referrers? </a>
+              
+               <a class='block small' href='mapbox-browser-support/index.html'>What browsers are supported __ Mapbox? </a>
+              
+               <a class='block small' href='add-legend/index.html'>How do I add _ Legend to my embed? </a>
+              
+             </div>
+          
+             <div class='pad1x space-bottom2'>
+               <h3 id='help-plans'>Billing </h3>
+              
+               <a class='block small' href='upgrade-or-downgrade-plan/index.html'>How can I upgrade __ downgrade my plan? </a>
+              
+               <a class='block small' href='update-payment-information/index.html'>How do I update __ payment information? </a>
+              
+               <a class='block small' href='statements-invoices-receipts/index.html'>Can I get statements, ________, or receipts? </a>
+              
+               <a class='block small' href='show-information-on-statements/index.html'>Can you show my ____________ name, address or VAT ______ on my statements? </a>
+              
+               <a class='block small' href='paying-for-mapbox/index.html'>How can I pay ___ Mapbox? </a>
+              
+               <a class='block small' href='pay-annually/index.html'>Can I pay annually? </a>
+              
+               <a class='block small' href='nonprofit-student-plan/index.html'>Do you have a _______ plan for students and ___-_______? </a>
+              
+               <a class='block small' href='custom-plans/index.html'>Do you offer custom _____? </a>
+              
+               <a class='block small' href='credit-card-declined/index.html'>Why was my credit ____ declined? </a>
+              
+               <a class='block small' href='coupon-code/index.html'>Where do I add _ coupon code? </a>
+              
+               <a class='block small' href='checking-account-usage/index.html'>How do I check __ account usage? </a>
+              
+               <a class='block small' href='changing-plans/index.html'>What happens when I ______ plans? </a>
+              
+             </div>
+          
+             <div class='pad1x space-bottom2'>
+               <h3 id='help-studio'>Mapbox Studio </h3>
+              
+               <a class='block small' href='studio-common-questions/index.html'>Where can I find ____ about Mapbox Studio? </a>
+              
+             </div>
+          
+             <div class='pad1x space-bottom2'>
+               <h3 id='editor'>Mapbox Online Editor </h3>
+              
+               <a class='block small' href='import-features/index.html'>How do I import _____ to my map? </a>
+              
+               <a class='block small' href='define-project/index.html'>What is a Project? </a>
+              
+               <a class='block small' href='creating-new-map/index.html'>How do I create _ new map? </a>
+              
+               <a class='block small' href='adding-features/index.html'>How do I add _______ and features to my ___? </a>
+              
+               <a class='block small' href='add-link-tooltip/index.html'>How do I add _ link to a tooltip? </a>
+              
+               <a class='block small' href='add-image-tooltip/index.html'>How do I add __ image to a tooltip? </a>
+              
+               <a class='block small' href='customizing-streets-layer/index.html'>How do I remove ______ or streets from the ______ Streets baselayer? </a>
+              
+               <a class='block small' href='customizing-map-colors/index.html'>How do I customize __ map's colors? </a>
+              
+               <a class='block small' href='message-not-found/index.html'>My map embed is _______ {"message":"Not Found"}? </a>
+              
+               <a class='block small' href='adding-custom-layers/index.html'>How do I add ______ layers to a map? </a>
+              
+               <a class='block small' href='download-features/index.html'>How do I download __ features from a project? </a>
+              
+               <a class='block small' href='duplicate-project/index.html'>Can I copy or _________ a project? </a>
+              
+               <a class='block small' href='enabling-terrain-visualization/index.html'>How do I enable ___ terrain visualization? </a>
+              
+               <a class='block small' href='enabling-satellite-imagery/index.html'>How do I enable _________ imagery? </a>
+              
+               <a class='block small' href='style-tooltip/index.html'>How can I change ___ tooltip style for a ________ layer? </a>
+              
+             </div>
+          
+             <div class='pad1x space-bottom2'>
+               <h3 id='help-company'>Company information </h3>
+              
+               <a class='block small' href='work-at-mapbox/index.html'>Are you hiring? </a>
+              
+               <a class='block small' href='press-resources/index.html'>Where can I find _____ resources? </a>
+              
+             </div>
+          
+         </div>
+         <div class='col6'>
+          
+             <div class='pad1x space-bottom2'>
+               <h3 id='help-javascript'>JavaScript API </h3>
+              
+                 <a class='block small' href='why-map-cropped-hidden-shown/index.html'>Why is my map _______ when hidden and shown ___________? </a>
+              
+                 <a class='block small' href='remove-attribution/index.html'>How can I remove ___ attribution link in the ___? </a>
+              
+                 <a class='block small' href='mapboxjs-tos/index.html'>What are the terms __ use of Mapbox.js? </a>
+              
+                 <a class='block small' href='can-mapboxjs-read-mbtiles/index.html'>Can Mapbox.js read MBTiles? </a>
+              
+                 <a class='block small' href='mapboxjs-a-leaflet-plugin/index.html'>Is Mapbox.js a Leaflet ______? </a>
+              
+                 <a class='block small' href='mapbox-with-polymaps/index.html'>Can I use Mapbox ____ Polymaps? </a>
+              
+                 <a class='block small' href='mapbox-with-openlayers/index.html'>Can I use Mapbox ____ OpenLayers? </a>
+              
+                 <a class='block small' href='mapbox-with-leaflet/index.html'>Can I use Mapbox ____ Leaflet? </a>
+              
+                 <a class='block small' href='mapbox-with-angular/index.html'>Can I use Mapbox ____ AngularJS? </a>
+              
+                 <a class='block small' href='what-is-javascript-api/index.html'>What is the JavaScript ___? </a>
+              
+                 <a class='block small' href='bring-your-own-api/index.html'>Can I use Mapbox ____ a different API? </a>
+              
+             </div>
+          
+             <div class='pad1x space-bottom2'>
+               <h3 id='help-mobile'>Mobile tools </h3>
+              
+                 <a class='block small' href='ios-sdk/index.html'>Do you provide native ___ tools? </a>
+              
+                 <a class='block small' href='ios-docs/index.html'>Where do I find _____________ for your iOS tools? </a>
+              
+                 <a class='block small' href='ios-offline/index.html'>How can I make _______ maps for iOS devices? </a>
+              
+                 <a class='block small' href='ios-markers/index.html'>How do I add _ large number of markers __ iOS? </a>
+              
+                 <a class='block small' href='android-offline/index.html'>How can I make _______ maps for Android devices? </a>
+              
+                 <a class='block small' href='android-sdk/index.html'>Will you be building __ Android SDK? </a>
+              
+                 <a class='block small' href='appcelerator-titanium/index.html'>How do I use ______ with Appcelerator Titanium? </a>
+              
+                 <a class='block small' href='phonegap-cordova/index.html'>How do I use ______ with PhoneGap or Cordova? </a>
+              
+                 <a class='block small' href='mobile-web/index.html'>Are Mapbox maps mobile ___-_____? </a>
+              
+             </div>
+          
+             <div class='pad1x space-bottom2'>
+               <h3 id='help-account'>My account </h3>
+              
+                 <a class='block small' href='define-access-token/index.html'>What is an access _____? </a>
+              
+                 <a class='block small' href='create-api-access-token/index.html'>How do I create __ API access token? </a>
+              
+                 <a class='block small' href='sharing-access-token/index.html'>Can I share access ______ publicly? </a>
+              
+                 <a class='block small' href='rotate-access-token/index.html'>Can someone steal my ______ token? </a>
+              
+                 <a class='block small' href='two-step-verification/index.html'>How do I enable ___-____ verification? </a>
+              
+                 <a class='block small' href='reset-password/index.html'>How do I reset __ password? </a>
+              
+                 <a class='block small' href='paywalled/index.html'>What is paywalled map ___? </a>
+              
+                 <a class='block small' href='map-view/index.html'>What is a map ____? </a>
+              
+                 <a class='block small' href='map-statistics-time/index.html'>What is the timezone __ my map statistics? </a>
+              
+                 <a class='block small' href='map-statistics/index.html'>How do I view __ maps' statistics? </a>
+              
+                 <a class='block small' href='email-login-link-expired/index.html'>What do I do __ the login link in _____ doesn't work? </a>
+              
+                 <a class='block small' href='exceed-plan/index.html'>What happens if I ______ my plan? </a>
+              
+                 <a class='block small' href='delete-account/index.html'>How do I delete __ account? </a>
+              
+                 <a class='block small' href='completing-profile/index.html'>How do I complete __ profile? </a>
+              
+                 <a class='block small' href='commercial/index.html'>Can I use Mapbox __ commercial applications? </a>
+              
+                 <a class='block small' href='changing-username/index.html'>How do I change __ username? </a>
+              
+                 <a class='block small' href='changing-password/index.html'>How do I change __ password? </a>
+              
+                 <a class='block small' href='changing-email-address/index.html'>How do I change __ email address? </a>
+              
+             </div>
+          
+             <div class='pad1x space-bottom2'>
+               <h3 id='help-api'>Other APIs </h3>
+              
+                 <a class='block small' href='projection-support/index.html'>What projections does Mapbox _______? </a>
+              
+                 <a class='block small' href='what-is-kml/index.html'>What is KML? </a>
+              
+                 <a class='block small' href='what-is-geojson/index.html'>What is GeoJSON? </a>
+              
+                 <a class='block small' href='what-is-geocoding/index.html'>What is Geocoding? </a>
+              
+                 <a class='block small' href='wax/index.html'>Wax </a>
+              
+                 <a class='block small' href='static-api/index.html'>What is the Static ___? </a>
+              
+                 <a class='block small' href='mbtiles-software-support/index.html'>What software supports MBTiles? </a>
+              
+                 <a class='block small' href='shapefile-support/index.html'>Does Mapbox support Shapefile ______? </a>
+              
+                 <a class='block small' href='rest-api/index.html'>What are Mapbox web ________? </a>
+              
+                 <a class='block small' href='convert-mbtiles-individual-mbutil/index.html'>How do I convert _______ to individual tiles? </a>
+              
+                 <a class='block small' href='change-initial-position/index.html'>How do I change ___ initial position of a ___? </a>
+              
+                 <a class='block small' href='geocoding-api/index.html'>Does Mapbox have a _________ API? </a>
+              
+                 <a class='block small' href='file-import-support/index.html'>What files does the ______.___ interface import? </a>
+              
+                 <a class='block small' href='export-image-pdf/index.html'>Can I export a ___ I created on Mapbox __ an image or PDF? </a>
+              
+             </div>
+          
+             <div class='pad1x space-bottom2'>
+               <h3 id='help-satellite'>Satellite information </h3>
+              
+                 <a class='block small' href='trace-mapbox-satellite-in-open-street-map/index.html'>Can I trace Mapbox _________ in OpenStreetMap? </a>
+              
+                 <a class='block small' href='satellite-remove-labels/index.html'>How can I remove _______ and labels from the _________ baselayer? </a>
+              
+                 <a class='block small' href='satellite-demo/index.html'>Is there a demo _________ of your satellite layer? </a>
+              
+                 <a class='block small' href='satellite-coverage-europe/index.html'>What is the European ________ for Mapbox Satellite? </a>
+              
+                 <a class='block small' href='rgb-satellite/index.html'>Do you offer imagery _____ than RGB? </a>
+              
+                 <a class='block small' href='print-satellite/index.html'>Can I print satellite _______? </a>
+              
+                 <a class='block small' href='imagery-update-requests/index.html'>When will you provide _______ imagery for my hometown/area __ interest? </a>
+              
+                 <a class='block small' href='offline-satellite/index.html'>Are satellite images available _______? </a>
+              
+                 <a class='block small' href='import-imagery/index.html'>How do I import __ own satellite data or _______? </a>
+              
+                 <a class='block small' href='mapbox-satellite-sources/index.html'>What are the sources ___ the imagery in Mapbox _________? </a>
+              
+                 <a class='block small' href='imagery-date/index.html'>Where can I view ___ date of the satellite _______? </a>
+              
+                 <a class='block small' href='access-hi-res-imagery/index.html'>How can I get ______ to recent hi-resolution imagery? </a>
+              
+             </div>
+          
+         </div>
+       </div>
+     </div>
+   </div>
+
+   <div id='email-us' class='col12 pad4y clearfix'>
+     <div class='clearfix space-bottom col5 prose'>
+       <h2>Still have a question? </h2>
+         <div class='space-bottom'>Can't find an answer? _____ us at  <a href='mailto:help@mapbox.com'>help@mapbox.com </a></div>
+         <div>For guaranteed 24 hour ________ turnarounds,  <a href="../plans/index.html">Upgrade to our Premium __ Enterprise plans </a>. </div>
+     </div>
+     <div id='email-support' class='clearfix space-bottom col6 margin1'>
+       <form method='post'>
+         <fieldset>
+           <label for='email-address'>Email Address </label>
+           <input name='email' id='email-address' type='text' class='stretch' />
+         </fieldset>
+         <fieldset>
+           <label for='email-subject'>Subject </label>
+           <input name='subject' id='email-subject' type='text' class='stretch' />
+         </fieldset>
+         <fieldset>
+           <label for='email-body'>Your question or problem. </label>
+           <textarea name='body' id='email-body' style='height: 150px;' class='stretch'></textarea>
+         </fieldset>
+         <fieldset class='col12 clearfix'>
+           <button class='col3 margin9 animate'>Email support </button>
+           <input name='mailbox' class='hidden' id='mailbox' value='support' />
+         </fieldset>
+       </form>
+     </div>
+   </div>
+   <div id='email-success' class='pad4y space-bottom center col12 hidden'>
+     <span class='dark fill-green inline round dot'>
+       <span class='big icon check'></span>
+     </span>
+     <h2>Your email has been ____. </h2>
+     <span>We'll be in touch. </span>
+   </div>
+ </div>
+
+ </div>
+
+ <script src='help.js'></script>
+
+ <script>
+var Swiftype = window.Swiftype || {};
+  (function() {
+    Swiftype.key = 'ByE7bq3YmMASdFvY7L4h';
+    Swiftype.renderStyle = 'inline';
+    Swiftype.resultContainingElement = '#search-results';
+
+    /** DO NOT EDIT BELOW THIS LINE **/
+    var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+    script.src = "../../s.swiftypecdn.com/embed.js";
+    var entry = document.getElementsByTagName('script')[0];
+    entry.parentNode.insertBefore(script, entry);
+  }());
+</script>
+
+ <script src='../js/olark.js'></script>
+ </div>
+
+ <div class='footer pad4y clearfix hide-mobile fill-light'>
+   <div class='limiter'>
+    <div class='clearfix'> 
+     <div class='col8 small mobile-cols'>
+       <div class='col12 clearfix'>
+         <div class='col3'>
+          
+           <a id='footer-design' class='space-bottom0 col12 strong' href='../design/index.html'>Design </a>
+          
+           <a id='footer-data' class='space-bottom0 col12 strong' href='../data-platform/index.html'>Data </a>
+          
+           <a id='footer-developers' class='space-bottom0 col12 strong' href='../developers/index.html'>Developers </a>
+          
+           <a id='footer-showcase' class='space-bottom0 col12 strong' href='../showcase/index.html'>Showcase </a>
+          
+           <a id='footer-enterprise' class='space-bottom0 col12 strong' href='../enterprise/index.html'>Enterprise </a>
+          
+         </div>
+         <div class='col3'>
+          
+           <a id='footer-plans' class='space-bottom0 col12 quiet strong' href='../plans/index.html'>Plans </a>
+          
+           <a id='footer-blog' class='space-bottom0 col12 quiet strong' href='../blog/index.html'>Blog </a>
+          
+           <a id='footer-help' class='space-bottom0 col12 quiet strong' href='index.html'>Help </a>
+          
+           <a id='footer-status' class='space-bottom0 col12 quiet strong' href='../status/index.html'>Status </a>
+          
+           <a id='footer-contact' class='space-bottom0 col12 quiet strong' href='../contact/index.html'>Contact </a>
+          
+         </div>
+         <div class='col3'>     
+          
+           <a id='footer-about' class='space-bottom0 col12 quiet strong' href='../about/index.html'>About </a>
+          
+           <a id='footer-team' class='space-bottom0 col12 quiet strong' href='../about/team/index.html'>Team </a>
+          
+           <a id='footer-jobs' class='space-bottom0 col12 quiet strong' href='../jobs/index.html'>Jobs </a>
+          
+           <a id='footer-press' class='space-bottom0 col12 quiet strong' href='../about/press/index.html'>Press </a>
+          
+           <a id='footer-press-kit' class='space-bottom0 col12 quiet strong' href='../about/press-kit/index.html'>Press Kit </a>
+          
+         </div>
+          <div class='col3'>
+            <div class='space-bottom0 strong'>Tools </div>
+          
+           <a id='footer-studio' class='space-bottom0 col12 quiet strong' href='../mapbox-studio/index.html'>Studio </a>
+          
+           <a id='footer-maki' class='space-bottom0 col12 quiet strong' href='../maki/index.html'>Maki </a>
+          
+         </div>
+       </div>
+     </div>
+
+     <div class='col4 footer-social'>
+       <div class='animate footer-animation col6'></div>
+       <div class='footer-dialog fr small strong quiet pad2 col6 contain round fill-gray'>
+      Follow Mapbox on  <a href='https://twitter.com/mapbox'>Twitter </a>,  <a href='https://www.facebook.com/Mapbox'>Facebook </a>, and  <a href='https://instagram.com/mapbox'>Instagram </a>.
+       </div>
+     </div>  
+   </div>
+   </div>
+
+   <div class="limiter industries-footer">
+   <p class='space-bottom1 strong small space-top2 industries-footer-title'>Industries </p>
+   <div class='clearfix pad2y pad4x fill-gray round space-bottom4 industries-footer'>
+         <div class='clearfix'>
+            <div class='col3'>
+            
+             <a id='footer-real-estate' class='space-bottom0 col12 strong quiet small' href='../industries/realestate/index.html'>Real Estate </a>
+            
+             <a id='footer-transportation' class='space-bottom0 col12 strong quiet small' href='../industries/transportation/index.html'>Transportation </a>
+            
+             <a id='footer-agriculture' class='space-bottom0 col12 strong quiet small' href='../industries/agriculture/index.html'>Agriculture </a>
+            
+           </div>
+            <div class='col3'>
+            
+             <a id='footer-social' class='space-bottom0 col12 strong quiet small' href='../industries/social/index.html'>Social </a>
+            
+             <a id='footer-government' class='space-bottom0 col12 strong quiet small' href='../industries/government/index.html'>Government </a>
+            
+             <a id='footer-fitness-&amp;-outdoors' class='space-bottom0 col12 strong quiet small' href='../industries/outdoors/index.html'>Fitness &amp; outdoors </a>
+            
+           </div>
+            <div class='col3'>
+            
+             <a id='footer-finance' class='space-bottom0 col12 strong quiet small' href='../industries/finance/index.html'>Finance </a>
+            
+             <a id='footer-insurance' class='space-bottom0 col12 strong quiet small' href='../industries/insurance/index.html'>Insurance </a>
+            
+             <a id='footer-natural-resources' class='space-bottom0 col12 strong quiet small' href='../industries/naturalresources/index.html'>Natural Resources </a>
+            
+           </div>
+           <div class='col3'>
+            
+                 <a id='footer-security' class='space-bottom0 col12 strong quiet small' href='../industries/security/index.html'>Security </a>
+            
+                 <a id='footer-health' class='space-bottom0 col12 strong quiet small' href='../industries/health/index.html'>Health </a>
+            
+                 <a id='footer-media' class='space-bottom0 col12 strong quiet small' href='../industries/media/index.html'>Media </a>
+            
+           </div>
+          </div> 
+       </div>
+   </div>
+
+   <div class='limiter newsletter-copyright clearfix'>
+   <div class='col8 contain newsletter'>
+         <form id='newsletter' method='post'>
+           <fieldset class='clearfix input-pill col10 pill mobile-cols with-icon'>
+             <span class='icon mail quiet'></span>
+             <input type='text' value='' placeholder='Sign up for our newsletter' name='email' class='col9 required email' />
+             <input type='submit' value='Subscribe' class='col3 quiet' />
+           </fieldset>
+         </form>
+        </div> 
+
+       <div class='col4 footer-copyright small space-top1 col4 noprint fill-light contain'>
+           <div class='pin-right'>
+             <a href='../tos/index.html'>Terms </a> +
+             <a href='../privacy/index.html'>Privacy </a>
+            &copy; Mapbox
+           </div>
+       </div>
+   </div>
+
+ </div>
+
+ <div class='footer-copyright small center noprint fill-light show-mobile'>
+   <div class='limiter'>
+     <div class='pad2y'>
+             <a href='../tos/index.html'>Terms </a> +
+             <a href='../privacy/index.html'>Privacy </a>
+      &copy; Mapbox
+     </div>
+   </div>
+ </div>
+
+
+
+ <div id='modal-content' class='animate modal modal-content'></div>
+ </div>
+ </body>
+ </html>
+ 

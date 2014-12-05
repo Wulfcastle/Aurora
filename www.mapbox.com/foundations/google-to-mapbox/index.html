@@ -1,0 +1,1188 @@
+<!DOCTYPE html >
+ <html>
+ <head>
+<!-- Original URL: https://www.mapbox.com/foundations/google-to-mapbox/
+Date Downloaded: 2014-12-05 09:27:40 PM !-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  
+   <meta charset='UTF-8' />
+   <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+   <meta name='robots' content='index' />
+   <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  
+   <title>Google to Mapbox | ______ </title>
+
+   <meta name='st:title' content='Google to Mapbox' />
+   <meta name='st:type' content='intermediate' />
+   <meta name='st:info' content='site' />
+
+  
+
+   <link href='../../base/latest/base_8f8b1251.css' rel='stylesheet' />
+   <link href='../../css/site.css' rel='stylesheet' />
+   <!--[if IE 9]><link href='../../css/site-ie9.css' rel='stylesheet' /><![endif]-->
+   <link rel='shortcut icon' href='../../img/favicon.ico' type='image/x-icon' />
+   <link rel='alternate' type='application/rss+xml' title='RSS' href='../../blog/blog.rss' />
+   <link href='../../../api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.css' rel='stylesheet' />
+
+   <!--[if lt IE 9 ]><script src='../../js/redirect-ie.js'></script><![endif]-->
+   <script src='../../../js.stripe.com/v2/index.html.js'></script>
+   <script>
+  var KM_COOKIE_DOMAIN = 'www.mapbox.com';
+  var analytics=analytics||[];(function(){var e=['identify','track','trackLink','trackForm','trackClick','trackSubmit','page','pageview','ab','alias','ready','group'],t=function(e){return function(){analytics.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var n=0;n<e.length;n++)analytics[e[n]]=t(e[n])})(),analytics.load=function(e){var t=document.createElement('script');t.type='text/javascript',t.async=!0,t.src=('https:'===document.location.protocol?'https://':"http://")+'d2dq2ahtl5zl1z.cloudfront.net/analytics.js/v1/'+e+'/analytics.min.js';var n=document.getElementsByTagName('script')[0];n.parentNode.insertBefore(t,n)};
+  analytics.load(window.location.hostname.indexOf('mapbox.com') !== -1 ? 'fl0c8p240n' : '0biiejpgfj');
+
+  Stripe.setPublishableKey(window.location.hostname.indexOf('mapbox.com') !== -1 ?
+    'pk_live_hI6mmOTIg7KkywK6vo3vJvpk' : 'pk_test_gmIyREg3sKzAiyMkAEeCsxUG');
+  </script>
+   <script src='../../../api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.js'></script>
+
+   <script>
+  window.mapbox_api = 'https://www.mapbox.com/core';
+  window.mapbox_tileApi = '../../../api.tiles.mapbox.com/index.html';
+  window.mapbox_accessToken = '' || 'pk.eyJ1IjoibWFwYm94IiwiYSI6IlhHVkZmaW8ifQ.hAMX5hSW-QnTeRCMAy9A8Q'
+  if (L.mapbox.VERSION[0] === '2') {
+      L.mapbox.accessToken = window.mapbox_accessToken;
+      L.mapbox.config.FORCE_HTTPS = true;
+      L.mapbox.config.HTTPS_URL = window.mapbox_tileApi + '/v4';
+  }
+  </script>
+   <script src='../../base.js/dist/base.js'></script>
+  
+  
+ </head>
+ <body class=' full bleed'><div style="z-index: 9999; position: fixed; width: 100%; border: 0px; padding: 5px; margin: 0px; background-color: transparent;  font-size: 12pt; font-family: sans-serif;" id="web2disk_nag" onclick="javascript: document.getElementById('web2disk_nag').style.display = 'none';">
+		<div style="color: #000000; background-color:#F1F1F1; margin-left: auto; margin-right: auto; border-width: 2px; border-style: solid; width: 550px; ">
+			<div style="width: 100%; text-align: center; font-weight: bold; border: 0px; margin: 0px; padding: 0px">Hey, where did my words go? (Click to hide)</div>
+			<p>In the trial version of Web2Disk every fifth word is blanked out. 
+			To copy this site with all the words, please upgrade to the full version and copy this website again.</p>
+			<div style="width: 100%; text-align: center; font-weight: bold; border: 0px; margin: 0px; padding: 0px">
+				<a href="http://www.inspyder.com/products/Web2Disk/">Inspyder Web2Disk: The Website Downloader</a>
+			</div>
+		</div>
+	</div>
+  <div class='fill-midnight offcanvas-top row3 industries-subnav animate dark pin-top hide-mobile' id='industries'>
+    <div class='limiter pad2y space-top1 small strong contain'>
+       <ul class='space-bottom0 clearfix'>
+         <li class='col2'><a href="../../industries/realestate/index.html" class="primary-nav-button inline pad1x pad0y round">Real Estate </a></li>
+         <li class='col2'><a href="../../industries/transportation/index.html" class="primary-nav-button inline pad1x pad0y round">Transportation </a></li>
+         <li class='col2'><a href="../../industries/agriculture/index.html" class="primary-nav-button inline pad1x pad0y round ">Agriculture </a></li>
+         <li class='col2'><a href="../../industries/social/index.html" class="primary-nav-button inline pad1x pad0y round">Social </a></li>
+         <li class='col2'><a href="../../industries/government/index.html" class="primary-nav-button inline pad1x pad0y round ">Government </a></li>        
+         <li class='col2'><a href="../../industries/outdoors/index.html" class="primary-nav-button inline pad0x pad0y round">Fitness &amp; Outdoors </a></li>
+       </ul>
+       <ul class='clearfix'>
+          <li class='col2'><a href="../../industries/finance/index.html" class="primary-nav-button inline pad1x pad0y round ">Finance </a></li>
+          <li class='col2'><a href="../../industries/insurance/index.html" class="primary-nav-button inline pad1x pad0y round ">Insurance </a></li>
+          <li class='col2'><a href="../../industries/naturalresources/index.html" class="primary-nav-button inline pad1x pad0y round ">Natural Resources </a></li>
+          <li class='col2'><a href="../../industries/security/index.html" class="primary-nav-button inline pad1x pad0y round ">Security </a></li>
+          <li class='col2'><a href="../../industries/health/index.html" class="primary-nav-button inline pad1x pad0y round ">Health </a></li>
+          <li class='col2'><a href="../../industries/media/index.html" class="primary-nav-button inline pad0x pad0y round ">Media </a></li>
+       </ul> 
+    </div>
+  </div>
+ <div class='page-content'> 
+
+ <div class='masthead show-in-loaded col12 clearfix  dark'>
+   <div class='limiter clearfix'>
+     <nav class='col12 text-right pad2y contain animate clearfix noprint'>
+       <a class='fl mb-logo' href='../../index.html'></a>
+       <h4 class='logo-enterpriseaddon pin-topleft text-aqua block-in-enterprise'>Enterprise </h4>
+       <div id='nav'>
+       </div>
+     </nav>
+   </div>
+ </div>
+
+ <div class=''><script src='../../js/olark.js'></script>
+ <link href='../site.css' rel='stylesheet' />
+
+ <div class='splash fill-intermediate'>
+   <div class='dark limiter pad4y head-img' style='background-image:url("../img/topics/google-to-mapbox.png");'>
+     <div class='pad4y'>
+       <h2><a href='../index.html'>Guides to getting started </a></h2>
+       <h1 class='block space-bottom0'>Google to Mapbox </h1>
+     </div>
+   </div>
+ </div>
+
+ <div class='limiter contain'>
+   <div class='clearfix pad4y'>
+
+     <div class='col2 toc'>
+       <div class='toc-wrap' data-spy='affix'>
+         <ul class='nav'><li class="h2 space-top1"><a href="#getting-started" class="strong block" title="Getting started">Getting started </a></li><li class="h2 space-top1"><a href="#initializing-a-map" class="strong block" title="Initializing a map">Initializing a map </a></li><li class="h2 space-top1"><a href="#adding-a-marker" class="strong block" title="Adding a marker">Adding a marker </a></li><li class="h2 space-top1"><a href="#adding-a-custom-marker" class="strong block" title="Adding a custom marker">Adding a custom marker </a></li><li class="h2 space-top1"><a href="#modifying-map-controls" class="strong block" title="Modifying map controls">Modifying map controls </a></li><li class="h3"><a href="#removing-default-controls" class="block" title="Removing default controls">Removing default controls </a></li><li class="h3"><a href="#control-position" class="block" title="Control position">Control position </a></li><li class="h2 space-top1"><a href="#adding-geojson" class="strong block" title="Adding GeoJSON">Adding GeoJSON </a></li><li class="h2 space-top1"><a href="#styling-a-map" class="strong block" title="Styling a map">Styling a map </a></li><li class="h2 space-top1"><a href="#geocoding" class="strong block" title="Geocoding">Geocoding </a></li><li class="h2 space-top1"><a href="#drawing" class="strong block" title="Drawing">Drawing </a></li><li class="h2 space-top1"><a href="#event-handling" class="strong block" title="Event handling">Event handling </a></li><li class="h2 space-top1"><a href="#static-maps" class="strong block" title="Static maps">Static maps </a></li><li class="h2 space-top1"><a href="#next-steps" class="strong block" title="Next steps">Next steps </a></li></ul>
+       </div>
+      &nbsp;
+     </div>
+
+     <div class='col9 prose pad2xm margin1'>
+       <div class='space-bottom4 doc'>
+         <p>Are you using Google ____ and searching for the __________ code in the  <a href="../../mapbox.js/index.html">Mapbox JavaScript API </a>? You&rsquo;ve come to ___ right place. </p>
+
+ <p>This guide walks you _______ examples in the Google ____ API v3 and then _____ you how to do __ in  <a href="../../mapbox.js/index.html">Mapbox.js </a>. </p>
+
+ <h2 id='getting-started'>Getting started </h2>
+
+
+ <p>To start, you’ll need ___ latest version of Mapbox.js ___ CSS. You can link ________ to the Mapbox hosted ________ by copying this snippet ____ the head of your ____ document. </p>
+
+ <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script  </span><span class="na">src= </span><span class="s">&#39;https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.js&#39; </span><span class="nt">&gt;&lt;/script&gt; </span>
+ <span class="nt">&lt;link </span>  <span class="na">href= </span><span class="s">&#39;https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.css&#39; </span>  <span class="na">rel= </span><span class="s">&#39;stylesheet&#39; </span>  <span class="nt">/&gt; </span></code></pre></div>
+
+
+ <p>You&rsquo;ll also need to ___ an  <a href='../../help/define-access-token/index.html'>access token </a>. Reference your access _____ by adding this snippet __ code to your HTML. </p>
+
+ <div class='js-replace-token'>
+
+ <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script&gt; </span>
+ <span class="nx">L </span><span class="p">. </span><span class="nx">mapbox </span><span class="p">. </span><span class="nx">accessToken </span>  <span class="o">= </span>  <span class="s1">&#39;&lt;your access token here&gt;&#39; </span><span class="p">; </span>
+ <span class="nt">&lt;/script&gt; </span></code></pre></div>
+
+ </div>
+
+
+ <p>In each of the ________ below, we&rsquo;ll show you ___ Google does it and ____ we&rsquo;ll show you how __&_____;_ done with Mapbox. </p>
+
+ <p>New to Mapbox.js? You _____ want to take a ____ at our  <a href="../extending-interactivity/index.html">Extending with Mapbox.js </a> guide. </p>
+
+ <h2 id='initializing-a-map'>Initializing a map </h2>
+
+
+ <p>To add a web ___ to a page, you ____ to initialize it first. </p>
+
+ <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// Google </span>
+ <span class="kd">var </span>  <span class="nx">map </span>  <span class="o">= </span>  <span class="k">new </span>  <span class="nx">google </span><span class="p">. </span><span class="nx">maps </span><span class="p">. </span><span class="nx">Map </span><span class="p">( </span><span class="nb">document </span><span class="p">. </span><span class="nx">getElementById </span><span class="p">( </span><span class="s1">&#39;map&#39; </span><span class="p">), </span>  <span class="p">{ </span>
+     <span class="nx">center </span><span class="o">: </span>  <span class="k">new </span>  <span class="nx">google </span><span class="p">. </span><span class="nx">maps </span><span class="p">. </span><span class="nx">LatLng </span><span class="p">( </span><span class="mf">40.718217 </span><span class="p">, </span><span class="o">- </span><span class="mf">73.998284 </span><span class="p">), </span>
+     <span class="nx">zoom </span><span class="o">: </span>  <span class="mi">13 </span><span class="p">, </span>
+     <span class="nx">mapTypeId </span><span class="o">: </span>  <span class="nx">google </span><span class="p">. </span><span class="nx">maps </span><span class="p">. </span><span class="nx">MapTypeId </span><span class="p">. </span><span class="nx">ROADMAP </span>
+ <span class="p">}); </span></code></pre></div>
+
+
+ <p><img src="../../../maps.googleapis.com/maps/api/staticmap_a26f6667" alt="" /></p>
+
+ <p>Mapbox initializes a map ____  <a href="../../mapbox.js/api/v2.1.4/l-mapbox-map/index.html"><code>L.mapbox.map </code></a>. </p>
+
+ <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// Mapbox </span>
+ <span class="kd">var </span>  <span class="nx">map </span>  <span class="o">= </span>  <span class="nx">L </span><span class="p">. </span><span class="nx">mapbox </span><span class="p">. </span><span class="nx">map </span><span class="p">( </span><span class="s1">&#39;map&#39; </span><span class="p">, </span>  <span class="s1">&#39;examples.map-i86l3621&#39; </span><span class="p">) </span>
+     <span class="p">. </span><span class="nx">setView </span><span class="p">([ </span><span class="mf">40.718217 </span><span class="p">, </span>  <span class="o">- </span><span class="mf">73.998284 </span><span class="p">], </span>  <span class="mi">13 </span><span class="p">); </span></code></pre></div>
+
+
+
+
+ <div class='demo round'>
+
+ <div id='map-init' class='map'>  </div>
+ <script>
+var map = L.mapbox.map('map-init', 'examples.map-i86l3621')
+    .setView([40.718217, -73.998284], 13);
+</script>
+
+ <div class='js-replace-token'>
+
+ <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE html&gt; </span>
+ <span class="nt">&lt;html&gt; </span>
+ <span class="nt">&lt;head&gt; </span>
+   <span class="nt">&lt;meta </span>  <span class="na">charset= </span><span class="s">utf-8 </span>  <span class="nt">/&gt; </span>
+   <span class="nt">&lt;title&gt;&lt;/title&gt; </span>
+   <span class="nt">&lt;script  </span><span class="na">src= </span><span class="s">&#39;https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.js&#39; </span><span class="nt">&gt;&lt;/script&gt; </span>
+   <span class="nt">&lt;link </span>  <span class="na">href= </span><span class="s">&#39;https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.css&#39; </span>  <span class="na">rel= </span><span class="s">&#39;stylesheet&#39; </span>  <span class="nt">/&gt; </span>
+   <span class="nt">&lt;style&gt; </span>
+     <span class="nt">body </span>  <span class="p">{ </span>  <span class="k">margin </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="k">padding </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="p">} </span>
+     <span class="nc">.map </span>  <span class="p">{ </span>  <span class="k">position </span><span class="o">: </span><span class="k">absolute </span><span class="p">; </span>  <span class="k">top </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="k">bottom </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="k">width </span><span class="o">: </span><span class="m">100% </span><span class="p">; </span>  <span class="p">} </span>
+   <span class="nt">&lt;/style&gt; </span>
+ <span class="nt">&lt;/head&gt; </span>
+ <span class="nt">&lt;body&gt; </span>
+ <span class="nt">&lt;div </span>  <span class="na">id= </span><span class="s">&#39;map-init&#39; </span>  <span class="na">class= </span><span class="s">&#39;map&#39; </span><span class="nt">&gt; </span>  <span class="nt">&lt;/div&gt; </span>
+ <span class="nt">&lt;script&gt; </span>
+ <span class="nx">L </span><span class="p">. </span><span class="nx">mapbox </span><span class="p">. </span><span class="nx">accessToken </span>  <span class="o">= </span>  <span class="s1">&#39;&lt;your access token here&gt;&#39; </span><span class="p">; </span>
+ <span class="kd">var </span>  <span class="nx">map </span>  <span class="o">= </span>  <span class="nx">L </span><span class="p">. </span><span class="nx">mapbox </span><span class="p">. </span><span class="nx">map </span><span class="p">( </span><span class="s1">&#39;map-init&#39; </span><span class="p">, </span>  <span class="s1">&#39;examples.map-i86l3621&#39; </span><span class="p">) </span>
+     <span class="p">. </span><span class="nx">setView </span><span class="p">([ </span><span class="mf">40.718217 </span><span class="p">, </span>  <span class="o">- </span><span class="mf">73.998284 </span><span class="p">], </span>  <span class="mi">13 </span><span class="p">); </span>
+ <span class="nt">&lt;/script&gt; </span>
+ <span class="nt">&lt;/body&gt; </span>
+ <span class="nt">&lt;/html&gt; </span></code></pre></div>
+
+ </div>
+
+ <a href='#' class='pin-bottom col12 button round-bottom z1000 pad1 js-view-source'>View source </a>
+
+ </div>
+
+
+ <p>For this guide, we&rsquo;ll ___ the  <code>map </code> variable in examples __ represent  <em>this </em> initialized map. </p>
+
+ <h2 id='adding-a-marker'>Adding a marker </h2>
+
+
+ <p>You can create a ______ marker on a map __ creating a marker object. </p>
+
+ <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// Google </span>
+ <span class="kd">var </span>  <span class="nx">marker </span>  <span class="o">= </span>  <span class="k">new </span>  <span class="nx">google </span><span class="p">. </span><span class="nx">maps </span><span class="p">. </span><span class="nx">Marker </span><span class="p">({ </span>
+     <span class="nx">position </span><span class="o">: </span>  <span class="k">new </span>  <span class="nx">google </span><span class="p">. </span><span class="nx">maps </span><span class="p">. </span><span class="nx">LatLng </span><span class="p">( </span><span class="mf">40.718217 </span><span class="p">, </span>  <span class="o">- </span><span class="mf">73.998284 </span><span class="p">), </span>
+     <span class="nx">map </span><span class="o">: </span>  <span class="nx">map </span>
+ <span class="p">}); </span></code></pre></div>
+
+
+ <p><img src="../../../maps.googleapis.com/maps/api/staticmap_7f1e1c88" alt="" /></p>
+
+ <p>With Mapbox, you can ____ a marker using  <a href="../../mapbox.js/api/v2.1.4/l-marker/index.html"><code>L.Marker </code></a> and then add __ to a map with  <code>addLayer </code>. </p>
+
+ <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// Mapbox </span>
+ <span class="kd">var </span>  <span class="nx">marker </span>  <span class="o">= </span>  <span class="k">new </span>  <span class="nx">L </span><span class="p">. </span><span class="nx">Marker </span><span class="p">( </span><span class="k">new </span>  <span class="nx">L </span><span class="p">. </span><span class="nx">LatLng </span><span class="p">( </span><span class="mf">40.718217 </span><span class="p">, </span>  <span class="o">- </span><span class="mf">73.998284 </span><span class="p">)); </span>
+ <span class="nx">map </span><span class="p">. </span><span class="nx">addLayer </span><span class="p">( </span><span class="nx">marker </span><span class="p">); </span></code></pre></div>
+
+
+
+
+ <div class='demo round'>
+
+ <div id='map-marker' class='map'>  </div>
+ <script>
+var map = L.mapbox.map('map-marker', 'examples.map-i86l3621')
+    .setView([40.718217, -73.998284], 13);
+var marker = new L.Marker(new L.LatLng(40.718217, -73.998284));
+map.addLayer(marker);
+</script>
+
+ <div class='js-replace-token'>
+
+ <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE html&gt; </span>
+ <span class="nt">&lt;html&gt; </span>
+ <span class="nt">&lt;head&gt; </span>
+   <span class="nt">&lt;meta </span>  <span class="na">charset= </span><span class="s">utf-8 </span>  <span class="nt">/&gt; </span>
+   <span class="nt">&lt;title&gt;&lt;/title&gt; </span>
+   <span class="nt">&lt;script  </span><span class="na">src= </span><span class="s">&#39;https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.js&#39; </span><span class="nt">&gt;&lt;/script&gt; </span>
+   <span class="nt">&lt;link </span>  <span class="na">href= </span><span class="s">&#39;https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.css&#39; </span>  <span class="na">rel= </span><span class="s">&#39;stylesheet&#39; </span>  <span class="nt">/&gt; </span>
+   <span class="nt">&lt;style&gt; </span>
+     <span class="nt">body </span>  <span class="p">{ </span>  <span class="k">margin </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="k">padding </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="p">} </span>
+     <span class="nc">.map </span>  <span class="p">{ </span>  <span class="k">position </span><span class="o">: </span><span class="k">absolute </span><span class="p">; </span>  <span class="k">top </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="k">bottom </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="k">width </span><span class="o">: </span><span class="m">100% </span><span class="p">; </span>  <span class="p">} </span>
+   <span class="nt">&lt;/style&gt; </span>
+ <span class="nt">&lt;/head&gt; </span>
+ <span class="nt">&lt;body&gt; </span>
+ <span class="nt">&lt;div </span>  <span class="na">id= </span><span class="s">&#39;map-marker&#39; </span>  <span class="na">class= </span><span class="s">&#39;map&#39; </span><span class="nt">&gt; </span>  <span class="nt">&lt;/div&gt; </span>
+ <span class="nt">&lt;script&gt; </span>
+ <span class="nx">L </span><span class="p">. </span><span class="nx">mapbox </span><span class="p">. </span><span class="nx">accessToken </span>  <span class="o">= </span>  <span class="s1">&#39;&lt;your access token here&gt;&#39; </span><span class="p">; </span>
+ <span class="kd">var </span>  <span class="nx">map </span>  <span class="o">= </span>  <span class="nx">L </span><span class="p">. </span><span class="nx">mapbox </span><span class="p">. </span><span class="nx">map </span><span class="p">( </span><span class="s1">&#39;map-marker&#39; </span><span class="p">, </span>  <span class="s1">&#39;examples.map-i86l3621&#39; </span><span class="p">) </span>
+     <span class="p">. </span><span class="nx">setView </span><span class="p">([ </span><span class="mf">40.718217 </span><span class="p">, </span>  <span class="o">- </span><span class="mf">73.998284 </span><span class="p">], </span>  <span class="mi">13 </span><span class="p">); </span>
+ <span class="kd">var </span>  <span class="nx">marker </span>  <span class="o">= </span>  <span class="k">new </span>  <span class="nx">L </span><span class="p">. </span><span class="nx">Marker </span><span class="p">( </span><span class="k">new </span>  <span class="nx">L </span><span class="p">. </span><span class="nx">LatLng </span><span class="p">( </span><span class="mf">40.718217 </span><span class="p">, </span>  <span class="o">- </span><span class="mf">73.998284 </span><span class="p">)); </span>
+ <span class="nx">map </span><span class="p">. </span><span class="nx">addLayer </span><span class="p">( </span><span class="nx">marker </span><span class="p">); </span>
+ <span class="nt">&lt;/script&gt; </span>
+ <span class="nt">&lt;/body&gt; </span>
+ <span class="nt">&lt;/html&gt; </span></code></pre></div>
+
+ </div>
+
+ <a href='#' class='pin-bottom col12 button round-bottom z1000 pad1 js-view-source'>View source </a>
+
+ </div>
+
+
+
+
+ <h2 id='adding-a-custom-marker'>Adding a custom marker </h2>
+
+
+ <p>If you don&rsquo;t like ___ marker icon, you can ____ it for an image. </p>
+
+ <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// Google </span>
+ <span class="kd">var </span>  <span class="nx">marker </span>  <span class="o">= </span>  <span class="k">new </span>  <span class="nx">google </span><span class="p">. </span><span class="nx">maps </span><span class="p">. </span><span class="nx">Marker </span><span class="p">({ </span>
+     <span class="nx">position </span><span class="o">: </span>  <span class="k">new </span>  <span class="nx">google </span><span class="p">. </span><span class="nx">maps </span><span class="p">. </span><span class="nx">LatLng </span><span class="p">( </span><span class="mf">40.718217 </span><span class="p">, </span>  <span class="o">- </span><span class="mf">73.998284 </span><span class="p">), </span>
+     <span class="nx">map </span><span class="o">: </span>  <span class="nx">map </span><span class="p">, </span>
+     <span class="nx">icon </span><span class="o">: </span>  <span class="s1">&#39;https://bit.ly/QIMos7&#39; </span>
+ <span class="p">}); </span></code></pre></div>
+
+
+ <p><img src="../../../maps.google.com/maps/api/staticmap_975829a9" alt="" /></p>
+
+ <p>To get your custom ______ working, Mapbox uses  <a href="../../mapbox.js/api/v2.1.4/l-icon/index.html"><code>L.icon() </code></a>. </p>
+
+ <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// Mapbox </span>
+ <span class="kd">var </span>  <span class="nx">marker </span>  <span class="o">= </span>  <span class="nx">L </span><span class="p">. </span><span class="nx">icon </span><span class="p">({ </span>
+     <span class="nx">iconUrl </span><span class="o">: </span>  <span class="s1">&#39;https://bit.ly/QIMos7&#39; </span><span class="p">, </span>
+     <span class="nx">iconAnchor </span><span class="o">: </span>  <span class="p">[ </span><span class="mi">20 </span><span class="p">, </span>  <span class="mi">50 </span><span class="p">] </span>
+ <span class="p">}); </span>
+
+ <span class="nx">L </span><span class="p">. </span><span class="nx">marker </span><span class="p">([ </span><span class="mf">40.718217 </span><span class="p">, </span>  <span class="o">- </span><span class="mf">73.998284 </span><span class="p">], </span>  <span class="p">{ </span><span class="nx">icon </span><span class="o">: </span>  <span class="nx">marker </span><span class="p">}). </span><span class="nx">addTo </span><span class="p">( </span><span class="nx">map </span><span class="p">); </span></code></pre></div>
+
+
+
+
+ <div class='demo round'>
+
+ <div id='map-custom' class='map'>  </div>
+ <script>
+var map = L.mapbox.map('map-custom', 'examples.map-i86l3621')
+    .setView([40.718217, -73.998284], 13);
+var marker = L.icon({
+    iconUrl: 'https://bit.ly/QIMos7',
+    iconAnchor: [20, 50]
+});
+
+L.marker([40.718217, -73.998284], {icon: marker}).addTo(map);
+</script>
+
+ <div class='js-replace-token'>
+
+ <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE html&gt; </span>
+ <span class="nt">&lt;html&gt; </span>
+ <span class="nt">&lt;head&gt; </span>
+   <span class="nt">&lt;meta </span>  <span class="na">charset= </span><span class="s">utf-8 </span>  <span class="nt">/&gt; </span>
+   <span class="nt">&lt;title&gt;&lt;/title&gt; </span>
+   <span class="nt">&lt;script  </span><span class="na">src= </span><span class="s">&#39;https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.js&#39; </span><span class="nt">&gt;&lt;/script&gt; </span>
+   <span class="nt">&lt;link </span>  <span class="na">href= </span><span class="s">&#39;https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.css&#39; </span>  <span class="na">rel= </span><span class="s">&#39;stylesheet&#39; </span>  <span class="nt">/&gt; </span>
+   <span class="nt">&lt;style&gt; </span>
+     <span class="nt">body </span>  <span class="p">{ </span>  <span class="k">margin </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="k">padding </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="p">} </span>
+     <span class="nc">.map </span>  <span class="p">{ </span>  <span class="k">position </span><span class="o">: </span><span class="k">absolute </span><span class="p">; </span>  <span class="k">top </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="k">bottom </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="k">width </span><span class="o">: </span><span class="m">100% </span><span class="p">; </span>  <span class="p">} </span>
+   <span class="nt">&lt;/style&gt; </span>
+ <span class="nt">&lt;/head&gt; </span>
+ <span class="nt">&lt;body&gt; </span>
+ <span class="nt">&lt;div </span>  <span class="na">id= </span><span class="s">&#39;map-custom&#39; </span>  <span class="na">class= </span><span class="s">&#39;map&#39; </span><span class="nt">&gt; </span>  <span class="nt">&lt;/div&gt; </span>
+ <span class="nt">&lt;script&gt; </span>
+ <span class="nx">L </span><span class="p">. </span><span class="nx">mapbox </span><span class="p">. </span><span class="nx">accessToken </span>  <span class="o">= </span>  <span class="s1">&#39;&lt;your access token here&gt;&#39; </span><span class="p">; </span>
+ <span class="kd">var </span>  <span class="nx">map </span>  <span class="o">= </span>  <span class="nx">L </span><span class="p">. </span><span class="nx">mapbox </span><span class="p">. </span><span class="nx">map </span><span class="p">( </span><span class="s1">&#39;map-custom&#39; </span><span class="p">, </span>  <span class="s1">&#39;examples.map-i86l3621&#39; </span><span class="p">) </span>
+     <span class="p">. </span><span class="nx">setView </span><span class="p">([ </span><span class="mf">40.718217 </span><span class="p">, </span>  <span class="o">- </span><span class="mf">73.998284 </span><span class="p">], </span>  <span class="mi">13 </span><span class="p">); </span>
+ <span class="kd">var </span>  <span class="nx">marker </span>  <span class="o">= </span>  <span class="nx">L </span><span class="p">. </span><span class="nx">icon </span><span class="p">({ </span>
+     <span class="nx">iconUrl </span><span class="o">: </span>  <span class="s1">&#39;https://bit.ly/QIMos7&#39; </span><span class="p">, </span>
+     <span class="nx">iconAnchor </span><span class="o">: </span>  <span class="p">[ </span><span class="mi">20 </span><span class="p">, </span>  <span class="mi">50 </span><span class="p">] </span>
+ <span class="p">}); </span>
+
+ <span class="nx">L </span><span class="p">. </span><span class="nx">marker </span><span class="p">([ </span><span class="mf">40.718217 </span><span class="p">, </span>  <span class="o">- </span><span class="mf">73.998284 </span><span class="p">], </span>  <span class="p">{ </span><span class="nx">icon </span><span class="o">: </span>  <span class="nx">marker </span><span class="p">}). </span><span class="nx">addTo </span><span class="p">( </span><span class="nx">map </span><span class="p">); </span>
+ <span class="nt">&lt;/script&gt; </span>
+ <span class="nt">&lt;/body&gt; </span>
+ <span class="nt">&lt;/html&gt; </span></code></pre></div>
+
+ </div>
+
+ <a href='#' class='pin-bottom col12 button round-bottom z1000 pad1 js-view-source'>View source </a>
+
+ </div>
+
+
+
+
+ <h2 id='modifying-map-controls'>Modifying map controls </h2>
+
+
+
+
+ <h3 id='removing-default-controls'>Removing default controls </h3>
+
+
+ <p>Most map controls are _____ by default, but you ___ remove them with a ______ code. In this example, __&_____;__ remove the zoom controls. </p>
+
+ <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// Google </span>
+ <span class="kd">var </span>  <span class="nx">map </span>  <span class="o">= </span>  <span class="k">new </span>  <span class="nx">google </span><span class="p">. </span><span class="nx">maps </span><span class="p">. </span><span class="nx">Map </span><span class="p">( </span><span class="nb">document </span><span class="p">. </span><span class="nx">getElementById </span><span class="p">( </span><span class="s1">&#39;map&#39; </span><span class="p">), </span>  <span class="p">{ </span>
+     <span class="nx">zoom </span><span class="o">: </span>  <span class="mi">13 </span><span class="p">, </span>
+     <span class="nx">center </span><span class="o">: </span>  <span class="k">new </span>  <span class="nx">google </span><span class="p">. </span><span class="nx">maps </span><span class="p">. </span><span class="nx">LatLng </span><span class="p">( </span><span class="mf">40.718217 </span><span class="p">, </span>  <span class="o">- </span><span class="mf">73.998284 </span><span class="p">), </span>
+     <span class="nx">zoomControl </span><span class="o">: </span>  <span class="kc">false </span>
+ <span class="p">} </span></code></pre></div>
+
+
+ <p>With Mapbox, you can ____ set  <code>zoomControl </code> to  <code>false </code>. </p>
+
+ <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// Mapbox </span>
+ <span class="kd">var </span>  <span class="nx">map </span>  <span class="o">= </span>  <span class="nx">L </span><span class="p">. </span><span class="nx">mapbox </span><span class="p">. </span><span class="nx">map </span><span class="p">( </span><span class="s1">&#39;map&#39; </span><span class="p">, </span>  <span class="s1">&#39;examples.map-i86l3621&#39; </span><span class="p">, </span>  <span class="p">{ </span>
+     <span class="nx">zoomControl </span><span class="o">: </span>  <span class="kc">false </span>
+ <span class="p">}). </span><span class="nx">setView </span><span class="p">([ </span><span class="mf">40.718217 </span><span class="p">, </span>  <span class="o">- </span><span class="mf">73.998284 </span><span class="p">], </span>  <span class="mi">13 </span><span class="p">); </span></code></pre></div>
+
+
+
+
+ <div class='demo round'>
+
+ <div id='map-zoom' class='map'>  </div>
+ <script>
+var map = L.mapbox.map('map-zoom', 'examples.map-i86l3621', {
+    zoomControl: false
+}).setView([40.718217, -73.998284], 13);
+</script>
+
+ <div class='js-replace-token'>
+
+ <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE html&gt; </span>
+ <span class="nt">&lt;html&gt; </span>
+ <span class="nt">&lt;head&gt; </span>
+   <span class="nt">&lt;meta </span>  <span class="na">charset= </span><span class="s">utf-8 </span>  <span class="nt">/&gt; </span>
+   <span class="nt">&lt;title&gt;&lt;/title&gt; </span>
+   <span class="nt">&lt;script  </span><span class="na">src= </span><span class="s">&#39;https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.js&#39; </span><span class="nt">&gt;&lt;/script&gt; </span>
+   <span class="nt">&lt;link </span>  <span class="na">href= </span><span class="s">&#39;https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.css&#39; </span>  <span class="na">rel= </span><span class="s">&#39;stylesheet&#39; </span>  <span class="nt">/&gt; </span>
+   <span class="nt">&lt;style&gt; </span>
+     <span class="nt">body </span>  <span class="p">{ </span>  <span class="k">margin </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="k">padding </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="p">} </span>
+     <span class="nc">.map </span>  <span class="p">{ </span>  <span class="k">position </span><span class="o">: </span><span class="k">absolute </span><span class="p">; </span>  <span class="k">top </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="k">bottom </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="k">width </span><span class="o">: </span><span class="m">100% </span><span class="p">; </span>  <span class="p">} </span>
+   <span class="nt">&lt;/style&gt; </span>
+ <span class="nt">&lt;/head&gt; </span>
+ <span class="nt">&lt;body&gt; </span>
+ <span class="nt">&lt;div </span>  <span class="na">id= </span><span class="s">&#39;map-zoom&#39; </span>  <span class="na">class= </span><span class="s">&#39;map&#39; </span><span class="nt">&gt; </span>  <span class="nt">&lt;/div&gt; </span>
+ <span class="nt">&lt;script&gt; </span>
+ <span class="nx">L </span><span class="p">. </span><span class="nx">mapbox </span><span class="p">. </span><span class="nx">accessToken </span>  <span class="o">= </span>  <span class="s1">&#39;&lt;your access token here&gt;&#39; </span><span class="p">; </span>
+ <span class="kd">var </span>  <span class="nx">map </span>  <span class="o">= </span>  <span class="nx">L </span><span class="p">. </span><span class="nx">mapbox </span><span class="p">. </span><span class="nx">map </span><span class="p">( </span><span class="s1">&#39;map-zoom&#39; </span><span class="p">, </span>  <span class="s1">&#39;examples.map-i86l3621&#39; </span><span class="p">, </span>  <span class="p">{ </span>
+     <span class="nx">zoomControl </span><span class="o">: </span>  <span class="kc">false </span>
+ <span class="p">}). </span><span class="nx">setView </span><span class="p">([ </span><span class="mf">40.718217 </span><span class="p">, </span>  <span class="o">- </span><span class="mf">73.998284 </span><span class="p">], </span>  <span class="mi">13 </span><span class="p">); </span>
+ <span class="nt">&lt;/script&gt; </span>
+ <span class="nt">&lt;/body&gt; </span>
+ <span class="nt">&lt;/html&gt; </span></code></pre></div>
+
+ </div>
+
+ <a href='#' class='pin-bottom col12 button round-bottom z1000 pad1 js-view-source'>View source </a>
+
+ </div>
+
+
+
+
+ <h3 id='control-position'>Control position </h3>
+
+
+ <p>Don&rsquo;t like where the ___ controls are located? You ___ reposition them. In this _______, we&rsquo;ll move the zoom __ and out buttons to ___ bottom left corner of ___ map. </p>
+
+ <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// Google </span>
+ <span class="kd">var </span>  <span class="nx">map </span>  <span class="o">= </span>  <span class="k">new </span>  <span class="nx">google </span><span class="p">. </span><span class="nx">maps </span><span class="p">. </span><span class="nx">Map </span><span class="p">( </span><span class="nb">document </span><span class="p">. </span><span class="nx">getElementById </span><span class="p">( </span><span class="s1">&#39;map&#39; </span><span class="p">), </span>  <span class="p">{ </span>
+     <span class="nx">zoom </span><span class="o">: </span>  <span class="mi">13 </span><span class="p">, </span>
+     <span class="nx">center </span><span class="o">: </span>  <span class="k">new </span>  <span class="nx">google </span><span class="p">. </span><span class="nx">maps </span><span class="p">. </span><span class="nx">LatLng </span><span class="p">( </span><span class="mf">40.718217 </span><span class="p">, </span>  <span class="o">- </span><span class="mf">73.998284 </span><span class="p">), </span>
+     <span class="nx">zoomControlOptions </span><span class="o">: </span>  <span class="p">{ </span>
+       <span class="nx">position </span><span class="o">: </span>  <span class="nx">google </span><span class="p">. </span><span class="nx">maps </span><span class="p">. </span><span class="nx">ControlPosition </span><span class="p">. </span><span class="nx">BOTTOM_LEFT </span>
+     <span class="p">} </span>
+ <span class="p">} </span></code></pre></div>
+
+
+ <p>Mapbox rearranges the controls ____  <a href="../../mapbox.js/api/v2.1.4/l-control/index.html"><code>L.Control </code></a>. </p>
+
+ <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// Mapbox </span>
+ <span class="kd">var </span>  <span class="nx">map </span>  <span class="o">= </span>  <span class="nx">L </span><span class="p">. </span><span class="nx">mapbox </span><span class="p">. </span><span class="nx">map </span><span class="p">( </span><span class="s1">&#39;map&#39; </span><span class="p">, </span>  <span class="s1">&#39;examples.map-i86l3621&#39; </span><span class="p">) </span>
+     <span class="p">. </span><span class="nx">setView </span><span class="p">([ </span><span class="mf">40.718217 </span><span class="p">, </span>  <span class="o">- </span><span class="mf">73.998284 </span><span class="p">], </span>  <span class="mi">13 </span><span class="p">); </span>
+ <span class="nx">map </span><span class="p">. </span><span class="nx">zoomControl </span><span class="p">. </span><span class="nx">setPosition </span><span class="p">( </span><span class="s1">&#39;bottomleft&#39; </span><span class="p">); </span></code></pre></div>
+
+
+
+
+ <div class='demo round'>
+
+ <div id='map-position' class='map'>  </div>
+ <script>
+var map = L.mapbox.map('map-position', 'examples.map-i86l3621')
+    .setView([40.718217, -73.998284], 13);
+map.zoomControl.setPosition('bottomleft');
+</script>
+
+ <div class='js-replace-token'>
+
+ <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE html&gt; </span>
+ <span class="nt">&lt;html&gt; </span>
+ <span class="nt">&lt;head&gt; </span>
+   <span class="nt">&lt;meta </span>  <span class="na">charset= </span><span class="s">utf-8 </span>  <span class="nt">/&gt; </span>
+   <span class="nt">&lt;title&gt;&lt;/title&gt; </span>
+   <span class="nt">&lt;script  </span><span class="na">src= </span><span class="s">&#39;https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.js&#39; </span><span class="nt">&gt;&lt;/script&gt; </span>
+   <span class="nt">&lt;link </span>  <span class="na">href= </span><span class="s">&#39;https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.css&#39; </span>  <span class="na">rel= </span><span class="s">&#39;stylesheet&#39; </span>  <span class="nt">/&gt; </span>
+   <span class="nt">&lt;style&gt; </span>
+     <span class="nt">body </span>  <span class="p">{ </span>  <span class="k">margin </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="k">padding </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="p">} </span>
+     <span class="nc">.map </span>  <span class="p">{ </span>  <span class="k">position </span><span class="o">: </span><span class="k">absolute </span><span class="p">; </span>  <span class="k">top </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="k">bottom </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="k">width </span><span class="o">: </span><span class="m">100% </span><span class="p">; </span>  <span class="p">} </span>
+   <span class="nt">&lt;/style&gt; </span>
+ <span class="nt">&lt;/head&gt; </span>
+ <span class="nt">&lt;body&gt; </span>
+ <span class="nt">&lt;div </span>  <span class="na">id= </span><span class="s">&#39;map-position&#39; </span>  <span class="na">class= </span><span class="s">&#39;map&#39; </span><span class="nt">&gt; </span>  <span class="nt">&lt;/div&gt; </span>
+ <span class="nt">&lt;script&gt; </span>
+ <span class="nx">L </span><span class="p">. </span><span class="nx">mapbox </span><span class="p">. </span><span class="nx">accessToken </span>  <span class="o">= </span>  <span class="s1">&#39;&lt;your access token here&gt;&#39; </span><span class="p">; </span>
+ <span class="kd">var </span>  <span class="nx">map </span>  <span class="o">= </span>  <span class="nx">L </span><span class="p">. </span><span class="nx">mapbox </span><span class="p">. </span><span class="nx">map </span><span class="p">( </span><span class="s1">&#39;map-position&#39; </span><span class="p">, </span>  <span class="s1">&#39;examples.map-i86l3621&#39; </span><span class="p">) </span>
+     <span class="p">. </span><span class="nx">setView </span><span class="p">([ </span><span class="mf">40.718217 </span><span class="p">, </span>  <span class="o">- </span><span class="mf">73.998284 </span><span class="p">], </span>  <span class="mi">13 </span><span class="p">); </span>
+ <span class="nx">map </span><span class="p">. </span><span class="nx">zoomControl </span><span class="p">. </span><span class="nx">setPosition </span><span class="p">( </span><span class="s1">&#39;bottomleft&#39; </span><span class="p">); </span>
+ <span class="nt">&lt;/script&gt; </span>
+ <span class="nt">&lt;/body&gt; </span>
+ <span class="nt">&lt;/html&gt; </span></code></pre></div>
+
+ </div>
+
+ <a href='#' class='pin-bottom col12 button round-bottom z1000 pad1 js-view-source'>View source </a>
+
+ </div>
+
+
+
+
+ <h2 id='adding-geojson'>Adding GeoJSON </h2>
+
+
+ <p>If you have a _______ file filled with your ___ data, then you can ____ the  <a href="../glossary/index.html#features">features </a> on a map. </p>
+
+ <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// Google </span>
+ <span class="nx">map </span><span class="p">. </span><span class="nx">data </span><span class="p">. </span><span class="nx">loadGeoJson </span><span class="p">( </span><span class="s1">&#39;/foundations/data/examples/data.geojson&#39; </span><span class="p">); </span></code></pre></div>
+
+
+ <p>Mapbox will house your ____ in the   <a href="../../mapbox.js/api/v2.1.4/l-mapbox-featurelayer/index.html">featureLayer </a> object with the  <code>loadURL </code> method. </p>
+
+ <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// Mapbox </span>
+ <span class="nx">L </span><span class="p">. </span><span class="nx">mapbox </span><span class="p">. </span><span class="nx">featureLayer </span><span class="p">() </span>
+     <span class="p">. </span><span class="nx">loadURL </span><span class="p">( </span><span class="s1">&#39;/foundations/data/examples/data.geojson&#39; </span><span class="p">) </span>
+     <span class="p">. </span><span class="nx">addTo </span><span class="p">( </span><span class="nx">map </span><span class="p">); </span></code></pre></div>
+
+
+
+
+ <div class='demo round'>
+
+ <div id='map-json' class='map'>  </div>
+ <script>
+var map = L.mapbox.map('map-json', 'examples.map-i86l3621')
+    .setView([38.8929,-77.0252], 14)
+L.mapbox.featureLayer()
+    .loadURL('../data/examples/data.geojson')
+    .addTo(map);
+</script>
+
+ <div class='js-replace-token'>
+
+ <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE html&gt; </span>
+ <span class="nt">&lt;html&gt; </span>
+ <span class="nt">&lt;head&gt; </span>
+   <span class="nt">&lt;meta </span>  <span class="na">charset= </span><span class="s">utf-8 </span>  <span class="nt">/&gt; </span>
+   <span class="nt">&lt;title&gt;&lt;/title&gt; </span>
+   <span class="nt">&lt;script  </span><span class="na">src= </span><span class="s">&#39;https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.js&#39; </span><span class="nt">&gt;&lt;/script&gt; </span>
+   <span class="nt">&lt;link </span>  <span class="na">href= </span><span class="s">&#39;https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.css&#39; </span>  <span class="na">rel= </span><span class="s">&#39;stylesheet&#39; </span>  <span class="nt">/&gt; </span>
+   <span class="nt">&lt;style&gt; </span>
+     <span class="nt">body </span>  <span class="p">{ </span>  <span class="k">margin </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="k">padding </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="p">} </span>
+     <span class="nc">.map </span>  <span class="p">{ </span>  <span class="k">position </span><span class="o">: </span><span class="k">absolute </span><span class="p">; </span>  <span class="k">top </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="k">bottom </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="k">width </span><span class="o">: </span><span class="m">100% </span><span class="p">; </span>  <span class="p">} </span>
+   <span class="nt">&lt;/style&gt; </span>
+ <span class="nt">&lt;/head&gt; </span>
+ <span class="nt">&lt;body&gt; </span>
+ <span class="nt">&lt;div </span>  <span class="na">id= </span><span class="s">&#39;map-json&#39; </span>  <span class="na">class= </span><span class="s">&#39;map&#39; </span><span class="nt">&gt; </span>  <span class="nt">&lt;/div&gt; </span>
+ <span class="nt">&lt;script&gt; </span>
+ <span class="nx">L </span><span class="p">. </span><span class="nx">mapbox </span><span class="p">. </span><span class="nx">accessToken </span>  <span class="o">= </span>  <span class="s1">&#39;&lt;your access token here&gt;&#39; </span><span class="p">; </span>
+ <span class="kd">var </span>  <span class="nx">map </span>  <span class="o">= </span>  <span class="nx">L </span><span class="p">. </span><span class="nx">mapbox </span><span class="p">. </span><span class="nx">map </span><span class="p">( </span><span class="s1">&#39;map-json&#39; </span><span class="p">, </span>  <span class="s1">&#39;examples.map-i86l3621&#39; </span><span class="p">) </span>
+     <span class="p">. </span><span class="nx">setView </span><span class="p">([ </span><span class="mf">38.8929 </span><span class="p">, </span><span class="o">- </span><span class="mf">77.0252 </span><span class="p">], </span>  <span class="mi">14 </span><span class="p">) </span>
+ <span class="nx">L </span><span class="p">. </span><span class="nx">mapbox </span><span class="p">. </span><span class="nx">featureLayer </span><span class="p">() </span>
+     <span class="p">. </span><span class="nx">loadURL </span><span class="p">( </span><span class="s1">&#39;/foundations/data/examples/data.geojson&#39; </span><span class="p">) </span>
+     <span class="p">. </span><span class="nx">addTo </span><span class="p">( </span><span class="nx">map </span><span class="p">); </span>
+ <span class="nt">&lt;/script&gt; </span>
+ <span class="nt">&lt;/body&gt; </span>
+ <span class="nt">&lt;/html&gt; </span></code></pre></div>
+
+ </div>
+
+ <a href='#' class='pin-bottom col12 button round-bottom z1000 pad1 js-view-source'>View source </a>
+
+ </div>
+
+
+
+
+ <h2 id='styling-a-map'>Styling a map </h2>
+
+
+ <p>To give your map ____ personality, you can style __. Google Maps stores styles __ an  <a href="https://developers.google.com/maps/documentation/javascript/styling">array of objects </a> that target map ________. </p>
+
+ <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// Google </span>
+ <span class="kd">var </span>  <span class="nx">stylesArray </span>  <span class="o">= </span>  <span class="p">[ </span>
+   <span class="p">{ </span>
+     <span class="nx">featureType </span><span class="o">: </span>  <span class="s1">&#39;&#39; </span><span class="p">, </span>
+     <span class="nx">elementType </span><span class="o">: </span>  <span class="s1">&#39;&#39; </span><span class="p">, </span>
+     <span class="nx">stylers </span><span class="o">: </span>  <span class="p">[ </span>
+       <span class="p">{ </span><span class="nx">hue </span><span class="o">: </span>  <span class="s1">&#39;&#39; </span><span class="p">}, </span>
+       <span class="p">{ </span><span class="nx">saturation </span><span class="o">: </span>  <span class="s1">&#39;&#39; </span><span class="p">}, </span>
+       <span class="p">{ </span><span class="nx">lightness </span><span class="o">: </span>  <span class="s1">&#39;&#39; </span><span class="p">}, </span>
+       <span class="c1">// etc... </span>
+     <span class="p">] </span>
+   <span class="p">}, </span>
+   <span class="p">{ </span>
+     <span class="nx">featureType </span><span class="o">: </span>  <span class="s1">&#39;&#39; </span><span class="p">, </span>
+     <span class="c1">// etc... </span>
+   <span class="p">} </span>
+ <span class="p">] </span>
+
+ <span class="nx">map </span><span class="p">. </span><span class="nx">setOptions </span><span class="p">({ </span><span class="nx">styles </span><span class="o">: </span>  <span class="nx">stylesArray </span><span class="p">}); </span></code></pre></div>
+
+
+ <p>With Mapbox, you have _ few options to customize ____ and features. </p>
+
+ <ul>
+ <li>Use the  <a href="../../editor/index.html">Mapbox Editor </a> to  <a href="../customizing-the-map/index.html">customize map styles </a>. </li>
+ <li>Create completely custom layers __  <a href="../../mapbox-studio/index.html">Studio </a> and upload them __ your Mapbox account. </li>
+ <li>Style  <a href="../glossary/index.html#features">features </a> by overriding default ______ with your own code __ by setting  <a href="../glossary/index.html#simplestyle">simplestyle </a> properties in your ____. Learn more from the  <em>Styling data </em> section in  <a href="../extending-interactivity/index.html#style-data">Extending with Mapbox.js </a>. </li>
+ </ul>
+
+
+ <p>Any customized project created __ the Mapbox Editor or ________ from Studio will have _  <a href="../glossary/index.html#map-id">Map ID </a>. Use the Map __ when initializing the map __ add it as the ______ layer. </p>
+
+ <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// Mapbox </span>
+ <span class="nx">L </span><span class="p">. </span><span class="nx">mapbox </span><span class="p">. </span><span class="nx">map </span><span class="p">( </span><span class="s1">&#39;map&#39; </span><span class="p">, </span>  <span class="s1">&#39;examples.map-i86l3621&#39; </span><span class="p">); </span></code></pre></div>
+
+
+
+
+ <div class='demo round'>
+
+ <div id='map-styled' class='map'>  </div>
+ <script>
+var map = L.mapbox.map('map-styled', 'examples.map-i86l3621');
+</script>
+
+ <div class='js-replace-token'>
+
+ <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE html&gt; </span>
+ <span class="nt">&lt;html&gt; </span>
+ <span class="nt">&lt;head&gt; </span>
+   <span class="nt">&lt;meta </span>  <span class="na">charset= </span><span class="s">utf-8 </span>  <span class="nt">/&gt; </span>
+   <span class="nt">&lt;title&gt;&lt;/title&gt; </span>
+   <span class="nt">&lt;script  </span><span class="na">src= </span><span class="s">&#39;https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.js&#39; </span><span class="nt">&gt;&lt;/script&gt; </span>
+   <span class="nt">&lt;link </span>  <span class="na">href= </span><span class="s">&#39;https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.css&#39; </span>  <span class="na">rel= </span><span class="s">&#39;stylesheet&#39; </span>  <span class="nt">/&gt; </span>
+   <span class="nt">&lt;style&gt; </span>
+     <span class="nt">body </span>  <span class="p">{ </span>  <span class="k">margin </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="k">padding </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="p">} </span>
+     <span class="nc">.map </span>  <span class="p">{ </span>  <span class="k">position </span><span class="o">: </span><span class="k">absolute </span><span class="p">; </span>  <span class="k">top </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="k">bottom </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="k">width </span><span class="o">: </span><span class="m">100% </span><span class="p">; </span>  <span class="p">} </span>
+   <span class="nt">&lt;/style&gt; </span>
+ <span class="nt">&lt;/head&gt; </span>
+ <span class="nt">&lt;body&gt; </span>
+ <span class="nt">&lt;div </span>  <span class="na">id= </span><span class="s">&#39;map-styled&#39; </span>  <span class="na">class= </span><span class="s">&#39;map&#39; </span><span class="nt">&gt; </span>  <span class="nt">&lt;/div&gt; </span>
+ <span class="nt">&lt;script&gt; </span>
+ <span class="nx">L </span><span class="p">. </span><span class="nx">mapbox </span><span class="p">. </span><span class="nx">accessToken </span>  <span class="o">= </span>  <span class="s1">&#39;&lt;your access token here&gt;&#39; </span><span class="p">; </span>
+ <span class="kd">var </span>  <span class="nx">map </span>  <span class="o">= </span>  <span class="nx">L </span><span class="p">. </span><span class="nx">mapbox </span><span class="p">. </span><span class="nx">map </span><span class="p">( </span><span class="s1">&#39;map-styled&#39; </span><span class="p">, </span>  <span class="s1">&#39;examples.map-i86l3621&#39; </span><span class="p">); </span>
+ <span class="nt">&lt;/script&gt; </span>
+ <span class="nt">&lt;/body&gt; </span>
+ <span class="nt">&lt;/html&gt; </span></code></pre></div>
+
+ </div>
+
+ <a href='#' class='pin-bottom col12 button round-bottom z1000 pad1 js-view-source'>View source </a>
+
+ </div>
+
+
+
+
+ <h2 id='geocoding'>Geocoding </h2>
+
+
+ <p>You can convert addresses __ coordinates with geocoding. This _______ geocodes  <code>New York City </code> and places a ______ on the map based __ the first result returned. </p>
+
+ <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// Google </span>
+ <span class="kd">var </span>  <span class="nx">geocoder </span>  <span class="o">= </span>  <span class="k">new </span>  <span class="nx">google </span><span class="p">. </span><span class="nx">maps </span><span class="p">. </span><span class="nx">Geocoder </span><span class="p">(); </span>
+ <span class="nx">geocoder </span><span class="p">. </span><span class="nx">geocode </span><span class="p">({ </span><span class="nx">address </span><span class="o">: </span>  <span class="s1">&#39;New York City&#39; </span><span class="p">}, </span>  <span class="kd">function </span><span class="p">( </span><span class="nx">results </span><span class="p">, </span>  <span class="nx">status </span><span class="p">) </span>  <span class="p">{ </span>
+   <span class="k">if </span>  <span class="p">( </span><span class="nx">status </span>  <span class="o">== </span>  <span class="nx">google </span><span class="p">. </span><span class="nx">maps </span><span class="p">. </span><span class="nx">GeocoderStatus </span><span class="p">. </span><span class="nx">OK </span><span class="p">) </span>  <span class="p">{ </span>
+     <span class="nx">map </span><span class="p">. </span><span class="nx">setCenter </span><span class="p">( </span><span class="nx">results </span><span class="p">[ </span><span class="mi">0 </span><span class="p">]. </span><span class="nx">geometry </span><span class="p">. </span><span class="nx">location </span><span class="p">); </span>
+     <span class="kd">var </span>  <span class="nx">marker </span>  <span class="o">= </span>  <span class="k">new </span>  <span class="nx">google </span><span class="p">. </span><span class="nx">maps </span><span class="p">. </span><span class="nx">Marker </span><span class="p">({ </span>
+         <span class="nx">map </span><span class="o">: </span>  <span class="nx">map </span><span class="p">, </span>
+         <span class="nx">position </span><span class="o">: </span>  <span class="nx">results </span><span class="p">[ </span><span class="mi">0 </span><span class="p">]. </span><span class="nx">geometry </span><span class="p">. </span><span class="nx">location </span>
+     <span class="p">}); </span>
+   <span class="p">} </span>
+ <span class="p">}); </span></code></pre></div>
+
+
+ <p>With Mapbox,  <a href="../../developers/api/geocoding/index.html">L.mapbox.geocoder() </a> will gladly geocode ____ addresses. </p>
+
+ <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// Mapbox </span>
+ <span class="kd">var </span>  <span class="nx">geocoder </span>  <span class="o">= </span>  <span class="nx">L </span><span class="p">. </span><span class="nx">mapbox </span><span class="p">. </span><span class="nx">geocoder </span><span class="p">( </span><span class="s1">&#39;mapbox.places-v1&#39; </span><span class="p">); </span>
+ <span class="nx">geocoder </span><span class="p">. </span><span class="nx">query </span><span class="p">( </span><span class="s1">&#39;New York City&#39; </span><span class="p">, </span>  <span class="nx">showMap </span><span class="p">); </span>
+
+ <span class="kd">function </span>  <span class="nx">showMap </span><span class="p">( </span><span class="nx">err </span><span class="p">, </span>  <span class="nx">data </span><span class="p">) </span>  <span class="p">{ </span>
+     <span class="k">if </span>  <span class="p">( </span><span class="nx">data </span><span class="p">. </span><span class="nx">lbounds </span><span class="p">) </span>  <span class="p">{ </span>
+         <span class="nx">map </span><span class="p">. </span><span class="nx">fitBounds </span><span class="p">( </span><span class="nx">data </span><span class="p">. </span><span class="nx">lbounds </span><span class="p">); </span>
+         <span class="kd">var </span>  <span class="nx">marker </span>  <span class="o">= </span>  <span class="nx">L </span><span class="p">. </span><span class="nx">marker </span><span class="p">([ </span><span class="nx">data </span><span class="p">. </span><span class="nx">latlng </span><span class="p">[ </span><span class="mi">0 </span><span class="p">], </span>  <span class="nx">data </span><span class="p">. </span><span class="nx">latlng </span><span class="p">[ </span><span class="mi">1 </span><span class="p">]]). </span><span class="nx">addTo </span><span class="p">( </span><span class="nx">map </span><span class="p">); </span>
+     <span class="p">} </span>  <span class="k">else </span>  <span class="k">if </span>  <span class="p">( </span><span class="nx">data </span><span class="p">. </span><span class="nx">latlng </span><span class="p">) </span>  <span class="p">{ </span>
+         <span class="nx">map </span><span class="p">. </span><span class="nx">setView </span><span class="p">([ </span><span class="nx">data </span><span class="p">. </span><span class="nx">latlng </span><span class="p">[ </span><span class="mi">0 </span><span class="p">], </span>  <span class="nx">data </span><span class="p">. </span><span class="nx">latlng </span><span class="p">[ </span><span class="mi">1 </span><span class="p">]], </span>  <span class="mi">13 </span><span class="p">); </span>
+     <span class="p">} </span>
+ <span class="p">} </span></code></pre></div>
+
+
+
+
+ <div class='demo round'>
+
+ <div id='map-geocoding' class='map'>  </div>
+ <script>
+var geocoder = L.mapbox.geocoder('mapbox.places-v1');
+var mapG = L.mapbox.map('map-geocoding', 'examples.map-i86l3621');
+geocoder.query('New York City', showMap);
+function showMap(err, data) {
+    if (data.lbounds) {
+        mapG.fitBounds(data.lbounds);
+        var marker = L.marker([data.latlng[0], data.latlng[1]]).addTo(mapG);
+    } else if (data.latlng) {
+        mapG.setView([data.latlng[0], data.latlng[1]], 13);
+    }
+}
+</script>
+
+ <div class='js-replace-token'>
+
+ <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE html&gt; </span>
+ <span class="nt">&lt;html&gt; </span>
+ <span class="nt">&lt;head&gt; </span>
+   <span class="nt">&lt;meta </span>  <span class="na">charset= </span><span class="s">utf-8 </span>  <span class="nt">/&gt; </span>
+   <span class="nt">&lt;title&gt;&lt;/title&gt; </span>
+   <span class="nt">&lt;script  </span><span class="na">src= </span><span class="s">&#39;https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.js&#39; </span><span class="nt">&gt;&lt;/script&gt; </span>
+   <span class="nt">&lt;link </span>  <span class="na">href= </span><span class="s">&#39;https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.css&#39; </span>  <span class="na">rel= </span><span class="s">&#39;stylesheet&#39; </span>  <span class="nt">/&gt; </span>
+   <span class="nt">&lt;style&gt; </span>
+     <span class="nt">body </span>  <span class="p">{ </span>  <span class="k">margin </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="k">padding </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="p">} </span>
+     <span class="nc">.map </span>  <span class="p">{ </span>  <span class="k">position </span><span class="o">: </span><span class="k">absolute </span><span class="p">; </span>  <span class="k">top </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="k">bottom </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="k">width </span><span class="o">: </span><span class="m">100% </span><span class="p">; </span>  <span class="p">} </span>
+   <span class="nt">&lt;/style&gt; </span>
+ <span class="nt">&lt;/head&gt; </span>
+ <span class="nt">&lt;body&gt; </span>
+ <span class="nt">&lt;div </span>  <span class="na">id= </span><span class="s">&#39;map-geocoding&#39; </span>  <span class="na">class= </span><span class="s">&#39;map&#39; </span><span class="nt">&gt; </span>  <span class="nt">&lt;/div&gt; </span>
+ <span class="nt">&lt;script&gt; </span>
+ <span class="nx">L </span><span class="p">. </span><span class="nx">mapbox </span><span class="p">. </span><span class="nx">accessToken </span>  <span class="o">= </span>  <span class="s1">&#39;&lt;your access token here&gt;&#39; </span><span class="p">; </span>
+ <span class="kd">var </span>  <span class="nx">geocoder </span>  <span class="o">= </span>  <span class="nx">L </span><span class="p">. </span><span class="nx">mapbox </span><span class="p">. </span><span class="nx">geocoder </span><span class="p">( </span><span class="s1">&#39;mapbox.places-v1&#39; </span><span class="p">); </span>
+ <span class="kd">var </span>  <span class="nx">mapG </span>  <span class="o">= </span>  <span class="nx">L </span><span class="p">. </span><span class="nx">mapbox </span><span class="p">. </span><span class="nx">map </span><span class="p">( </span><span class="s1">&#39;map-geocoding&#39; </span><span class="p">, </span>  <span class="s1">&#39;examples.map-i86l3621&#39; </span><span class="p">); </span>
+ <span class="nx">geocoder </span><span class="p">. </span><span class="nx">query </span><span class="p">( </span><span class="s1">&#39;New York City&#39; </span><span class="p">, </span>  <span class="nx">showMap </span><span class="p">); </span>
+ <span class="kd">function </span>  <span class="nx">showMap </span><span class="p">( </span><span class="nx">err </span><span class="p">, </span>  <span class="nx">data </span><span class="p">) </span>  <span class="p">{ </span>
+     <span class="k">if </span>  <span class="p">( </span><span class="nx">data </span><span class="p">. </span><span class="nx">lbounds </span><span class="p">) </span>  <span class="p">{ </span>
+         <span class="nx">mapG </span><span class="p">. </span><span class="nx">fitBounds </span><span class="p">( </span><span class="nx">data </span><span class="p">. </span><span class="nx">lbounds </span><span class="p">); </span>
+         <span class="kd">var </span>  <span class="nx">marker </span>  <span class="o">= </span>  <span class="nx">L </span><span class="p">. </span><span class="nx">marker </span><span class="p">([ </span><span class="nx">data </span><span class="p">. </span><span class="nx">latlng </span><span class="p">[ </span><span class="mi">0 </span><span class="p">], </span>  <span class="nx">data </span><span class="p">. </span><span class="nx">latlng </span><span class="p">[ </span><span class="mi">1 </span><span class="p">]]). </span><span class="nx">addTo </span><span class="p">( </span><span class="nx">mapG </span><span class="p">); </span>
+     <span class="p">} </span>  <span class="k">else </span>  <span class="k">if </span>  <span class="p">( </span><span class="nx">data </span><span class="p">. </span><span class="nx">latlng </span><span class="p">) </span>  <span class="p">{ </span>
+         <span class="nx">mapG </span><span class="p">. </span><span class="nx">setView </span><span class="p">([ </span><span class="nx">data </span><span class="p">. </span><span class="nx">latlng </span><span class="p">[ </span><span class="mi">0 </span><span class="p">], </span>  <span class="nx">data </span><span class="p">. </span><span class="nx">latlng </span><span class="p">[ </span><span class="mi">1 </span><span class="p">]], </span>  <span class="mi">13 </span><span class="p">); </span>
+     <span class="p">} </span>
+ <span class="p">} </span>
+ <span class="nt">&lt;/script&gt; </span>
+ <span class="nt">&lt;/body&gt; </span>
+ <span class="nt">&lt;/html&gt; </span></code></pre></div>
+
+ </div>
+
+ <a href='#' class='pin-bottom col12 button round-bottom z1000 pad1 js-view-source'>View source </a>
+
+ </div>
+
+
+
+
+ <h2 id='drawing'>Drawing </h2>
+
+
+ <p>You can even add ________ to your map to ____ features. </p>
+
+ <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// Google </span>
+ <span class="kd">var </span>  <span class="nx">draw </span>  <span class="o">= </span>  <span class="k">new </span>  <span class="nx">google </span><span class="p">. </span><span class="nx">maps </span><span class="p">. </span><span class="nx">drawing </span><span class="p">. </span><span class="nx">DrawingManager </span><span class="p">(); </span>
+ <span class="nx">draw </span><span class="p">. </span><span class="nx">setMap </span><span class="p">( </span><span class="nx">map </span><span class="p">); </span></code></pre></div>
+
+
+ <p>Mapbox teams up with  <a href="../../mapbox.js/plugins/index.html#leaflet-draw">Leaflet&rsquo;s draw </a> plugin to provide ___ with similar interactive draw _____. </p>
+
+ <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// Mapbox </span>
+ <span class="nx">L </span><span class="p">. </span><span class="nx">control </span><span class="p">. </span><span class="nx">draw </span><span class="p">(). </span><span class="nx">addTo </span><span class="p">( </span><span class="nx">map </span><span class="p">); </span></code></pre></div>
+
+
+
+
+ <div class='demo round'>
+
+ <div id='map-drawing' class='map'>  </div>
+ <link href='../../../api.tiles.mapbox.com/mapbox.js/plugins/leaflet-draw/v0.2.2/leaflet.draw.css' rel='stylesheet' />
+ <script src='../../../api.tiles.mapbox.com/mapbox.js/plugins/leaflet-draw/v0.2.2/leaflet.draw.js'></script>
+ <script>
+var map = L.mapbox.map('map-drawing', 'examples.map-i86l3621')
+    .setView([38.89399, -77.03659], 17);
+var featureGroup = L.featureGroup().addTo(map);
+var circle_options = {
+    color: '#fff',      // Stroke color
+    opacity: 1,         // Stroke opacity
+    weight: 10,         // Stroke weight
+    fillColor: '#000',  // Fill color
+    fillOpacity: 0.6    // Fill opacity
+};
+var circle_one = L.circle([38.89415, -77.03738], 20, circle_options).addTo(featureGroup);
+var circle_two = L.circle([38.89415, -77.03578], 20, circle_options).addTo(featureGroup);
+var line_points = [
+    [38.893596444352134, -77.0381498336792],
+    [38.89337933372204, -77.03792452812195],
+    [38.89316222242831, -77.03761339187622],
+    [38.893028615148424, -77.03731298446655],
+    [38.892920059048464, -77.03691601753235],
+    [38.892903358095296, -77.03637957572937],
+    [38.89301191422077, -77.03592896461487],
+    [38.89316222242831, -77.03549981117249],
+    [38.89340438498248, -77.03514575958252],
+    [38.893596444352134, -77.0349633693695]
+];
+
+var polyline_options = {
+    color: '#000'
+};
+var polyline = L.polyline(line_points, polyline_options).addTo(featureGroup);
+
+var drawControl = new L.Control.Draw({
+  edit: {
+    featureGroup: featureGroup
+  }
+}).addTo(map);
+
+map.on('draw:created', function(e) {
+    featureGroup.addLayer(e.layer);
+});
+</script>
+
+ <div class='js-replace-token'>
+
+ <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE html&gt; </span>
+ <span class="nt">&lt;html&gt; </span>
+ <span class="nt">&lt;head&gt; </span>
+   <span class="nt">&lt;meta </span>  <span class="na">charset= </span><span class="s">utf-8 </span>  <span class="nt">/&gt; </span>
+   <span class="nt">&lt;title&gt;&lt;/title&gt; </span>
+   <span class="nt">&lt;script  </span><span class="na">src= </span><span class="s">&#39;https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.js&#39; </span><span class="nt">&gt;&lt;/script&gt; </span>
+   <span class="nt">&lt;link </span>  <span class="na">href= </span><span class="s">&#39;https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.css&#39; </span>  <span class="na">rel= </span><span class="s">&#39;stylesheet&#39; </span>  <span class="nt">/&gt; </span>
+   <span class="nt">&lt;style&gt; </span>
+     <span class="nt">body </span>  <span class="p">{ </span>  <span class="k">margin </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="k">padding </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="p">} </span>
+     <span class="nc">.map </span>  <span class="p">{ </span>  <span class="k">position </span><span class="o">: </span><span class="k">absolute </span><span class="p">; </span>  <span class="k">top </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="k">bottom </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="k">width </span><span class="o">: </span><span class="m">100% </span><span class="p">; </span>  <span class="p">} </span>
+   <span class="nt">&lt;/style&gt; </span>
+ <span class="nt">&lt;/head&gt; </span>
+ <span class="nt">&lt;body&gt; </span>
+ <span class="nt">&lt;div </span>  <span class="na">id= </span><span class="s">&#39;map-drawing&#39; </span>  <span class="na">class= </span><span class="s">&#39;map&#39; </span><span class="nt">&gt; </span>  <span class="nt">&lt;/div&gt; </span>
+ <span class="nt">&lt;link </span>  <span class="na">href= </span><span class="s">&#39;https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-draw/v0.2.2/leaflet.draw.css&#39; </span>  <span class="na">rel= </span><span class="s">&#39;stylesheet&#39; </span>  <span class="nt">/&gt; </span>
+ <span class="nt">&lt;script  </span><span class="na">src= </span><span class="s">&#39;https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-draw/v0.2.2/leaflet.draw.js&#39; </span><span class="nt">&gt;&lt;/script&gt; </span>
+ <span class="nt">&lt;script&gt; </span>
+ <span class="nx">L </span><span class="p">. </span><span class="nx">mapbox </span><span class="p">. </span><span class="nx">accessToken </span>  <span class="o">= </span>  <span class="s1">&#39;&lt;your access token here&gt;&#39; </span><span class="p">; </span>
+ <span class="kd">var </span>  <span class="nx">map </span>  <span class="o">= </span>  <span class="nx">L </span><span class="p">. </span><span class="nx">mapbox </span><span class="p">. </span><span class="nx">map </span><span class="p">( </span><span class="s1">&#39;map-drawing&#39; </span><span class="p">, </span>  <span class="s1">&#39;examples.map-i86l3621&#39; </span><span class="p">) </span>
+     <span class="p">. </span><span class="nx">setView </span><span class="p">([ </span><span class="mf">38.89399 </span><span class="p">, </span>  <span class="o">- </span><span class="mf">77.03659 </span><span class="p">], </span>  <span class="mi">17 </span><span class="p">); </span>
+ <span class="kd">var </span>  <span class="nx">featureGroup </span>  <span class="o">= </span>  <span class="nx">L </span><span class="p">. </span><span class="nx">featureGroup </span><span class="p">(). </span><span class="nx">addTo </span><span class="p">( </span><span class="nx">map </span><span class="p">); </span>
+ <span class="kd">var </span>  <span class="nx">circle_options </span>  <span class="o">= </span>  <span class="p">{ </span>
+     <span class="nx">color </span><span class="o">: </span>  <span class="s1">&#39;#fff&#39; </span><span class="p">, </span>       <span class="c1">// Stroke color </span>
+     <span class="nx">opacity </span><span class="o">: </span>  <span class="mi">1 </span><span class="p">, </span>          <span class="c1">// Stroke opacity </span>
+     <span class="nx">weight </span><span class="o">: </span>  <span class="mi">10 </span><span class="p">, </span>          <span class="c1">// Stroke weight </span>
+     <span class="nx">fillColor </span><span class="o">: </span>  <span class="s1">&#39;#000&#39; </span><span class="p">, </span>   <span class="c1">// Fill color </span>
+     <span class="nx">fillOpacity </span><span class="o">: </span>  <span class="mf">0.6 </span>     <span class="c1">// Fill opacity </span>
+ <span class="p">}; </span>
+ <span class="kd">var </span>  <span class="nx">circle_one </span>  <span class="o">= </span>  <span class="nx">L </span><span class="p">. </span><span class="nx">circle </span><span class="p">([ </span><span class="mf">38.89415 </span><span class="p">, </span>  <span class="o">- </span><span class="mf">77.03738 </span><span class="p">], </span>  <span class="mi">20 </span><span class="p">, </span>  <span class="nx">circle_options </span><span class="p">). </span><span class="nx">addTo </span><span class="p">( </span><span class="nx">featureGroup </span><span class="p">); </span>
+ <span class="kd">var </span>  <span class="nx">circle_two </span>  <span class="o">= </span>  <span class="nx">L </span><span class="p">. </span><span class="nx">circle </span><span class="p">([ </span><span class="mf">38.89415 </span><span class="p">, </span>  <span class="o">- </span><span class="mf">77.03578 </span><span class="p">], </span>  <span class="mi">20 </span><span class="p">, </span>  <span class="nx">circle_options </span><span class="p">). </span><span class="nx">addTo </span><span class="p">( </span><span class="nx">featureGroup </span><span class="p">); </span>
+ <span class="kd">var </span>  <span class="nx">line_points </span>  <span class="o">= </span>  <span class="p">[ </span>
+     <span class="p">[ </span><span class="mf">38.893596444352134 </span><span class="p">, </span>  <span class="o">- </span><span class="mf">77.0381498336792 </span><span class="p">], </span>
+     <span class="p">[ </span><span class="mf">38.89337933372204 </span><span class="p">, </span>  <span class="o">- </span><span class="mf">77.03792452812195 </span><span class="p">], </span>
+     <span class="p">[ </span><span class="mf">38.89316222242831 </span><span class="p">, </span>  <span class="o">- </span><span class="mf">77.03761339187622 </span><span class="p">], </span>
+     <span class="p">[ </span><span class="mf">38.893028615148424 </span><span class="p">, </span>  <span class="o">- </span><span class="mf">77.03731298446655 </span><span class="p">], </span>
+     <span class="p">[ </span><span class="mf">38.892920059048464 </span><span class="p">, </span>  <span class="o">- </span><span class="mf">77.03691601753235 </span><span class="p">], </span>
+     <span class="p">[ </span><span class="mf">38.892903358095296 </span><span class="p">, </span>  <span class="o">- </span><span class="mf">77.03637957572937 </span><span class="p">], </span>
+     <span class="p">[ </span><span class="mf">38.89301191422077 </span><span class="p">, </span>  <span class="o">- </span><span class="mf">77.03592896461487 </span><span class="p">], </span>
+     <span class="p">[ </span><span class="mf">38.89316222242831 </span><span class="p">, </span>  <span class="o">- </span><span class="mf">77.03549981117249 </span><span class="p">], </span>
+     <span class="p">[ </span><span class="mf">38.89340438498248 </span><span class="p">, </span>  <span class="o">- </span><span class="mf">77.03514575958252 </span><span class="p">], </span>
+     <span class="p">[ </span><span class="mf">38.893596444352134 </span><span class="p">, </span>  <span class="o">- </span><span class="mf">77.0349633693695 </span><span class="p">] </span>
+ <span class="p">]; </span>
+
+ <span class="kd">var </span>  <span class="nx">polyline_options </span>  <span class="o">= </span>  <span class="p">{ </span>
+     <span class="nx">color </span><span class="o">: </span>  <span class="s1">&#39;#000&#39; </span>
+ <span class="p">}; </span>
+ <span class="kd">var </span>  <span class="nx">polyline </span>  <span class="o">= </span>  <span class="nx">L </span><span class="p">. </span><span class="nx">polyline </span><span class="p">( </span><span class="nx">line_points </span><span class="p">, </span>  <span class="nx">polyline_options </span><span class="p">). </span><span class="nx">addTo </span><span class="p">( </span><span class="nx">featureGroup </span><span class="p">); </span>
+
+ <span class="kd">var </span>  <span class="nx">drawControl </span>  <span class="o">= </span>  <span class="k">new </span>  <span class="nx">L </span><span class="p">. </span><span class="nx">Control </span><span class="p">. </span><span class="nx">Draw </span><span class="p">({ </span>
+   <span class="nx">edit </span><span class="o">: </span>  <span class="p">{ </span>
+     <span class="nx">featureGroup </span><span class="o">: </span>  <span class="nx">featureGroup </span>
+   <span class="p">} </span>
+ <span class="p">}). </span><span class="nx">addTo </span><span class="p">( </span><span class="nx">map </span><span class="p">); </span>
+
+ <span class="nx">map </span><span class="p">. </span><span class="nx">on </span><span class="p">( </span><span class="s1">&#39;draw:created&#39; </span><span class="p">, </span>  <span class="kd">function </span><span class="p">( </span><span class="nx">e </span><span class="p">) </span>  <span class="p">{ </span>
+     <span class="nx">featureGroup </span><span class="p">. </span><span class="nx">addLayer </span><span class="p">( </span><span class="nx">e </span><span class="p">. </span><span class="nx">layer </span><span class="p">); </span>
+ <span class="p">}); </span>
+ <span class="nt">&lt;/script&gt; </span>
+ <span class="nt">&lt;/body&gt; </span>
+ <span class="nt">&lt;/html&gt; </span></code></pre></div>
+
+ </div>
+
+ <a href='#' class='pin-bottom col12 button round-bottom z1000 pad1 js-view-source'>View source </a>
+
+ </div>
+
+
+
+
+ <h2 id='event-handling'>Event handling </h2>
+
+
+ <p>You can make your ___  <em>do something </em> on a  <code>mouseover </code>,  <code>click </code>, or  <code>drag </code> with event handling. ___ example, you can create _ double click event to _____ you with the latitude ___ longitude of a particular ____ on the map. </p>
+
+ <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// Google </span>
+ <span class="nx">google </span><span class="p">. </span><span class="nx">maps </span><span class="p">. </span><span class="nx">event </span><span class="p">. </span><span class="nx">addListener </span><span class="p">( </span><span class="nx">map </span><span class="p">, </span>  <span class="s2">&quot;dblclick&quot; </span><span class="p">, </span>  <span class="kd">function </span><span class="p">( </span><span class="nx">event </span><span class="p">) </span>  <span class="p">{ </span>
+   <span class="nx">alert </span><span class="p">( </span><span class="s2">&quot;LatLng(&quot; </span>  <span class="o">+ </span>  <span class="nx">event </span><span class="p">. </span><span class="nx">latLng </span><span class="p">. </span><span class="nx">lat </span><span class="p">() </span>  <span class="o">+ </span>  <span class="s2">&quot;, &quot; </span>  <span class="o">+ </span>  <span class="nx">event </span><span class="p">. </span><span class="nx">latLng </span><span class="p">. </span><span class="nx">lng </span><span class="p">() </span>  <span class="o">+ </span>  <span class="s2">&quot;)&quot; </span><span class="p">); </span>
+ <span class="p">}); </span></code></pre></div>
+
+
+ <p>Mapbox supports these events, ___. Read  <a href="../../mapbox.js/api/v2.1.4/l-map-class/index.html#map-events">map events </a> to learn more _____ the supported methods. </p>
+
+ <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// Mapbox </span>
+ <span class="nx">map </span><span class="p">. </span><span class="nx">on </span><span class="p">( </span><span class="s1">&#39;dblclick&#39; </span><span class="p">, </span>  <span class="kd">function </span><span class="p">( </span><span class="nx">e </span><span class="p">) </span>  <span class="p">{ </span>
+     <span class="nx">alert </span><span class="p">( </span><span class="nx">e </span><span class="p">. </span><span class="nx">latlng </span><span class="p">); </span>
+ <span class="p">}); </span></code></pre></div>
+
+
+
+
+ <div class='demo round'>
+
+ <div id='map-event' class='map'>  </div>
+ <script>
+var map = L.mapbox.map('map-event', 'examples.map-i86l3621', {
+    doubleClickZoom: false
+})
+.setView([42, -72], 4);
+map.on('dblclick', function(e) {
+    alert(e.latlng);
+});
+</script>
+
+ <div class='js-replace-token'>
+
+ <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE html&gt; </span>
+ <span class="nt">&lt;html&gt; </span>
+ <span class="nt">&lt;head&gt; </span>
+   <span class="nt">&lt;meta </span>  <span class="na">charset= </span><span class="s">utf-8 </span>  <span class="nt">/&gt; </span>
+   <span class="nt">&lt;title&gt;&lt;/title&gt; </span>
+   <span class="nt">&lt;script  </span><span class="na">src= </span><span class="s">&#39;https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.js&#39; </span><span class="nt">&gt;&lt;/script&gt; </span>
+   <span class="nt">&lt;link </span>  <span class="na">href= </span><span class="s">&#39;https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.css&#39; </span>  <span class="na">rel= </span><span class="s">&#39;stylesheet&#39; </span>  <span class="nt">/&gt; </span>
+   <span class="nt">&lt;style&gt; </span>
+     <span class="nt">body </span>  <span class="p">{ </span>  <span class="k">margin </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="k">padding </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="p">} </span>
+     <span class="nc">.map </span>  <span class="p">{ </span>  <span class="k">position </span><span class="o">: </span><span class="k">absolute </span><span class="p">; </span>  <span class="k">top </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="k">bottom </span><span class="o">: </span><span class="m">0 </span><span class="p">; </span>  <span class="k">width </span><span class="o">: </span><span class="m">100% </span><span class="p">; </span>  <span class="p">} </span>
+   <span class="nt">&lt;/style&gt; </span>
+ <span class="nt">&lt;/head&gt; </span>
+ <span class="nt">&lt;body&gt; </span>
+ <span class="nt">&lt;div </span>  <span class="na">id= </span><span class="s">&#39;map-event&#39; </span>  <span class="na">class= </span><span class="s">&#39;map&#39; </span><span class="nt">&gt; </span>  <span class="nt">&lt;/div&gt; </span>
+ <span class="nt">&lt;script&gt; </span>
+ <span class="nx">L </span><span class="p">. </span><span class="nx">mapbox </span><span class="p">. </span><span class="nx">accessToken </span>  <span class="o">= </span>  <span class="s1">&#39;&lt;your access token here&gt;&#39; </span><span class="p">; </span>
+ <span class="kd">var </span>  <span class="nx">map </span>  <span class="o">= </span>  <span class="nx">L </span><span class="p">. </span><span class="nx">mapbox </span><span class="p">. </span><span class="nx">map </span><span class="p">( </span><span class="s1">&#39;map-event&#39; </span><span class="p">, </span>  <span class="s1">&#39;examples.map-i86l3621&#39; </span><span class="p">, </span>  <span class="p">{ </span>
+     <span class="nx">doubleClickZoom </span><span class="o">: </span>  <span class="kc">false </span>
+ <span class="p">}) </span>
+ <span class="p">. </span><span class="nx">setView </span><span class="p">([ </span><span class="mi">42 </span><span class="p">, </span>  <span class="o">- </span><span class="mi">72 </span><span class="p">], </span>  <span class="mi">4 </span><span class="p">); </span>
+ <span class="nx">map </span><span class="p">. </span><span class="nx">on </span><span class="p">( </span><span class="s1">&#39;dblclick&#39; </span><span class="p">, </span>  <span class="kd">function </span><span class="p">( </span><span class="nx">e </span><span class="p">) </span>  <span class="p">{ </span>
+     <span class="nx">alert </span><span class="p">( </span><span class="nx">e </span><span class="p">. </span><span class="nx">latlng </span><span class="p">); </span>
+ <span class="p">}); </span>
+ <span class="nt">&lt;/script&gt; </span>
+ <span class="nt">&lt;/body&gt; </span>
+ <span class="nt">&lt;/html&gt; </span></code></pre></div>
+
+ </div>
+
+ <a href='#' class='pin-bottom col12 button round-bottom z1000 pad1 js-view-source'>View source </a>
+
+ </div>
+
+
+
+
+ <h2 id='static-maps'>Static maps </h2>
+
+
+ <p>You access maps without __________ with static maps. Static ____ are images of maps. _________ the URL with your __________ and then use it ____ you would an image. </p>
+
+ <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- Google --&gt; </span>
+ <span class="nt">&lt;img </span>  <span class="na">src= </span><span class="s">&#39;https://maps.googleapis.com/maps/api/staticmap?center=40.714728,-73.998672&amp;zoom=12&amp;size=640x300&amp;sensor=false&#39; </span>  <span class="na">alt= </span><span class="s">&#39;Google map&#39; </span><span class="nt">&gt; </span></code></pre></div>
+
+
+ <p><img src="../../../maps.googleapis.com/maps/api/staticmap_24f1cfa7" alt="Google map" /></p>
+
+ <p>The  <a href="(https://www.mapbox.com/developers/api/static/">Mapbox static API </a> has a similar ______. </p>
+
+ <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- Mapbox --&gt; </span>
+ <span class="nt">&lt;img </span>  <span class="na">src= </span><span class="s">&#39;https://api.tiles.mapbox.com/v4/examples.map-i86l3621/-73.998672,40.714728,12/640x300.png?access_token=&lt;your access token&gt;&#39; </span>  <span class="na">alt= </span><span class="s">&#39;Mapbox map&#39; </span><span class="nt">&gt; </span></code></pre></div>
+
+
+ <p><img src="../../../api.tiles.mapbox.com/v4/examples.map-i86l3621/-73.998672,40.714728,12/640x300_ae6541e1.png" alt="Mapbox map" /></p>
+
+ <h2 id='next-steps'>Next steps </h2>
+
+
+ <p>Now that you&rsquo;re mapping ____ Mapbox, have a look __  <a href="../../mapbox.js/example/v1.0.0/index.html">Mapbox.js examples </a> to learn ways __ build completely interactive web ____________. </p>
+
+ <p>Are you stuck on __ example? Send your questions __  <a href="mailto:help@mapbox.com">help@mapbox.com </a> and we&rsquo;ll help ___ through it. </p>
+
+       </div>
+
+       <div class='round keyline-all clip col12'>
+         <form id='help-feedback' class='pad2'>
+           <fieldset>
+             <label>How could we improve ____ article? </label>
+             <input type='text' class='col12' />
+           </fieldset>
+           <fieldset class='clearfix'>
+             <input type='submit' class='col4 animate' value='Send feedback' />
+           </fieldset>
+         </form>
+       </div>
+
+       <div class='round-bottom space-bottom4 block guides-twitter-block clearfix contain space-top4'>
+   <div class='contain med-graphic dot fill-darken1 dark center fl pad2y'>
+     <span class='icon inline twitter js-twitter-count strong pad1y'></span>
+   </div>
+   <div class='prose prose-big guides-tweet-contents'>
+     <span class='quiet'>Tweet: </span>
+     <a class='js-tweets' href="http://twitter.com/intent/tweet?status=Google to Mapbox https://www.mapbox.com/foundations/google-to-mapbox via @Mapbox">"Google to Mapbox" </a>
+   </div>
+ </div>
+
+
+       <div class='hide-mobile clearfix'>
+         <div class='js-show-signup quiet pad2y'>
+          New to Mapbox?  <a href='../../signup/index.html'>Sign up now to _____ making maps </a>
+         </div>
+       </div>
+     </div>
+
+
+   </div>
+ </div>
+
+
+ <div class='limiter clearfix'>
+   <div class='col9 space-bottom4 margin3'>
+     <a class='next-block row2 clip contain col12 block animate round keyline-all fill-advanced' href='/foundations/building-a-store-locator'>
+       <div class='fill-white animate round col12 pin-left'>
+         <div class='pad2x pad1y'>
+           <div class='pad0y'>
+             <strong class='show-mobile dark small'>Read next:  </strong>
+             <span class='small quiet strong inline'>Building a store locator </span>
+             <p class='small quiet truncate block'>Let's build a map ___________ with Mapbox.js. This guide _____ you through all the ____ that you need to _____ a store locator. </p>
+           </div>
+         </div>
+       </div>
+       <div class='hide-mobile contain z10 button keyline-left animate dark unround fr row2 pad4x fill-advanced'>Read next </div>
+     </a>
+   </div>
+ </div>
+
+
+ <script src='../js/affix.js'></script>
+ <script src='../js/scrollspy.js'></script>
+ <script src='../site.js'></script>
+
+ <script>$(function() { mapboxguides('/google-to-mapbox') });</script>
+ </div>
+
+ <div class='footer pad4y clearfix hide-mobile fill-light'>
+   <div class='limiter'>
+    <div class='clearfix'> 
+     <div class='col8 small mobile-cols'>
+       <div class='col12 clearfix'>
+         <div class='col3'>
+          
+           <a id='footer-design' class='space-bottom0 col12 strong' href='../../design/index.html'>Design </a>
+          
+           <a id='footer-data' class='space-bottom0 col12 strong' href='../../data-platform/index.html'>Data </a>
+          
+           <a id='footer-developers' class='space-bottom0 col12 strong' href='../../developers/index.html'>Developers </a>
+          
+           <a id='footer-showcase' class='space-bottom0 col12 strong' href='../../showcase/index.html'>Showcase </a>
+          
+           <a id='footer-enterprise' class='space-bottom0 col12 strong' href='../../enterprise/index.html'>Enterprise </a>
+          
+         </div>
+         <div class='col3'>
+          
+           <a id='footer-plans' class='space-bottom0 col12 quiet strong' href='../../plans/index.html'>Plans </a>
+          
+           <a id='footer-blog' class='space-bottom0 col12 quiet strong' href='../../blog/index.html'>Blog </a>
+          
+           <a id='footer-help' class='space-bottom0 col12 quiet strong' href='../../help/index.html'>Help </a>
+          
+           <a id='footer-status' class='space-bottom0 col12 quiet strong' href='../../status/index.html'>Status </a>
+          
+           <a id='footer-contact' class='space-bottom0 col12 quiet strong' href='../../contact/index.html'>Contact </a>
+          
+         </div>
+         <div class='col3'>     
+          
+           <a id='footer-about' class='space-bottom0 col12 quiet strong' href='../../about/index.html'>About </a>
+          
+           <a id='footer-team' class='space-bottom0 col12 quiet strong' href='../../about/team/index.html'>Team </a>
+          
+           <a id='footer-jobs' class='space-bottom0 col12 quiet strong' href='../../jobs/index.html'>Jobs </a>
+          
+           <a id='footer-press' class='space-bottom0 col12 quiet strong' href='../../about/press/index.html'>Press </a>
+          
+           <a id='footer-press-kit' class='space-bottom0 col12 quiet strong' href='../../about/press-kit/index.html'>Press Kit </a>
+          
+         </div>
+          <div class='col3'>
+            <div class='space-bottom0 strong'>Tools </div>
+          
+           <a id='footer-studio' class='space-bottom0 col12 quiet strong' href='../../mapbox-studio/index.html'>Studio </a>
+          
+           <a id='footer-maki' class='space-bottom0 col12 quiet strong' href='../../maki/index.html'>Maki </a>
+          
+         </div>
+       </div>
+     </div>
+
+     <div class='col4 footer-social'>
+       <div class='animate footer-animation col6'></div>
+       <div class='footer-dialog fr small strong quiet pad2 col6 contain round fill-gray'>
+      Follow Mapbox on  <a href='https://twitter.com/mapbox'>Twitter </a>,  <a href='https://www.facebook.com/Mapbox'>Facebook </a>, and  <a href='https://instagram.com/mapbox'>Instagram </a>.
+       </div>
+     </div>  
+   </div>
+   </div>
+
+   <div class="limiter industries-footer">
+   <p class='space-bottom1 strong small space-top2 industries-footer-title'>Industries </p>
+   <div class='clearfix pad2y pad4x fill-gray round space-bottom4 industries-footer'>
+         <div class='clearfix'>
+            <div class='col3'>
+            
+             <a id='footer-real-estate' class='space-bottom0 col12 strong quiet small' href='../../industries/realestate/index.html'>Real Estate </a>
+            
+             <a id='footer-transportation' class='space-bottom0 col12 strong quiet small' href='../../industries/transportation/index.html'>Transportation </a>
+            
+             <a id='footer-agriculture' class='space-bottom0 col12 strong quiet small' href='../../industries/agriculture/index.html'>Agriculture </a>
+            
+           </div>
+            <div class='col3'>
+            
+             <a id='footer-social' class='space-bottom0 col12 strong quiet small' href='../../industries/social/index.html'>Social </a>
+            
+             <a id='footer-government' class='space-bottom0 col12 strong quiet small' href='../../industries/government/index.html'>Government </a>
+            
+             <a id='footer-fitness-&amp;-outdoors' class='space-bottom0 col12 strong quiet small' href='../../industries/outdoors/index.html'>Fitness &amp; outdoors </a>
+            
+           </div>
+            <div class='col3'>
+            
+             <a id='footer-finance' class='space-bottom0 col12 strong quiet small' href='../../industries/finance/index.html'>Finance </a>
+            
+             <a id='footer-insurance' class='space-bottom0 col12 strong quiet small' href='../../industries/insurance/index.html'>Insurance </a>
+            
+             <a id='footer-natural-resources' class='space-bottom0 col12 strong quiet small' href='../../industries/naturalresources/index.html'>Natural Resources </a>
+            
+           </div>
+           <div class='col3'>
+            
+                 <a id='footer-security' class='space-bottom0 col12 strong quiet small' href='../../industries/security/index.html'>Security </a>
+            
+                 <a id='footer-health' class='space-bottom0 col12 strong quiet small' href='../../industries/health/index.html'>Health </a>
+            
+                 <a id='footer-media' class='space-bottom0 col12 strong quiet small' href='../../industries/media/index.html'>Media </a>
+            
+           </div>
+          </div> 
+       </div>
+   </div>
+
+   <div class='limiter newsletter-copyright clearfix'>
+   <div class='col8 contain newsletter'>
+         <form id='newsletter' method='post'>
+           <fieldset class='clearfix input-pill col10 pill mobile-cols with-icon'>
+             <span class='icon mail quiet'></span>
+             <input type='text' value='' placeholder='Sign up for our newsletter' name='email' class='col9 required email' />
+             <input type='submit' value='Subscribe' class='col3 quiet' />
+           </fieldset>
+         </form>
+        </div> 
+
+       <div class='col4 footer-copyright small space-top1 col4 noprint fill-light contain'>
+           <div class='pin-right'>
+             <a href='../../tos/index.html'>Terms </a> +
+             <a href='../../privacy/index.html'>Privacy </a>
+            &copy; Mapbox
+           </div>
+       </div>
+   </div>
+
+ </div>
+
+ <div class='footer-copyright small center noprint fill-light show-mobile'>
+   <div class='limiter'>
+     <div class='pad2y'>
+             <a href='../../tos/index.html'>Terms </a> +
+             <a href='../../privacy/index.html'>Privacy </a>
+      &copy; Mapbox
+     </div>
+   </div>
+ </div>
+
+
+
+ <div id='modal-content' class='animate modal modal-content'></div>
+ </div>
+ </body>
+ </html>
+ 

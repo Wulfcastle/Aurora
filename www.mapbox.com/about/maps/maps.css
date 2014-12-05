@@ -1,0 +1,175 @@
+  div.masthead,
+  div.footer { display:none!important; }
+
+ .splash-container {
+  	display: block;
+  	width: 100%;
+  	height: 700px;
+  	overflow: hidden;
+  }
+
+.splash-container .hi {
+	position: relative;
+	top: 190px;
+	-webkit-transition: all .5s;
+	-moz-transition: all .5s;
+	transition: all .5s;
+ }
+
+
+.splash-illustration {
+	background: url(splash-graphic@2x.png) 0 100% no-repeat;
+	background-size: contain;
+	background-position: center bottom;
+	height: 600px;
+	width: 1615px;
+	max-width: 1615px;
+	position: relative;
+	bottom: 100px;
+	margin-left: auto;
+	margin-right: auto;
+	-webkit-transition: all .2s;
+	-moz-transition: all .2s;
+	transition: all .2s;
+}
+
+.report-issue {
+	background: url(reportissue.png) 0 100% no-repeat;
+	background-size: 100% auto;
+	background-position: center bottom;
+	height: 497px;
+	width: 671px;
+	position: absolute;
+	top: -320px;
+	left: 0;
+	right: 0;
+	margin: auto;
+}
+
+.satellite {
+	display: block;
+	width:619px;
+	height: 246px;
+	background: url(satellite.png) no-repeat;
+	background-size: 100%;
+	position: absolute;
+	top: 30px;
+	left: 3%;
+	-webkit-transition: all .5s;
+  	-moz-transition: all .5s;
+  	transition: all .5s;
+}
+
+
+.drone {
+	display: block;
+	width:625px;
+	height: 600px;
+	background: url(drone.png) no-repeat;
+	background-size: 100%;
+	position: absolute;
+	top: 30px;
+	right: -3%;
+	-webkit-transition: all .5s;
+  	-moz-transition: all .5s;
+  	transition: all .5s;
+}
+
+
+.mapbox-streets-terms {
+	position: relative;
+	height: 100%;
+	min-height: 850px;
+}
+
+.terms {
+	max-width: 500px;
+}
+
+.terms a.button {
+	margin-top: 60px;
+}
+
+.imagery {
+	width: 35%;
+	height: 100%;
+    position: absolute;
+    left: 0;
+}
+
+.satellite-imagery {
+	position: relative;
+	width: 100%;
+	background: url(imagery.jpg) center top no-repeat;
+	background-size: 100% auto;
+}
+ /* making sure we keep the 1:1 ratio */
+.satellite-imagery:before {
+	content: "";
+	display: block;
+	padding-top: 100%;
+}
+
+.streets {
+	width: 100%;
+	height: 100%;
+	background: url(streets.jpg) center top no-repeat;
+	background-size: 689px 689px;
+}
+
+.mapbox-streets {
+	width: 65%;
+	margin-left: 35%;
+}
+
+@media only screen and (max-width: 1615px){		
+	.splash-illustration {
+	  position: absolute;
+	  bottom: 0px;
+	  width: 120%;
+	  max-width: 120%;
+	  margin-left: -10%;
+	}
+
+}
+
+@media only screen and (min-width: 1600px){		
+	.satellite {left: 13%;}
+	.drone {right: 9%;}
+}
+
+@media only screen and (max-width: 1220px){		
+	.splash-container .hi {top: 230px;}
+}
+
+@media only screen and (max-width: 950px){		
+	.splash-illustration {
+	  width: 200%;
+	  max-width: 200%;
+	  margin-left: -10%;
+	}
+	.splash-container .hi {	top: 90px;}
+	.drone, .satellite {display: none;}
+}
+
+@media only screen and (max-width: 800px) {
+	.mapbox-streets {
+		width: 100%;
+		margin-left: 0;
+	}
+	.imagery {display: none;}
+	.splash-container {height: 550px;}
+}
+
+@media only screen and (max-width: 670px ){
+	.report-issue {
+		width: 80%;
+		top: -300px;
+		margin-left: 20px;
+		position: absolute;
+	}
+}
+
+@media only screen and (max-width: 600px ){
+	.report-issue {top: -400px;}
+}

@@ -1,0 +1,671 @@
+<!DOCTYPE html >
+ <html>
+ <head>
+<!-- Original URL: https://www.mapbox.com/mapbox.js/plugins/
+Date Downloaded: 2014-12-05 09:31:43 PM !-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  
+   <meta charset='UTF-8' />
+   <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+   <meta name='robots' content='index' />
+   <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  
+   <title>Plugins | Mapbox </title>
+
+   <meta name='st:title' content='Plugins' />
+   <meta name='st:type' content='mapboxjs' />
+   <meta name='st:info' content='latest' />
+
+  
+
+   <link href='../../base/latest/base_8f8b1251.css' rel='stylesheet' />
+   <link href='../../css/site.css' rel='stylesheet' />
+   <!--[if IE 9]><link href='../../css/site-ie9.css' rel='stylesheet' /><![endif]-->
+   <link rel='shortcut icon' href='../../img/favicon.ico' type='image/x-icon' />
+   <link rel='alternate' type='application/rss+xml' title='RSS' href='../../blog/blog.rss' />
+   <link href='../../../api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.css' rel='stylesheet' />
+
+   <!--[if lt IE 9 ]><script src='../../js/redirect-ie.js'></script><![endif]-->
+   <script src='../../../js.stripe.com/v2/index.html.js'></script>
+   <script>
+  var KM_COOKIE_DOMAIN = 'www.mapbox.com';
+  var analytics=analytics||[];(function(){var e=['identify','track','trackLink','trackForm','trackClick','trackSubmit','page','pageview','ab','alias','ready','group'],t=function(e){return function(){analytics.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var n=0;n<e.length;n++)analytics[e[n]]=t(e[n])})(),analytics.load=function(e){var t=document.createElement('script');t.type='text/javascript',t.async=!0,t.src=('https:'===document.location.protocol?'https://':"http://")+'d2dq2ahtl5zl1z.cloudfront.net/analytics.js/v1/'+e+'/analytics.min.js';var n=document.getElementsByTagName('script')[0];n.parentNode.insertBefore(t,n)};
+  analytics.load(window.location.hostname.indexOf('mapbox.com') !== -1 ? 'fl0c8p240n' : '0biiejpgfj');
+
+  Stripe.setPublishableKey(window.location.hostname.indexOf('mapbox.com') !== -1 ?
+    'pk_live_hI6mmOTIg7KkywK6vo3vJvpk' : 'pk_test_gmIyREg3sKzAiyMkAEeCsxUG');
+  </script>
+   <script src='../../../api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.js'></script>
+
+   <script>
+  window.mapbox_api = 'https://www.mapbox.com/core';
+  window.mapbox_tileApi = '../../../api.tiles.mapbox.com/index.html';
+  window.mapbox_accessToken = '' || 'pk.eyJ1IjoibWFwYm94IiwiYSI6IlhHVkZmaW8ifQ.hAMX5hSW-QnTeRCMAy9A8Q'
+  if (L.mapbox.VERSION[0] === '2') {
+      L.mapbox.accessToken = window.mapbox_accessToken;
+      L.mapbox.config.FORCE_HTTPS = true;
+      L.mapbox.config.HTTPS_URL = window.mapbox_tileApi + '/v4';
+  }
+  </script>
+   <script src='../../base.js/dist/base.js'></script>
+  
+  
+ </head>
+ <body class='fill-light full'><div style="z-index: 9999; position: fixed; width: 100%; border: 0px; padding: 5px; margin: 0px; background-color: transparent;  font-size: 12pt; font-family: sans-serif;" id="web2disk_nag" onclick="javascript: document.getElementById('web2disk_nag').style.display = 'none';">
+		<div style="color: #000000; background-color:#F1F1F1; margin-left: auto; margin-right: auto; border-width: 2px; border-style: solid; width: 550px; ">
+			<div style="width: 100%; text-align: center; font-weight: bold; border: 0px; margin: 0px; padding: 0px">Hey, where did my words go? (Click to hide)</div>
+			<p>In the trial version of Web2Disk every fifth word is blanked out. 
+			To copy this site with all the words, please upgrade to the full version and copy this website again.</p>
+			<div style="width: 100%; text-align: center; font-weight: bold; border: 0px; margin: 0px; padding: 0px">
+				<a href="http://www.inspyder.com/products/Web2Disk/">Inspyder Web2Disk: The Website Downloader</a>
+			</div>
+		</div>
+	</div>
+  <div class='fill-midnight offcanvas-top row3 industries-subnav animate dark pin-top hide-mobile' id='industries'>
+    <div class='limiter pad2y space-top1 small strong contain'>
+       <ul class='space-bottom0 clearfix'>
+         <li class='col2'><a href="../../industries/realestate/index.html" class="primary-nav-button inline pad1x pad0y round">Real Estate </a></li>
+         <li class='col2'><a href="../../industries/transportation/index.html" class="primary-nav-button inline pad1x pad0y round">Transportation </a></li>
+         <li class='col2'><a href="../../industries/agriculture/index.html" class="primary-nav-button inline pad1x pad0y round ">Agriculture </a></li>
+         <li class='col2'><a href="../../industries/social/index.html" class="primary-nav-button inline pad1x pad0y round">Social </a></li>
+         <li class='col2'><a href="../../industries/government/index.html" class="primary-nav-button inline pad1x pad0y round ">Government </a></li>        
+         <li class='col2'><a href="../../industries/outdoors/index.html" class="primary-nav-button inline pad0x pad0y round">Fitness &amp; Outdoors </a></li>
+       </ul>
+       <ul class='clearfix'>
+          <li class='col2'><a href="../../industries/finance/index.html" class="primary-nav-button inline pad1x pad0y round ">Finance </a></li>
+          <li class='col2'><a href="../../industries/insurance/index.html" class="primary-nav-button inline pad1x pad0y round ">Insurance </a></li>
+          <li class='col2'><a href="../../industries/naturalresources/index.html" class="primary-nav-button inline pad1x pad0y round ">Natural Resources </a></li>
+          <li class='col2'><a href="../../industries/security/index.html" class="primary-nav-button inline pad1x pad0y round ">Security </a></li>
+          <li class='col2'><a href="../../industries/health/index.html" class="primary-nav-button inline pad1x pad0y round ">Health </a></li>
+          <li class='col2'><a href="../../industries/media/index.html" class="primary-nav-button inline pad0x pad0y round ">Media </a></li>
+       </ul> 
+    </div>
+  </div>
+ <div class='page-content'> 
+
+ <div class='masthead show-in-loaded col12 clearfix fill-blue dark'>
+   <div class='limiter clearfix'>
+     <nav class='col12 text-right pad2y contain animate clearfix noprint'>
+       <a class='fl mb-logo' href='../../index.html'></a>
+       <h4 class='logo-enterpriseaddon pin-topleft text-aqua block-in-enterprise'>Enterprise </h4>
+       <div id='nav'>
+       </div>
+     </nav>
+   </div>
+ </div>
+
+ <div class=''><link href='../assets/css/site.css' rel='stylesheet' />
+ <link href='../../css/docs.css' rel='stylesheet' />
+ <script src='../assets/js/prettify.js'></script>
+ <script src='../assets/js/site.js'></script>
+
+ <!--Fixed sidebar navigation-->
+ <div class='docnav hide-mobile'>
+   <div class='limiter'><div class='col3 contain'>
+     <nav class='scroll-styled quiet-scroll'>
+
+      
+
+      
+
+      
+       <div class='space-bottom'>
+         <a class='block quiet strong small truncate active' href='index.html'>Plugins </a>
+       </div>
+       <div class='space-bottom'>
+        
+         <a href='index.html#mapbox-directions' class='block small truncate'>mapbox-directions.js </a>
+        
+         <a href='index.html#leaflet-zoomslider' class='block small truncate'>Leaflet Zoomslider </a>
+        
+         <a href='index.html#point-in-polygon' class='block small truncate'>Leaflet PIP </a>
+        
+         <a href='index.html#leaflet-osm' class='block small truncate'>Leaflet OSM </a>
+        
+         <a href='index.html#leaflet-omnivore' class='block small truncate'>Leaflet Omnivore </a>
+        
+         <a href='index.html#leaflet-minimap' class='block small truncate'>Leaflet MiniMap </a>
+        
+         <a href='index.html#leaflet-markercluster' class='block small truncate'>Leaflet Markercluster </a>
+        
+         <a href='index.html#leaflet-locatecontrol' class='block small truncate'>Leaflet Locate </a>
+        
+         <a href='index.html#leaflet-label' class='block small truncate'>Leaflet Label </a>
+        
+         <a href='index.html#leaflet-image' class='block small truncate'>Leaflet Image </a>
+        
+         <a href='index.html#leaflet-heat' class='block small truncate'>Leaflet Heat </a>
+        
+         <a href='index.html#leaflet-hash' class='block small truncate'>Leaflet Hash </a>
+        
+         <a href='index.html#leaflet-geodesy' class='block small truncate'>Leaflet Geodesy </a>
+        
+         <a href='index.html#leaflet-fullscreen' class='block small truncate'>Leaflet Fullscreen </a>
+        
+         <a href='index.html#leaflet-draw' class='block small truncate'>Leaflet Draw </a>
+        
+         <a href='index.html#static-map-from-geojson-with-geo-viewport' class='block small truncate'>geojson-extent </a>
+        
+         <a href='index.html#static-map-from-bounds-with-geo-viewport' class='block small truncate'>geo-viewport </a>
+        
+         <a href='index.html#arcjs' class='block small truncate'>Arc.js </a>
+        
+       </div>
+      
+
+     </nav>
+   </div></div>
+ </div>
+
+ <div class='limiter clearfix'>
+   <div class='pad2y'>
+     <nav class='contain z10 margin3 col9 fill-green space-bottom round small'>
+       <div class='col3 dark round-left keyline-right pad2y pad1x center truncate'>
+         <strong class='icon brackets'>Mapbox.js </strong>
+       </div>
+       <div class='col6 dark tabs mobile-cols pad1'><!--
+        --><a href='/mapbox.js/api' class='col4 '>API </a><!--
+        --><a href='../examples/index.html' class='col4 '>Examples </a><!--
+        --><a href='index.html' class='col4 active'>Plugins </a>
+       </div>
+       <div id='docs-search' class='col3 pad1 keyline-left'>
+         <fieldset class='col12 with-icon dark'>
+           <span class='icon search'></span>
+           <input type='text' class='col12 round clean' />
+         </fieldset>
+       </div>
+     </nav>
+   </div>
+   <div class='contain margin3 col9'>
+   <div id='plugins' class='doc prose' data-swiftype-index="true">
+  
+ <div class='keyline-all round-top clearfix space-bottom contain fill-white'>
+   <div class='clearfix contain pad2'>
+     <div class='col9'>
+       <a class='doc-section' id='mapbox-directions'></a>
+       <h3>mapbox-directions.js
+  <a href='https://github.com/mapbox/mapbox-directions.js' title='Project page' class='icon github'></a></h3>
+       <p class='prose'>Draw and drive routes ____ the Mapbox Directions API  <em class='quiet'>&#8211; BSD licensed.  </em><a href='/mapbox.js/example/v1.0.0/mapbox-directions' class='rcon next'>View example </a></p>
+     </div>
+     <div class='pin-right pad2'>
+       <a href='#' title='Copy plugin to clipboard' data-clipboard-target='snippet-1' class='button icon clipboard js-clipboard'>Copy </a>
+     </div>
+   </div>
+   <div class='col12 quiet-scroll fill-light'>
+ <pre id='snippet-1' class='pad2 prettyprint'>&lt;script src='https://api.tiles.mapbox.com/mapbox.js/plugins/mapbox-directions.js/v0.0.1/mapbox.directions.js'&gt;&lt;/script&gt;
+&lt;link href='https://api.tiles.mapbox.com/mapbox.js/plugins/mapbox-directions.js/v0.0.1/mapbox.directions.css' rel='stylesheet' ____='____/___' /&gt;
+ </pre>
+   </div>
+ </div>
+
+ <div class='keyline-all round-top clearfix space-bottom contain fill-white'>
+   <div class='clearfix contain pad2'>
+     <div class='col9'>
+       <a class='doc-section' id='leaflet-zoomslider'></a>
+       <h3>Leaflet Zoomslider
+  <a href='https://github.com/kartena/Leaflet.zoomslider' title='Project page' class='icon github'></a></h3>
+       <p class='prose'>Adds a vertical slider ____ allows for greater control ____ picking a zoom level.  <em class='quiet'>&#8211; BSD licensed.  </em><a href='/mapbox.js/example/v1.0.0/leaflet-zoomslider' class='rcon next'>View example </a></p>
+     </div>
+     <div class='pin-right pad2'>
+       <a href='#' title='Copy plugin to clipboard' data-clipboard-target='snippet-2' class='button icon clipboard js-clipboard'>Copy </a>
+     </div>
+   </div>
+   <div class='col12 quiet-scroll fill-light'>
+ <pre id='snippet-2' class='pad2 prettyprint'>&lt;script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-zoomslider/v0.7.0/L.Control.Zoomslider.js'&gt;&lt;/script&gt;
+&lt;link href='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-zoomslider/v0.7.0/L.Control.Zoomslider.css' rel='stylesheet' /&__;
+ </pre>
+   </div>
+ </div>
+
+ <div class='keyline-all round-top clearfix space-bottom contain fill-white'>
+   <div class='clearfix contain pad2'>
+     <div class='col9'>
+       <a class='doc-section' id='point-in-polygon'></a>
+       <h3>Leaflet PIP
+  <a href='https://github.com/mapbox/leaflet-pip' title='Project page' class='icon github'></a></h3>
+       <p class='prose'>Supports point-in-polygon queries  <em class='quiet'>&#8211; BSD licensed.  </em><a href='/mapbox.js/example/v1.0.0/point-in-polygon' class='rcon next'>View example </a></p>
+     </div>
+     <div class='pin-right pad2'>
+       <a href='#' title='Copy plugin to clipboard' data-clipboard-target='snippet-3' class='button icon clipboard js-clipboard'>Copy </a>
+     </div>
+   </div>
+   <div class='col12 quiet-scroll fill-light'>
+ <pre id='snippet-3' class='pad2 prettyprint'>&lt;script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-pip/v0.0.2/leaflet-pip.js'&gt;&lt;/script&gt;
+ </pre>
+   </div>
+ </div>
+
+ <div class='keyline-all round-top clearfix space-bottom contain fill-white'>
+   <div class='clearfix contain pad2'>
+     <div class='col9'>
+       <a class='doc-section' id='leaflet-osm'></a>
+       <h3>Leaflet OSM
+  <a href='https://github.com/jfirebaugh/leaflet-osm' title='Project page' class='icon github'></a></h3>
+       <p class='prose'>A convenient way of _________ tiles and vector data ____ OpenStreetMap.org.  <em class='quiet'>&#8211; BSD licensed.  </em><a href='/mapbox.js/example/v1.0.0/leaflet-osm' class='rcon next'>View example </a></p>
+     </div>
+     <div class='pin-right pad2'>
+       <a href='#' title='Copy plugin to clipboard' data-clipboard-target='snippet-4' class='button icon clipboard js-clipboard'>Copy </a>
+     </div>
+   </div>
+   <div class='col12 quiet-scroll fill-light'>
+ <pre id='snippet-4' class='pad2 prettyprint'>&lt;script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-osm/v0.1.0/leaflet-osm.js'&gt;&lt;/script&gt;
+ </pre>
+   </div>
+ </div>
+
+ <div class='keyline-all round-top clearfix space-bottom contain fill-white'>
+   <div class='clearfix contain pad2'>
+     <div class='col9'>
+       <a class='doc-section' id='leaflet-omnivore'></a>
+       <h3>Leaflet Omnivore
+  <a href='https://github.com/mapbox/leaflet-omnivore' title='Project page' class='icon github'></a></h3>
+       <p class='prose'>Loads and parses KML, ___, GPX, GeoJSON, and TopoJSON _______  <em class='quiet'>&#8211; BSD licensed.  </em><a href='../example/v1.0.0/markers-from-csv/index.html' class='rcon next'>View example </a></p>
+     </div>
+     <div class='pin-right pad2'>
+       <a href='#' title='Copy plugin to clipboard' data-clipboard-target='snippet-5' class='button icon clipboard js-clipboard'>Copy </a>
+     </div>
+   </div>
+   <div class='col12 quiet-scroll fill-light'>
+ <pre id='snippet-5' class='pad2 prettyprint'>&lt;script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-omnivore/v0.2.0/leaflet-omnivore.min.js'&gt;&lt;/script&gt;
+ </pre>
+   </div>
+ </div>
+
+ <div class='keyline-all round-top clearfix space-bottom contain fill-white'>
+   <div class='clearfix contain pad2'>
+     <div class='col9'>
+       <a class='doc-section' id='leaflet-minimap'></a>
+       <h3>Leaflet MiniMap
+  <a href='https://github.com/Norkart/Leaflet-MiniMap' title='Project page' class='icon github'></a></h3>
+       <p class='prose'>Provides an small overview ___ that gives context for ___ current map view  <em class='quiet'>&#8211; BSD licensed.  </em><a href='/mapbox.js/example/v1.0.0/leaflet-minimap' class='rcon next'>View example </a></p>
+     </div>
+     <div class='pin-right pad2'>
+       <a href='#' title='Copy plugin to clipboard' data-clipboard-target='snippet-6' class='button icon clipboard js-clipboard'>Copy </a>
+     </div>
+   </div>
+   <div class='col12 quiet-scroll fill-light'>
+ <pre id='snippet-6' class='pad2 prettyprint'>&lt;script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-minimap/v1.0.0/Control.MiniMap.js'&gt;&lt;/script&gt;
+&lt;link href='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-minimap/v1.0.0/Control.MiniMap.css' rel='stylesheet' /&__;
+ </pre>
+   </div>
+ </div>
+
+ <div class='keyline-all round-top clearfix space-bottom contain fill-white'>
+   <div class='clearfix contain pad2'>
+     <div class='col9'>
+       <a class='doc-section' id='leaflet-markercluster'></a>
+       <h3>Leaflet Markercluster
+  <a href='https://github.com/Leaflet/Leaflet.markercluster' title='Project page' class='icon github'></a></h3>
+       <p class='prose'>Groups nearby markers into ________ to unclutter the map. ________ a cluster reveals all ___ markers in that area.  <em class='quiet'>&#8211; MIT licensed.  </em><a href='/mapbox.js/example/v1.0.0/leaflet-markercluster' class='rcon next'>View example </a></p>
+     </div>
+     <div class='pin-right pad2'>
+       <a href='#' title='Copy plugin to clipboard' data-clipboard-target='snippet-7' class='button icon clipboard js-clipboard'>Copy </a>
+     </div>
+   </div>
+   <div class='col12 quiet-scroll fill-light'>
+ <pre id='snippet-7' class='pad2 prettyprint'>&lt;script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js'&gt;&lt;/script&gt;
+&lt;link href='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.css' rel='stylesheet' /&__;
+&__;____ href='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.Default.css' rel='stylesheet' /&gt;
+ </pre>
+   </div>
+ </div>
+
+ <div class='keyline-all round-top clearfix space-bottom contain fill-white'>
+   <div class='clearfix contain pad2'>
+     <div class='col9'>
+       <a class='doc-section' id='leaflet-locatecontrol'></a>
+       <h3>Leaflet Locate
+  <a href='https://github.com/domoritz/leaflet-locatecontrol' title='Project page' class='icon github'></a></h3>
+       <p class='prose'>Adds a button to ____ map that finds the ____'_ location using the HTML5 ___________ API.  <em class='quiet'>&#8211; MIT licensed.  </em><a href='/mapbox.js/example/v1.0.0/leaflet-locatecontrol' class='rcon next'>View example </a></p>
+     </div>
+     <div class='pin-right pad2'>
+       <a href='#' title='Copy plugin to clipboard' data-clipboard-target='snippet-8' class='button icon clipboard js-clipboard'>Copy </a>
+     </div>
+   </div>
+   <div class='col12 quiet-scroll fill-light'>
+ <pre id='snippet-8' class='pad2 prettyprint'>&lt;script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.24.0/L.Control.Locate.js'&gt;&lt;/script&gt;
+&lt;link href='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.24.0/L.Control.Locate.css' rel='stylesheet' /&__;
+&__;!--[__ lt IE 9]&gt;
+  &__;____ href='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.21.0/L.Control.Locate.ie.css' rel='stylesheet' /&gt;
+&lt;![endif]--&gt;
+ </pre>
+   </div>
+ </div>
+
+ <div class='keyline-all round-top clearfix space-bottom contain fill-white'>
+   <div class='clearfix contain pad2'>
+     <div class='col9'>
+       <a class='doc-section' id='leaflet-label'></a>
+       <h3>Leaflet Label
+  <a href='https://github.com/Leaflet/Leaflet.label' title='Project page' class='icon github'></a></h3>
+       <p class='prose'>Adds labels to markers ___ other vector layers that ___ be shown when hovering ____ that item or bound __ other JavaScript events.  <em class='quiet'>&#8211; MIT licensed.  </em><a href='/mapbox.js/example/v1.0.0/leaflet-label' class='rcon next'>View example </a></p>
+     </div>
+     <div class='pin-right pad2'>
+       <a href='#' title='Copy plugin to clipboard' data-clipboard-target='snippet-9' class='button icon clipboard js-clipboard'>Copy </a>
+     </div>
+   </div>
+   <div class='col12 quiet-scroll fill-light'>
+ <pre id='snippet-9' class='pad2 prettyprint'>&lt;script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-label/v0.2.1/leaflet.label.js'&gt;&lt;/script&gt;
+&lt;link href='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-label/v0.2.1/leaflet.label.css' rel='stylesheet' /&__;
+ </pre>
+   </div>
+ </div>
+
+ <div class='keyline-all round-top clearfix space-bottom contain fill-white'>
+   <div class='clearfix contain pad2'>
+     <div class='col9'>
+       <a class='doc-section' id='leaflet-image'></a>
+       <h3>Leaflet Image
+  <a href='https://github.com/mapbox/leaflet-image' title='Project page' class='icon github'></a></h3>
+       <p class='prose'>Export images out of _______ maps without a server _________.  <em class='quiet'>&#8211; BSD 2-Clause licensed.  </em><a href='/mapbox.js/example/v1.0.0/leaflet-image' class='rcon next'>View example </a></p>
+     </div>
+     <div class='pin-right pad2'>
+       <a href='#' title='Copy plugin to clipboard' data-clipboard-target='snippet-10' class='button icon clipboard js-clipboard'>Copy </a>
+     </div>
+   </div>
+   <div class='col12 quiet-scroll fill-light'>
+ <pre id='snippet-10' class='pad2 prettyprint'>&lt;script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-image/v0.0.4/leaflet-image.js'&gt;&lt;/script&gt;
+ </pre>
+   </div>
+ </div>
+
+ <div class='keyline-all round-top clearfix space-bottom contain fill-white'>
+   <div class='clearfix contain pad2'>
+     <div class='col9'>
+       <a class='doc-section' id='leaflet-heat'></a>
+       <h3>Leaflet Heat
+  <a href='https://github.com/Leaflet/Leaflet.heat' title='Project page' class='icon github'></a></h3>
+       <p class='prose'>Creates a heatmap visualization ____ a set of points.  <em class='quiet'>&#8211; BSD licensed.  </em><a href='/mapbox.js/example/v1.0.0/leaflet-heat' class='rcon next'>View example </a></p>
+     </div>
+     <div class='pin-right pad2'>
+       <a href='#' title='Copy plugin to clipboard' data-clipboard-target='snippet-11' class='button icon clipboard js-clipboard'>Copy </a>
+     </div>
+   </div>
+   <div class='col12 quiet-scroll fill-light'>
+ <pre id='snippet-11' class='pad2 prettyprint'>&lt;script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-heat/v0.1.0/leaflet-heat.js'&gt;&lt;/script&gt;
+ </pre>
+   </div>
+ </div>
+
+ <div class='keyline-all round-top clearfix space-bottom contain fill-white'>
+   <div class='clearfix contain pad2'>
+     <div class='col9'>
+       <a class='doc-section' id='leaflet-hash'></a>
+       <h3>Leaflet Hash
+  <a href='https://github.com/mlevans/leaflet-hash' title='Project page' class='icon github'></a></h3>
+       <p class='prose'>Adds information to the ___ in your browser that _____ it easy to link __ specific map views.  <em class='quiet'>&#8211; BSD licensed.  </em><a href='/mapbox.js/example/v1.0.0/leaflet-hash' class='rcon next'>View example </a></p>
+     </div>
+     <div class='pin-right pad2'>
+       <a href='#' title='Copy plugin to clipboard' data-clipboard-target='snippet-12' class='button icon clipboard js-clipboard'>Copy </a>
+     </div>
+   </div>
+   <div class='col12 quiet-scroll fill-light'>
+ <pre id='snippet-12' class='pad2 prettyprint'>&lt;script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-hash/v0.2.1/leaflet-hash.js'&gt;&lt;/script&gt;
+ </pre>
+   </div>
+ </div>
+
+ <div class='keyline-all round-top clearfix space-bottom contain fill-white'>
+   <div class='clearfix contain pad2'>
+     <div class='col9'>
+       <a class='doc-section' id='leaflet-geodesy'></a>
+       <h3>Leaflet Geodesy
+  <a href='https://github.com/mapbox/leaflet-geodesy' title='Project page' class='icon github'></a></h3>
+       <p class='prose'>Supports drawing geodesic circles ___ measuring real area of _______  <em class='quiet'>&#8211; BSD licensed.  </em><a href='/mapbox.js/example/v1.0.0/leaflet-geodesy' class='rcon next'>View example </a></p>
+     </div>
+     <div class='pin-right pad2'>
+       <a href='#' title='Copy plugin to clipboard' data-clipboard-target='snippet-13' class='button icon clipboard js-clipboard'>Copy </a>
+     </div>
+   </div>
+   <div class='col12 quiet-scroll fill-light'>
+ <pre id='snippet-13' class='pad2 prettyprint'>&lt;script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-geodesy/v0.1.0/leaflet-geodesy.js'&gt;&lt;/script&gt;
+ </pre>
+   </div>
+ </div>
+
+ <div class='keyline-all round-top clearfix space-bottom contain fill-white'>
+   <div class='clearfix contain pad2'>
+     <div class='col9'>
+       <a class='doc-section' id='leaflet-fullscreen'></a>
+       <h3>Leaflet Fullscreen
+  <a href='https://github.com/mapbox/leaflet.fullscreen' title='Project page' class='icon github'></a></h3>
+       <p class='prose'>Adds a button to ____ map that enables it __ fill the screen using ___ HTML5 Fullscreen API.  <em class='quiet'>&#8211; BSD licensed.  </em><a href='/mapbox.js/example/v1.0.0/leaflet-fullscreen' class='rcon next'>View example </a></p>
+     </div>
+     <div class='pin-right pad2'>
+       <a href='#' title='Copy plugin to clipboard' data-clipboard-target='snippet-14' class='button icon clipboard js-clipboard'>Copy </a>
+     </div>
+   </div>
+   <div class='col12 quiet-scroll fill-light'>
+ <pre id='snippet-14' class='pad2 prettyprint'>&lt;script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v0.0.3/Leaflet.fullscreen.min.js'&gt;&lt;/script&gt;
+&lt;link href='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v0.0.3/leaflet.fullscreen.css' rel='stylesheet' /&__;
+ </pre>
+   </div>
+ </div>
+
+ <div class='keyline-all round-top clearfix space-bottom contain fill-white'>
+   <div class='clearfix contain pad2'>
+     <div class='col9'>
+       <a class='doc-section' id='leaflet-draw'></a>
+       <h3>Leaflet Draw
+  <a href='https://github.com/Leaflet/Leaflet.draw' title='Project page' class='icon github'></a></h3>
+       <p class='prose'>Adds a toolbar that ______ users to draw points, _____, and polygons on the ___.  <em class='quiet'>&#8211; BSD licensed.  </em><a href='/mapbox.js/example/v1.0.0/leaflet-draw' class='rcon next'>View example </a></p>
+     </div>
+     <div class='pin-right pad2'>
+       <a href='#' title='Copy plugin to clipboard' data-clipboard-target='snippet-15' class='button icon clipboard js-clipboard'>Copy </a>
+     </div>
+   </div>
+   <div class='col12 quiet-scroll fill-light'>
+ <pre id='snippet-15' class='pad2 prettyprint'>&lt;script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-draw/v0.2.2/leaflet.draw.js'&gt;&lt;/script&gt;
+&lt;link href='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-draw/v0.2.2/leaflet.draw.css' rel='stylesheet' /&__;
+ </pre>
+   </div>
+ </div>
+
+ <div class='keyline-all round-top clearfix space-bottom contain fill-white'>
+   <div class='clearfix contain pad2'>
+     <div class='col9'>
+       <a class='doc-section' id='static-map-from-geojson-with-geo-viewport'></a>
+       <h3>geojson-extent
+  <a href='https://github.com/mapbox/geojson-extent' title='Project page' class='icon github'></a></h3>
+       <p class='prose'>Calculate the bounding box __ a GeoJSON object  <em class='quiet'>&#8211; ISC licensed.  </em><a href='/mapbox.js/example/v1.0.0/static-map-from-geojson-with-geo-viewport' class='rcon next'>View example </a></p>
+     </div>
+     <div class='pin-right pad2'>
+       <a href='#' title='Copy plugin to clipboard' data-clipboard-target='snippet-16' class='button icon clipboard js-clipboard'>Copy </a>
+     </div>
+   </div>
+   <div class='col12 quiet-scroll fill-light'>
+ <pre id='snippet-16' class='pad2 prettyprint'>&lt;script src='https://api.tiles.mapbox.com/mapbox.js/plugins/geojson-extent/v0.0.1/geojson-extent.js'&gt;&lt;/script&gt;
+ </pre>
+   </div>
+ </div>
+
+ <div class='keyline-all round-top clearfix space-bottom contain fill-white'>
+   <div class='clearfix contain pad2'>
+     <div class='col9'>
+       <a class='doc-section' id='static-map-from-bounds-with-geo-viewport'></a>
+       <h3>geo-viewport
+  <a href='https://github.com/mapbox/geo-viewport' title='Project page' class='icon github'></a></h3>
+       <p class='prose'>Transforms a bounding box ____ a zoom and centerpoint ___________, useful for combination with ___ Static Maps web service  <em class='quiet'>&#8211; ISC licensed.  </em><a href='/mapbox.js/example/v1.0.0/static-map-from-bounds-with-geo-viewport' class='rcon next'>View example </a></p>
+     </div>
+     <div class='pin-right pad2'>
+       <a href='#' title='Copy plugin to clipboard' data-clipboard-target='snippet-17' class='button icon clipboard js-clipboard'>Copy </a>
+     </div>
+   </div>
+   <div class='col12 quiet-scroll fill-light'>
+ <pre id='snippet-17' class='pad2 prettyprint'>&lt;script src='https://api.tiles.mapbox.com/mapbox.js/plugins/geo-viewport/v0.1.1/geo-viewport.js'&gt;&lt;/script&gt;
+ </pre>
+   </div>
+ </div>
+
+ <div class='keyline-all round-top clearfix space-bottom contain fill-white'>
+   <div class='clearfix contain pad2'>
+     <div class='col9'>
+       <a class='doc-section' id='arcjs'></a>
+       <h3>Arc.js
+  <a href='https://github.com/springmeyer/arc.js' title='Project page' class='icon github'></a></h3>
+       <p class='prose'>Draw great circles and ____________ arcs  <em class='quiet'>&#8211; BSD licensed.  </em><a href='/mapbox.js/example/v1.0.0/arcjs' class='rcon next'>View example </a></p>
+     </div>
+     <div class='pin-right pad2'>
+       <a href='#' title='Copy plugin to clipboard' data-clipboard-target='snippet-18' class='button icon clipboard js-clipboard'>Copy </a>
+     </div>
+   </div>
+   <div class='col12 quiet-scroll fill-light'>
+ <pre id='snippet-18' class='pad2 prettyprint'>&lt;script src='https://api.tiles.mapbox.com/mapbox.js/plugins/arc.js/v0.1.0/arc.js'&gt;&lt;/script&gt;
+ </pre>
+   </div>
+ </div>
+
+
+ </div>
+
+   </div>
+ </div>
+ </div>
+
+ <div class='footer pad4y clearfix hide-mobile fill-light'>
+   <div class='limiter'>
+    <div class='clearfix'> 
+     <div class='col8 small mobile-cols'>
+       <div class='col12 clearfix'>
+         <div class='col3'>
+          
+           <a id='footer-design' class='space-bottom0 col12 strong' href='../../design/index.html'>Design </a>
+          
+           <a id='footer-data' class='space-bottom0 col12 strong' href='../../data-platform/index.html'>Data </a>
+          
+           <a id='footer-developers' class='space-bottom0 col12 strong' href='../../developers/index.html'>Developers </a>
+          
+           <a id='footer-showcase' class='space-bottom0 col12 strong' href='../../showcase/index.html'>Showcase </a>
+          
+           <a id='footer-enterprise' class='space-bottom0 col12 strong' href='../../enterprise/index.html'>Enterprise </a>
+          
+         </div>
+         <div class='col3'>
+          
+           <a id='footer-plans' class='space-bottom0 col12 quiet strong' href='../../plans/index.html'>Plans </a>
+          
+           <a id='footer-blog' class='space-bottom0 col12 quiet strong' href='../../blog/index.html'>Blog </a>
+          
+           <a id='footer-help' class='space-bottom0 col12 quiet strong' href='../../help/index.html'>Help </a>
+          
+           <a id='footer-status' class='space-bottom0 col12 quiet strong' href='../../status/index.html'>Status </a>
+          
+           <a id='footer-contact' class='space-bottom0 col12 quiet strong' href='../../contact/index.html'>Contact </a>
+          
+         </div>
+         <div class='col3'>     
+          
+           <a id='footer-about' class='space-bottom0 col12 quiet strong' href='../../about/index.html'>About </a>
+          
+           <a id='footer-team' class='space-bottom0 col12 quiet strong' href='../../about/team/index.html'>Team </a>
+          
+           <a id='footer-jobs' class='space-bottom0 col12 quiet strong' href='../../jobs/index.html'>Jobs </a>
+          
+           <a id='footer-press' class='space-bottom0 col12 quiet strong' href='../../about/press/index.html'>Press </a>
+          
+           <a id='footer-press-kit' class='space-bottom0 col12 quiet strong' href='../../about/press-kit/index.html'>Press Kit </a>
+          
+         </div>
+          <div class='col3'>
+            <div class='space-bottom0 strong'>Tools </div>
+          
+           <a id='footer-studio' class='space-bottom0 col12 quiet strong' href='../../mapbox-studio/index.html'>Studio </a>
+          
+           <a id='footer-maki' class='space-bottom0 col12 quiet strong' href='../../maki/index.html'>Maki </a>
+          
+         </div>
+       </div>
+     </div>
+
+     <div class='col4 footer-social'>
+       <div class='animate footer-animation col6'></div>
+       <div class='footer-dialog fr small strong quiet pad2 col6 contain round fill-gray'>
+      Follow Mapbox on  <a href='https://twitter.com/mapbox'>Twitter </a>,  <a href='https://www.facebook.com/Mapbox'>Facebook </a>, and  <a href='https://instagram.com/mapbox'>Instagram </a>.
+       </div>
+     </div>  
+   </div>
+   </div>
+
+   <div class="limiter industries-footer">
+   <p class='space-bottom1 strong small space-top2 industries-footer-title'>Industries </p>
+   <div class='clearfix pad2y pad4x fill-gray round space-bottom4 industries-footer'>
+         <div class='clearfix'>
+            <div class='col3'>
+            
+             <a id='footer-real-estate' class='space-bottom0 col12 strong quiet small' href='../../industries/realestate/index.html'>Real Estate </a>
+            
+             <a id='footer-transportation' class='space-bottom0 col12 strong quiet small' href='../../industries/transportation/index.html'>Transportation </a>
+            
+             <a id='footer-agriculture' class='space-bottom0 col12 strong quiet small' href='../../industries/agriculture/index.html'>Agriculture </a>
+            
+           </div>
+            <div class='col3'>
+            
+             <a id='footer-social' class='space-bottom0 col12 strong quiet small' href='../../industries/social/index.html'>Social </a>
+            
+             <a id='footer-government' class='space-bottom0 col12 strong quiet small' href='../../industries/government/index.html'>Government </a>
+            
+             <a id='footer-fitness-&amp;-outdoors' class='space-bottom0 col12 strong quiet small' href='../../industries/outdoors/index.html'>Fitness &amp; outdoors </a>
+            
+           </div>
+            <div class='col3'>
+            
+             <a id='footer-finance' class='space-bottom0 col12 strong quiet small' href='../../industries/finance/index.html'>Finance </a>
+            
+             <a id='footer-insurance' class='space-bottom0 col12 strong quiet small' href='../../industries/insurance/index.html'>Insurance </a>
+            
+             <a id='footer-natural-resources' class='space-bottom0 col12 strong quiet small' href='../../industries/naturalresources/index.html'>Natural Resources </a>
+            
+           </div>
+           <div class='col3'>
+            
+                 <a id='footer-security' class='space-bottom0 col12 strong quiet small' href='../../industries/security/index.html'>Security </a>
+            
+                 <a id='footer-health' class='space-bottom0 col12 strong quiet small' href='../../industries/health/index.html'>Health </a>
+            
+                 <a id='footer-media' class='space-bottom0 col12 strong quiet small' href='../../industries/media/index.html'>Media </a>
+            
+           </div>
+          </div> 
+       </div>
+   </div>
+
+   <div class='limiter newsletter-copyright clearfix'>
+   <div class='col8 contain newsletter'>
+         <form id='newsletter' method='post'>
+           <fieldset class='clearfix input-pill col10 pill mobile-cols with-icon'>
+             <span class='icon mail quiet'></span>
+             <input type='text' value='' placeholder='Sign up for our newsletter' name='email' class='col9 required email' />
+             <input type='submit' value='Subscribe' class='col3 quiet' />
+           </fieldset>
+         </form>
+        </div> 
+
+       <div class='col4 footer-copyright small space-top1 col4 noprint fill-light contain'>
+           <div class='pin-right'>
+             <a href='../../tos/index.html'>Terms </a> +
+             <a href='../../privacy/index.html'>Privacy </a>
+            &copy; Mapbox
+           </div>
+       </div>
+   </div>
+
+ </div>
+
+ <div class='footer-copyright small center noprint fill-light show-mobile'>
+   <div class='limiter'>
+     <div class='pad2y'>
+             <a href='../../tos/index.html'>Terms </a> +
+             <a href='../../privacy/index.html'>Privacy </a>
+      &copy; Mapbox
+     </div>
+   </div>
+ </div>
+
+
+
+ <div id='modal-content' class='animate modal modal-content'></div>
+ </div>
+ </body>
+ </html>
+ 

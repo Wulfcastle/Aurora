@@ -1,0 +1,117 @@
+
+.keyline-dashed {
+  border-style: dashed;
+}
+
+h4.fancy {
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family:'Brandon', sans-serif;
+}
+
+.plan-list {
+  top: -40px;
+  border-radius: 6px;
+  box-shadow: 0 0 0 4px rgba(0,0,0,.2);
+  min-height: 640px;
+}
+
+.plan.col2 { width: 20%;}
+
+.plan-heading { height: 180px;}
+
+.plan-row { height: 60px;}
+
+#plan-intro { min-height: 250px;}
+
+.plan-descriptions { margin-top: 180px;}
+.plan > a { color: rgba(0, 0, 0, 0.75); }
+.plan:hover { background: #fbfbfb; }
+
+.toggle-container {
+  top: 10px;
+  left: 10px;
+}
+
+/* Tooltips
+------------------------------------------------------- */
+.plan-feature:hover {
+  cursor: pointer;
+  background: #fbfbfb;
+}
+
+.plan-feature:hover:after {
+  padding: 20px;
+  font-size: 12px;
+  height: 60px;
+  content: attr(tooltip);
+  display: block;
+  left: 16.6666%;
+  width: 83.3333%;
+  margin: auto;
+  height: auto;
+  white-space: normal;
+  position: absolute;
+  background: #3887be;
+  margin-left: 1px;
+  color: white;
+  -webkit-transform:translateY(-52px);
+     -moz-transform:translateY(-52px);
+      -ms-transform:translateY(-52px);
+          transform:translateY(-52px);
+}
+
+/* Illustrations
+------------------------------------------------------- */
+
+.graphic-splash {
+  background: url(plans-splash-graphic.png) 0 100% no-repeat;
+  background-size: 100% auto;
+  height: 350px;
+  bottom: 0px;
+}
+
+@media only screen and (max-width: 900px) {
+  .graphic-splash { right: 20px;}
+}
+
+.needmore {
+  padding-left: 40px;
+  padding-right: 20px;
+}
+
+.fill-gradient {
+  background : -moz-linear-gradient(0% 50% 0deg,rgba(39, 53, 79, 1) 0%,rgba(49, 72, 92, 1) 100%);
+  background : -webkit-linear-gradient(0deg, rgba(39, 53, 79, 1) 0%, rgba(49, 72, 92, 1) 100%);
+  background : -webkit-gradient(linear,0% 50% ,100% 50% ,color-stop(0,rgba(39, 53, 79, 1) ),color-stop(1,rgba(49, 72, 92, 1) ));
+  background : -o-linear-gradient(0deg, rgba(39, 53, 79, 1) 0%, rgba(49, 72, 92, 1) 100%);
+  background : -ms-linear-gradient(0deg, rgba(39, 53, 79, 1) 0%, rgba(49, 72, 92, 1) 100%);
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#27354F', endColorstr='#31485C' ,GradientType=0)";
+  background : linear-gradient(90deg, rgba(39, 53, 79, 1) 0%, rgba(49, 72, 92, 1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#27354F',endColorstr='#31485C' , GradientType=1);
+}
+.enterprise-ad {
+  background: url(enterprise.png) right bottom no-repeat;
+  background-size: 581px 280px;
+}
+
+/* Illustrations
+------------------------------------------------------- */
+@media only screen and (max-width: 640px) {
+  .plan.col2 { width: 100%;}
+  .show-mobile { display: auto; }
+  .keyline-left, .keyline-right { border: none; }
+  .plan-row { height: auto;}
+  .plan-action { text-align: left;}
+  .plan-heading {
+    background: #fbfbfb;
+    height: auto;
+    padding-top: 20px;
+    border-top: 4px solid rgba(0,0,0,.2);
+  }
+  li:first-child .plan-heading { border-top-width: 0; margin-top: 0;}
+  .plan-type, .plan-row * { display: inline-block !important;}
+  .enterprise-ad { background: none;}
+}
+

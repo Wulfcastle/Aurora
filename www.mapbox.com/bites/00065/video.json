@@ -1,0 +1,229 @@
+{
+  "version": 6,
+  "constants": {},
+  "sources": {
+    "streets": {
+      "type": "vector",
+      "url": "mapbox://mapbox.mapbox-streets-v6-dev"
+    },
+    "sat": {
+      "type": "raster",
+      "url": "mapbox://mapbox.satellite",
+      "tileSize":512
+    },
+    "vid": {
+      "type": "video",
+      "url": ["https://www.mapbox.com/blog/assets/baltimore-smoke.mp4", "https://www.mapbox.com/blog/assets/baltimore-smoke.webm"],
+      "coordinates": [[39.18579907229748, -76.54335737228394], [39.1838364847587, -76.52803659439087], [39.17683392507606, -76.5295386314392], [39.17876344106642, -76.54520273208618]]
+    }
+  },
+  "glyphs": "mapbox://fontstack/{fontstack}/{range}.pbf",
+  "layers": [
+
+  {
+    "id": "satellite",
+    "source": "sat",
+    "source-layer": "mapbox_satellite_full",
+    "type":"raster",
+    "paint": {
+      "raster-saturation": -1,
+      "raster-contrast": 0.2
+    }
+  },
+  {
+    "id": "video",
+    "type": "raster",
+    "source": "vid"
+  },
+
+  {
+      "id": "barrier_line",
+      "source": "streets",
+      "source-layer": "barrier_line",
+      "type": "line",
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round"
+      },
+      "paint": {
+        "line-color": "#59BBFF",
+        "line-width": {
+        "stops": [[14, 0], [16, 6]]
+      }
+      }
+  }, 
+  {
+    "id": "road_not_main",
+      "source": "streets",
+      "source-layer": "road",
+      "filter": ["!in", "class", "main", "motorway", "motorway_link"],
+      "type": "line",
+      "layout": {
+        "line-cap": "round",
+        "line-join": "bevel"
+      },
+      "paint": {
+        "line-color": "white",
+        "line-width": {
+        "stops": [[14, 0], [16, 6]]
+      },
+        "line-opacity":0.5
+      }
+  }, 
+  {
+      "id": "road_main",
+      "source": "streets",
+      "source-layer": "road",
+      "filter": ["in", "class", "main", "motorway", "motorway_link"],
+      "type": "line",
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round"
+      },
+      "paint": {
+        "line-color": "#EBE5D0",
+        "line-width": {
+        "stops": [[14, 0], [16, 10]]
+      }
+      }
+    }, 
+
+  {
+    "id": "plant_wagner_line",
+    "type": "line",
+    "source": "geojson",
+    "filter": ["all", ["==", "plant_wagner", true], ["==", "$type", "Polygon"]],
+    "layout": {
+      "line-cap": "round",
+      "line-join": "round"
+    },
+    "paint": {
+      "line-color": "#ADADFF",
+      "line-width": {
+        "stops": [[14, 0], [16, 6]]
+      }
+    }
+  }, {
+    "id": "plant_shores_line",
+    "type": "line",
+    "source": "geojson",
+    "filter": ["all", ["==", "plant_shores", true], ["==", "$type", "Polygon"]],
+    "layout": {
+      "line-cap": "round",
+      "line-join": "round"
+    },
+    "paint": {
+      "line-color": "#59BBFF",
+      "line-width": {
+        "stops": [[14, 0], [16, 6]]
+      }
+    }
+  }, {
+    "id": "flume_dot",
+    "type": "symbol",
+    "source": "geojson",
+    "filter": ["==", "flume", true],
+    "paint": {
+      "icon-opacity": {
+        "stops": [[13, 0.4], [16, 0.3], [21, 0.001]]
+      }
+    }
+  }, 
+  {
+    "id": "road_label",
+    "type": "symbol",
+    "source": "streets",
+    "source-layer": "road_label",
+    "filter": ["==", "$type", "LineString"],
+    "layout": {
+      "text-field": "{name}",
+      "text-max-size": 14,
+      "text-font": "Open Sans Regular, Arial Unicode MS Regular",
+      "symbol-placement": "line"
+    },
+    "paint": {
+      "text-color": "white",
+      "text-halo-color": "rgba(0,0,0,0.5)",
+      "text-halo-width":2
+    }
+  }, 
+  {
+    "id": "place_label",
+    "type": "symbol",
+    "source": "streets",
+    "source-layer": "place_label",
+    "filter": ["==", "$type", "Point"],
+    "layout": {
+      "text-field": "{name}",
+      "text-max-size": 16,
+      "text-max-width": 7,
+      "text-font": "Open Sans Italic, Arial Unicode MS Regular"
+    },
+    "paint": {
+      "text-color": "#59BBFF",
+      "text-halo-color": "rgba(0,0,0,0.35)",
+      "text-halo-width":2
+    }
+  }, 
+  {
+    "id": "plant_wagner_label",
+    "type": "symbol",
+    "source": "geojson",
+    "filter": ["all", ["==", "plant_wagner_label", true], ["==", "$type", "Point"]],
+    "layout": {
+      "text-field": "{name}",
+      "text-max-width": 9,
+      "text-max-size": 22,
+      "text-font": "Open Sans Semibold, Arial Unicode MS Bold",
+      "text-padding": 0
+    },
+    "paint": {
+      "text-color": "#ADADFF",
+      "text-halo-color": "rgba(0,0,0,0.6)",
+      "text-halo-width": {
+        "stops": [[13, 0.93], [17, 2.1], [20, 2.57]]
+      },
+      "text-size": {
+        "stops": [[13, 8], [17, 18], [20, 22]]
+      }
+    }
+  }, {
+    "id": "plant_shores_label",
+    "type": "symbol",
+    "source": "geojson",
+    "filter": ["all", ["==", "plant_shores_label", true], ["==", "$type", "Point"]],
+    "layout": {
+      "text-field": "{name}",
+      "text-max-width": 9,
+      "text-max-size": 22,
+      "text-font": "Open Sans Semibold, Arial Unicode MS Bold",
+      "text-padding": 0
+    },
+    "paint": {
+      "text-color": "#59BBFF",
+      "text-halo-color": "rgba(0,0,0,0.6)",
+      "text-halo-width": 2,
+      "text-size": {
+        "stops": [[13, 8], [17, 18], [20, 22]]
+      }
+    }
+  }, {
+      "id": "wind_label",
+      "source": "geojson",
+      "filter": ["all", ["==", "plant", true], ["==", "$type", "Point"]],
+      "type": "symbol",
+      "layout": {
+        "text-field": "WIND: {{wind_direction}} ~{{wind_speed}} mph",
+        "text-max-size": 16,
+        "text-font": "Open Sans Semibold, Arial Unicode MS Bold",
+        "text-anchor": "left"
+      },
+      "paint": {
+        "text-color": "black",
+        "text-size": {
+          "stops": [[13, 10], [21, 16]]
+        }
+      }
+    }
+    ]
+}

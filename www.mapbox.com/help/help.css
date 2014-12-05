@@ -1,0 +1,94 @@
+
+.help-link { clear:left; }
+
+.help-item.prose p > img,
+.help-item.prose li > img {
+  margin: 20px 0;
+}
+
+.illustration.no-results {
+  background-image: url(../img/no-results.png);
+  background-size: 120px 120px;
+  }
+
+#search-results .swiftype {
+  padding:0 20px 20px 20px;
+}
+
+@media
+  (-webkit-min-device-pixel-ratio:2),
+  (min-resolution:192dpi) {
+  .illustration.no-results { background-image: url(../img/no-results@2x.png); }
+  }
+
+@media only screen and (max-width:640px) {
+  .help-cat,
+  .help-item {
+    border-left:0px;
+    border-bottom:1px solid rgba(0,0,0,0.1);
+  }
+}
+
+/* Swifttype overrides
+-------------------------------------------------- */
+.st-result-listing h3 { padding: 10px 0 5px;}
+.st-result-listing h3 a { font-size: 20px; }
+.st-result-listing .st-result .st-snippet { font-size: 14px; }
+
+.swiftype-widget .autocomplete {
+  font-family: 'Open Sans', sans-serif !important;
+  box-shadow: none !important;
+  border-left: 1px solid rgba(0,0,0,0.1);
+  border-right: 1px solid rgba(0,0,0,0.1);
+  border-radius: 0 !important;
+}
+.swiftype-widget .autocomplete ul {
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  max-height: 400px;
+  overflow: auto;
+  border-radius: 0 !important;
+  font-family: 'Open Sans', sans-serif !important;
+}
+.swiftype-widget .autocomplete ul li {
+  padding-left: 20px !important;
+  border-top: none;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+.swiftype-widget .autocomplete ul li:first-child { border-top: none !important; }
+.swiftype-widget .autocomplete ul li:last-child {
+  border-radius: 0;
+  border-bottom-width: 0;
+  box-shadow: none;
+}
+.swiftype-widget .autocomplete ul li.active {
+  background: none;
+  background-color: #fff;
+  border-top: none;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  -webkit-box-shadow: none;
+}
+.swiftype-widget .autocomplete ul li p.title {
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: normal;
+  color: #1c6cb5;
+}
+.swiftype-widget .autocomplete li .sections {
+  margin-top: 5px;
+}
+
+.swiftype-widget .autocomplete ul li em {
+  color: inherit !important;
+  text-decoration: none;
+  font-weight: normal !important;
+  font-family: 'Open Sans Bold', sans-serif;
+}
+.swiftype-widget .autocomplete ul li.active { background: rgba(0,0,0,0.05); }
+.swiftype-widget .autocomplete ul li.active p.title {
+  text-shadow: none;
+  color: #1c6cb5;
+}
+.swiftype-widget .autocomplete ul li.active .sections {
+  text-shadow: none;
+  color: inherit;
+}

@@ -1,0 +1,217 @@
+/* ### Frontpage ### */
+.tilemill-screenshot {
+  background:url(img/hero-tilemill.png) no-repeat left top;
+  background-size:900px 360px;
+  -webkit-animation:fadeIn 500ms ease 1500ms both;
+     -moz-animation:fadeIn 500ms ease 1500ms both;
+          animation:fadeIn 500ms ease 1500ms both;
+  }
+.download-button {
+  margin: 20px 0;
+  border-radius: 4px;
+  display: none;
+  }
+  .download.windows .download-button.windows,
+  .download.linux .download-button.linux,
+  .download.mac .download-button.mac { display: block; }
+  .download-button small, .download-button h3 {
+    color:#fff;
+            animation: fadeIn 500ms ease 250ms both;
+       -moz-animation: fadeIn 500ms ease 250ms both;
+    -webkit-animation: fadeIn 500ms ease 250ms both;
+    }
+  .download-button h3 {
+    margin-bottom: 0;
+    }
+  .download-button .details {
+    border: 1px solid #3887be;
+    border-right: none;
+    border-radius: 0 4px 4px 0;
+    background-color:#3887BE;
+    white-space: nowrap;
+    }
+      .download-button:hover .details {
+      background: #3bb2d0;
+      border-color: #3bb2d0;
+      }
+  .download-button .label {
+    position: relative;
+    border: 1px solid #3175a5;
+    border-right: none;
+    border-radius: 4px 0 0 4px;
+    }
+  .download-button:hover .label { border-color: #3bb2d0; }
+.download-button .instructions {
+  display: none;
+  position: absolute;
+  right: -140px;
+  width: 160px;
+  top: 70px;
+  }
+  .download-button:hover .instructions {
+    display: block;
+    }
+  .download-button .instructions small {
+  color: #3C4E5A;
+  background: white;
+  opacity: 0;
+  padding: 20px;
+  display: block;
+  border-radius: 4px;
+  transition: opacity 500ms;
+  -moz-transition: opacity 500ms;
+  -webkit-transition: opacity 500ms;
+  -o-transition: opacity 500ms;
+  }
+  .download-button:hover .instructions small { opacity: 1;}
+  .download-button .instructions .arrow {
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-right:10px solid white;
+    position: absolute;
+    left: -10px;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    }
+
+/* ### MailChimp ### */
+.download .mailchimp-subscribe,
+.download .mailchimp-subscribe .help {
+  opacity:0;
+  display:none;
+  }
+.download.mac .mailchimp-subscribe .mac,
+.download.windows .mailchimp-subscribe .windows,
+.download.linux .mailchimp-subscribe .linux {
+  opacity:1;
+  display:block;
+  }
+
+.download.subscribe .mailchimp-subscribe {
+  opacity:1;
+  display: block;
+  height: auto;
+  margin-bottom: 20px;
+  animation: fadeIn 500ms ease 500ms both;
+  -moz-animation: fadeIn 500ms ease 500ms both;
+  -webkit-animation: fadeIn 500ms ease 500ms both;
+  }
+
+#hero .download.subscribe .download-button,
+#hero .download.subscribe nav,
+.footer-actions .download.subscribe .download-button,
+.footer-actions .subscribe nav { display: none;}
+
+.illustration {
+  background:url(img/landing-sprite.png) 0 0 no-repeat;
+  background-size:510px 1100px;
+  height:60px;
+  width:60px;
+  }
+  .illustration.interaction { background-position:0 -175px;}
+  .illustration.embed       { background-position:-65px -175px;}
+  .illustration.browse      { background-position:-130px -175px;}
+  .illustration.raster      { background-position:-195px -175px;}
+  .illustration.textures    { background-position:-260px -175px; }
+  .illustration.svg         { background-position:-325px -175px;}
+  .illustration.sources {
+    background-position:0 0;
+    width:330px;
+    height:160px;
+    }
+  .illustration.carto,
+  .illustration.rendering {
+    background-position:0 -470px;
+    width:440px;
+    height:300px;
+    }
+  .illustration.carto { background-position:0 -680px; }
+  .illustration.github {
+    background-position:0 -775px;
+    width:440px;
+    height:300px;
+    }
+
+/* ### Docs Landing Page ### */
+.mac #mac,
+.windows #windows,
+.linux #linux {
+  background-color:rgba(0,0,0,0.1);
+}
+
+/* ### Frontpage: Gallery ### */
+.icon.reverse.play {
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-left: 6px solid white;
+  height: 0;
+  width: 0;
+  margin-top: 3px;
+  margin-left: 7px;
+  margin-right: 7px;
+  }
+  #map img {
+    animation: fadeIn 150ms ease both;
+    -moz-animation: fadeIn 150ms ease both;
+    -webkit-animation: fadeIn 150ms ease both;
+    }
+
+-webkit-keyframes fadeInDown {
+  0%    { opacity: 0; -webkit-transform: translateY(-300px); }
+  100%  { opacity:1; -webkit-transform:translateY(0); }
+  }
+@-moz-keyframes fadeInDown {
+  0%    { opacity:0; -moz-transform:translateY(-300px); }
+  100%  { opacity:1; -moz-transform:translateY(0); }
+  }
+@-o-keyframes fadeInDown {
+  0%    { opacity:0; -o-transform:translateY(-300px); }
+  100%  { opacity:1; -o-transform:translateY(0); }
+  }
+@keyframes fadeInDown {
+  0%    { opacity:0; transform:translateY(-300px); }
+  100%  { opacity:1; transform:translateY(0); }
+  }
+
+  .desc-box {
+    padding: 20px;
+    width: 100%;
+    float: left;
+    }
+    .desc-box.main-desc { position: relative; z-index: 2;}
+    .desc-box.cap {
+    position: relative;
+    -webkit-animation: fadeInDown 500ms ease 500ms both;
+       -moz-animation: fadeInDown 500ms ease 500ms both;
+            animation: fadeInDown 500ms ease 500ms both;
+    z-index: 1;
+    }
+
+@-webkit-keyframes fadeInDown {
+  0%  { opacity:0; -webkit-transform:translateY(-100px); }
+  100%  { opacity:1; -webkit-transform:translateY(0); }
+  }
+@-moz-keyframes fadeInDown {
+  0%  { opacity:0; -moz-transform:translateY(-100px); }
+  100%  { opacity:1; -moz-transform:translateY(0); }
+  }
+@-o-keyframes fadeInDown {
+  0%  { opacity:0; -o-transform:translateY(-100px); }
+  100%  { opacity:1; -o-transform:translateY(0); }
+  }
+@keyframes fadeInDown {
+  0%  { opacity:0; transform:translateY(-100px); }
+  100%  { opacity:1; transform:translateY(0); }
+  }
+
+@media
+  (-webkit-min-device-pixel-ratio:2),
+  (min-resolution:192dpi),
+  (min-resolution:2dppx) {
+    .tilemill-screenshot  { background-image:url(img/hero-tilemill@2x.png); }
+    .illustration         { background-image:url(img/landing-sprite@2x.png); }
+}
+

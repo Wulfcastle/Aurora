@@ -1,0 +1,1544 @@
+<!DOCTYPE html >
+ <html>
+ <head>
+<!-- Original URL: https://www.mapbox.com/developers/vector-tiles/mapbox-streets/
+Date Downloaded: 2014-12-05 09:26:44 PM !-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  
+   <meta charset='UTF-8' />
+   <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+   <meta name='robots' content='index' />
+   <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  
+   <title>Mapbox Streets | Mapbox </title>
+
+   <meta name='st:title' content='Mapbox Streets' />
+   <meta name='st:type' content='developers' />
+   <meta name='st:info' content='site' />
+
+  
+
+   <link href='../../../base/latest/base_8f8b1251.css' rel='stylesheet' />
+   <link href='../../../css/site.css' rel='stylesheet' />
+   <!--[if IE 9]><link href='../../../css/site-ie9.css' rel='stylesheet' /><![endif]-->
+   <link rel='shortcut icon' href='../../../img/favicon.ico' type='image/x-icon' />
+   <link rel='alternate' type='application/rss+xml' title='RSS' href='../../../blog/blog.rss' />
+   <link href='../../../../api.tiles.mapbox.com/mapbox.js/v2.1.2/mapbox.css' rel='stylesheet' />
+
+   <!--[if lt IE 9 ]><script src='../../../js/redirect-ie.js'></script><![endif]-->
+   <script src='../../../../js.stripe.com/v2/index.html.js'></script>
+   <script>
+  var KM_COOKIE_DOMAIN = 'www.mapbox.com';
+  var analytics=analytics||[];(function(){var e=['identify','track','trackLink','trackForm','trackClick','trackSubmit','page','pageview','ab','alias','ready','group'],t=function(e){return function(){analytics.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var n=0;n<e.length;n++)analytics[e[n]]=t(e[n])})(),analytics.load=function(e){var t=document.createElement('script');t.type='text/javascript',t.async=!0,t.src=('https:'===document.location.protocol?'https://':"http://")+'d2dq2ahtl5zl1z.cloudfront.net/analytics.js/v1/'+e+'/analytics.min.js';var n=document.getElementsByTagName('script')[0];n.parentNode.insertBefore(t,n)};
+  analytics.load(window.location.hostname.indexOf('mapbox.com') !== -1 ? 'fl0c8p240n' : '0biiejpgfj');
+
+  Stripe.setPublishableKey(window.location.hostname.indexOf('mapbox.com') !== -1 ?
+    'pk_live_hI6mmOTIg7KkywK6vo3vJvpk' : 'pk_test_gmIyREg3sKzAiyMkAEeCsxUG');
+  </script>
+   <script src='../../../../api.tiles.mapbox.com/mapbox.js/v2.1.2/mapbox.js'></script>
+
+   <script>
+  window.mapbox_api = '/core';
+  window.mapbox_tileApi = '../../../../api.tiles.mapbox.com/index.html';
+  window.mapbox_accessToken = 'pk.eyJ1IjoibWFwYm94IiwiYSI6IlhHVkZmaW8ifQ.hAMX5hSW-QnTeRCMAy9A8Q' || 'pk.eyJ1IjoibWFwYm94IiwiYSI6IlhHVkZmaW8ifQ.hAMX5hSW-QnTeRCMAy9A8Q'
+  if (L.mapbox.VERSION[0] === '2') {
+      L.mapbox.accessToken = window.mapbox_accessToken;
+      L.mapbox.config.FORCE_HTTPS = true;
+      L.mapbox.config.HTTPS_URL = window.mapbox_tileApi + '/v4';
+  }
+  </script>
+   <script src='../../../base.js/dist/base.js'></script>
+  
+   <style>
+  .geomtype {
+    display: inline-block;
+    margin-left: 5px;
+  }
+  .geomtype .icon {
+    vertical-align: 3px;
+  }
+  table.small th:first-child { width: 15em; }
+</style>
+
+ </head>
+ <body class='fill-light full'><div style="z-index: 9999; position: fixed; width: 100%; border: 0px; padding: 5px; margin: 0px; background-color: transparent;  font-size: 12pt; font-family: sans-serif;" id="web2disk_nag" onclick="javascript: document.getElementById('web2disk_nag').style.display = 'none';">
+		<div style="color: #000000; background-color:#F1F1F1; margin-left: auto; margin-right: auto; border-width: 2px; border-style: solid; width: 550px; ">
+			<div style="width: 100%; text-align: center; font-weight: bold; border: 0px; margin: 0px; padding: 0px">Hey, where did my words go? (Click to hide)</div>
+			<p>In the trial version of Web2Disk every fifth word is blanked out. 
+			To copy this site with all the words, please upgrade to the full version and copy this website again.</p>
+			<div style="width: 100%; text-align: center; font-weight: bold; border: 0px; margin: 0px; padding: 0px">
+				<a href="http://www.inspyder.com/products/Web2Disk/">Inspyder Web2Disk: The Website Downloader</a>
+			</div>
+		</div>
+	</div>
+  <div class='fill-midnight offcanvas-top row3 industries-subnav animate dark pin-top hide-mobile' id='industries'>
+    <div class='limiter pad2y space-top1 small strong contain'>
+       <ul class='space-bottom0 clearfix'>
+         <li class='col2'><a href="../../../industries/realestate/index.html" class="primary-nav-button inline pad1x pad0y round">Real Estate </a></li>
+         <li class='col2'><a href="../../../industries/transportation/index.html" class="primary-nav-button inline pad1x pad0y round">Transportation </a></li>
+         <li class='col2'><a href="../../../industries/agriculture/index.html" class="primary-nav-button inline pad1x pad0y round ">Agriculture </a></li>
+         <li class='col2'><a href="../../../industries/social/index.html" class="primary-nav-button inline pad1x pad0y round">Social </a></li>
+         <li class='col2'><a href="../../../industries/government/index.html" class="primary-nav-button inline pad1x pad0y round ">Government </a></li>        
+         <li class='col2'><a href="../../../industries/outdoors/index.html" class="primary-nav-button inline pad0x pad0y round">Fitness &amp; Outdoors </a></li>
+       </ul>
+       <ul class='clearfix'>
+          <li class='col2'><a href="../../../industries/finance/index.html" class="primary-nav-button inline pad1x pad0y round ">Finance </a></li>
+          <li class='col2'><a href="../../../industries/insurance/index.html" class="primary-nav-button inline pad1x pad0y round ">Insurance </a></li>
+          <li class='col2'><a href="../../../industries/naturalresources/index.html" class="primary-nav-button inline pad1x pad0y round ">Natural Resources </a></li>
+          <li class='col2'><a href="../../../industries/security/index.html" class="primary-nav-button inline pad1x pad0y round ">Security </a></li>
+          <li class='col2'><a href="../../../industries/health/index.html" class="primary-nav-button inline pad1x pad0y round ">Health </a></li>
+          <li class='col2'><a href="../../../industries/media/index.html" class="primary-nav-button inline pad0x pad0y round ">Media </a></li>
+       </ul> 
+    </div>
+  </div>
+ <div class='page-content'> 
+
+ <div class='masthead show-in-loaded col12 clearfix fill-blue dark'>
+   <div class='limiter clearfix'>
+     <nav class='col12 text-right pad2y contain animate clearfix noprint'>
+       <a class='fl mb-logo' href='../../../index.html'></a>
+       <h4 class='logo-enterpriseaddon pin-topleft text-aqua block-in-enterprise'>Enterprise </h4>
+       <div id='nav'>
+       </div>
+     </nav>
+   </div>
+ </div>
+
+ <div class=''><link href='../../../css/docs.css' rel='stylesheet' />
+
+ <!--Fixed sidebar navigation-->
+ <div class='docnav hide-mobile'>
+   <div class='limiter'><div class='col3 contain'>
+     <nav class='scroll-styled quiet-scroll small'>
+
+      
+      
+      
+       <div class='space-bottom1'>
+         <a class='block truncat strong quiet ' href='../index.html'>Vector Tiles Overview </a>
+        
+       </div>
+      
+      
+      
+      
+      
+       <div class='space-bottom1'>
+         <a class='block truncat strong quiet  active' href='index.html'>Mapbox Streets </a>
+        
+         <a class='block truncate' href='index.html#Overview'>Overview </a>
+        
+         <a class='block truncate' href='index.html#Changelog'>Changelog </a>
+        
+         <a class='block truncate' href='index.html#landuse'>#landuse </a>
+        
+         <a class='block truncate' href='index.html#waterway'>#waterway </a>
+        
+         <a class='block truncate' href='index.html#water'>#water </a>
+        
+         <a class='block truncate' href='index.html#landuse_overlay'>#landuse_overlay </a>
+        
+         <a class='block truncate' href='index.html#aeroway'>#aeroway </a>
+        
+         <a class='block truncate' href='index.html#barrier_line'>#barrier_line </a>
+        
+         <a class='block truncate' href='index.html#building'>#building </a>
+        
+         <a class='block truncate' href='index.html#tunnel-road-bridge'>#tunnel, #road, & #bridge </a>
+        
+         <a class='block truncate' href='index.html#admin'>#admin </a>
+        
+         <a class='block truncate' href='index.html#country_label_line'>#country_label_line </a>
+        
+         <a class='block truncate' href='index.html#country_label'>#country_label </a>
+        
+         <a class='block truncate' href='index.html#marine_label'>#marine_label </a>
+        
+         <a class='block truncate' href='index.html#state_label'>#state_label </a>
+        
+         <a class='block truncate' href='index.html#place_label'>#place_label </a>
+        
+         <a class='block truncate' href='index.html#water_label'>#water_label </a>
+        
+         <a class='block truncate' href='index.html#poi_label'>#poi_label </a>
+        
+         <a class='block truncate' href='index.html#road_label'>#road_label </a>
+        
+         <a class='block truncate' href='index.html#waterway_label'>#waterway_label </a>
+        
+         <a class='block truncate' href='index.html#housenum_label'>#housenum_label </a>
+        
+       </div>
+      
+      
+      
+      
+      
+       <div class='space-bottom1'>
+         <a class='block truncat strong quiet ' href='../mapbox-terrain/index.html'>Mapbox Terrain </a>
+        
+         <a class='block truncate' href='../mapbox-terrain/index.html#Overview'>Overview </a>
+        
+         <a class='block truncate' href='../mapbox-terrain/index.html#landcover'>#landcover </a>
+        
+         <a class='block truncate' href='../mapbox-terrain/index.html#hillshade'>#hillshade </a>
+        
+         <a class='block truncate' href='../mapbox-terrain/index.html#contour'>#contour </a>
+        
+       </div>
+      
+      
+      
+     </nav>
+   </div></div>
+ </div>
+
+ <div class='limiter clearfix pad2y'>
+   <nav class='contain z10 margin3 col9 fill-blue space-bottom round small'>
+     <div class='col3 dark round-left keyline-right pad2y pad1x center truncate'>
+       <strong class='icon point-line'>Web services </strong>
+     </div>
+     <div class='col6 dark tabs mobile-cols pad1'><!--
+      --><a href='../../api/index.html' class='col6 '>API </a><!--
+      --><a href='../index.html' class='col6  active'>Vector Tiles </a>
+     </div>
+     <div class='col3 pad1 keyline-left hide-mobile' style='height:61px;'></div>
+   </nav>
+
+   <div class='contain margin3 col9'>
+    
+     <div class='pad2 round doc prose fill-white keyline-all'>
+       <h1>Mapbox Streets </h1>
+       <!-- STYLE GUIDELINES
+
+References to layer names should include the hash and link to that layer's
+section, eg:
+
+    The [#water](#water) layer...
+
+References to field names in body text should be in code tags and bolded.
+References to field values should be in code tags, and if the value is a string
+is should be in single quotes as if you are using it in CartoCSS, eg:
+
+    The __`maritime`__ field value is either `1` or `0`.
+    The `'street_limited'` value refers to...
+
+-->
+
+
+
+
+ <pre class='fill-darken3 dark round'>
+ <span class='quiet'>Source ID: </span>
+ <strong>mapbox.mapbox-streets-v5 </strong>
+ </pre>
+
+
+ <p>This is an in-depth _____ the data inside the ______ Streets vector tile source __ help with styling. For _ complete and documented example __ using Mapbox Streets vector _____ to style a Mapbox ______ project, check out the  <a href="https://github.com/mapbox/osm-bright.tm2">OSM Bright project for ______ Studio </a>. </p>
+
+ <a name="Overview"></a>
+ <h2>Overview </h2>
+
+ <h3>OpenStreetMap </h3>
+
+
+ <p>Mapbox Streets vector tiles ___ largely based on data ____  <a href="http://openstreetmap.org">OpenStreetMap </a>, a free &amp; ______ source of geographic data _____ by volunteers. An understanding __ the OSM data structure ___ tagging system is not __________ to make use of ______ Streets vector tiles, though __&_____;_ helpful to understand some __ the details. </p>
+
+ <p>When you publicly use ______ or software that uses ______ Streets vector tiles you ____  <a href="../../../help/attribution/index.html">display proper attribution </a>. </p>
+
+ <h3>Name fields </h3>
+
+
+ <p>There are 5 different ____ fields for each of ___ label layers: </p>
+
+ <table class='small'>
+ <tr><th>Field </th><th>Description </th></tr>
+ <tr><td><code><strong>name </strong></code></td><td>The name (or names) ____ locally for the place. </td></tr>
+ <tr><td><code><strong>name_en </strong></code></td><td>English (if available) </td></tr>
+ <tr><td><code><strong>name_es </strong></code></td><td>Spanish (if available) </td></tr>
+ <tr><td><code><strong>name_fr </strong></code></td><td>French (if available) </td></tr>
+ <tr><td><code><strong>name_de </strong></code></td><td>German (if available) </td></tr>
+ </table>
+
+
+ <p>For the Spanish, French, ___ German labels there are __________ fallback conditions. Where the _____ name is in a ___-_____ writing system and no _______/______/______ translation is available, these ______ will show an English __ international version of the ____ if possible, otherwise they ____ show the local name. </p>
+
+ <h3>OSM IDs </h3>
+
+
+ <p>Every layer in the ______ Streets vector tile source ___ an  <strong><code>osm_id </code></strong> field. The values ___ this field are integers _____ on the IDs assigned __ objects in the main  <a href="http://openstreetmap.org">OpenStreetMap </a> database. </p>
+
+ <p>With raw OSM IDs __&_____;_ possible for two different _______ of different types to _____ the same ID, but ___ Mapbox  <strong><code>osm_id </code></strong> is modified such ____ a layer containing a ___ of object types will ___ contain any duplicate IDs. ___ following modification rules are __ place, providing non-overlapping IDs __ work with while keeping ___ original IDs simple to ______ at a glance. </p>
+
+ <table class='small'>
+ <tr><th>Original OSM object </th><th>Vector tile geometry </th><th>ID transform </th><th>Example </th></tr>
+ <tr><td>node </td><td>point </td><td>original + 10 <sup>15 </sup></td><td>123 → 1000000000000123 </td>
+ </tr><tr><td>way </td><td>line </td><td>none </td><td>123 → 123 </td>
+ </tr><tr><td>way </td><td>polygon, point </td><td>original + 10 <sup>12 </sup></td><td>123 → 1000000000123 </td>
+ </tr><tr><td>relation </td><td>line </td><td>original + 2×10 <sup>12 </sup></td><td>123 → 2000000000123 </td>
+ </tr><tr><td>relation </td><td>polygon, point </td><td>original + 3×10 <sup>12 </sup></td><td>123 → 3000000000123 </td>
+ </tr></table>
+
+
+ <p>Some objects in the ______ tiles are the result __ merging multple OSM objects. __ these cases, the  <strong><code>osm_id </code></strong> will be based __ just one of the ________ IDs (and there is __ guarantee about which one). ____ objects are not from ___ at all, or processed __ such a way that ___ original OSM IDs are _______ (eg. ocean polygons). In _____ cases, the  <strong><code>osm_id </code></strong> will be  <code>0 </code>. </p>
+
+ <h3>Boolean fields </h3>
+
+
+ <p>Some fields represent a _______ condition; the value may __ either true or false. __ keep the vector tiles _______ these fields are stored __ integers, where  <code>0 </code> = false and  <code>1 </code> = true. </p>
+
+ <pre>
+ <span class='quiet'>CartoCSS Examples: </span>
+#admin[dispute=1] {  <em>/* boundaries that are ________ */ </em> }
+#road[oneway=0] {  <em>/* roads that are ___ one-way */ </em> }
+ </pre>
+
+
+
+
+ <h3>Multiple geometry types </h3>
+
+
+ <p>Mapnik vector tiles support ________ geometry types in the ____ layer. The Mapbox Streets ______ takes advantage of this ___ some layers. </p>
+
+ <p>A geometry in the ______ tile can be one __ 3 types: </p>
+
+ <ol>
+ <li><span class='fill-purple small inline round dark icon marker'></span> Point </li>
+ <li><span class='fill-blue small inline round dark icon polyline'></span> Linestring / multilinestring </li>
+ <li><span class='fill-green small inline round dark icon polygon'></span> Polygon / multipolygon </li>
+ </ol>
+
+
+ <p>In CartoCSS you can ______ just one or two __ the 3 types by _________ on the special  <code>'mapnik::geometry_type' </code> property. </p>
+
+ <pre>
+ <span class='quiet'>CartoCSS Examples: </span>
+#layer['mapnik::geometry_type'=1] {  <em>/* point styles */ </em> }
+#layer['mapnik::geometry_type'=2] {  <em>/* line styles */ </em> }
+#layer['mapnik::geometry_type'=3] {  <em>/* polygon styles */ </em> }
+ </pre>
+
+
+
+
+ <h3>Data updates </h3>
+
+
+ <p>The current supported version __ the Mapbox Streets vector _____ receives regular data updates __ new information becomes available ___ existing information is improved. </p>
+
+ <table class='small'>
+ <tr><th>Layer </th><th>Source </th><th>Update frequency </th></tr>
+ <tr><td>most layers </td><td>OpenStreetMap replication feed </td><td>every 6 minutes </td></tr>
+ <tr><td><a href='#admin'>#admin </a></td><td>custom OpenStreetMap processing </td><td>every few months </td></tr>
+ <tr><td><a href='#water'>#water </a> (ocean parts) </td><td><a href='http://openstreetmapdata.com'>OpenStreetMap Data </a></td><td>every few months </td></tr>
+ <tr><td><a href='#marine_label'>#marine_label </a>,  <a href='#country_label'>#country_label </a>,  <a href='#country_label_line'>#country_label_line </a>,  <a href='#state_label'>#state_label </a></td><td>custom data </td><td>rarely </td></tr>
+ </table>
+
+
+ <a name="Changelog"></a>
+ <h2>Changelog </h2>
+
+ <p>A summary of the _______ from v4: </p>
+
+ <ul>
+ <li>New  <strong><code>class </code></strong> field added in ___  <a href="#waterway">#waterway </a> layer. You can ______ ignore this change when _________ styles from v4 </li>
+ <li>New  <strong><code>maki </code></strong> values in the  <a href="#poi_label">#poi_label </a> layer:  <code>'bakery' </code>,  <code>'camera' </code>,  <code>'car' </code>,  <code>'clothing-store' </code>,  <code>'dog-park' </code>,  <code>'entrance' </code>,  <code>'laundry' </code>,  <code>'rail-light' </code>,  <code>'rail-metro' </code>,  <code>'suitcase' </code>. If upgrading a _4 style that uses  <code>[maki] </code> in a URL __________ (eg for  <code>marker-file </code>), you will need __ make sure to add _____ to match the new ______. </li>
+ <li>New  <strong><code>network </code></strong> values in the  <a href="#poi_label">#poi_label </a> layer:  <code>'wiener-linien' </code>,  <code>'metro' </code>,  <code>'rer' </code>,  <code>'metro.rer' </code>,  <code>'transilien' </code>,  <code>'rer.transilien' </code>,  <code>'moscow-metro' </code>,  <code>'s-bahn' </code>,  <code>'u-bahn' </code>,  <code>'sbahn.u-bahn' </code>. If upgrading a _4 style that uses  <code>[network] </code> in a URL __________ (eg for  <code>marker-file </code>), you will need __ make sure to add _____ to match the new ______. </li>
+ <li>New  <a href="#housenum_label">#housenum_label </a> layer for labeling _____ and building numbers. You ___ safely ignore this change ____ upgrading styles from v4 </li>
+ <li>New  <strong><code>localrank </code></strong> field in the  <a href="#place_label">#place_label </a> layer. When upgrading ______ from v4 it is ___________ to remove any  <code>text-min-distance </code> styles from you _____ labels and use  <strong><code>localrank </code></strong> to control label _______. </li>
+ <li>New  <strong><code>class </code></strong> values in the  <a href="#landuse">#landuse </a> layer:  <code>'agriculture' </code>,  <code>'glacier' </code>,  <code>'grass' </code>,  <code>'piste' </code>,  <code>'rock' </code>,  <code>'scrub' </code>. When upgrading styles ____ v4, look for catch-all ______ that may have unexpected _______ for unhandled values (eg ____ grey polygon fills, black ________). </li>
+ <li>In the  <a href="#road_label">#road_label </a> layer, the  <strong><code>ref </code></strong> field is now _________ for all road types. __________ only it was available ___ motorways. For most style ________ from it should be ____ to ignore this change, ______ there may be edge _____ where action is needed. </li>
+ <li>The  <a href="#marine_label">#marine_label </a> layer now contains ______ point geometries so you ___ use  <code>['mapnik::geometry_type'=1] </code> instead of  <code>[placement='point'] </code>. The  <strong><code>placement </code></strong> field has been ____ for backwards-compatibility, however, so __ action is necessary for ____ change when upgrading styles ____ v4. </li>
+ <li>New  <strong><code>capital </code></strong> field added in ___  <a href="#place_label">#place_label </a> layer to identify ______ that are the capitals __ countries, regions, or states/provinces. ___ can safely ignore this ______ when upgrading styles from _4. </li>
+ </ul>
+
+
+ <!-- LANDUSE -->
+
+
+ <p><a class='doc-section' id='landuse'></a></p>
+
+ <h2> #landuse
+ <div class='geomtype' title='polygons'>
+     <span class='fill-gray inline round dark small icon marker'></span>
+     <span class='fill-gray inline round dark small icon polyline'></span>
+     <span class='fill-green inline round dark small icon polygon'></span></div>
+ </h2>
+
+
+ <p>This layer includes polygons ____________ both land-use and land-cover. </p>
+
+ <p>It&rsquo;s common for many _________ types of landuse/landcover to __ overlapping, so the polygons __ this layer are ordered __ the area of their __________ to ensure smaller objects ____ not be obscured by ______ ones. Pay attention to ___ of transparency when styling - the overlapping shapes can _____ muddied or unexpected colors. </p>
+
+ <h3>Classes </h3>
+
+
+ <p>The main field used ___ styling the landuse layer __  <strong><code>class </code></strong>. </p>
+
+ <table class='small'>
+ <tr><th>Value </th><th>Description </th></tr>
+ <tr><td><code>'agriculture' </code></td><td>Various types of crop ___ farmland </td></tr>
+ <tr><td><code>'cemetery' </code></td><td>Cemeteries and graveyards </td></tr>
+ <tr><td><code>'glacier' </code></td><td>Glaciers or permanent ice/snow </td></tr>
+ <tr><td><code>'grass' </code></td><td>Grasslands, meadows, fields, lawns, ___ </td></tr>
+ <tr><td><code>'hospital' </code></td><td>Hospital grounds </td></tr>
+ <tr><td><code>'industrial' </code></td><td>Currently only includes airport _____ </td></tr>
+ <tr><td><code>'park' </code></td><td>City parks, village greens, ___________, national parks, nature reserves, ___ </td></tr>
+ <tr><td><code>'pitch' </code></td><td>Sports fields & courts __ all types </td></tr>
+ <tr><td><code>'rock' </code></td><td>Bare rock, scree, quarries </td></tr>
+ <tr><td><code>'sand' </code></td><td>Sand, beaches, dunes </td></tr>
+ <tr><td><code>'school' </code></td><td>Primary, secondary, post-secondary school _______ </td></tr>
+ <tr><td><code>'scrub' </code></td><td>Bushes, scrub, heaths </td></tr>
+ <tr><td><code>'wood' </code></td><td>Woods and forestry areas </td></tr>
+ </table>
+
+
+
+
+ <!-- WATERWAY -->
+
+
+ <p><a class='doc-section' id='waterway'></a></p>
+
+ <h2>#waterway
+ <div class='geomtype' title='lines'>
+     <span class='fill-gray inline round dark small icon marker'></span>
+     <span class='fill-blue inline round dark small icon polyline'></span>
+     <span class='fill-gray inline round dark small icon polygon'></span></div>
+ </h2>
+
+
+ <p>The waterway layer contains ______, streams, canals, etc represented __ lines. </p>
+
+ <p>Wateray classes can represent _ wide variety of possible ______. It&rsquo;s best to have ____ line stying biased toward ___ smaller end of the ______ since larger rivers and ______ are usually also represented __ polygons in the  <a href="#water">#water </a> layer. </p>
+
+ <h3>Classes and types </h3>
+
+
+ <p>The waterway layer has ___ fields for styling -  <strong><code>class </code></strong> and  <strong><code>type </code></strong> - each with _______ values. </p>
+
+ <table class='small'>
+ <tr><th>Value </th><th>Description </th></tr>
+ <tr><td><code>'river' </code></td><td>Everything from the Amazon ____ to small creeks a ______ meters wide </td></tr>
+ <tr><td><code>'canal' </code></td><td>Medium to large artificial ________ </td></tr>
+ <tr><td><code>'stream' </code></td><td>Very small waterway, usually __ wider than a meter __ two </td></tr>
+ <tr><td><code>'stream_intermittent' </code></td><td><strong>Class only </strong>. A stream that ____ not always have water _______ through it. </td></tr>
+ <tr><td><code>'drain' </code></td><td>Medium to small artificial _______ for rainwater drainage, often ________ lined. </td></tr>
+ <tr><td><code>'ditch' </code></td><td>Small artificial channel dug __ the ground for rainwater ________. </td></tr>
+ </table>
+
+
+
+
+ <pre>
+ <span class='quiet'>CartoCSS Example: </span>
+#waterway {
+  [class='stream'], [_____='___________________'] {
+    ____-_____: #ace;
+    ____-_____: 2;
+  }
+  [_____='___________________'] { line-dasharray, 4, 2; }
+}
+ </pre>
+
+
+
+
+ <!-- WATER -->
+
+
+ <p><a class='doc-section' id='water'></a></p>
+
+ <h2>#water
+ <div class='geomtype' title='polygons'>
+     <span class='fill-gray inline round dark small icon marker'></span>
+     <span class='fill-gray inline round dark small icon polyline'></span>
+     <span class='fill-green inline round dark small icon polygon'></span></div>
+ </h2>
+
+
+ <p>This is a simple _______ layer with no differentiating _____ or classes. Water bodies ___ filtered and simplified according __ scale - only oceans ___ very large lakes are _____ at the lowest zoom ______, while smaller and smaller _____ and ponds appear as ___ zoom in. </p>
+
+ <p>Water polygons sometimes have ___________ pieces with each other, __ avoiding CartoCSS styles such __  <code>polygon-opacity </code> and most  <code>polygon-comp-op </code> values is recommended. _______, use the style-level properties  <code>opacity </code> and  <code>comp-op </code>. </p>
+
+ <p>Drawing outlines on water ___ be tricky. Since rivers ___ lakes are often broken ____ multiple pieces you can ___ up with seams in ___ middle of water bodies. _ common CartoCSS pattern to _____ this is this blur ______ to create an inner-glow ______: </p>
+
+ <pre>
+#water {
+  ::shadow { polygon-fill: #07f; }
+  ::____ {
+     <em>// a white fill ___ overlay comp-op lighten the _______-____ from ::shadow. </em>
+    _______-____: #fff;
+    ____-__: soft-light;
+     <em>// blurring reveals the _______ fill from ::shadow around ___ edges of the water </em>
+    _____-_______: agg-stack-blur(2,2);
+  }
+}
+ </pre>
+
+
+
+
+ <!-- AEROWAY -->
+
+
+ <p><a class='doc-section' id='aeroway'></a></p>
+
+ <h2>#aeroway
+ <div class='geomtype' title='lines & polygons'>
+     <span class='fill-gray inline round dark small icon marker'></span>
+     <span class='fill-blue inline round dark small icon polyline'></span>
+     <span class='fill-green inline round dark small icon polygon'></span></div>
+ </h2>
+
+
+ <p>The aeroway layer includes ____ lines and polygons representing _______, helipads, etc. </p>
+
+ <h3>Types </h3>
+
+
+ <p>The  <strong><code>type </code></strong> field separates different _____ of aeroways for styling. </p>
+
+ <table class='small'>
+ <tr><th>Value </th><th>Description </th></tr>
+ <tr><td><code>'runway' </code></td><td>Where planes take off & land </td></tr>
+ <tr><td><code>'taxiway' </code></td><td>Where planes move between _______, gates, and hangars </td></tr>
+ <tr><td><code>'apron' </code></td><td>Where planes park, refuel, ____ </td></tr>
+ <tr><td><code>'helipad' </code></td><td>Where helicopters take off & land </td></tr>
+ </table>
+
+
+
+
+ <pre>
+ <span class='quiet'>CartoCSS Example: </span>
+#aeroway {
+  ['mapnik::geometry_type'=2] {
+    line-color: #888;
+    [type='runway'] { line-width: 3; }
+  }
+  ['mapnik::geometry_type'=3] { polygon-fill: #888; }
+}
+ </pre>
+
+
+
+
+ <!-- BARRIER_LINE -->
+
+
+ <p><a class='doc-section' id='barrier_line'></a></p>
+
+ <h2>#barrier_line
+ <div class='geomtype' title='lines & polygons'>
+     <span class='fill-gray inline round dark small icon marker'></span>
+     <span class='fill-blue inline round dark small icon polyline'></span>
+     <span class='fill-green inline round dark small icon polygon'></span></div>
+ </h2>
+
+
+ <p>This layer includes lines ___ polygons for barriers - ______ such as walls and ______. </p>
+
+ <h3>Classes </h3>
+
+
+
+
+ <table class='small'>
+ <tr><th>Value </th><th>Description </th></tr>
+ <tr><td><code>'cliff' </code></td><td>The precipice of a ________ or very steep drop </td></tr>
+ <tr><td><code>'fence' </code></td><td>Include various types of _____ and wall barriers </td></tr>
+ <tr><td><code>'gate' </code></td><td>Only gates that are _____ or areas are included </td></tr>
+ <tr><td><code>'hedge' </code></td><td></td></tr>
+ <tr><td><code>'land' </code></td><td>Includes breakwaters and piers </td></tr>
+ </table>
+
+
+ <p>Cliff data from OSM __ designed such that the ____-____ side of the line __ the top of the _____, and the right-hand side __ the bottom. See the  <a href="../../../tilemill/docs/guides/styling-lines/index.html#line_patterns_with_images">Line patterns with images </a> section of the ________ Styling Lines guide for ___ to design an appropriate _____ pattern for cliffs. </p>
+
+ <pre>
+ <span class='quiet'>CartoCSS Example: </span>
+#barrier_line[class='fence'] { line-color: #864; }
+#____________[_____='_____'] { line-color: #aec; }
+ </pre>
+
+
+
+
+ <!-- BUILDING -->
+
+
+ <p><a class='doc-section' id='building'></a></p>
+
+ <h2>#building
+ <div class='geomtype' title='polygons'>
+     <span class='fill-gray inline round dark small icon marker'></span>
+     <span class='fill-gray inline round dark small icon polyline'></span>
+     <span class='fill-green inline round dark small icon polygon'></span></div>
+ </h2>
+
+
+ <p>This is a simple _______ layer with no differentiating _____ or classes. Large buildings ______ at zoom level 13, ___ all buildings are included __ zoom level 14 and __. </p>
+
+ <pre>
+ <span class='quiet'>CartoCSS Example: </span>
+#building {
+  polygon-fill: #___;
+  line-color: #864;
+}
+ </pre>
+
+
+
+
+ <!-- LANDUSE_OVERLAY -->
+
+
+ <p><a class='doc-section' id='landuse_overlay'></a></p>
+
+ <h2>#landuse_overlay
+ <div class='geomtype' title='polygons'>
+     <span class='fill-gray inline round dark small icon marker'></span>
+     <span class='fill-gray inline round dark small icon polyline'></span>
+     <span class='fill-green inline round dark small icon polygon'></span></div>
+ </h2>
+
+
+ <p>This layer is for _______ / landcover polygons that ______ be drawn above the  <a href="#water">#water </a> layer. </p>
+
+ <h3>Classes </h3>
+
+
+ <p>The main field used ___ styling the landuse_overlay layer __  <strong><code>class </code></strong>. </p>
+
+ <table class='small'>
+ <tr><th>Value </th><th>Description </th></tr>
+ <tr><td><code>'wetland' </code></td><td>Wetlands that may include __________ (marsh, swamp, bog) </td></tr>
+ <tr><td><code>'wetland_noveg' </code></td><td>Wetlands that probably don't _______ vegetation (mud, tidal flat) </td></tr>
+ </table>
+
+
+
+
+ <pre>
+ <span class='quiet'>CartoCSS Example: </span>
+#landuse_overlay[class='wetland'] {
+  polygon-pattern-file: ___("./_____/_______.___");
+}
+ </pre>
+
+
+
+
+ <!-- TUNNEL, ROAD, & BRIDGE -->
+
+
+ <p><a class='doc-section' id='tunnel-road-bridge'></a></p>
+
+ <h2>#tunnel, #road, &amp; #bridge
+ <div class='geomtype' title='points, lines, & polygons'>
+     <span class='fill-purple inline round dark small icon marker'></span>
+     <span class='fill-blue inline round dark small icon polyline'></span>
+     <span class='fill-green inline round dark small icon polygon'></span></div>
+ </h2>
+
+
+ <p>The roads layers are ____ of the most complex ____ in Mapbox Streets. Starting __ zoom level 12, tunnels ___ bridges are broken out __ the  <code>#road </code> layer into either  <code>#tunnel </code> or  <code>#bridge </code>. </p>
+
+ <h3>Classes </h3>
+
+
+ <p>The main field used ___ styling the tunnel, road, ___ bridge layers is  <strong><code>class </code></strong>. </p>
+
+ <table class='small'>
+ <tr><th>Value </th><th>Description </th></tr>
+ <tr><td><code>'motorway' </code></td><td>High-speed, grade-separated highways </td></tr>
+ <tr><td><code>'motorway_link' </code></td><td>Interchanges / on & ___ ramps </td></tr>
+ <tr><td><code>'main' </code></td><td>Trunk, primary, secondary, and ________ roads & links lumped ________ for simpler styling. </td></tr>
+ <tr><td><code>'street' </code></td><td>Standard unclassified or residential _______ </td></tr>
+ <tr><td><code>'street_limited' </code></td><td>Streets that may have _______ or no access for _____ vehicles. Pedestrian streets, roads _____ construction, private roads, etc. </td></tr>
+ <tr><td><code>'service' </code></td><td>Access roads, alleys, agricultural ______, and other services roads. </td></tr>
+ <tr><td><code>'driveway' </code></td><td>For very local access. ________ parking lot aisles, public & private driveways </td></tr>
+ <tr><td><code>'path' </code></td><td>Foot paths, cycle paths, ___ trails. </td></tr>
+ <tr><td><code>'major_rail' </code></td><td>Railways, including mainline, commuter ____, and rapid transit. </td></tr>
+ <tr><td><code>'minor_rail' </code></td><td>Yard and service railways. </td></tr>
+ <tr><td><code>'aerialway' </code></td><td>Ski lifts, gondolas, and _____ types of aerialway. </td></tr>
+ <tr><td><code>'golf' </code></td><td>The approximate centerline of _ golf course hole </td></tr>
+ </table>
+
+
+
+
+ <h3>One-way roads </h3>
+
+
+ <p>A  <strong><code>oneway </code></strong> field indicates whether ___ motor traffic on the ____ is one-way or not. __ the road is one-way, _______ travels in the same _________ as the linestring. </p>
+
+ <pre>
+ <span class='quiet'>CartoCSS Example: </span>
+#road[oneway=1] {
+  marker-file: ___(_____://_____);
+  marker-fill: red;
+}
+ </pre>
+
+
+
+
+ <h3>Types </h3>
+
+
+ <p>The  <strong><code>type </code></strong> field is the _____ of the road&rsquo;s &ldquo;primary&rdquo; _____________ tag. For most roads ____ is the  <code>highway </code> tag, but for __________ it will be the  <code>aerialway </code> tag, and for ____ holes it will be ___  <code>golf </code> tag. See  <a href='http://taginfo.openstreetmap.org/keys/highway#values'>Taginfo </a> for a list __ used tag values. </p>
+
+ <h3>Layers </h3>
+
+
+ <p>The  <strong><code>layer </code></strong> field is used __ determine drawing order of ___________ road segments in the ______ and bridge layers. 95% __ values are -1, 1, __ 0, and 99.9999% of ______ are between -5 and 5. </p>
+
+ <p>If you want to ______ proper ordering of overlapping _______ when dealing with styles ____ involve road casing, you&rsquo;ll ____ to  <a href="https://hey.mapbox.com/tm2-carto-patterns/roads-with-casing/">manually add some extra ____ </a> to your project.yml. ___  <code>layer </code> field is intended __ be used by this _______, not in your CartoCSS ______ directly. </p>
+
+ <pre>
+ <span class='quiet'>project.yml: </span>
+_properties:
+  bridge:
+    "group-by": layer
+ <em># ... </em>
+ </pre>
+
+
+
+
+ <!-- ADMIN -->
+
+
+ <p><a class='doc-section' id='admin'></a></p>
+
+ <h2>#admin
+ <div class='geomtype' title='lines'>
+     <span class='fill-gray inline round dark small icon marker'></span>
+     <span class='fill-blue inline round dark small icon polyline'></span>
+     <span class='fill-gray inline round dark small icon polygon'></span></div>
+ </h2>
+
+
+ <p>Administrative boundary lines. These ___ constructed from the OSM ____ in such a way ____ there are no overlapping _____ where multiple boundary areas ____. </p>
+
+ <h3>Administrative level </h3>
+
+
+ <p>The  <strong><code>admin_level </code></strong> field separates different ______ of boundaries, using the ____ numbering scheme as OpenStreetMap. ___  <a href="http://wiki.openstreetmap.org/wiki/Admin_level">the admin_level wiki page </a> for details about ____ the different values translate __ in different countries. </p>
+
+ <table class='small'>
+ <tr><th>Value </th><th>Description </th></tr>
+ <tr><td><code>2 </code></td><td>countries </td></tr>
+ <tr><td><code>3 </code></td><td>regions (not commonly used) </td></tr>
+ <tr><td><code>4 </code></td><td>states, provinces, etc. </td></tr>
+ </table>
+
+
+
+
+ <h3>Disputes </h3>
+
+
+ <p>The  <strong><code>disputed </code></strong> field should be ____ to apply a dashed __ otherwise distinct style to ________ boundaries. No single map __ the world will ever ____ everybody happy, but acknowledging ________ where they exist is __ important aspect of good ___________. </p>
+
+ <pre>
+ <span class='quiet'>CartoCSS Example: </span>
+#admin[admin_level=2] {
+  line-width: 2;
+  [dispute=1] { line-dasharray: 4, 4; }
+}
+ </pre>
+
+
+
+
+ <h3>Maritime boundaries </h3>
+
+
+ <p>The  <strong><code>maritime </code></strong> field can be ____ as a filter to ________ or hide maritime boundaries, _____ are often not shown __ maps. Note that the ________ of tagging maritime boundaries __ not entirely consitent or ________ within OSM, so some __________ may not have this _____ set correctly (this mostly _______ admin levels 3 &amp; 4). </p>
+
+ <pre>
+ <span class='quiet'>CartoCSS Example: </span>
+#admin {
+  [maritime=0] { line-color: black; }
+  [________=1] { line-color: blue; }
+}
+ </pre>
+
+
+
+
+ <!-- COUNTRY_LABEL_LINE -->
+
+
+ <p><a class='doc-section' id='country_label_line'></a></p>
+
+ <h2>#country_label_line
+ <div class='geomtype' title='lines'>
+     <span class='fill-gray inline round dark small icon marker'></span>
+     <span class='fill-blue inline round dark small icon polyline'></span>
+     <span class='fill-gray inline round dark small icon polygon'></span></div>
+ </h2>
+
+
+ <p>This layer contains lines ____ as label leader lines ___ some country labels at ___ zoom levels. There are __ data fields for this _____ - just a single, ______ line style is needed. </p>
+
+ <pre>
+ <span class='quiet'>CartoCSS Example: </span>
+#country_label_line { line-color: #333; }
+ </pre>
+
+
+
+
+ <!-- COUNTRY_LABEL -->
+
+
+ <p><a class='doc-section' id='country_label'></a></p>
+
+ <h2>#country_label
+ <div class='geomtype' title='points'>
+     <span class='fill-purple inline round dark small icon marker'></span>
+     <span class='fill-gray inline round dark small icon polyline'></span>
+     <span class='fill-gray inline round dark small icon polygon'></span></div>
+ </h2>
+
+
+ <p>This layer contains points ____ for labeling countries. The ______ are placed for minimal _______ with small to medium-sized ____. </p>
+
+ <h3>Names </h3>
+
+
+ <p>See  <em>Name fields </em> in the  <a href="#Overview">overview </a> for information about _____ and translations. </p>
+
+ <h3>Scalerank </h3>
+
+
+ <p>The  <strong><code>scalerank </code></strong> field is intended __ help assign different label ______ based on the size ___ available room to label _________ countries. </p>
+
+ <pre>
+ <span class='quiet'>CartoCSS Example: </span>
+#country_label {
+  text-name: [_______];
+  text-face-name: 'Open Sans ________';
+  text-size: 10;
+  [_________=0] { text-size: 14; }
+  [scalerank=1] { text-size: 13; }
+  [scalerank=2] { text-size: 12; }
+  [scalerank=3] { ____-____: 11; }
+}
+ </pre>
+
+
+
+
+ <!-- MARINE_LABEL -->
+
+
+ <p><a class='doc-section' id='marine_label'></a></p>
+
+ <h2>#marine_label
+ <div class='geomtype' title='lines'>
+     <span class='fill-gray inline round dark small icon marker'></span>
+     <span class='fill-blue inline round dark small icon polyline'></span>
+     <span class='fill-gray inline round dark small icon polygon'></span></div>
+ </h2>
+
+
+ <p>Points and lines for ________ major marine features such __ oceans, seas, large lakes &amp; bays. </p>
+
+ <h3>Names </h3>
+
+
+ <p>See  <em>Name fields </em> in the  <a href="#Overview">overview </a> for information about _____ and translations. </p>
+
+ <h3>Labelrank & placement </h3>
+
+
+ <p>The  <strong><code>labelrank </code></strong> field is intended __ help assign different label ______ based on the size ___ available room to label _________ water bodies. The possible ______ are whole numbers 1 _______ 6. </p>
+
+ <p>The value of the  <strong><code>placement </code></strong> field will be ______  <code>point </code> or  <code>line </code> depending on the ________ type of the object. </p>
+
+ <pre>
+ <span class='quiet'>CartoCSS Example: </span>
+#marine_label {
+  text-name: [_______];
+  text-face-name: 'Merriweather Italic';
+  placement: point;
+  [placement='line'] { placement: line; }
+  ____-____: 12;
+  [labelrank=0] { ____-____: 20; }
+  [labelrank=1] { text-size: 18; }
+  [_________=2] { text-size: 16; }
+  [labelrank=3] { text-size: 15; }
+  [labelrank=4] { text-size: 14; }
+  [labelrank=5] { ____-____: 13; }
+}
+ </pre>
+
+
+
+
+ <!-- STATE_LABEL -->
+
+
+ <p><a class='doc-section' id='state_label'></a></p>
+
+ <h2>#state_label
+ <div class='geomtype' title='points'>
+     <span class='fill-purple inline round dark small icon marker'></span>
+     <span class='fill-gray inline round dark small icon polyline'></span>
+     <span class='fill-gray inline round dark small icon polygon'></span></div>
+ </h2>
+
+
+ <p>Points for labeling states ___ provinces. Currently only a _____ number of countries are ________. </p>
+
+ <h3>Names </h3>
+
+
+ <p>See  <em>Name fields </em> in the  <a href="#Overview">overview </a> for information about _____ and translations. </p>
+
+ <h3>Area </h3>
+
+
+ <p>The  <strong><code>area </code></strong> field is the ________ area of the entity __ square kilometers. Use it __ help filter and size ____ state labels at different ____ levels. </p>
+
+ <pre>
+ <span class='quiet'>CartoCSS Example: </span>
+#state_label {
+  text-name: [____];
+  text-face-name: 'Open Sans _______';
+  text-size: 12;
+  [____>=10000] { text-size: 14; }
+  [area>=500000] { text-size: 16; }
+  [area>=1000000] { text-size: 18; }
+ </pre>
+
+
+
+
+ <!-- PLACE_LABEL -->
+
+
+ <p><a class='doc-section' id='place_label'></a></p>
+
+ <h2>#place_label
+ <div class='geomtype' title='points'>
+     <span class='fill-purple inline round dark small icon marker'></span>
+     <span class='fill-gray inline round dark small icon polyline'></span>
+     <span class='fill-gray inline round dark small icon polygon'></span></div>
+ </h2>
+
+
+ <p>This layer contains points ___ labeling human settlements. </p>
+
+ <h3>Names </h3>
+
+
+ <p>See  <em>Name fields </em> in the  <a href="#Overview">overview </a> for information about _____ and translations. </p>
+
+ <h3>Types </h3>
+
+
+ <p>The main field for _______ labels for different kinds __ places is  <strong><code>type </code></strong>. </p>
+
+ <table class='small'>
+ <tr><th>Value </th><th>Description </th></tr>
+ <tr><td><code>'city' </code></td><td>Settlement of about 100,000 __ more people. </td></tr>
+ <tr><td><code>'town' </code></td><td>Urban or rural settlement __ about 10,000-100,000 people </td></tr>
+ <tr><td><code>'village' </code></td><td>Usually rural settlement of ____ than about 10,000 </td></tr>
+ <tr><td><code>'hamlet' </code></td><td>Rural settlement with a __________ of about 200 or _____ </td></tr>
+ <tr><td><code>'suburb' </code></td><td>A distinct section of __ urban settlement such as __ annexed town, historical district, __ large & important neighborhood. </td></tr>
+ <tr><td><code>'neighbourhood' </code></td><td>A named part of _ larger settlement </td></tr>
+ </table>
+
+
+
+
+ <h3>Capitals </h3>
+
+
+ <p>The  <strong><code>capital </code></strong> field allows distinct _______ of labels or icons ___ the capitals of countries, _______, or states &amp; provinces. </p>
+
+ <table class='small'>
+ <tr><th>capital </th><th><em>limited integer </em></th></tr>
+ <tr><td><code>2 </code></td><td>National capital </td></tr>
+ <tr><td><code>3 </code></td><td>Regional capital (uncommon) </td></tr>
+ <tr><td><code>4 </code></td><td>State / provincial capital </td></tr>
+ </table>
+
+
+
+
+ <pre>
+ <span class='quiet'>CartoCSS Example: </span>
+#place_label {
+  [capital=2] { marker-file: url("./icons/star-national.svg"); }
+  [_______=3] { marker-file: url("./icons/star-region.svg"); }
+  [capital=4] { marker-file: url("./icons/star-state.svg"); }
+}
+ </pre>
+
+
+
+
+ <h3>Scalerank </h3>
+
+
+ <p>The  <strong><code>scalerank </code></strong> field can be ____ to adjust the prominence __ label styles for larger ___ more prominent cities. The _____ number from 0 through 9, where 0 is the _____ end of the scale (__ New York City). All ______ other than large cities ____ have a scalerank of  <code>null </code>. </p>
+
+ <pre>
+ <span class='quiet'>CartoCSS Example: </span>
+#place_label[type='city] {
+  text-name: [____];
+  text-face-name: 'Open Sans _______';
+  text-size: 12;
+  [_________>=0][_________ <=2] {="" text-size:="" 18;="" }="" [scalerank="">=3][scalerank <=4] {="" text-size:="" 16;="" }="" [scalerank="">=5][scalerank <=6] {="" text-size:="" 14;="" }="" [scalerank="">=7][scalerank <=8] {="" text-size:="" 13;="" }="" }=""></=8]></=6]></=4]></=2]></pre>
+
+
+
+
+ <h3>Localrank </h3>
+
+
+ <p>The  <strong><code>localrank </code></strong> field can be ____ to adjust the label _______ by showing fewer labels. ____ method is preferred to ________&_____;_  <strong><code>text-min-distance </code></strong> because it leads __ far fewer labels clipped ______ tile boundaries. It is _ whole number greater than 0 calculated by grouping places ____ a 128 pixel grid __ each zoom level, then _________ each place a ranking ______ that grid. The most _________ place in that 128 ______ will get a  <strong><code>localrank </code></strong> of 1, the ______ most important is 2, ___ so on. Therefore to ______ the label density to 4 labels per tile, you ___ add the filter  <code>[localrank=1] </code>. </p>
+
+ <pre>
+ <span class='quiet'>CartoCSS Example: </span>
+#place_label[localrank <=1] {="" text-name:="" [name];="" text-face-name:="" 'open="" sans="" regular';="" }=""></=1]></pre>
+
+
+
+
+ <h3>Label direction </h3>
+
+
+ <p>The  <strong><code>ldir </code></strong> field can be ____ as a hint for _____ offset directions at lower ____ levels. For places with _  <strong><code>scalerank </code></strong> value set, the  <strong><code>ldir </code></strong> will be a ________ direction such as  <code>'N' </code>,  <code>'E' </code>,  <code>'SW' </code>. </p>
+
+ <pre>
+ <span class='quiet'>CartoCSS Example: </span>
+#place[type='city'] {
+  text-name: [____];
+  text-face-name: 'Open Sans _______';
+  text-placement-type: simple;
+  ____-__: 3;
+  text-dy: 3;
+  [ldir='N'] { text-placements: 'N'; }
+  [ldir='NE'] { text-placements: '__'; }
+  [ldir='E'] { ____-__________: 'E'; }
+  [ldir='SE'] { text-placements: 'SE'; }
+  [____='_'] { text-placements: 'S'; }
+  [ldir='SW'] { text-placements: 'SW'; }
+  [ldir='W'] { text-placements: '_'; }
+  [ldir='NW'] { ____-__________: 'NW'; }
+}
+ </pre>
+
+
+
+
+ <!-- WATER_LABEL -->
+
+
+ <p><a class='doc-section' id='water_label'></a></p>
+
+ <h2>#water_label
+ <div class='geomtype' title='points'>
+     <span class='fill-purple inline round dark small icon marker'></span>
+     <span class='fill-gray inline round dark small icon polyline'></span>
+     <span class='fill-gray inline round dark small icon polygon'></span></div>
+ </h2>
+
+
+ <p>This layer contains points ___ labeling bodies of water ____ as lakes and ponds. </p>
+
+ <h3>Names </h3>
+
+
+ <p>See  <em>Name fields </em> in the  <a href="#Overview">overview </a> for information about _____ and translations. </p>
+
+ <h3>Area </h3>
+
+
+ <p>The  <strong><code>area </code></strong> field holds the ____ of the associated water _______ in square meters (Mercator-projected _____ rounded to the nearest _____ number, not real-world area). ___ can use it to ______ label size and visibility. </p>
+
+ <pre>
+ <span class='quiet'>CartoCSS Example: </span>
+#water_label {
+  [zoom <=15][area>=200000],
+  [zoom=16][area>=50000],
+  [____=17][____>=10000],
+  [zoom>=18][area>0] {
+    text-name: [name];
+    text-face-name: 'Open Sans _______';
+  }
+}
+ </=15][area></pre>
+
+
+
+
+ <!-- POI_LABEL -->
+
+
+ <p><a class='doc-section' id='poi_label'></a></p>
+
+ <h2>#poi_label
+ <div class='geomtype' title='points'>
+     <span class='fill-purple inline round dark small icon marker'></span>
+     <span class='fill-gray inline round dark small icon polyline'></span>
+     <span class='fill-gray inline round dark small icon polygon'></span></div>
+ </h2>
+
+
+ <p>This layer us used __ place icons and labels ___ various points of interest (____). </p>
+
+ <h3>Names </h3>
+
+
+ <p>See  <em>Name fields </em> in the  <a href="#Overview">overview </a> for information about _____ and translations. </p>
+
+ <h3>Maki icons </h3>
+
+
+ <p>The  <strong><code>maki </code></strong> field is designed __ make it easy to ___ icons to POIs using ___  <a href="http://mapbox.com/maki">Maki icon project </a>, or with other _____ that follow the same ______ scheme. </p>
+
+ <pre>
+ <span class='quiet'>CartoCSS Example: </span>
+#poi_label[maki!=null] { marker-file: url("icons/[maki].svg"); }
+ </pre>
+
+
+ <p>Not all Maki icons ___ used, and different types __ related POIs will sometimes ____ the same  <strong><code>maki </code></strong> value (eg universities ___ colleges, or art supply _____ and art galleries). The ________ values for the  <strong><code>maki </code></strong> field are listed _____. </p>
+
+ <div class='col12 clearfix space-bottom2'>
+ <code class='col10 margin1 pad1 row3 scroll-styled'>null
+'airport'
+'airfield'
+'alcohol-shop'
+'art-gallery'
+'bakery'
+'bank'
+'bar'
+'beer'
+'bicycle'
+'bus'
+'cafe'
+'car'
+'campsite'
+'cemetery'
+'cinema'
+'clothing-store'
+'college'
+'dog-park'
+'embassy'
+'entrance'
+'fast-food'
+'ferry'
+'fire-station'
+'fuel'
+'garden'
+'golf'
+'grocery'
+'harbor'
+'heliport'
+'hospital'
+'laundry'
+'library'
+'lodging'
+'monument'
+'museum'
+'music'
+'park'
+'pharmacy'
+'camera'
+'place-of-worship'
+'rail'
+'rail-light'
+'rail-metro'
+'religious-christian'
+'religious-jewish'
+'religious-muslim'
+'police'
+'post'
+'prison'
+'restaurant'
+'school'
+'shop'
+'swimming'
+'theatre'
+'town-hall'
+'suitcase'
+'zoo'
+ </code>
+ </div>
+
+
+
+
+ <h3>Type </h3>
+
+
+ <p>The  <strong><code>type </code></strong> field contains a ____ specific classification intended for _______ - eg &lsquo;Cafe&rsquo;, &lsquo;Hotel&rsquo;, &_____;_______&_____;. These values come from ___ original OpenStreetMap tags and ___ not a limited set. </p>
+
+ <h3>Scalerank </h3>
+
+
+ <p>The  <strong><code>scalerank </code></strong> field is intended __ help assign different label ______ based on the prominence __ different features. </p>
+
+ <table class='small'>
+ <tr><th>Value </th><th>Description </th></tr>
+ <tr><td><code>1 </code></td><td>The POI has a ____ large area </td></tr>
+ <tr><td><code>2 </code></td><td>The POI has a ______-_____ area </td></tr>
+ <tr><td><code>3 </code></td><td>The POI has a _____ area, or is of _ type that is commonly _____ and important (eg hospital, __________) </td></tr>
+ <tr><td><code>4 </code></td><td>The POI has no _____ area </td></tr>
+ </table>
+
+
+
+
+ <h3>Controlling label density </h3>
+
+
+ <p>The  <strong><code>localrank </code></strong> field can be ____ to adjust the label _______ by showing fewer labels. ____ method is preferred to ________&_____;_  <strong><code>text-min-distance </code></strong> because it leads __ far fewer labels clipped ______ tile boundaries. It is _ whole number >=1 calculated __ grouping places into a ~300_ projected grid, then assigning ____ place a ranking within ____ grid. The most important _____ in each cell will ___ a  <strong><code>localrank </code></strong> of 1, the ______ most important is 2, ___ so on. </p>
+
+ <pre>
+ <span class='quiet'>CartoCSS Example: </span>
+#poi_label {
+  [zoom=15][localrank <=1], [zoom=""></=1],><=2], [zoom=""></=2],><=4] {=""></=4]><em>/* icon styles */ </em> }
+}
+ </pre>
+
+
+
+
+ <h3>Rail station networks </h3>
+
+
+ <p>The  <strong><code>network </code></strong> field is aimed __ helping assign icons for ____ stations - the value ____ be  <code>null </code> for all other _____ of POIs. They don&rsquo;t ___________ correspond to a specific _______ - eg  <code>u-bahn </code> applies to any _-____ network in Germany. Some ________ serve multiple networks; in _____ cases, multiple network names ___ joined with a dot (__ alphabetical order). </p>
+
+ <table class='small'>
+ <tr><th style='width: 36em'>Value </th><th>Description </th></tr>
+ <tr><td><code>null </code></td><td>POI is not a ____ station </td></tr>
+ <tr><td><code>'rail' </code></td><td>Default rail station </td></tr>
+ <tr><td><code>'subway' </code></td><td>Default subway/metro station </td></tr>
+ <tr><td><code>'light' </code></td><td>Default light rail station </td></tr>
+ <tr><td><code>'dlr' </code></td><td>Docklands Light Rail, London, __ </td></tr>
+ <tr><td><code>'dlr.london-overground.london-underground.national-rail' </code></td><td>London, UK </td></tr>
+ <tr><td><code>'dlr.london-underground' </code></td><td>London, UK </td></tr>
+ <tr><td><code>'dlr.london-underground.national-rail' </code></td><td>London, UK </td></tr>
+ <tr><td><code>'dlr.national-rail' </code></td><td>London, UK </td></tr>
+ <tr><td><code>'london-overground' </code></td><td>London Overground, UK </td></tr>
+ <tr><td><code>'london-overground.london-underground' </code></td><td>London, UK </td></tr>
+ <tr><td><code>'london-overground.london-underground.national-rail' </code></td><td>London, UK </td></tr>
+ <tr><td><code>'london-overground.national-rail' </code></td><td>London, UK </td></tr>
+ <tr><td><code>'london-underground' </code></td><td>London Underground, UK </td></tr>
+ <tr><td><code>'london-underground.national-rail' </code></td><td>London, UK </td></tr>
+ <tr><td><code>'national-rail' </code></td><td>UK </td></tr>
+ <tr><td><code>'washington-metro' </code></td><td>Washington DC Metro </td></tr>
+ <tr><td><code>'wiener-linien' </code></td><td>Vienna, Austria </td></tr>
+ <tr><td><code>'metro' </code></td><td>Paris Metro, France </td></tr>
+ <tr><td><code>'rer' </code></td><td>Paris regional commuter rail, ______ </td></tr>
+ <tr><td><code>'metro.rer' </code></td><td>Paris, France </td></tr>
+ <tr><td><code>'transilien' </code></td><td>Paris suburban rail, France </td></tr>
+ <tr><td><code>'rer.transilien' </code></td><td>Paris, France </td></tr>
+ <tr><td><code>'moscow-metro' </code></td><td>Moscow Metro, Russia </td></tr>
+ <tr><td><code>'s-bahn' </code></td><td>Germany </td></tr>
+ <tr><td><code>'u-bahn' </code></td><td>Germany </td></tr>
+ <tr><td><code>'s-bahn.u-bahn' </code></td><td>Germany </td></tr>
+ </table>
+
+
+
+
+ <h3>Additional information </h3>
+
+
+ <p>The  <strong><code>ref </code></strong> field is a _____ reference code that can __ used as an alternative ____. It is currently only ____ for airports. </p>
+
+ <p>The  <strong><code>address </code></strong> and  <strong><code>website </code></strong> fields provide street _________ and official website URLs ___ POIs where this information __ available from OpenStreetMap. </p>
+
+ <!-- ROAD_LABEL -->
+
+
+ <p><a class='doc-section' id='road_label'></a></p>
+
+ <h2>#road_label
+ <div class='geomtype' title='points & lines'>
+     <span class='fill-purple inline round dark small icon marker'></span>
+     <span class='fill-blue inline round dark small icon polyline'></span>
+     <span class='fill-gray inline round dark small icon polygon'></span></div>
+ </h2>
+
+
+
+
+ <h3>Names </h3>
+
+
+ <p>See  <em>Name fields </em> in the  <a href="#Overview">overview </a> for information about _____ and translations. </p>
+
+ <h3>Route numbers </h3>
+
+
+ <p>In addition to the ________ name fields, there is ____ a  <strong><code>ref </code></strong> field that holds ___ reference codes or route _______ a road may have. </p>
+
+ <p>To aid with shield _______ in TileMill and Mapnik, ___  <strong><code>reflen </code></strong> field conveys the ______ of characters present in ___  <strong><code>ref </code></strong> field. If the ___ is &lsquo;I 95&rsquo;, then ___ reflen is 4. </p>
+
+ <pre>
+ <span class='quiet'>CartoCSS Example: </span>
+#road_label[reflen>=1] {
+  shield-name: [___];
+  shield-face-name: 'Open Sans _______';
+  shield-file: url("./img/shield-[reflen].png");
+}
+ </pre>
+
+
+
+
+ <h3>Classes </h3>
+
+
+ <p>The  <strong><code>class </code></strong> field for road ______ matches the  <a href="#tunnel-road-bridge">#tunnel, #road, &amp; #bridge </a> layers. </p>
+
+ <table class='small'>
+ <tr><th>Value </th><th>Description </th></tr>
+ <tr><td><code>'motorway' </code></td><td>High-speed, grade-separated highways </td></tr>
+ <tr><td><code>'main' </code></td><td>Trunk, primary, secondary, and ________ roads & links lumped ________ for simpler styling. </td></tr>
+ <tr><td><code>'street' </code></td><td>Standard unclassified or residential _______ </td></tr>
+ <tr><td><code>'street_limited' </code></td><td>Streets that may have _______ or no access for _____ vehicles. Pedestrian streets, roads _____ construction, private roads, etc. </td></tr>
+ <tr><td><code>'service' </code></td><td>Access roads, alleys, agricultural ______, and other services roads. </td></tr>
+ <tr><td><code>'path' </code></td><td>Foot paths, cycle paths, ___ trails. </td></tr>
+ <tr><td><code>'aerialway' </code></td><td>Ski lifts, gondolas, and _____ types of aerialway. </td></tr>
+ <tr><td><code>'golf' </code></td><td>The approximate centerline of _ golf course hole </td></tr>
+ </table>
+
+
+
+
+ <h3>Additional information </h3>
+
+
+ <p>The  <strong><code>len </code></strong> field stores the ______ of the road segment __ projected meters, rounded to ___ nearest whole number. This ___ be useful for limiting ____ label styles to longer _____. </p>
+
+ <!-- WATERWAY_LABEL -->
+
+
+ <p><a class='doc-section' id='waterway_label'></a></p>
+
+ <h2>#waterway_label
+ <div class='geomtype' title='lines'>
+     <span class='fill-gray inline round dark small icon marker'></span>
+     <span class='fill-blue inline round dark small icon polyline'></span>
+     <span class='fill-gray inline round dark small icon polygon'></span></div>
+ </h2>
+
+
+ <p>This layer contains line __________ that match those in ___  <a href="#waterway">#waterway </a> layer but with ____ fields for label rendering. </p>
+
+ <h3>Label text </h3>
+
+
+ <p>See  <em>Name fields </em> in the  <a href="#Overview">overview </a> for information about _____ and translations. </p>
+
+ <h3>Classes & types </h3>
+
+
+ <p>The  <strong><code>class </code></strong> and  <strong><code>type </code></strong> fields match those __ the  <a href="#waterway">#waterway </a> layer. </p>
+
+ <table class='small'>
+ <tr><th>Value </th><th>Description </th></tr>
+ <tr><td><code>'river' </code></td><td>Everything from the Amazon ____ to small creeks a ______ meters wide </td></tr>
+ <tr><td><code>'canal' </code></td><td>Medium to large artificial ________ </td></tr>
+ <tr><td><code>'stream' </code></td><td>Very small waterway, usually __ wider than a meter __ two </td></tr>
+ <tr><td><code>'stream_intermittent' </code></td><td><strong>Class only </strong>. A stream that ____ not always have water _______ through it. </td></tr>
+ <tr><td><code>'drain' </code></td><td>Medium to small artificial _______ for rainwater drainage, often ________ lined. </td></tr>
+ <tr><td><code>'ditch' </code></td><td>Small artificial channel dug __ the ground for rainwater ________. </td></tr>
+ </table>
+
+
+
+
+ <!-- HOUSENUM_LABEL -->
+
+
+ <p><a class='doc-section' id='housenum_label'></a></p>
+
+ <h2>#housenum_label
+ <div class='geomtype' title='points'>
+     <span class='fill-purple inline round dark small icon marker'></span>
+     <span class='fill-gray inline round dark small icon polyline'></span>
+     <span class='fill-gray inline round dark small icon polygon'></span></div>
+ </h2>
+
+
+ <p>This layer contains points ____ to label the street ______ parts of specific addresses. </p>
+
+ <p>The  <strong><code>house_num </code></strong> field countains house ___ building numbers. These are ________ integers but may include _______ or be only letters, __ &ldquo;1600&rdquo;, &ldquo;31B&rdquo;, &ldquo;D&rdquo;. If __ address has no number ___ but has a house ____ or building name, the  <strong><code>house_num </code></strong> field will be ___ name instead. </p>
+
+ <pre>
+ <span class='quiet'>CartoCSS Example: </span>
+#housenum_label {
+  text-name: [_________];
+  text-face-name: 'Open Sans _______';
+}
+ </pre>
+
+
+     </div>
+   </div>
+ </div>
+ </div>
+
+ <div class='footer pad4y clearfix hide-mobile fill-light'>
+   <div class='limiter'>
+    <div class='clearfix'> 
+     <div class='col8 small mobile-cols'>
+       <div class='col12 clearfix'>
+         <div class='col3'>
+          
+           <a id='footer-design' class='space-bottom0 col12 strong' href='../../../design/index.html'>Design </a>
+          
+           <a id='footer-data' class='space-bottom0 col12 strong' href='../../../data-platform/index.html'>Data </a>
+          
+           <a id='footer-developers' class='space-bottom0 col12 strong' href='../../index.html'>Developers </a>
+          
+           <a id='footer-showcase' class='space-bottom0 col12 strong' href='../../../showcase/index.html'>Showcase </a>
+          
+           <a id='footer-enterprise' class='space-bottom0 col12 strong' href='../../../enterprise/index.html'>Enterprise </a>
+          
+         </div>
+         <div class='col3'>
+          
+           <a id='footer-plans' class='space-bottom0 col12 quiet strong' href='../../../plans/index.html'>Plans </a>
+          
+           <a id='footer-blog' class='space-bottom0 col12 quiet strong' href='../../../blog/index.html'>Blog </a>
+          
+           <a id='footer-help' class='space-bottom0 col12 quiet strong' href='../../../help/index.html'>Help </a>
+          
+           <a id='footer-status' class='space-bottom0 col12 quiet strong' href='../../../status/index.html'>Status </a>
+          
+           <a id='footer-contact' class='space-bottom0 col12 quiet strong' href='../../../contact/index.html'>Contact </a>
+          
+         </div>
+         <div class='col3'>     
+          
+           <a id='footer-about' class='space-bottom0 col12 quiet strong' href='../../../about/index.html'>About </a>
+          
+           <a id='footer-team' class='space-bottom0 col12 quiet strong' href='../../../about/team/index.html'>Team </a>
+          
+           <a id='footer-jobs' class='space-bottom0 col12 quiet strong' href='../../../jobs/index.html'>Jobs </a>
+          
+           <a id='footer-press' class='space-bottom0 col12 quiet strong' href='../../../about/press/index.html'>Press </a>
+          
+           <a id='footer-press-kit' class='space-bottom0 col12 quiet strong' href='../../../about/press-kit/index.html'>Press Kit </a>
+          
+         </div>
+          <div class='col3'>
+            <div class='space-bottom0 strong'>Tools </div>
+          
+           <a id='footer-studio' class='space-bottom0 col12 quiet strong' href='../../../mapbox-studio/index.html'>Studio </a>
+          
+           <a id='footer-maki' class='space-bottom0 col12 quiet strong' href='../../../maki/index.html'>Maki </a>
+          
+         </div>
+       </div>
+     </div>
+
+     <div class='col4 footer-social'>
+       <div class='animate footer-animation col6'></div>
+       <div class='footer-dialog fr small strong quiet pad2 col6 contain round fill-gray'>
+      Follow Mapbox on  <a href='https://twitter.com/mapbox'>Twitter </a>,  <a href='https://www.facebook.com/Mapbox'>Facebook </a>, and  <a href='https://instagram.com/mapbox'>Instagram </a>.
+       </div>
+     </div>  
+   </div>
+   </div>
+
+   <div class="limiter industries-footer">
+   <p class='space-bottom1 strong small space-top2 industries-footer-title'>Industries </p>
+   <div class='clearfix pad2y pad4x fill-gray round space-bottom4 industries-footer'>
+         <div class='clearfix'>
+            <div class='col3'>
+            
+             <a id='footer-real-estate' class='space-bottom0 col12 strong quiet small' href='../../../industries/realestate/index.html'>Real Estate </a>
+            
+             <a id='footer-transportation' class='space-bottom0 col12 strong quiet small' href='../../../industries/transportation/index.html'>Transportation </a>
+            
+             <a id='footer-agriculture' class='space-bottom0 col12 strong quiet small' href='../../../industries/agriculture/index.html'>Agriculture </a>
+            
+           </div>
+            <div class='col3'>
+            
+             <a id='footer-social' class='space-bottom0 col12 strong quiet small' href='../../../industries/social/index.html'>Social </a>
+            
+             <a id='footer-government' class='space-bottom0 col12 strong quiet small' href='../../../industries/government/index.html'>Government </a>
+            
+             <a id='footer-fitness-&amp;-outdoors' class='space-bottom0 col12 strong quiet small' href='../../../industries/outdoors/index.html'>Fitness &amp; outdoors </a>
+            
+           </div>
+            <div class='col3'>
+            
+             <a id='footer-finance' class='space-bottom0 col12 strong quiet small' href='../../../industries/finance/index.html'>Finance </a>
+            
+             <a id='footer-insurance' class='space-bottom0 col12 strong quiet small' href='../../../industries/insurance/index.html'>Insurance </a>
+            
+             <a id='footer-natural-resources' class='space-bottom0 col12 strong quiet small' href='../../../industries/naturalresources/index.html'>Natural Resources </a>
+            
+           </div>
+           <div class='col3'>
+            
+                 <a id='footer-security' class='space-bottom0 col12 strong quiet small' href='../../../industries/security/index.html'>Security </a>
+            
+                 <a id='footer-health' class='space-bottom0 col12 strong quiet small' href='../../../industries/health/index.html'>Health </a>
+            
+                 <a id='footer-media' class='space-bottom0 col12 strong quiet small' href='../../../industries/media/index.html'>Media </a>
+            
+           </div>
+          </div> 
+       </div>
+   </div>
+
+   <div class='limiter newsletter-copyright clearfix'>
+   <div class='col8 contain newsletter'>
+         <form id='newsletter' method='post'>
+           <fieldset class='clearfix input-pill col10 pill mobile-cols with-icon'>
+             <span class='icon mail quiet'></span>
+             <input type='text' value='' placeholder='Sign up for our newsletter' name='email' class='col9 required email' />
+             <input type='submit' value='Subscribe' class='col3 quiet' />
+           </fieldset>
+         </form>
+        </div> 
+
+       <div class='col4 footer-copyright small space-top1 col4 noprint fill-light contain'>
+           <div class='pin-right'>
+             <a href='../../../tos/index.html'>Terms </a> +
+             <a href='../../../privacy/index.html'>Privacy </a>
+            &copy; Mapbox
+           </div>
+       </div>
+   </div>
+
+ </div>
+
+ <div class='footer-copyright small center noprint fill-light show-mobile'>
+   <div class='limiter'>
+     <div class='pad2y'>
+             <a href='../../../tos/index.html'>Terms </a> +
+             <a href='../../../privacy/index.html'>Privacy </a>
+      &copy; Mapbox
+     </div>
+   </div>
+ </div>
+
+
+
+ <div id='modal-content' class='animate modal modal-content'></div>
+ </div>
+ </body>
+ </html>
+ 

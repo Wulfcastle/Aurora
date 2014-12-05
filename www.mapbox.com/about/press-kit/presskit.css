@@ -1,0 +1,90 @@
+
+/* Illustrations
+------------------------------------------------------- */
+.graphic-splash {
+  background: url(presskit-graphic-splash.png) 0 100% no-repeat;
+  background-size: 100% auto;
+  padding-bottom: 25%;
+  height: 0;
+  bottom: 50px;
+}
+
+@media only screen and (max-width: 900px) {
+  .graphic-splash { right: 20px;}
+}
+
+/* Photos
+------------------------------------------------------- */
+
+.assets .photo:nth-child(3n+3) {
+  padding-left:20px;
+}
+
+.assets .photo:nth-child(3n+2) {
+  padding-right:10px;
+  padding-left:10px;
+}
+
+.assets .photo:nth-child(3n+1) {
+  padding-right:20px;
+}
+
+.photo .photo-item {
+  height:0;
+  padding-bottom: 62.5%;
+  background-size: cover;
+}
+
+.photo-description  {
+  padding-bottom: 10px;
+}
+
+@media only screen and (max-width: 770px) {
+  .assets .photo { width: 50%;}
+
+  .assets .photo:nth-child(2n) {
+    padding-left: 0;
+    padding-right: 20px;
+  }
+  .assets .photo:nth-child(2n+1) {
+    padding-left: 0;
+    padding-right: 20px;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .assets .photo { width: 100%;}
+
+  .assets .photo:nth-child(2n) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .assets .photo:nth-child(2n+1) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+/* Logos
+------------------------------------------------------- */
+
+.logo-mb1 {
+  background:white url('img/mapbox-vertical.png') 50% no-repeat;
+  width:100%;
+  height:200px;
+  background-size: contain;
+}
+
+.logo-list { padding-left: 30px; }
+
+.logo-list .icon {
+  margin-right: 10px;
+  margin-left: -30px;
+}
+
+@media only screen and (max-width:640px) {
+  .press-facts > div { border-bottom-width: 0;}
+  .press-fact { border-bottom: 1px solid rgba(0,0,0,.1); border-left-width: 0; }
+  .press-fact:last-child { border-bottom: 0;}
+  .photo-description { height: auto; min-height: 0;}
+}

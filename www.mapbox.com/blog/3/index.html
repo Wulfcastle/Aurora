@@ -1,0 +1,4728 @@
+<!DOCTYPE html >
+ <html>
+ <head>
+<!-- Original URL: https://www.mapbox.com/blog/3/
+Date Downloaded: 2014-12-05 09:30:01 PM !-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  
+   <meta charset='UTF-8' />
+   <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+   <meta name='robots' content='index' />
+   <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  
+   <title>Blog | Mapbox </title>
+
+   <meta name='st:title' content='Blog' />
+   <meta name='st:type' content='blog' />
+   <meta name='st:info' content='site' />
+
+  
+
+   <link href='../../base/latest/base_8f8b1251.css' rel='stylesheet' />
+   <link href='../../css/site.css' rel='stylesheet' />
+   <!--[if IE 9]><link href='../../css/site-ie9.css' rel='stylesheet' /><![endif]-->
+   <link rel='shortcut icon' href='../../img/favicon.ico' type='image/x-icon' />
+   <link rel='alternate' type='application/rss+xml' title='RSS' href='../blog.rss' />
+   <link href='../../../api.tiles.mapbox.com/mapbox.js/v2.0.0/mapbox.css' rel='stylesheet' />
+
+   <!--[if lt IE 9 ]><script src='../../js/redirect-ie.js'></script><![endif]-->
+   <script src='../../../js.stripe.com/v2/index.html.js'></script>
+   <script>
+  var KM_COOKIE_DOMAIN = 'www.mapbox.com';
+  var analytics=analytics||[];(function(){var e=['identify','track','trackLink','trackForm','trackClick','trackSubmit','page','pageview','ab','alias','ready','group'],t=function(e){return function(){analytics.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var n=0;n<e.length;n++)analytics[e[n]]=t(e[n])})(),analytics.load=function(e){var t=document.createElement('script');t.type='text/javascript',t.async=!0,t.src=('https:'===document.location.protocol?'https://':"http://")+'d2dq2ahtl5zl1z.cloudfront.net/analytics.js/v1/'+e+'/analytics.min.js';var n=document.getElementsByTagName('script')[0];n.parentNode.insertBefore(t,n)};
+  analytics.load(window.location.hostname.indexOf('mapbox.com') !== -1 ? 'fl0c8p240n' : '0biiejpgfj');
+
+  Stripe.setPublishableKey(window.location.hostname.indexOf('mapbox.com') !== -1 ?
+    'pk_live_hI6mmOTIg7KkywK6vo3vJvpk' : 'pk_test_gmIyREg3sKzAiyMkAEeCsxUG');
+  </script>
+   <script src='../../../api.tiles.mapbox.com/mapbox.js/v2.0.0/mapbox.js'></script>
+
+   <script>
+  window.mapbox_api = 'https://www.mapbox.com/core';
+  window.mapbox_tileApi = '../../../api.tiles.mapbox.com/index.html';
+  window.mapbox_accessToken = 'pk.eyJ1IjoibWFwYm94IiwiYSI6IlhHVkZmaW8ifQ.hAMX5hSW-QnTeRCMAy9A8Q' || 'pk.eyJ1IjoibWFwYm94IiwiYSI6IlhHVkZmaW8ifQ.hAMX5hSW-QnTeRCMAy9A8Q'
+  if (L.mapbox.VERSION[0] === '2') {
+      L.mapbox.accessToken = window.mapbox_accessToken;
+      L.mapbox.config.FORCE_HTTPS = true;
+      L.mapbox.config.HTTPS_URL = window.mapbox_tileApi + '/v4';
+  }
+  </script>
+   <script src='../../base.js/dist/base.js'></script>
+  
+  
+ </head>
+ <body class='blog full'><div style="z-index: 9999; position: fixed; width: 100%; border: 0px; padding: 5px; margin: 0px; background-color: transparent;  font-size: 12pt; font-family: sans-serif;" id="web2disk_nag" onclick="javascript: document.getElementById('web2disk_nag').style.display = 'none';">
+		<div style="color: #000000; background-color:#F1F1F1; margin-left: auto; margin-right: auto; border-width: 2px; border-style: solid; width: 550px; ">
+			<div style="width: 100%; text-align: center; font-weight: bold; border: 0px; margin: 0px; padding: 0px">Hey, where did my words go? (Click to hide)</div>
+			<p>In the trial version of Web2Disk every fifth word is blanked out. 
+			To copy this site with all the words, please upgrade to the full version and copy this website again.</p>
+			<div style="width: 100%; text-align: center; font-weight: bold; border: 0px; margin: 0px; padding: 0px">
+				<a href="http://www.inspyder.com/products/Web2Disk/">Inspyder Web2Disk: The Website Downloader</a>
+			</div>
+		</div>
+	</div>
+  <div class='fill-midnight offcanvas-top row3 industries-subnav animate dark pin-top hide-mobile' id='industries'>
+    <div class='limiter pad2y space-top1 small strong contain'>
+       <ul class='space-bottom0 clearfix'>
+         <li class='col2'><a href="../../industries/realestate/index.html" class="primary-nav-button inline pad1x pad0y round">Real Estate </a></li>
+         <li class='col2'><a href="../../industries/transportation/index.html" class="primary-nav-button inline pad1x pad0y round">Transportation </a></li>
+         <li class='col2'><a href="../../industries/agriculture/index.html" class="primary-nav-button inline pad1x pad0y round ">Agriculture </a></li>
+         <li class='col2'><a href="../../industries/social/index.html" class="primary-nav-button inline pad1x pad0y round">Social </a></li>
+         <li class='col2'><a href="../../industries/government/index.html" class="primary-nav-button inline pad1x pad0y round ">Government </a></li>        
+         <li class='col2'><a href="../../industries/outdoors/index.html" class="primary-nav-button inline pad0x pad0y round">Fitness &amp; Outdoors </a></li>
+       </ul>
+       <ul class='clearfix'>
+          <li class='col2'><a href="../../industries/finance/index.html" class="primary-nav-button inline pad1x pad0y round ">Finance </a></li>
+          <li class='col2'><a href="../../industries/insurance/index.html" class="primary-nav-button inline pad1x pad0y round ">Insurance </a></li>
+          <li class='col2'><a href="../../industries/naturalresources/index.html" class="primary-nav-button inline pad1x pad0y round ">Natural Resources </a></li>
+          <li class='col2'><a href="../../industries/security/index.html" class="primary-nav-button inline pad1x pad0y round ">Security </a></li>
+          <li class='col2'><a href="../../industries/health/index.html" class="primary-nav-button inline pad1x pad0y round ">Health </a></li>
+          <li class='col2'><a href="../../industries/media/index.html" class="primary-nav-button inline pad0x pad0y round ">Media </a></li>
+       </ul> 
+    </div>
+  </div>
+ <div class='page-content'> 
+
+ <div class='masthead show-in-loaded col12 clearfix fill-blue dark'>
+   <div class='limiter clearfix'>
+     <nav class='col12 text-right pad2y contain animate clearfix noprint'>
+       <a class='fl mb-logo' href='../../index.html'></a>
+       <h4 class='logo-enterpriseaddon pin-topleft text-aqua block-in-enterprise'>Enterprise </h4>
+       <div id='nav'>
+       </div>
+     </nav>
+   </div>
+ </div>
+
+ <div class=''><link rel='stylesheet' href='../blog.css' />
+
+ <div class='blog-stream unlimiter clearfix'>
+   <div class='clearfix'>
+    
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+ <div id='-walking-directions' class='blog-item col3 contain clearfix'>
+
+   <a class='block dark contain clip' href='/blog/walking-directions'>
+     <div style='background-image:url(https://farm4.staticflickr.com/3930/15419044955_3acc8a0ced.jpg)' class='blog-item-image col12 animate'></div>
+     <div class='blog-item-overlay pad2 fill-darken2 pin-top pin-bottom col12'>
+       <div>
+         <h3 class='small quiet dark'><strong>Oct 02 2014 </strong></h3>
+         <h2 class='dark'>Walking directions API
+ </h2>
+       </div>
+     </div>
+     <div class='pin-bottom strong author quiet pad2 col12 small'>
+       <span class='thumb dot inline' style='background-image:url(../../img/team/garrett.thumb.jpg);'></span>Garrett Miller
+     </div>
+   </a>
+ </div>
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+ <div id='-dronedeploy' class='blog-item col3 contain clearfix'>
+
+   <a class='block dark contain clip' href='/blog/dronedeploy'>
+     <div style='background-image:url(../../../farm3.staticflickr.com/2947/15236490747_5e6d7ea377.jpg)' class='blog-item-image col12 animate'></div>
+     <div class='blog-item-overlay pad2 fill-darken2 pin-top pin-bottom col12'>
+       <div>
+         <h3 class='small quiet dark'><strong>Oct 02 2014 </strong></h3>
+         <h2 class='dark'>DroneDeploy powered by Mapbox ______ API
+ </h2>
+       </div>
+     </div>
+     <div class='pin-bottom strong author quiet pad2 col12 small'>
+       <span class='thumb dot inline' style='background-image:url(../../img/team/paul.thumb.jpg);'></span>Paul Goodman
+     </div>
+   </a>
+ </div>
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+ <div id='-ali-anthes-joins' class='blog-item col3 contain clearfix'>
+
+   <a class='block dark contain clip' href='/blog/ali-anthes-joins'>
+     <div style='background-image:url(https://farm4.staticflickr.com/3929/15224746907_16a2346cf6.jpg)' class='blog-item-image col12 animate'></div>
+     <div class='blog-item-overlay pad2 fill-darken2 pin-top pin-bottom col12'>
+       <div>
+         <h3 class='small quiet dark'><strong>Oct 01 2014 </strong></h3>
+         <h2 class='dark'>Alison Anthes joins Mapbox
+ </h2>
+       </div>
+     </div>
+     <div class='pin-bottom strong author quiet pad2 col12 small'>
+       <span class='thumb dot inline' style='background-image:url(../../img/team/garrett.thumb.jpg);'></span>Garrett Miller
+     </div>
+   </a>
+ </div>
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+ <div id='-osm-tracing-candidates' class='blog-item col3 contain clearfix'>
+
+   <a class='block dark contain clip' href='/blog/osm-tracing-candidates'>
+     <div style='background-image:url(https://farm3.staticflickr.com/2945/15411016655_26e27ce15d.jpg)' class='blog-item-image col12 animate'></div>
+     <div class='blog-item-overlay pad2 fill-darken2 pin-top pin-bottom col12'>
+       <div>
+         <h3 class='small quiet dark'><strong>Oct 01 2014 </strong></h3>
+         <h2 class='dark'>Predicting data curation in _____________
+ </h2>
+       </div>
+     </div>
+     <div class='pin-bottom strong author quiet pad2 col12 small'>
+       <span class='thumb dot inline' style='background-image:url(../../img/team/bruno.thumb.jpg);'></span>Bruno Sánchez-Andrade Nuño
+     </div>
+   </a>
+ </div>
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+ <div id='-directions-at-mapbox' class='blog-item col3 contain clearfix'>
+
+   <a class='block dark contain clip' href='/blog/directions-at-mapbox'>
+     <div style='background-image:url(https://farm3.staticflickr.com/2944/15405365492_e0479ab56c.jpg)' class='blog-item-image col12 animate'></div>
+     <div class='blog-item-overlay pad2 fill-darken2 pin-top pin-bottom col12'>
+       <div>
+         <h3 class='small quiet dark'><strong>Oct 01 2014 </strong></h3>
+         <h2 class='dark'>Join the Mapbox Directions ____
+ </h2>
+       </div>
+     </div>
+     <div class='pin-bottom strong author quiet pad2 col12 small'>
+       <span class='thumb dot inline' style='background-image:url(https://www.mapbox.com/img/team/dennis.thumb.jpg);'></span>Dennis Luxen
+     </div>
+   </a>
+ </div>
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+ <div id='-welcome-cathryn-stickel-' class='blog-item col3 contain clearfix'>
+
+   <a class='block dark contain clip' href='/blog/welcome-cathryn-stickel/'>
+     <div style='background-image:url(https://farm3.staticflickr.com/2950/15217874270_a330e7ebdf.jpg)' class='blog-item-image col12 animate'></div>
+     <div class='blog-item-overlay pad2 fill-darken2 pin-top pin-bottom col12'>
+       <div>
+         <h3 class='small quiet dark'><strong>Sep 30 2014 </strong></h3>
+         <h2 class='dark'>Welcome Cathryn Stickel!
+ </h2>
+       </div>
+     </div>
+     <div class='pin-bottom strong author quiet pad2 col12 small'>
+       <span class='thumb dot inline' style='background-image:url(https://www.mapbox.com/img/team/bonnie.thumb.jpg);'></span>Bonnie Bogle
+     </div>
+   </a>
+ </div>
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+ <div id='-tom-lee-joins-' class='blog-item col3 contain clearfix'>
+
+   <a class='block dark contain clip' href='/blog/tom-lee-joins/'>
+     <div style='background-image:url(https://farm4.staticflickr.com/3839/15217535928_d4c18545a4.jpg)' class='blog-item-image col12 animate'></div>
+     <div class='blog-item-overlay pad2 fill-darken2 pin-top pin-bottom col12'>
+       <div>
+         <h3 class='small quiet dark'><strong>Sep 29 2014 </strong></h3>
+         <h2 class='dark'>Hello Tom Lee!
+ </h2>
+       </div>
+     </div>
+     <div class='pin-bottom strong author quiet pad2 col12 small'>
+       <span class='thumb dot inline' style='background-image:url(../../img/team/alex.thumb.jpg);'></span>Alex Barth
+     </div>
+   </a>
+ </div>
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+ <div id='-emoji-map-markers' class='blog-item col3 contain clearfix'>
+
+   <a class='block dark contain clip' href='/blog/emoji-map-markers'>
+     <div style='background-image:url(https://farm3.staticflickr.com/2946/15362564035_a0d240f959.jpg)' class='blog-item-image col12 animate'></div>
+     <div class='blog-item-overlay pad2 fill-darken2 pin-top pin-bottom col12'>
+       <div>
+         <h3 class='small quiet dark'><strong>Sep 29 2014 </strong></h3>
+         <h2 class='dark'>Emoji map markers
+ </h2>
+       </div>
+     </div>
+     <div class='pin-bottom strong author quiet pad2 col12 small'>
+       <span class='thumb dot inline' style='background-image:url(https://www.mapbox.com/img/team/decorah.thumb.jpg);'></span>Katy DeCorah
+     </div>
+   </a>
+ </div>
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+ <div id='-audience-survey' class='blog-item col3 contain clearfix'>
+
+   <a class='block dark contain clip' href='/blog/audience-survey'>
+     <div style='background-image:url(https://farm3.staticflickr.com/2941/15206876459_c277b5e494.jpg)' class='blog-item-image col12 animate'></div>
+     <div class='blog-item-overlay pad2 fill-darken2 pin-top pin-bottom col12'>
+       <div>
+         <h3 class='small quiet dark'><strong>Sep 29 2014 </strong></h3>
+         <h2 class='dark'>Audience-focused documentation
+ </h2>
+       </div>
+     </div>
+     <div class='pin-bottom strong author quiet pad2 col12 small'>
+       <span class='thumb dot inline' style='background-image:url(../../img/team/saman.thumb.jpg);'></span>Saman Bemel Benrud
+     </div>
+   </a>
+ </div>
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+ <div id='-pencil-drawn-style' class='blog-item col3 contain clearfix'>
+
+   <a class='block dark contain clip' href='/blog/pencil-drawn-style'>
+     <div style='background-image:url(https://farm4.staticflickr.com/3874/15174613177_b59b454640.jpg)' class='blog-item-image col12 animate'></div>
+     <div class='blog-item-overlay pad2 fill-darken2 pin-top pin-bottom col12'>
+       <div>
+         <h3 class='small quiet dark'><strong>Sep 26 2014 </strong></h3>
+         <h2 class='dark'>Designing a pencil-drawn style __ Mapbox Studio
+ </h2>
+       </div>
+     </div>
+     <div class='pin-bottom strong author quiet pad2 col12 small'>
+       <span class='thumb dot inline' style='background-image:url(../../img/team/aj.thumb.jpg);'></span>AJ Ashton
+     </div>
+   </a>
+ </div>
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+ <div id='-katy-decorah-joins' class='blog-item col3 contain clearfix'>
+
+   <a class='block dark contain clip' href='/blog/katy-decorah-joins'>
+     <div style='background-image:url(https://farm3.staticflickr.com/2948/15176044327_a99397ddd7.jpg)' class='blog-item-image col12 animate'></div>
+     <div class='blog-item-overlay pad2 fill-darken2 pin-top pin-bottom col12'>
+       <div>
+         <h3 class='small quiet dark'><strong>Sep 26 2014 </strong></h3>
+         <h2 class='dark'>Katy DeCorah joins Mapbox
+ </h2>
+       </div>
+     </div>
+     <div class='pin-bottom strong author quiet pad2 col12 small'>
+       <span class='thumb dot inline' style='background-image:url(../../img/team/eric.thumb.jpg);'></span>Eric Gundersen
+     </div>
+   </a>
+ </div>
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+ <div id='-imagery-update-mexico-condatos' class='blog-item col3 contain clearfix'>
+
+   <a class='block dark contain clip' href='/blog/imagery-update-mexico-condatos'>
+     <div style='background-image:url(https://farm4.staticflickr.com/3860/15164457398_b1de6d1cc6.jpg)' class='blog-item-image col12 animate'></div>
+     <div class='blog-item-overlay pad2 fill-darken2 pin-top pin-bottom col12'>
+       <div>
+         <h3 class='small quiet dark'><strong>Sep 25 2014 </strong></h3>
+         <h2 class='dark'>New imagery of Mexico ____ for Condatos
+ </h2>
+       </div>
+     </div>
+     <div class='pin-bottom strong author quiet pad2 col12 small'>
+       <span class='thumb dot inline' style='background-image:url(../../img/team/paul.thumb.jpg);'></span>Paul Goodman
+     </div>
+   </a>
+ </div>
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+ <div id='-satellite-imagery-internship' class='blog-item col3 contain clearfix'>
+
+   <a class='block dark contain clip' href='/blog/satellite-imagery-internship'>
+     <div style='background-image:url(https://farm3.staticflickr.com/2943/15137193670_ffc587ab44.jpg)' class='blog-item-image col12 animate'></div>
+     <div class='blog-item-overlay pad2 fill-darken2 pin-top pin-bottom col12'>
+       <div>
+         <h3 class='small quiet dark'><strong>Sep 24 2014 </strong></h3>
+         <h2 class='dark'>Aerial + drone + _________ imagery internship
+ </h2>
+       </div>
+     </div>
+     <div class='pin-bottom strong author quiet pad2 col12 small'>
+       <span class='thumb dot inline' style='background-image:url(../../img/team/chris.thumb.jpg);'></span>Chris Herwig
+     </div>
+   </a>
+ </div>
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+ <div id='-circa-3' class='blog-item col3 contain clearfix'>
+
+   <a class='block dark contain clip' href='../circa-3/index.html'>
+     <div style='background-image:url(../../../farm3.staticflickr.com/2944/15340000091_c5260ab2ea.jpg)' class='blog-item-image col12 animate'></div>
+     <div class='blog-item-overlay pad2 fill-darken2 pin-top pin-bottom col12'>
+       <div>
+         <h3 class='small quiet dark'><strong>Sep 24 2014 </strong></h3>
+         <h2 class='dark'>Circa News: on-brand in ______
+ </h2>
+       </div>
+     </div>
+     <div class='pin-bottom strong author quiet pad2 col12 small'>
+       <span class='thumb dot inline' style='background-image:url(../../img/team/justin.thumb.jpg);'></span>Justin Miller
+     </div>
+   </a>
+ </div>
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+ <div id='-winter-wonderland' class='blog-item col3 contain clearfix'>
+
+   <a class='block dark contain clip' href='../winter-wonderland/index.html'>
+     <div style='background-image:url(../../../farm4.staticflickr.com/3877/15326444945_982ddf502a.jpg)' class='blog-item-image col12 animate'></div>
+     <div class='blog-item-overlay pad2 fill-darken2 pin-top pin-bottom col12'>
+       <div>
+         <h3 class='small quiet dark'><strong>Sep 23 2014 </strong></h3>
+         <h2 class='dark'>Winter wonderland
+ </h2>
+       </div>
+     </div>
+     <div class='pin-bottom strong author quiet pad2 col12 small'>
+       <span class='thumb dot inline' style='background-image:url(../../img/team/andreas.thumb.jpg);'></span>Andreas Viglakis
+     </div>
+   </a>
+ </div>
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+ <div id='-one-step-raster-imagery-mapboxcom' class='blog-item col3 contain clearfix'>
+
+   <a class='block dark contain clip' href='../one-step-raster-imagery-mapboxcom/index.html'>
+     <div style='background-image:url(https://farm6.staticflickr.com/5586/15269341886_1f5e0811b3.jpg)' class='blog-item-image col12 animate'></div>
+     <div class='blog-item-overlay pad2 fill-darken2 pin-top pin-bottom col12'>
+       <div>
+         <h3 class='small quiet dark'><strong>Sep 23 2014 </strong></h3>
+         <h2 class='dark'>Raster imagery to Mapbox __ one step
+ </h2>
+       </div>
+     </div>
+     <div class='pin-bottom strong author quiet pad2 col12 small'>
+       <span class='thumb dot inline' style='background-image:url(https://www.mapbox.com/img/team/carol.thumb.jpg);'></span>Carol Hansen
+     </div>
+   </a>
+ </div>
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+ <div id='-custom-imagery-mongolia' class='blog-item col3 contain clearfix'>
+
+   <a class='block dark contain clip' href='/blog/custom-imagery-mongolia'>
+     <div style='background-image:url(https://farm4.staticflickr.com/3872/15076749218_fe4707cbcc.jpg)' class='blog-item-image col12 animate'></div>
+     <div class='blog-item-overlay pad2 fill-darken2 pin-top pin-bottom col12'>
+       <div>
+         <h3 class='small quiet dark'><strong>Sep 19 2014 </strong></h3>
+         <h2 class='dark'>Custom imagery in Mongolia ___ the Asia Foundation
+ </h2>
+       </div>
+     </div>
+     <div class='pin-bottom strong author quiet pad2 col12 small'>
+       <span class='thumb dot inline' style='background-image:url(../../img/team/paul.thumb.jpg);'></span>Paul Goodman
+     </div>
+   </a>
+ </div>
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+ <div id='-richman-pariona-joins-' class='blog-item col3 contain clearfix'>
+
+   <a class='block dark contain clip' href='/blog/richman-pariona-joins/'>
+     <div style='background-image:url(https://farm6.staticflickr.com/5581/15262409195_bf928148c3.jpg)' class='blog-item-image col12 animate'></div>
+     <div class='blog-item-overlay pad2 fill-darken2 pin-top pin-bottom col12'>
+       <div>
+         <h3 class='small quiet dark'><strong>Sep 18 2014 </strong></h3>
+         <h2 class='dark'>Richman Pariona joins Mapbox
+ </h2>
+       </div>
+     </div>
+     <div class='pin-bottom strong author quiet pad2 col12 small'>
+       <span class='thumb dot inline' style='background-image:url(../../img/team/ruben.thumb.jpg);'></span>Ruben Lopez Mendoza
+     </div>
+   </a>
+ </div>
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+ <div id='-happy-hour-london-2014' class='blog-item col3 contain clearfix'>
+
+   <a class='block dark contain clip' href='/blog/happy-hour-london-2014'>
+     <div style='background-image:url(https://farm6.staticflickr.com/5562/15269160222_e6ae7a5176.jpg)' class='blog-item-image col12 animate'></div>
+     <div class='blog-item-overlay pad2 fill-darken2 pin-top pin-bottom col12'>
+       <div>
+         <h3 class='small quiet dark'><strong>Sep 18 2014 </strong></h3>
+         <h2 class='dark'>Mapbox happy hour: London _______
+ </h2>
+       </div>
+     </div>
+     <div class='pin-bottom strong author quiet pad2 col12 small'>
+       <span class='thumb dot inline' style='background-image:url(https://www.mapbox.com/img/team/megan.thumb.jpg);'></span>Megan Wanee
+     </div>
+   </a>
+ </div>
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+ <div id='-design-control-with-regular-expressions-in-mapbox-studio' class='blog-item col3 contain clearfix'>
+
+   <a class='block dark contain clip' href='/blog/design-control-with-regular-expressions-in-mapbox-studio'>
+     <div style='background-image:url(https://farm4.staticflickr.com/3856/15261950975_26b2e770fb.jpg)' class='blog-item-image col12 animate'></div>
+     <div class='blog-item-overlay pad2 fill-darken2 pin-top pin-bottom col12'>
+       <div>
+         <h3 class='small quiet dark'><strong>Sep 17 2014 </strong></h3>
+         <h2 class='dark'>Design control with regular ___________ in Mapbox Studio
+ </h2>
+       </div>
+     </div>
+     <div class='pin-bottom strong author quiet pad2 col12 small'>
+       <span class='thumb dot inline' style='background-image:url(../../img/team/saman.thumb.jpg);'></span>Saman Bemel Benrud
+     </div>
+   </a>
+ </div>
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+ <div id='-cfa-summit-2014' class='blog-item col3 contain clearfix'>
+
+   <a class='block dark contain clip' href='/blog/cfa-summit-2014'>
+     <div style='background-image:url(https://farm4.staticflickr.com/3852/15082189880_41e776a207.jpg)' class='blog-item-image col12 animate'></div>
+     <div class='blog-item-overlay pad2 fill-darken2 pin-top pin-bottom col12'>
+       <div>
+         <h3 class='small quiet dark'><strong>Sep 17 2014 </strong></h3>
+         <h2 class='dark'>See you at the ____ for America Summit!
+ </h2>
+       </div>
+     </div>
+     <div class='pin-bottom strong author quiet pad2 col12 small'>
+       <span class='thumb dot inline' style='background-image:url(https://www.mapbox.com/img/team/mick.thumb.jpg);'></span>Mick Thompson
+     </div>
+   </a>
+ </div>
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+ <div id='-danny-aiquipa-joins-' class='blog-item col3 contain clearfix'>
+
+   <a class='block dark contain clip' href='/blog/danny-aiquipa-joins/'>
+     <div style='background-image:url(https://farm6.staticflickr.com/5567/15259283601_441bffdeae.jpg)' class='blog-item-image col12 animate'></div>
+     <div class='blog-item-overlay pad2 fill-darken2 pin-top pin-bottom col12'>
+       <div>
+         <h3 class='small quiet dark'><strong>Sep 16 2014 </strong></h3>
+         <h2 class='dark'>Welcome Danny Aiquipa!
+ </h2>
+       </div>
+     </div>
+     <div class='pin-bottom strong author quiet pad2 col12 small'>
+       <span class='thumb dot inline' style='background-image:url(../../img/team/ruben.thumb.jpg);'></span>Ruben Lopez Mendoza
+     </div>
+   </a>
+ </div>
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+ <div id='-peter-joins' class='blog-item col3 contain clearfix'>
+
+   <a class='block dark contain clip' href='/blog/peter-joins'>
+     <div style='background-image:url(https://farm6.staticflickr.com/5574/15229496526_4c6ae57f71.jpg)' class='blog-item-image col12 animate'></div>
+     <div class='blog-item-overlay pad2 fill-darken2 pin-top pin-bottom col12'>
+       <div>
+         <h3 class='small quiet dark'><strong>Sep 15 2014 </strong></h3>
+         <h2 class='dark'>Peter Liu joins Mapbox
+ </h2>
+       </div>
+     </div>
+     <div class='pin-bottom strong author quiet pad2 col12 small'>
+       <span class='thumb dot inline' style='background-image:url(https://www.mapbox.com/img/team/eden.thumb.jpg);'></span>Eden Halperin
+     </div>
+   </a>
+ </div>
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+ <div id='-high-res-prints-from-mapbox-studio' class='blog-item col3 contain clearfix'>
+
+   <a class='block dark contain clip' href='/blog/high-res-prints-from-mapbox-studio'>
+     <div style='background-image:url(https://farm4.staticflickr.com/3850/15251571162_4f704d12af.jpg)' class='blog-item-image col12 animate'></div>
+     <div class='blog-item-overlay pad2 fill-darken2 pin-top pin-bottom col12'>
+       <div>
+         <h3 class='small quiet dark'><strong>Sep 15 2014 </strong></h3>
+         <h2 class='dark'>High resolution prints from ______ Studio
+ </h2>
+       </div>
+     </div>
+     <div class='pin-bottom strong author quiet pad2 col12 small'>
+       <span class='thumb dot inline' style='background-image:url(https://www.mapbox.com/img/team/camille.thumb.jpg);'></span>Camille Teicheira
+     </div>
+   </a>
+ </div>
+
+  
+
+
+   </div>
+     <!-- page.index 1 is the first page -->
+    
+    
+     <a href='../2/index.html' class='blog-fixed-prev round-right pager-prev button'><span class='icon prev'></span>2 </a>
+    
+     <!-- page.index 16 is the last page -->
+    
+    
+     <a href='/blog/4/' class='blog-fixed-next round-left fr pager-next button rcon next'>4 </a>
+    
+ </div>
+ </div>
+
+ <div class='footer pad4y clearfix hide-mobile fill-light'>
+   <div class='limiter'>
+    <div class='clearfix'> 
+     <div class='col8 small mobile-cols'>
+       <div class='col12 clearfix'>
+         <div class='col3'>
+          
+           <a id='footer-design' class='space-bottom0 col12 strong' href='../../design/index.html'>Design </a>
+          
+           <a id='footer-data' class='space-bottom0 col12 strong' href='../../data-platform/index.html'>Data </a>
+          
+           <a id='footer-developers' class='space-bottom0 col12 strong' href='../../developers/index.html'>Developers </a>
+          
+           <a id='footer-showcase' class='space-bottom0 col12 strong' href='../../showcase/index.html'>Showcase </a>
+          
+           <a id='footer-enterprise' class='space-bottom0 col12 strong' href='../../enterprise/index.html'>Enterprise </a>
+          
+         </div>
+         <div class='col3'>
+          
+           <a id='footer-plans' class='space-bottom0 col12 quiet strong' href='../../plans/index.html'>Plans </a>
+          
+           <a id='footer-blog' class='space-bottom0 col12 quiet strong' href='../index.html'>Blog </a>
+          
+           <a id='footer-help' class='space-bottom0 col12 quiet strong' href='../../help/index.html'>Help </a>
+          
+           <a id='footer-status' class='space-bottom0 col12 quiet strong' href='../../status/index.html'>Status </a>
+          
+           <a id='footer-contact' class='space-bottom0 col12 quiet strong' href='../../contact/index.html'>Contact </a>
+          
+         </div>
+         <div class='col3'>     
+          
+           <a id='footer-about' class='space-bottom0 col12 quiet strong' href='../../about/index.html'>About </a>
+          
+           <a id='footer-team' class='space-bottom0 col12 quiet strong' href='../../about/team/index.html'>Team </a>
+          
+           <a id='footer-jobs' class='space-bottom0 col12 quiet strong' href='../../jobs/index.html'>Jobs </a>
+          
+           <a id='footer-press' class='space-bottom0 col12 quiet strong' href='../../about/press/index.html'>Press </a>
+          
+           <a id='footer-press-kit' class='space-bottom0 col12 quiet strong' href='../../about/press-kit/index.html'>Press Kit </a>
+          
+         </div>
+          <div class='col3'>
+            <div class='space-bottom0 strong'>Tools </div>
+          
+           <a id='footer-studio' class='space-bottom0 col12 quiet strong' href='../../mapbox-studio/index.html'>Studio </a>
+          
+           <a id='footer-maki' class='space-bottom0 col12 quiet strong' href='../../maki/index.html'>Maki </a>
+          
+         </div>
+       </div>
+     </div>
+
+     <div class='col4 footer-social'>
+       <div class='animate footer-animation col6'></div>
+       <div class='footer-dialog fr small strong quiet pad2 col6 contain round fill-gray'>
+      Follow Mapbox on  <a href='https://twitter.com/mapbox'>Twitter </a>,  <a href='https://www.facebook.com/Mapbox'>Facebook </a>, and  <a href='https://instagram.com/mapbox'>Instagram </a>.
+       </div>
+     </div>  
+   </div>
+   </div>
+
+   <div class="limiter industries-footer">
+   <p class='space-bottom1 strong small space-top2 industries-footer-title'>Industries </p>
+   <div class='clearfix pad2y pad4x fill-gray round space-bottom4 industries-footer'>
+         <div class='clearfix'>
+            <div class='col3'>
+            
+             <a id='footer-real-estate' class='space-bottom0 col12 strong quiet small' href='../../industries/realestate/index.html'>Real Estate </a>
+            
+             <a id='footer-transportation' class='space-bottom0 col12 strong quiet small' href='../../industries/transportation/index.html'>Transportation </a>
+            
+             <a id='footer-agriculture' class='space-bottom0 col12 strong quiet small' href='../../industries/agriculture/index.html'>Agriculture </a>
+            
+           </div>
+            <div class='col3'>
+            
+             <a id='footer-social' class='space-bottom0 col12 strong quiet small' href='../../industries/social/index.html'>Social </a>
+            
+             <a id='footer-government' class='space-bottom0 col12 strong quiet small' href='../../industries/government/index.html'>Government </a>
+            
+             <a id='footer-fitness-&amp;-outdoors' class='space-bottom0 col12 strong quiet small' href='../../industries/outdoors/index.html'>Fitness &amp; outdoors </a>
+            
+           </div>
+            <div class='col3'>
+            
+             <a id='footer-finance' class='space-bottom0 col12 strong quiet small' href='../../industries/finance/index.html'>Finance </a>
+            
+             <a id='footer-insurance' class='space-bottom0 col12 strong quiet small' href='../../industries/insurance/index.html'>Insurance </a>
+            
+             <a id='footer-natural-resources' class='space-bottom0 col12 strong quiet small' href='../../industries/naturalresources/index.html'>Natural Resources </a>
+            
+           </div>
+           <div class='col3'>
+            
+                 <a id='footer-security' class='space-bottom0 col12 strong quiet small' href='../../industries/security/index.html'>Security </a>
+            
+                 <a id='footer-health' class='space-bottom0 col12 strong quiet small' href='../../industries/health/index.html'>Health </a>
+            
+                 <a id='footer-media' class='space-bottom0 col12 strong quiet small' href='../../industries/media/index.html'>Media </a>
+            
+           </div>
+          </div> 
+       </div>
+   </div>
+
+   <div class='limiter newsletter-copyright clearfix'>
+   <div class='col8 contain newsletter'>
+         <form id='newsletter' method='post'>
+           <fieldset class='clearfix input-pill col10 pill mobile-cols with-icon'>
+             <span class='icon mail quiet'></span>
+             <input type='text' value='' placeholder='Sign up for our newsletter' name='email' class='col9 required email' />
+             <input type='submit' value='Subscribe' class='col3 quiet' />
+           </fieldset>
+         </form>
+        </div> 
+
+       <div class='col4 footer-copyright small space-top1 col4 noprint fill-light contain'>
+           <div class='pin-right'>
+             <a href='../../tos/index.html'>Terms </a> +
+             <a href='../../privacy/index.html'>Privacy </a>
+            &copy; Mapbox
+           </div>
+       </div>
+   </div>
+
+ </div>
+
+ <div class='footer-copyright small center noprint fill-light show-mobile'>
+   <div class='limiter'>
+     <div class='pad2y'>
+             <a href='../../tos/index.html'>Terms </a> +
+             <a href='../../privacy/index.html'>Privacy </a>
+      &copy; Mapbox
+     </div>
+   </div>
+ </div>
+
+
+
+ <div id='modal-content' class='animate modal modal-content'></div>
+ </div>
+ </body>
+ </html>
+ 

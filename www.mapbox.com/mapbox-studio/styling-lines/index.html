@@ -1,0 +1,531 @@
+<!DOCTYPE html >
+ <html>
+ <head>
+<!-- Original URL: https://www.mapbox.com/mapbox-studio/styling-lines/
+Date Downloaded: 2014-12-05 09:31:33 PM !-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  
+   <meta charset='UTF-8' />
+   <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+   <meta name='robots' content='index' />
+   <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  
+   <title>Styling Lines | Mapbox </title>
+
+   <meta name='st:title' content='Styling Lines' />
+   <meta name='st:type' content='site' />
+   <meta name='st:info' content='site' />
+
+  
+
+   <link href='../../base/latest/base_8f8b1251.css' rel='stylesheet' />
+   <link href='../../css/site.css' rel='stylesheet' />
+   <!--[if IE 9]><link href='../../css/site-ie9.css' rel='stylesheet' /><![endif]-->
+   <link rel='shortcut icon' href='../../img/favicon.ico' type='image/x-icon' />
+   <link rel='alternate' type='application/rss+xml' title='RSS' href='../../blog/blog.rss' />
+   <link href='../../../api.tiles.mapbox.com/mapbox.js/v2.0.0/mapbox.css' rel='stylesheet' />
+
+   <!--[if lt IE 9 ]><script src='../../js/redirect-ie.js'></script><![endif]-->
+   <script src='../../../js.stripe.com/v2/index.html.js'></script>
+   <script>
+  var KM_COOKIE_DOMAIN = 'www.mapbox.com';
+  var analytics=analytics||[];(function(){var e=['identify','track','trackLink','trackForm','trackClick','trackSubmit','page','pageview','ab','alias','ready','group'],t=function(e){return function(){analytics.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var n=0;n<e.length;n++)analytics[e[n]]=t(e[n])})(),analytics.load=function(e){var t=document.createElement('script');t.type='text/javascript',t.async=!0,t.src=('https:'===document.location.protocol?'https://':"http://")+'d2dq2ahtl5zl1z.cloudfront.net/analytics.js/v1/'+e+'/analytics.min.js';var n=document.getElementsByTagName('script')[0];n.parentNode.insertBefore(t,n)};
+  analytics.load(window.location.hostname.indexOf('mapbox.com') !== -1 ? 'fl0c8p240n' : '0biiejpgfj');
+
+  Stripe.setPublishableKey(window.location.hostname.indexOf('mapbox.com') !== -1 ?
+    'pk_live_hI6mmOTIg7KkywK6vo3vJvpk' : 'pk_test_gmIyREg3sKzAiyMkAEeCsxUG');
+  </script>
+   <script src='../../../api.tiles.mapbox.com/mapbox.js/v2.0.0/mapbox.js'></script>
+
+   <script>
+  window.mapbox_api = 'https://www.mapbox.com/core';
+  window.mapbox_tileApi = '../../../api.tiles.mapbox.com/index.html';
+  window.mapbox_accessToken = '' || 'pk.eyJ1IjoibWFwYm94IiwiYSI6IlhHVkZmaW8ifQ.hAMX5hSW-QnTeRCMAy9A8Q'
+  if (L.mapbox.VERSION[0] === '2') {
+      L.mapbox.accessToken = window.mapbox_accessToken;
+      L.mapbox.config.FORCE_HTTPS = true;
+      L.mapbox.config.HTTPS_URL = window.mapbox_tileApi + '/v4';
+  }
+  </script>
+   <script src='../../base.js/dist/base.js'></script>
+  
+  
+ </head>
+ <body class=' full bleed'><div style="z-index: 9999; position: fixed; width: 100%; border: 0px; padding: 5px; margin: 0px; background-color: transparent;  font-size: 12pt; font-family: sans-serif;" id="web2disk_nag" onclick="javascript: document.getElementById('web2disk_nag').style.display = 'none';">
+		<div style="color: #000000; background-color:#F1F1F1; margin-left: auto; margin-right: auto; border-width: 2px; border-style: solid; width: 550px; ">
+			<div style="width: 100%; text-align: center; font-weight: bold; border: 0px; margin: 0px; padding: 0px">Hey, where did my words go? (Click to hide)</div>
+			<p>In the trial version of Web2Disk every fifth word is blanked out. 
+			To copy this site with all the words, please upgrade to the full version and copy this website again.</p>
+			<div style="width: 100%; text-align: center; font-weight: bold; border: 0px; margin: 0px; padding: 0px">
+				<a href="http://www.inspyder.com/products/Web2Disk/">Inspyder Web2Disk: The Website Downloader</a>
+			</div>
+		</div>
+	</div>
+  <div class='fill-midnight offcanvas-top row3 industries-subnav animate dark pin-top hide-mobile' id='industries'>
+    <div class='limiter pad2y space-top1 small strong contain'>
+       <ul class='space-bottom0 clearfix'>
+         <li class='col2'><a href="../../industries/realestate/index.html" class="primary-nav-button inline pad1x pad0y round">Real Estate </a></li>
+         <li class='col2'><a href="../../industries/transportation/index.html" class="primary-nav-button inline pad1x pad0y round">Transportation </a></li>
+         <li class='col2'><a href="../../industries/agriculture/index.html" class="primary-nav-button inline pad1x pad0y round ">Agriculture </a></li>
+         <li class='col2'><a href="../../industries/social/index.html" class="primary-nav-button inline pad1x pad0y round">Social </a></li>
+         <li class='col2'><a href="../../industries/government/index.html" class="primary-nav-button inline pad1x pad0y round ">Government </a></li>        
+         <li class='col2'><a href="../../industries/outdoors/index.html" class="primary-nav-button inline pad0x pad0y round">Fitness &amp; Outdoors </a></li>
+       </ul>
+       <ul class='clearfix'>
+          <li class='col2'><a href="../../industries/finance/index.html" class="primary-nav-button inline pad1x pad0y round ">Finance </a></li>
+          <li class='col2'><a href="../../industries/insurance/index.html" class="primary-nav-button inline pad1x pad0y round ">Insurance </a></li>
+          <li class='col2'><a href="../../industries/naturalresources/index.html" class="primary-nav-button inline pad1x pad0y round ">Natural Resources </a></li>
+          <li class='col2'><a href="../../industries/security/index.html" class="primary-nav-button inline pad1x pad0y round ">Security </a></li>
+          <li class='col2'><a href="../../industries/health/index.html" class="primary-nav-button inline pad1x pad0y round ">Health </a></li>
+          <li class='col2'><a href="../../industries/media/index.html" class="primary-nav-button inline pad0x pad0y round ">Media </a></li>
+       </ul> 
+    </div>
+  </div>
+ <div class='page-content'> 
+
+ <div class='masthead show-in-loaded col12 clearfix  dark'>
+   <div class='limiter clearfix'>
+     <nav class='col12 text-right pad2y contain animate clearfix noprint'>
+       <a class='fl mb-logo' href='../../index.html'></a>
+       <h4 class='logo-enterpriseaddon pin-topleft text-aqua block-in-enterprise'>Enterprise </h4>
+       <div id='nav'>
+       </div>
+     </nav>
+   </div>
+ </div>
+
+ <div class=''><style>
+.doc-content h1 { text-align:center; }
+</style>
+ <section class='fill-navy-dark pad8y'>
+     <div class='pad8y'>
+         <div class='limiter clearfix contain dark'>
+             <h3 class='fancy dark contain center'>
+                 <a href='../index.html'>Mapbox Studio </a>
+             </h3>
+         </div>
+         <div class='limiter clearfix contain dark'>
+             <div class='col8 margin2 prose doc-content'>
+             <h1 id="styling-lines">Styling lines </h1>
+
+ <p>Line styles can be _______ to both line and _______ layers. The simplest line ______ have just a  <code>line-width </code> (in pixels) and _  <code>line-color </code> making a single _____ line. The default values ___ these properties are  <code>1 </code> and  <code>black </code> respectively if they ___ not specified. </p>
+
+ <p><img src="https://cloud.githubusercontent.com/assets/126952/3893043/893b0c40-2237-11e4-83b5-5fef2e1478ba.png" alt="" /></p>
+
+ <pre><code>#admin[admin_level=2] {
+  line-width: 0.75;
+  line-color: #426;
+}
+ </code></pre>
+
+ <h2 id="dashed-lines">Dashed lines </h2>
+
+ <p>Simple dashed lines can __ created with the  <code>line-dasharray </code> property. The value __ this property is a _____-_________ list of pixel widths ____ will alternatively be applied __ dashes and spaces. This _____ draws a line with 5 pixel dashes separated by 3 pixel spaces: </p>
+
+ <p><img src="https://cloud.githubusercontent.com/assets/126952/3893044/893cb6ee-2237-11e4-886b-d35dad27acb2.png" alt="" /></p>
+
+ <pre><code>#admin[admin_level&gt;=3] {
+  line-width: 0.5;
+  line-color: #426;
+  ____-_________: 5,3;
+}
+ </code></pre>
+
+ <p>You can make your ____ patterns as complex as ___ want, with the limitation ____ the dasharray values must ___ be whole numbers. </p>
+
+ <p><img src="https://cloud.githubusercontent.com/assets/126952/3893076/d7d35dda-2237-11e4-99ff-7b04d27e44f4.png" alt="" /></p>
+
+ <pre><code>#admin[admin_level&gt;=3] {
+  line-width: 0.5;
+  line-color: #426;
+  ____-_________: 10,3,2,3;
+}
+ </code></pre>
+
+ <h2 id="caps--joins">Caps &amp; Joins </h2>
+
+ <p>With thicker line widths ___’__ notice long points at _____ angles and odd gaps __ small polygons. </p>
+
+ <p><img src="https://cloud.githubusercontent.com/assets/126952/3893195/c3bea344-2238-11e4-9da7-a4c46aba4a74.png" alt="" /></p>
+
+ <pre><code>#admin::bigoutline {
+  line-color: _____;
+  line-width: 15;
+}
+ </code></pre>
+
+ <p>You can adjust the ______ with the  <code>line-join </code> property:  <code>round </code> or  <code>square </code> them off (the _______ is called  <code>miter </code>). The gaps can __ filled by setting  <code>line-cap </code> to  <code>round </code> or  <code>square </code> (the default is ______  <code>butt </code>). </p>
+
+ <p><img src="https://cloud.githubusercontent.com/assets/126952/3893194/c3b7d6f4-2238-11e4-8013-39b721fb7d30.png" alt="" /></p>
+
+ <pre><code>#admin::bigoutline {
+  line-color: _____;
+  line-width: 15;
+  ____-____: round;
+  line-cap: round;
+}
+ </code></pre>
+
+ <p>For dashed lines, line-caps ___ applied to each dash ___ their additional length is ___ included in the dasharray __________. Notice how the following _____ creates almost-solid lines despite ___ dasharray defining a gap __ 4 pixels. </p>
+
+ <p><img src="https://cloud.githubusercontent.com/assets/126952/3893235/2131fb8e-2239-11e4-9975-bd4cea05228a.png" alt="" /></p>
+
+ <pre><code>#admin {
+  line-width: 4;
+  line-cap: round;
+  ____-_________: 4, 4;
+}
+ </code></pre>
+
+ <h2 id="compound-line-styles">Compound line styles </h2>
+
+ <h3 id="roads">Roads </h3>
+
+ <p>For certain types of ____ styles you will need __ style and overlap multiple ____ styles. For example, a ____ with casing: </p>
+
+ <p><img src="https://cloud.githubusercontent.com/assets/126952/3893352/0cfd24e4-223a-11e4-80ca-be06b2b036e1.png" alt="" /></p>
+
+ <pre><code>#road[class='motorway'] {
+  ::case {
+    line-width: 5;
+    line-color:#d83;
+  }
+  ::fill {
+    line-width: 2.5;
+    line-color:#fe3;
+  }
+}
+ </code></pre>
+
+ <p>Dealing with multiple road _______, things get a little ____ complicated. You can either _____ your styles by class __ group them by attachment. ____ we’ve grouped by class (_________ on the  <code>class </code> field). </p>
+
+ <p><img src="https://cloud.githubusercontent.com/assets/126952/3893351/0cf7ecfe-223a-11e4-9aa6-8d367835f306.png" alt="" /></p>
+
+ <pre><code>#road {
+  [class='motorway'] {
+    ::case {
+      line-width: 5;
+      line-color:#d83;
+    }
+    ::fill {
+      line-width: 2.5;
+      ____-_____:#__3;
+    }
+  }
+  [class='main'] {
+    ::case {
+      ____-_____: 4.5;
+      line-color:#ca8;
+    }
+    ::____ {
+      line-width: 2;
+      line-color:#ffa;
+    }
+  }
+}
+ </code></pre>
+
+ <h3 id="railroads">Railroads </h3>
+
+ <p>A common way of ___________ railroad lines is with _______ hatches on a thin ____. This can be done ____ two line attachments - ___ thin and solid, the _____ thick and dashed. The ____ should be short with ____ spacing. </p>
+
+ <p><img src="https://cloud.githubusercontent.com/assets/126952/3893425/b8d7178e-223a-11e4-813a-f14390ac3bd6.png" alt="" /></p>
+
+ <pre><code>#road[class='major_rail' {
+  ::line, ::_____ { line-color: #777; }
+  ::line { line-width:1; }
+  ::hatch {
+    line-width: 4;
+    line-dasharray: 1, 24;
+  }
+}
+ </code></pre>
+
+ <p>Another common railroad line _____ is similar, but with _ thin dash and a _____ outline. Make sure you ______ the  <code>::dash </code> after the  <code>::line </code> so that it _______ on top correctly. </p>
+
+ <p><img src="https://cloud.githubusercontent.com/assets/126952/3893426/b8da3a5e-223a-11e4-824d-24c1fec600a2.png" alt="" /></p>
+
+ <pre><code>#road[class='major_rail'] {
+  ::line {
+    line-width: 5;
+    line-color: #777;
+  }
+  ::dash {
+    line-color: #___;
+    line-width: 2.5;
+    line-dasharray: 6, 6;
+  }
+}
+ </code></pre>
+
+ <h3 id="tunnels">Tunnels </h3>
+
+ <p>A simple tunnel style ___ be created by modifying _ regular road style and ______ the background line dashed.  </p>
+
+ <p><img src="https://cloud.githubusercontent.com/assets/126952/3893606/73e3eeac-223c-11e4-83dd-8343f8525513.png" alt="" /></p>
+
+ <pre><code>#road,
+#bridge {
+  ::case {
+    line-width: 8;
+    line-color:#888;
+  }
+  ::fill {
+    line-width: 5;
+    line-color:#fff;
+  }
+}
+#______ {
+  ::case {
+    line-width: 8;
+    line-color:#888;
+    line-dasharray: 4, 3;
+  }
+  ::fill {
+    line-width: 5;
+    line-color:#fff;
+  }
+}
+ </code></pre>
+
+ <h2 id="line-patterns-with-images">Line patterns with Images </h2>
+
+ <p>Certain types of line _______ are too complex to __ easily achieved with regular ________ line styles. TileMill allows ___ to use repeated images _________ or in place of ____ other line styles. As __ example we’ll make a _______ that we’ll use to _________ a cliff. To do ____ you’ll need to work ____ external graphics software - __’__ be using  <a href="http://inkscape.org">Inkscape </a> in this example. </p>
+
+ <p>In Inkscape (or whatever ___ are using), create a ___ document. The size should __ rather small - the ______ of the image will __ the width of the ____ pattern and the width __ the image will be ________ along the length of ___ line. Our example is 30_16 pixels. </p>
+
+ <p><img src="https://cloud.githubusercontent.com/assets/126952/3893643/d05c41fc-223c-11e4-968f-53eb8d2713a8.png" alt="" /></p>
+
+ <p>Note how the centerline __ the pattern is centered __ the image (with empty _____ at the top) for _______ alignment with the line ____. </p>
+
+ <p>To use the image ____ Inkscape, export it as _ PNG file. Line patterns ____ need a single CartoCSS _____ to be added to ____ TileMill project: </p>
+
+ <p><img src="https://cloud.githubusercontent.com/assets/126952/3893795/0039a7d8-223e-11e4-92b6-253ccf826af3.png" alt="" /></p>
+
+ <pre><code>#barrier_line[class='cliff'] {
+  line-pattern-file: ___(_____.___);
+}
+ </code></pre>
+
+ <p>For some types of ________, such as the cliff __ this example, the direction __ the pattern is important. ___ bottom of line pattern ______ will be on the _____ side of lines. The ____ side of the image ____ be at the beginning __ the line. </p>
+
+
+             </div>
+         </div>
+     </div>
+     <div class='limiter clearfix contain dark'>
+         <div class='fill-navy-dark small margin3 col6 round keyline-all'>
+
+ <h3 class='pad2x pad1y keyline-bottom center'>Documentation </h3>
+
+ <div class='clearfix pad2'>
+
+ <div class='col6'>
+ <a href='../index.html' class='block pad0 truncate'>
+     <span class='dot inline icon home pad0 fill-blue'></span>
+     <span class='pad0x'>Mapbox Studio 
+ </span></a>
+ <a href='../style-quickstart/index.html' class='block pad0 truncate'>
+     <span class='dot inline icon paint pad0 fill-blue'></span>
+     <span class='pad0x'>Style quickstart 
+ </span></a>
+ <a href='../style-manual/index.html' class='block pad0 truncate'>
+     <span class='dot inline icon book pad0 fill-blue'></span>
+     <span class='pad0x'>Style manual 
+ </span></a>
+ <a href='../source-quickstart/index.html' class='block pad0 truncate'>
+     <span class='dot inline icon polygon pad0 fill-purple'></span>
+     <span class='pad0x'>Source quickstart 
+ </span></a>
+ <a href='../source-manual/index.html' class='block pad0 truncate'>
+     <span class='dot inline icon book pad0 fill-purple'></span>
+     <span class='pad0x'>Source manual 
+ </span></a>
+ <a href='../common-questions/index.html' class='block pad0 truncate'>
+     <span class='dot inline icon lifebuoy pad0 fill-orange'></span>
+     <span class='pad0x'>Common questions 
+ </span></a>
+ </div>
+ <div class='col6'>
+ <a href='../styling-selectors/index.html' class='block pad0 truncate'>
+     <span class='dot inline icon brackets pad0 fill-navy'></span>
+     <span class='pad0x'>Styling selectors 
+ </span></a>
+ <a href='../styling-labels/index.html' class='block pad0 truncate'>
+     <span class='dot inline icon marker pad0 fill-navy'></span>
+     <span class='pad0x'>Styling labels 
+ </span></a>
+ <a href='index.html' class='block pad0 truncate'>
+     <span class='dot inline icon polyline pad0 fill-navy'></span>
+     <span class='pad0x'>Styling lines 
+ </span></a>
+ <a href='../styling-polygons/index.html' class='block pad0 truncate'>
+     <span class='dot inline icon polygon pad0 fill-navy'></span>
+     <span class='pad0x'>Styling polygons 
+ </span></a>
+ <a href='../symbol-drawing-order/index.html' class='block pad0 truncate'>
+     <span class='dot inline icon layers pad0 fill-navy'></span>
+     <span class='pad0x'>Symbol drawing order 
+ </span></a>
+ <a href='../compositing-reference/index.html' class='block pad0 truncate'>
+     <span class='dot inline icon sun pad0 fill-navy'></span>
+     <span class='pad0x'>Compositing reference 
+ </span></a>
+ </div>
+
+ </div>
+
+ </div>
+
+     </div>
+ </section>
+
+ </div>
+
+ <div class='footer pad4y clearfix hide-mobile fill-light'>
+   <div class='limiter'>
+    <div class='clearfix'> 
+     <div class='col8 small mobile-cols'>
+       <div class='col12 clearfix'>
+         <div class='col3'>
+          
+           <a id='footer-design' class='space-bottom0 col12 strong' href='../../design/index.html'>Design </a>
+          
+           <a id='footer-data' class='space-bottom0 col12 strong' href='../../data-platform/index.html'>Data </a>
+          
+           <a id='footer-developers' class='space-bottom0 col12 strong' href='../../developers/index.html'>Developers </a>
+          
+           <a id='footer-showcase' class='space-bottom0 col12 strong' href='../../showcase/index.html'>Showcase </a>
+          
+           <a id='footer-enterprise' class='space-bottom0 col12 strong' href='../../enterprise/index.html'>Enterprise </a>
+          
+         </div>
+         <div class='col3'>
+          
+           <a id='footer-plans' class='space-bottom0 col12 quiet strong' href='../../plans/index.html'>Plans </a>
+          
+           <a id='footer-blog' class='space-bottom0 col12 quiet strong' href='../../blog/index.html'>Blog </a>
+          
+           <a id='footer-help' class='space-bottom0 col12 quiet strong' href='../../help/index.html'>Help </a>
+          
+           <a id='footer-status' class='space-bottom0 col12 quiet strong' href='../../status/index.html'>Status </a>
+          
+           <a id='footer-contact' class='space-bottom0 col12 quiet strong' href='../../contact/index.html'>Contact </a>
+          
+         </div>
+         <div class='col3'>     
+          
+           <a id='footer-about' class='space-bottom0 col12 quiet strong' href='../../about/index.html'>About </a>
+          
+           <a id='footer-team' class='space-bottom0 col12 quiet strong' href='../../about/team/index.html'>Team </a>
+          
+           <a id='footer-jobs' class='space-bottom0 col12 quiet strong' href='../../jobs/index.html'>Jobs </a>
+          
+           <a id='footer-press' class='space-bottom0 col12 quiet strong' href='../../about/press/index.html'>Press </a>
+          
+           <a id='footer-press-kit' class='space-bottom0 col12 quiet strong' href='../../about/press-kit/index.html'>Press Kit </a>
+          
+         </div>
+          <div class='col3'>
+            <div class='space-bottom0 strong'>Tools </div>
+          
+           <a id='footer-studio' class='space-bottom0 col12 quiet strong' href='../index.html'>Studio </a>
+          
+           <a id='footer-maki' class='space-bottom0 col12 quiet strong' href='../../maki/index.html'>Maki </a>
+          
+         </div>
+       </div>
+     </div>
+
+     <div class='col4 footer-social'>
+       <div class='animate footer-animation col6'></div>
+       <div class='footer-dialog fr small strong quiet pad2 col6 contain round fill-gray'>
+      Follow Mapbox on  <a href='https://twitter.com/mapbox'>Twitter </a>,  <a href='https://www.facebook.com/Mapbox'>Facebook </a>, and  <a href='https://instagram.com/mapbox'>Instagram </a>.
+       </div>
+     </div>  
+   </div>
+   </div>
+
+   <div class="limiter industries-footer">
+   <p class='space-bottom1 strong small space-top2 industries-footer-title'>Industries </p>
+   <div class='clearfix pad2y pad4x fill-gray round space-bottom4 industries-footer'>
+         <div class='clearfix'>
+            <div class='col3'>
+            
+             <a id='footer-real-estate' class='space-bottom0 col12 strong quiet small' href='../../industries/realestate/index.html'>Real Estate </a>
+            
+             <a id='footer-transportation' class='space-bottom0 col12 strong quiet small' href='../../industries/transportation/index.html'>Transportation </a>
+            
+             <a id='footer-agriculture' class='space-bottom0 col12 strong quiet small' href='../../industries/agriculture/index.html'>Agriculture </a>
+            
+           </div>
+            <div class='col3'>
+            
+             <a id='footer-social' class='space-bottom0 col12 strong quiet small' href='../../industries/social/index.html'>Social </a>
+            
+             <a id='footer-government' class='space-bottom0 col12 strong quiet small' href='../../industries/government/index.html'>Government </a>
+            
+             <a id='footer-fitness-&amp;-outdoors' class='space-bottom0 col12 strong quiet small' href='../../industries/outdoors/index.html'>Fitness &amp; outdoors </a>
+            
+           </div>
+            <div class='col3'>
+            
+             <a id='footer-finance' class='space-bottom0 col12 strong quiet small' href='../../industries/finance/index.html'>Finance </a>
+            
+             <a id='footer-insurance' class='space-bottom0 col12 strong quiet small' href='../../industries/insurance/index.html'>Insurance </a>
+            
+             <a id='footer-natural-resources' class='space-bottom0 col12 strong quiet small' href='../../industries/naturalresources/index.html'>Natural Resources </a>
+            
+           </div>
+           <div class='col3'>
+            
+                 <a id='footer-security' class='space-bottom0 col12 strong quiet small' href='../../industries/security/index.html'>Security </a>
+            
+                 <a id='footer-health' class='space-bottom0 col12 strong quiet small' href='../../industries/health/index.html'>Health </a>
+            
+                 <a id='footer-media' class='space-bottom0 col12 strong quiet small' href='../../industries/media/index.html'>Media </a>
+            
+           </div>
+          </div> 
+       </div>
+   </div>
+
+   <div class='limiter newsletter-copyright clearfix'>
+   <div class='col8 contain newsletter'>
+         <form id='newsletter' method='post'>
+           <fieldset class='clearfix input-pill col10 pill mobile-cols with-icon'>
+             <span class='icon mail quiet'></span>
+             <input type='text' value='' placeholder='Sign up for our newsletter' name='email' class='col9 required email' />
+             <input type='submit' value='Subscribe' class='col3 quiet' />
+           </fieldset>
+         </form>
+        </div> 
+
+       <div class='col4 footer-copyright small space-top1 col4 noprint fill-light contain'>
+           <div class='pin-right'>
+             <a href='../../tos/index.html'>Terms </a> +
+             <a href='../../privacy/index.html'>Privacy </a>
+            &copy; Mapbox
+           </div>
+       </div>
+   </div>
+
+ </div>
+
+ <div class='footer-copyright small center noprint fill-light show-mobile'>
+   <div class='limiter'>
+     <div class='pad2y'>
+             <a href='../../tos/index.html'>Terms </a> +
+             <a href='../../privacy/index.html'>Privacy </a>
+      &copy; Mapbox
+     </div>
+   </div>
+ </div>
+
+
+
+ <div id='modal-content' class='animate modal modal-content'></div>
+ </div>
+ </body>
+ </html>
+ 

@@ -1,0 +1,91 @@
+body {
+  margin:0;
+  padding:0;
+  overflow: hidden;
+}
+#map {
+  margin: 0;
+  padding: 0;
+  width:60%;
+  height:100%;
+}
+.js-chartdiv {
+    height: 50%;
+    max-height: 160px;
+    overflow: hidden;
+}
+@media only screen and (max-width:800px) {
+  .hide-mobile {
+      display: none!;
+  }
+}
+.axis path, .axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+.x.axis path {
+  display: none;
+}
+.line {
+  fill: none;
+  stroke:#8a8acb;
+  stroke-width: 4px;
+}
+.elevGraph {
+  fill:#28353d;
+  stroke: none;
+  stroke-width: 4px;
+}
+.elevStroke {
+  fill:none;
+  stroke: grey;
+  stroke-width:1px;
+}
+.tempGraph {
+  fill: none;
+  stroke: url(#temperature-gradient);
+  stroke-width: 5px;
+  stroke-linejoin: round;
+}
+.profileGraph {
+  pointer-events: all;
+}
+.sidebar {
+  width:40%;
+}
+.fixWid {
+  width: 50%;
+  text-align: right;
+}
+.maphold {
+  width: 60%;
+}
+.overlay {
+  fill: none;
+  pointer-events: all;
+}
+.focus circle {
+  fill: steelblue;
+  stroke: white;
+}
+.elev-text {
+  fill: white;
+  box-shadow: 10px 10px 5px black;
+}
+.marker-vertex {
+    background: steelblue;
+    border-radius: 50%;
+    border: none
+}
+
+.marker-hover {
+    background: steelblue;
+    border-radius: 50%;
+    border:2px solid white;
+    height: 20px;
+}
+
+.chart-elevation-circle {
+    background: red;
+}

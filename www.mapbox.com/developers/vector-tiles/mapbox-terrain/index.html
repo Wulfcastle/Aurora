@@ -1,0 +1,517 @@
+<!DOCTYPE html >
+ <html>
+ <head>
+<!-- Original URL: https://www.mapbox.com/developers/vector-tiles/mapbox-terrain/
+Date Downloaded: 2014-12-05 09:26:43 PM !-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  
+   <meta charset='UTF-8' />
+   <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+   <meta name='robots' content='index' />
+   <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  
+   <title>Mapbox Terrain | Mapbox </title>
+
+   <meta name='st:title' content='Mapbox Terrain' />
+   <meta name='st:type' content='developers' />
+   <meta name='st:info' content='site' />
+
+  
+
+   <link href='../../../base/latest/base_8f8b1251.css' rel='stylesheet' />
+   <link href='../../../css/site.css' rel='stylesheet' />
+   <!--[if IE 9]><link href='../../../css/site-ie9.css' rel='stylesheet' /><![endif]-->
+   <link rel='shortcut icon' href='../../../img/favicon.ico' type='image/x-icon' />
+   <link rel='alternate' type='application/rss+xml' title='RSS' href='../../../blog/blog.rss' />
+   <link href='../../../../api.tiles.mapbox.com/mapbox.js/v2.1.2/mapbox.css' rel='stylesheet' />
+
+   <!--[if lt IE 9 ]><script src='../../../js/redirect-ie.js'></script><![endif]-->
+   <script src='../../../../js.stripe.com/v2/index.html.js'></script>
+   <script>
+  var KM_COOKIE_DOMAIN = 'www.mapbox.com';
+  var analytics=analytics||[];(function(){var e=['identify','track','trackLink','trackForm','trackClick','trackSubmit','page','pageview','ab','alias','ready','group'],t=function(e){return function(){analytics.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var n=0;n<e.length;n++)analytics[e[n]]=t(e[n])})(),analytics.load=function(e){var t=document.createElement('script');t.type='text/javascript',t.async=!0,t.src=('https:'===document.location.protocol?'https://':"http://")+'d2dq2ahtl5zl1z.cloudfront.net/analytics.js/v1/'+e+'/analytics.min.js';var n=document.getElementsByTagName('script')[0];n.parentNode.insertBefore(t,n)};
+  analytics.load(window.location.hostname.indexOf('mapbox.com') !== -1 ? 'fl0c8p240n' : '0biiejpgfj');
+
+  Stripe.setPublishableKey(window.location.hostname.indexOf('mapbox.com') !== -1 ?
+    'pk_live_hI6mmOTIg7KkywK6vo3vJvpk' : 'pk_test_gmIyREg3sKzAiyMkAEeCsxUG');
+  </script>
+   <script src='../../../../api.tiles.mapbox.com/mapbox.js/v2.1.2/mapbox.js'></script>
+
+   <script>
+  window.mapbox_api = '/core';
+  window.mapbox_tileApi = '../../../../api.tiles.mapbox.com/index.html';
+  window.mapbox_accessToken = 'pk.eyJ1IjoibWFwYm94IiwiYSI6IlhHVkZmaW8ifQ.hAMX5hSW-QnTeRCMAy9A8Q' || 'pk.eyJ1IjoibWFwYm94IiwiYSI6IlhHVkZmaW8ifQ.hAMX5hSW-QnTeRCMAy9A8Q'
+  if (L.mapbox.VERSION[0] === '2') {
+      L.mapbox.accessToken = window.mapbox_accessToken;
+      L.mapbox.config.FORCE_HTTPS = true;
+      L.mapbox.config.HTTPS_URL = window.mapbox_tileApi + '/v4';
+  }
+  </script>
+   <script src='../../../base.js/dist/base.js'></script>
+  
+   <style>
+  .geomtype {
+    display: inline-block;
+    margin-left: 5px;
+  }
+  .geomtype .icon {
+    vertical-align: 3px;
+  }
+  table.small th:first-child { width: 15em; }
+</style>
+
+ </head>
+ <body class='fill-light full'><div style="z-index: 9999; position: fixed; width: 100%; border: 0px; padding: 5px; margin: 0px; background-color: transparent;  font-size: 12pt; font-family: sans-serif;" id="web2disk_nag" onclick="javascript: document.getElementById('web2disk_nag').style.display = 'none';">
+		<div style="color: #000000; background-color:#F1F1F1; margin-left: auto; margin-right: auto; border-width: 2px; border-style: solid; width: 550px; ">
+			<div style="width: 100%; text-align: center; font-weight: bold; border: 0px; margin: 0px; padding: 0px">Hey, where did my words go? (Click to hide)</div>
+			<p>In the trial version of Web2Disk every fifth word is blanked out. 
+			To copy this site with all the words, please upgrade to the full version and copy this website again.</p>
+			<div style="width: 100%; text-align: center; font-weight: bold; border: 0px; margin: 0px; padding: 0px">
+				<a href="http://www.inspyder.com/products/Web2Disk/">Inspyder Web2Disk: The Website Downloader</a>
+			</div>
+		</div>
+	</div>
+  <div class='fill-midnight offcanvas-top row3 industries-subnav animate dark pin-top hide-mobile' id='industries'>
+    <div class='limiter pad2y space-top1 small strong contain'>
+       <ul class='space-bottom0 clearfix'>
+         <li class='col2'><a href="../../../industries/realestate/index.html" class="primary-nav-button inline pad1x pad0y round">Real Estate </a></li>
+         <li class='col2'><a href="../../../industries/transportation/index.html" class="primary-nav-button inline pad1x pad0y round">Transportation </a></li>
+         <li class='col2'><a href="../../../industries/agriculture/index.html" class="primary-nav-button inline pad1x pad0y round ">Agriculture </a></li>
+         <li class='col2'><a href="../../../industries/social/index.html" class="primary-nav-button inline pad1x pad0y round">Social </a></li>
+         <li class='col2'><a href="../../../industries/government/index.html" class="primary-nav-button inline pad1x pad0y round ">Government </a></li>        
+         <li class='col2'><a href="../../../industries/outdoors/index.html" class="primary-nav-button inline pad0x pad0y round">Fitness &amp; Outdoors </a></li>
+       </ul>
+       <ul class='clearfix'>
+          <li class='col2'><a href="../../../industries/finance/index.html" class="primary-nav-button inline pad1x pad0y round ">Finance </a></li>
+          <li class='col2'><a href="../../../industries/insurance/index.html" class="primary-nav-button inline pad1x pad0y round ">Insurance </a></li>
+          <li class='col2'><a href="../../../industries/naturalresources/index.html" class="primary-nav-button inline pad1x pad0y round ">Natural Resources </a></li>
+          <li class='col2'><a href="../../../industries/security/index.html" class="primary-nav-button inline pad1x pad0y round ">Security </a></li>
+          <li class='col2'><a href="../../../industries/health/index.html" class="primary-nav-button inline pad1x pad0y round ">Health </a></li>
+          <li class='col2'><a href="../../../industries/media/index.html" class="primary-nav-button inline pad0x pad0y round ">Media </a></li>
+       </ul> 
+    </div>
+  </div>
+ <div class='page-content'> 
+
+ <div class='masthead show-in-loaded col12 clearfix fill-blue dark'>
+   <div class='limiter clearfix'>
+     <nav class='col12 text-right pad2y contain animate clearfix noprint'>
+       <a class='fl mb-logo' href='../../../index.html'></a>
+       <h4 class='logo-enterpriseaddon pin-topleft text-aqua block-in-enterprise'>Enterprise </h4>
+       <div id='nav'>
+       </div>
+     </nav>
+   </div>
+ </div>
+
+ <div class=''><link href='../../../css/docs.css' rel='stylesheet' />
+
+ <!--Fixed sidebar navigation-->
+ <div class='docnav hide-mobile'>
+   <div class='limiter'><div class='col3 contain'>
+     <nav class='scroll-styled quiet-scroll small'>
+
+      
+      
+      
+       <div class='space-bottom1'>
+         <a class='block truncat strong quiet ' href='../index.html'>Vector Tiles Overview </a>
+        
+       </div>
+      
+      
+      
+      
+      
+       <div class='space-bottom1'>
+         <a class='block truncat strong quiet ' href='../mapbox-streets/index.html'>Mapbox Streets </a>
+        
+         <a class='block truncate' href='../mapbox-streets/index.html#Overview'>Overview </a>
+        
+         <a class='block truncate' href='../mapbox-streets/index.html#Changelog'>Changelog </a>
+        
+         <a class='block truncate' href='../mapbox-streets/index.html#landuse'>#landuse </a>
+        
+         <a class='block truncate' href='../mapbox-streets/index.html#waterway'>#waterway </a>
+        
+         <a class='block truncate' href='../mapbox-streets/index.html#water'>#water </a>
+        
+         <a class='block truncate' href='../mapbox-streets/index.html#landuse_overlay'>#landuse_overlay </a>
+        
+         <a class='block truncate' href='../mapbox-streets/index.html#aeroway'>#aeroway </a>
+        
+         <a class='block truncate' href='../mapbox-streets/index.html#barrier_line'>#barrier_line </a>
+        
+         <a class='block truncate' href='../mapbox-streets/index.html#building'>#building </a>
+        
+         <a class='block truncate' href='../mapbox-streets/index.html#tunnel-road-bridge'>#tunnel, #road, & #bridge </a>
+        
+         <a class='block truncate' href='../mapbox-streets/index.html#admin'>#admin </a>
+        
+         <a class='block truncate' href='../mapbox-streets/index.html#country_label_line'>#country_label_line </a>
+        
+         <a class='block truncate' href='../mapbox-streets/index.html#country_label'>#country_label </a>
+        
+         <a class='block truncate' href='../mapbox-streets/index.html#marine_label'>#marine_label </a>
+        
+         <a class='block truncate' href='../mapbox-streets/index.html#state_label'>#state_label </a>
+        
+         <a class='block truncate' href='../mapbox-streets/index.html#place_label'>#place_label </a>
+        
+         <a class='block truncate' href='../mapbox-streets/index.html#water_label'>#water_label </a>
+        
+         <a class='block truncate' href='../mapbox-streets/index.html#poi_label'>#poi_label </a>
+        
+         <a class='block truncate' href='../mapbox-streets/index.html#road_label'>#road_label </a>
+        
+         <a class='block truncate' href='../mapbox-streets/index.html#waterway_label'>#waterway_label </a>
+        
+         <a class='block truncate' href='../mapbox-streets/index.html#housenum_label'>#housenum_label </a>
+        
+       </div>
+      
+      
+      
+      
+      
+       <div class='space-bottom1'>
+         <a class='block truncat strong quiet  active' href='index.html'>Mapbox Terrain </a>
+        
+         <a class='block truncate' href='index.html#Overview'>Overview </a>
+        
+         <a class='block truncate' href='index.html#landcover'>#landcover </a>
+        
+         <a class='block truncate' href='index.html#hillshade'>#hillshade </a>
+        
+         <a class='block truncate' href='index.html#contour'>#contour </a>
+        
+       </div>
+      
+      
+      
+     </nav>
+   </div></div>
+ </div>
+
+ <div class='limiter clearfix pad2y'>
+   <nav class='contain z10 margin3 col9 fill-blue space-bottom round small'>
+     <div class='col3 dark round-left keyline-right pad2y pad1x center truncate'>
+       <strong class='icon point-line'>Web services </strong>
+     </div>
+     <div class='col6 dark tabs mobile-cols pad1'><!--
+      --><a href='../../api/index.html' class='col6 '>API </a><!--
+      --><a href='../index.html' class='col6  active'>Vector Tiles </a>
+     </div>
+     <div class='col3 pad1 keyline-left hide-mobile' style='height:61px;'></div>
+   </nav>
+
+   <div class='contain margin3 col9'>
+    
+     <div class='pad2 round doc prose fill-white keyline-all'>
+       <h1>Mapbox Terrain </h1>
+       <pre class='fill-darken3 dark round'>
+ <span class='quiet'>Source ID: </span>
+ <strong>mapbox.mapbox-terrain-v1 </strong>
+ </pre>
+
+
+ <p>This is a guide __ the layers and data ______ the Mapbox Terrain vector ____ source to help with _______. </p>
+
+ <p><a class='doc-section' id='overview'></a></p>
+
+ <h2>Overview </h2>
+
+
+ <p>Mapbox Terrain provides hillshades, _________ contours, and landcover data ___ in vector form. </p>
+
+ <p>Mapbox Terrain is based __ data from a variety __ sources - see  <a href="../../../about/maps/index.html">the about page </a> for details. When _____ the Mapbox Terrain layer ________ in a design or ___________ you must provide  <a href="../../../help/attribution/index.html">proper attribution </a>. </p>
+
+ <p><a class='doc-section' id='landcover'></a></p>
+
+ <h2>#landcover
+ <div class='geomtype' title='polygons'>
+     <span class='fill-gray inline round dark small icon marker'></span>
+     <span class='fill-gray inline round dark small icon polyline'></span>
+     <span class='fill-green inline round dark small icon polygon'></span></div>
+ </h2>
+
+
+ <p>The landcover layer provides _ generalized backdrop of vegetation, ___________, and permanent ice &amp; ____. It is intended for _________ use and not appropriate ___ science or other analysis. _____ space in the landcover _____ represents either water or ____ earth, rock, sand, and _____-__ areas. </p>
+
+ <h3>Classes </h3>
+
+
+ <p>The  <strong><code>class </code></strong> field is used ___ styling different types of _________. The classes are designed __ look best when there __ a smooth color gradient ______ from wood → scrub → grass → crop → ___ background → snow. Thin ______ of &ldquo;grass&rdquo; or &ldquo;crop&rdquo; _____ the edge of a ______ area might not necessarily _________ actual grass or cropland, ___ are there to smooth ___ transition from wood to ____ land. </p>
+
+ <table class='small'>
+ <tr><th>Value </th><th>Description </th></tr>
+ <tr><td><code>'wood' </code></td><td>The area is mostly ______ or forest-like. </td></tr>
+ <tr><td><code>'scrub' </code></td><td>The area is either ______ bushy or a mix __ wooded and grassy </td></tr>
+ <tr><td><code>'grass' </code></td><td>The area is mostly ______. </td></tr>
+ <tr><td><code>'crop' </code></td><td>The area is mostly ____________, or thin/patchy grass </td></tr>
+ <tr><td><code>'snow' </code></td><td>The area is mostly _________ ice, glacier or snow </td></tr>
+ </table>
+
+
+
+
+ <pre>
+ <span class='quiet'>CartoCSS Example: </span>
+Map { background-color: cornsilk; }
+#_________ {
+  [class='wood'] { _______-____: darkseagreen; }
+  [class='scrub'] { polygon-fill: mix(darkseagreen,cornsilk,75%); }
+  [_____='_____'] { polygon-fill: mix(darkseagreen,cornsilk,50%); }
+  [class='crop'] { polygon-fill: mix(darkseagreen,cornsilk,25%); }
+  [class='snow'] { polygon-fill: _____; }
+}
+ </pre>
+
+
+ <p><a class='doc-section' id='contour'></a></p>
+
+ <h2>#contour
+ <div class='geomtype' title='lines'>
+     <span class='fill-gray inline round dark small icon marker'></span>
+     <span class='fill-blue inline round dark small icon polyline'></span>
+     <span class='fill-gray inline round dark small icon polygon'></span></div>
+ </h2>
+
+
+
+
+ <h3>Elevation </h3>
+
+
+ <p>The  <strong><code>ele </code></strong> field stores the _________ of each contour line __ meters and can be ____ for labeling or filtering. _______ the values range from  <code>-410 </code> near the shore __ the Dead Sea to  <code>8840 </code> near the peak __ Mt Everest, but due __ bugs and inconsistencies values _______ this range may exist. </p>
+
+ <pre>
+ <span class='quiet'>CartoCSS Example: </span>
+#contour {
+  text-name: [___]+' m';
+  text-face-name: 'Open ____ Regular';
+}
+ </pre>
+
+
+
+
+ <h3>Index lines </h3>
+
+
+ <p>The  <strong><code>index </code></strong> field can be ____ to accentuate index contours, ___ it can also be ____ to reduce the contour _______ if you wish. </p>
+
+ <p><tr><th>Value </th><th>Description </th></tr>
+ <tr><td><code>10 </code></td><td>Every 10th line </td></tr>
+ <tr><td><code>5 </code></td><td>Every 5th line </td></tr>
+ <tr><td><code>2 </code></td><td>Every 2nd line </td></tr>
+ <tr><td><code>null </code></td><td>None of the above </td></tr>
+ </p>
+
+ <pre>
+ <span class='quiet'>CartoCSS Example: </span>
+#contour {
+   <em>// only show every _____ contour line </em>
+  [ele=10], [ele=2] { line-width: 1; }
+}
+ </pre>
+
+
+ <p><a class='doc-section' id='hillshade'></a></p>
+
+ <h2>#hillshade
+ <div class='geomtype' title='polygons'>
+     <span class='fill-gray inline round dark small icon marker'></span>
+     <span class='fill-gray inline round dark small icon polyline'></span>
+     <span class='fill-green inline round dark small icon polygon'></span></div>
+ </h2>
+
+
+ <p>The hillshade layer contains ________ that when styled appropriately _______ shaded relief of hills. ___ lighting direction is not _________, but from the north-west (__ is traditional in shaded ______). </p>
+
+ <p>At zoom levels above 14 you may want to ____, fade, or completely hide ___ hillshade layer as the __________ of the data is ___ enough to hold up __ the largest scales. </p>
+
+ <h3>Classes </h3>
+
+
+ <p>The  <strong><code>class </code></strong> field is for _______ the different levels of _____ and shadow. </p>
+
+ <table class='small'>
+ <tr><th>Value </th><th>Description </th></tr>
+ <tr><td><code>'full_shadow' </code></td><td>Only the darkest parts __ the shadows </td></tr>
+ <tr><td><code>'medium_shadow' </code></td><td>Areas in slight shadow ___ darker </td></tr>
+ <tr><td><code>'medium_highlight' </code></td><td>Areas highlighted slightly and ________ </td></tr>
+ <tr><td><code>'full_highlight' </code></td><td>Only the brightest parts __ the highlights </td></tr>
+ </table>
+
+
+
+
+ <pre>
+ <span class='quiet'>CartoCSS Example </span>
+#hillshade {
+  polygon-opacity: 0.1;
+  [class='full_shadow'], [class='medium_shadow'] {
+    polygon-fill: black;
+  }
+  [class='full_highlight'], [class='medium_highlight'] {
+    polygon-fill: _____;
+  }
+}
+ </pre>
+
+
+
+
+     </div>
+   </div>
+ </div>
+ </div>
+
+ <div class='footer pad4y clearfix hide-mobile fill-light'>
+   <div class='limiter'>
+    <div class='clearfix'> 
+     <div class='col8 small mobile-cols'>
+       <div class='col12 clearfix'>
+         <div class='col3'>
+          
+           <a id='footer-design' class='space-bottom0 col12 strong' href='../../../design/index.html'>Design </a>
+          
+           <a id='footer-data' class='space-bottom0 col12 strong' href='../../../data-platform/index.html'>Data </a>
+          
+           <a id='footer-developers' class='space-bottom0 col12 strong' href='../../index.html'>Developers </a>
+          
+           <a id='footer-showcase' class='space-bottom0 col12 strong' href='../../../showcase/index.html'>Showcase </a>
+          
+           <a id='footer-enterprise' class='space-bottom0 col12 strong' href='../../../enterprise/index.html'>Enterprise </a>
+          
+         </div>
+         <div class='col3'>
+          
+           <a id='footer-plans' class='space-bottom0 col12 quiet strong' href='../../../plans/index.html'>Plans </a>
+          
+           <a id='footer-blog' class='space-bottom0 col12 quiet strong' href='../../../blog/index.html'>Blog </a>
+          
+           <a id='footer-help' class='space-bottom0 col12 quiet strong' href='../../../help/index.html'>Help </a>
+          
+           <a id='footer-status' class='space-bottom0 col12 quiet strong' href='../../../status/index.html'>Status </a>
+          
+           <a id='footer-contact' class='space-bottom0 col12 quiet strong' href='../../../contact/index.html'>Contact </a>
+          
+         </div>
+         <div class='col3'>     
+          
+           <a id='footer-about' class='space-bottom0 col12 quiet strong' href='../../../about/index.html'>About </a>
+          
+           <a id='footer-team' class='space-bottom0 col12 quiet strong' href='../../../about/team/index.html'>Team </a>
+          
+           <a id='footer-jobs' class='space-bottom0 col12 quiet strong' href='../../../jobs/index.html'>Jobs </a>
+          
+           <a id='footer-press' class='space-bottom0 col12 quiet strong' href='../../../about/press/index.html'>Press </a>
+          
+           <a id='footer-press-kit' class='space-bottom0 col12 quiet strong' href='../../../about/press-kit/index.html'>Press Kit </a>
+          
+         </div>
+          <div class='col3'>
+            <div class='space-bottom0 strong'>Tools </div>
+          
+           <a id='footer-studio' class='space-bottom0 col12 quiet strong' href='../../../mapbox-studio/index.html'>Studio </a>
+          
+           <a id='footer-maki' class='space-bottom0 col12 quiet strong' href='../../../maki/index.html'>Maki </a>
+          
+         </div>
+       </div>
+     </div>
+
+     <div class='col4 footer-social'>
+       <div class='animate footer-animation col6'></div>
+       <div class='footer-dialog fr small strong quiet pad2 col6 contain round fill-gray'>
+      Follow Mapbox on  <a href='https://twitter.com/mapbox'>Twitter </a>,  <a href='https://www.facebook.com/Mapbox'>Facebook </a>, and  <a href='https://instagram.com/mapbox'>Instagram </a>.
+       </div>
+     </div>  
+   </div>
+   </div>
+
+   <div class="limiter industries-footer">
+   <p class='space-bottom1 strong small space-top2 industries-footer-title'>Industries </p>
+   <div class='clearfix pad2y pad4x fill-gray round space-bottom4 industries-footer'>
+         <div class='clearfix'>
+            <div class='col3'>
+            
+             <a id='footer-real-estate' class='space-bottom0 col12 strong quiet small' href='../../../industries/realestate/index.html'>Real Estate </a>
+            
+             <a id='footer-transportation' class='space-bottom0 col12 strong quiet small' href='../../../industries/transportation/index.html'>Transportation </a>
+            
+             <a id='footer-agriculture' class='space-bottom0 col12 strong quiet small' href='../../../industries/agriculture/index.html'>Agriculture </a>
+            
+           </div>
+            <div class='col3'>
+            
+             <a id='footer-social' class='space-bottom0 col12 strong quiet small' href='../../../industries/social/index.html'>Social </a>
+            
+             <a id='footer-government' class='space-bottom0 col12 strong quiet small' href='../../../industries/government/index.html'>Government </a>
+            
+             <a id='footer-fitness-&amp;-outdoors' class='space-bottom0 col12 strong quiet small' href='../../../industries/outdoors/index.html'>Fitness &amp; outdoors </a>
+            
+           </div>
+            <div class='col3'>
+            
+             <a id='footer-finance' class='space-bottom0 col12 strong quiet small' href='../../../industries/finance/index.html'>Finance </a>
+            
+             <a id='footer-insurance' class='space-bottom0 col12 strong quiet small' href='../../../industries/insurance/index.html'>Insurance </a>
+            
+             <a id='footer-natural-resources' class='space-bottom0 col12 strong quiet small' href='../../../industries/naturalresources/index.html'>Natural Resources </a>
+            
+           </div>
+           <div class='col3'>
+            
+                 <a id='footer-security' class='space-bottom0 col12 strong quiet small' href='../../../industries/security/index.html'>Security </a>
+            
+                 <a id='footer-health' class='space-bottom0 col12 strong quiet small' href='../../../industries/health/index.html'>Health </a>
+            
+                 <a id='footer-media' class='space-bottom0 col12 strong quiet small' href='../../../industries/media/index.html'>Media </a>
+            
+           </div>
+          </div> 
+       </div>
+   </div>
+
+   <div class='limiter newsletter-copyright clearfix'>
+   <div class='col8 contain newsletter'>
+         <form id='newsletter' method='post'>
+           <fieldset class='clearfix input-pill col10 pill mobile-cols with-icon'>
+             <span class='icon mail quiet'></span>
+             <input type='text' value='' placeholder='Sign up for our newsletter' name='email' class='col9 required email' />
+             <input type='submit' value='Subscribe' class='col3 quiet' />
+           </fieldset>
+         </form>
+        </div> 
+
+       <div class='col4 footer-copyright small space-top1 col4 noprint fill-light contain'>
+           <div class='pin-right'>
+             <a href='../../../tos/index.html'>Terms </a> +
+             <a href='../../../privacy/index.html'>Privacy </a>
+            &copy; Mapbox
+           </div>
+       </div>
+   </div>
+
+ </div>
+
+ <div class='footer-copyright small center noprint fill-light show-mobile'>
+   <div class='limiter'>
+     <div class='pad2y'>
+             <a href='../../../tos/index.html'>Terms </a> +
+             <a href='../../../privacy/index.html'>Privacy </a>
+      &copy; Mapbox
+     </div>
+   </div>
+ </div>
+
+
+
+ <div id='modal-content' class='animate modal modal-content'></div>
+ </div>
+ </body>
+ </html>
+ 

@@ -1,0 +1,707 @@
+<!DOCTYPE html >
+ <html>
+ <head>
+<!-- Original URL: https://www.mapbox.com/tilemill/docs/guides/symbol-drawing-order/
+Date Downloaded: 2014-12-05 09:31:33 PM !-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  
+   <meta charset='UTF-8' />
+   <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+   <meta name='robots' content='index' />
+   <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  
+   <title>Symbol Drawing Order | ______ </title>
+
+   <meta name='st:title' content='Symbol Drawing Order' />
+   <meta name='st:type' content='tilemill-docs' />
+   <meta name='st:info' content='site' />
+
+  
+
+   <link href='../../../../base/latest/base_8f8b1251.css' rel='stylesheet' />
+   <link href='../../../../css/site.css' rel='stylesheet' />
+   <!--[if IE 9]><link href='../../../../css/site-ie9.css' rel='stylesheet' /><![endif]-->
+   <link rel='shortcut icon' href='../../../../img/favicon.ico' type='image/x-icon' />
+   <link rel='alternate' type='application/rss+xml' title='RSS' href='../../../../blog/blog.rss' />
+   <link href='../../../../../api.tiles.mapbox.com/mapbox.js/v1.6.1/mapbox.css' rel='stylesheet' />
+
+   <!--[if lt IE 9 ]><script src='../../../../js/redirect-ie.js'></script><![endif]-->
+   <script src='../../../../../js.stripe.com/v2/index.html.js'></script>
+   <script>
+  var KM_COOKIE_DOMAIN = 'www.mapbox.com';
+  var analytics=analytics||[];(function(){var e=['identify','track','trackLink','trackForm','trackClick','trackSubmit','page','pageview','ab','alias','ready','group'],t=function(e){return function(){analytics.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var n=0;n<e.length;n++)analytics[e[n]]=t(e[n])})(),analytics.load=function(e){var t=document.createElement('script');t.type='text/javascript',t.async=!0,t.src=('https:'===document.location.protocol?'https://':"http://")+'d2dq2ahtl5zl1z.cloudfront.net/analytics.js/v1/'+e+'/analytics.min.js';var n=document.getElementsByTagName('script')[0];n.parentNode.insertBefore(t,n)};
+  analytics.load(window.location.hostname.indexOf('mapbox.com') !== -1 ? 'fl0c8p240n' : '0biiejpgfj');
+
+  Stripe.setPublishableKey(window.location.hostname.indexOf('mapbox.com') !== -1 ?
+    'pk_live_hI6mmOTIg7KkywK6vo3vJvpk' : 'pk_test_gmIyREg3sKzAiyMkAEeCsxUG');
+  </script>
+   <script src='../../../../../api.tiles.mapbox.com/mapbox.js/v1.6.1/mapbox.js'></script>
+
+   <script>
+  window.mapbox_api = 'https://www.mapbox.com/core';
+  window.mapbox_tileApi = '../../../../../api.tiles.mapbox.com/index.html';
+  window.mapbox_accessToken = '' || 'pk.eyJ1IjoibWFwYm94IiwiYSI6IlhHVkZmaW8ifQ.hAMX5hSW-QnTeRCMAy9A8Q'
+  if (L.mapbox.VERSION[0] === '2') {
+      L.mapbox.accessToken = window.mapbox_accessToken;
+      L.mapbox.config.FORCE_HTTPS = true;
+      L.mapbox.config.HTTPS_URL = window.mapbox_tileApi + '/v4';
+  }
+  </script>
+   <script src='../../../../base.js/dist/base.js'></script>
+  
+  
+ </head>
+ <body class='fill-light full'><div style="z-index: 9999; position: fixed; width: 100%; border: 0px; padding: 5px; margin: 0px; background-color: transparent;  font-size: 12pt; font-family: sans-serif;" id="web2disk_nag" onclick="javascript: document.getElementById('web2disk_nag').style.display = 'none';">
+		<div style="color: #000000; background-color:#F1F1F1; margin-left: auto; margin-right: auto; border-width: 2px; border-style: solid; width: 550px; ">
+			<div style="width: 100%; text-align: center; font-weight: bold; border: 0px; margin: 0px; padding: 0px">Hey, where did my words go? (Click to hide)</div>
+			<p>In the trial version of Web2Disk every fifth word is blanked out. 
+			To copy this site with all the words, please upgrade to the full version and copy this website again.</p>
+			<div style="width: 100%; text-align: center; font-weight: bold; border: 0px; margin: 0px; padding: 0px">
+				<a href="http://www.inspyder.com/products/Web2Disk/">Inspyder Web2Disk: The Website Downloader</a>
+			</div>
+		</div>
+	</div>
+  <div class='fill-midnight offcanvas-top row3 industries-subnav animate dark pin-top hide-mobile' id='industries'>
+    <div class='limiter pad2y space-top1 small strong contain'>
+       <ul class='space-bottom0 clearfix'>
+         <li class='col2'><a href="../../../../industries/realestate/index.html" class="primary-nav-button inline pad1x pad0y round">Real Estate </a></li>
+         <li class='col2'><a href="../../../../industries/transportation/index.html" class="primary-nav-button inline pad1x pad0y round">Transportation </a></li>
+         <li class='col2'><a href="../../../../industries/agriculture/index.html" class="primary-nav-button inline pad1x pad0y round ">Agriculture </a></li>
+         <li class='col2'><a href="../../../../industries/social/index.html" class="primary-nav-button inline pad1x pad0y round">Social </a></li>
+         <li class='col2'><a href="../../../../industries/government/index.html" class="primary-nav-button inline pad1x pad0y round ">Government </a></li>        
+         <li class='col2'><a href="../../../../industries/outdoors/index.html" class="primary-nav-button inline pad0x pad0y round">Fitness &amp; Outdoors </a></li>
+       </ul>
+       <ul class='clearfix'>
+          <li class='col2'><a href="../../../../industries/finance/index.html" class="primary-nav-button inline pad1x pad0y round ">Finance </a></li>
+          <li class='col2'><a href="../../../../industries/insurance/index.html" class="primary-nav-button inline pad1x pad0y round ">Insurance </a></li>
+          <li class='col2'><a href="../../../../industries/naturalresources/index.html" class="primary-nav-button inline pad1x pad0y round ">Natural Resources </a></li>
+          <li class='col2'><a href="../../../../industries/security/index.html" class="primary-nav-button inline pad1x pad0y round ">Security </a></li>
+          <li class='col2'><a href="../../../../industries/health/index.html" class="primary-nav-button inline pad1x pad0y round ">Health </a></li>
+          <li class='col2'><a href="../../../../industries/media/index.html" class="primary-nav-button inline pad0x pad0y round ">Media </a></li>
+       </ul> 
+    </div>
+  </div>
+ <div class='page-content'> 
+
+ <div class='masthead show-in-loaded col12 clearfix fill-blue dark'>
+   <div class='limiter clearfix'>
+     <nav class='col12 text-right pad2y contain animate clearfix noprint'>
+       <a class='fl mb-logo' href='../../../../index.html'></a>
+       <h4 class='logo-enterpriseaddon pin-topleft text-aqua block-in-enterprise'>Enterprise </h4>
+       <div id='nav'>
+       </div>
+     </nav>
+   </div>
+ </div>
+
+ <div class=''><link href='../../../site.css' rel='stylesheet' />
+ <link href='../../../../css/docs.css' rel='stylesheet' />
+
+ <!--Fixed sidebar navigation-->
+ <div class='docnav hide-mobile'>
+   <div class='limiter'><div class='col3 contain'>
+     <nav class='scroll-styled quiet-scroll'>
+       <div class='space-bottom2'>
+         <a class='block quiet active strong small truncate' href='../../../index.html'>Documentation </a>
+       </div>
+      
+         <div class='space-bottom1'>
+           <a href='../../install/index.html' class='block strong small quiet truncate'>Installation </a>
+          
+            
+               <a class='small block truncate' href='/tilemill/docs/source'>Building from source </a>
+            
+          
+            
+               <a class='small block truncate' href='../../install/index.html'>Installing </a>
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+               <a class='small block truncate' href='/tilemill/docs/releases'>Releases </a>
+            
+          
+            
+               <a class='small block truncate' href='/tilemill/docs/troubleshooting'>Troubleshooting </a>
+            
+          
+            
+               <a class='small block truncate' href='/tilemill/docs/upgrade'>Upgrade notes </a>
+            
+          
+            
+          
+            
+          
+            
+               <a class='small block truncate' href='/tilemill/docs/guides/data-to-map'>Going from Data to ___ </a>
+            
+          
+         </div>
+      
+         <div class='space-bottom1'>
+           <a href='../../crashcourse/introduction/index.html' class='block strong small quiet truncate'>Crashcourse </a>
+          
+            
+               <a class='small block truncate' href='../../crashcourse/introduction/index.html'>Introduction </a>
+            
+          
+            
+               <a class='small block truncate' href='/tilemill/docs/crashcourse/tilemill-gis'>TileMill and GIS </a>
+            
+          
+            
+               <a class='small block truncate' href='/tilemill/docs/crashcourse/point-data'>Importing a spreadsheet </a>
+            
+          
+            
+               <a class='small block truncate' href='/tilemill/docs/crashcourse/styling'>Styling data </a>
+            
+          
+            
+               <a class='small block truncate' href='/tilemill/docs/crashcourse/tooltips'>Adding tooltips and legends </a>
+            
+          
+            
+               <a class='small block truncate' href='/tilemill/docs/crashcourse/exporting'>Exporting a map </a>
+            
+          
+         </div>
+      
+         <div class='space-bottom1'>
+           <a href='../add-shapefile/index.html' class='block strong small quiet truncate'>Guides </a>
+          
+            
+               <a class='small block truncate' href='../add-shapefile/index.html'>Adding a shapefile layer </a>
+            
+          
+            
+               <a class='small block truncate' href='/tilemill/docs/guides/add-geodata'>Adding MapBox Geodata </a>
+            
+          
+            
+               <a class='small block truncate' href='/tilemill/docs/guides/labels-advanced'>Advanced Label Placement </a>
+            
+          
+            
+               <a class='small block truncate' href='/tilemill/docs/guides/advanced-legends'>Advanced legends </a>
+            
+          
+            
+               <a class='small block truncate' href='/tilemill/docs/guides/advanced-map-design'>Advanced map design </a>
+            
+          
+            
+               <a class='small block truncate' href='/tilemill/docs/guides/color-correction-rgb-imagery'>Color Correction of RGB _______ </a>
+            
+          
+            
+               <a class='small block truncate' href='/tilemill/docs/guides/colorizing-single-band-raster-data'>Colorizing Single-band Raster Data </a>
+            
+          
+            
+               <a class='small block truncate' href='/tilemill/docs/guides/comp-op'>Compositing Operations </a>
+            
+          
+            
+               <a class='small block truncate' href='/tilemill/docs/guides/designing-heat-maps'>Designing heat maps </a>
+            
+          
+            
+               <a class='small block truncate' href='/tilemill/docs/guides/discrete-raster-data'>Discrete Raster Data </a>
+            
+          
+            
+               <a class='small block truncate' href='/tilemill/docs/guides/images-in-tooltips'>Encoding images for tooltips </a>
+            
+          
+            
+               <a class='small block truncate' href='/tilemill/docs/guides/georeferencing-satellite-images'>Georeferencing Satellite Images </a>
+            
+          
+            
+               <a class='small block truncate' href='/tilemill/docs/guides/google-charts'>Google charts in tooltips </a>
+            
+          
+            
+               <a class='small block truncate' href='/tilemill/docs/guides/high-resolution-tiles'>High-Resolution Tiles </a>
+            
+          
+            
+               <a class='small block truncate' href='/tilemill/docs/guides/joining-data'>Joining data to shapefiles </a>
+            
+          
+            
+               <a class='small block truncate' href='/tilemill/docs/guides/landsat-8-imagery'>Processing Landsat 8 Imagery </a>
+            
+          
+            
+               <a class='small block truncate' href='/tilemill/docs/guides/optimizing-shapefiles'>Optimizing shapefiles </a>
+            
+          
+            
+               <a class='small block truncate' href='../osm-bright-mac-quickstart/index.html'>OSM Bright Mac OS _ quickstart </a>
+            
+          
+            
+               <a class='small block truncate' href='/tilemill/docs/guides/osm-bright-ubuntu-quickstart'>OSM Bright Ubuntu quickstart </a>
+            
+          
+            
+               <a class='small block truncate' href='/tilemill/docs/guides/google-docs'>Preparing data with Google ____ </a>
+            
+          
+            
+               <a class='small block truncate' href='/tilemill/docs/guides/recommended-sources'>Recommended data sources </a>
+            
+          
+            
+               <a class='small block truncate' href='/tilemill/docs/guides/ubuntu-service'>Running as an Ubuntu _______ </a>
+            
+          
+            
+               <a class='small block truncate' href='../selectors/index.html'>Selectors </a>
+            
+          
+            
+               <a class='small block truncate' href='/tilemill/docs/guides/gdal'>Setting up GDAL </a>
+            
+          
+            
+               <a class='small block truncate' href='../styling-labels/index.html'>Styling Labels </a>
+            
+          
+            
+               <a class='small block truncate' href='../styling-lines/index.html'>Styling Lines </a>
+            
+          
+            
+               <a class='small block truncate' href='../styling-polygons/index.html'>Styling Polygons </a>
+            
+          
+            
+               <a class='small block truncate' href='index.html'>Symbol Drawing Order </a>
+            
+          
+            
+               <a class='small block truncate' href='/tilemill/docs/guides/tilemill-complex-3d-structures'>Complex 3D Structures </a>
+            
+          
+            
+               <a class='small block truncate' href='/tilemill/docs/guides/tips-for-color'>Tips for using color __ maps </a>
+            
+          
+            
+               <a class='small block truncate' href='/tilemill/docs/guides/metatiles'>Understanding Metatiles </a>
+            
+          
+            
+               <a class='small block truncate' href='/tilemill/docs/guides/using-maki-icons'>Using Maki Icons in ________ </a>
+            
+          
+            
+               <a class='small block truncate' href='/tilemill/docs/guides/filegdb-work'>Working with FileGDB </a>
+            
+          
+            
+               <a class='small block truncate' href='/tilemill/docs/guides/reprojecting-geotiff'>Working with GeoTIFFs </a>
+            
+          
+            
+               <a class='small block truncate' href='/tilemill/docs/guides/postgis-work'>Working with PostGIS </a>
+            
+          
+            
+               <a class='small block truncate' href='/tilemill/docs/tutorials/sqlite-work'>Working with SQLite </a>
+            
+          
+            
+               <a class='small block truncate' href='/tilemill/docs/guides/terrain-data'>Working with terrain data </a>
+            
+          
+         </div>
+      
+         <div class='space-bottom1'>
+           <a href='/tilemill/docs/manual' class='block strong small quiet truncate'>Reference </a>
+          
+            
+               <a class='small block truncate' href='/tilemill/docs/manual'>Introduction </a>
+            
+          
+            
+               <a class='small block truncate' href='/tilemill/docs/manual/usage'>Usage </a>
+            
+          
+            
+               <a class='small block truncate' href='/tilemill/docs/manual/basics'>Basics </a>
+            
+          
+            
+               <a class='small block truncate' href='/tilemill/docs/manual/interface-tour'>Interface tour </a>
+            
+          
+            
+               <a class='small block truncate' href='/tilemill/docs/manual/files-directories'>Files & directories </a>
+            
+          
+            
+               <a class='small block truncate' href='../../manual/adding-layers/index.html'>Adding layers </a>
+            
+          
+            
+               <a class='small block truncate' href='/tilemill/docs/manual/project-settings'>Project settings </a>
+            
+          
+            
+               <a class='small block truncate' href='../../manual/carto/index.html'>CartoCSS </a>
+            
+          
+            
+               <a class='small block truncate' href='/tilemill/docs/manual/exporting'>Exporting </a>
+            
+          
+            
+               <a class='small block truncate' href='/tilemill/docs/manual/mapbox-geodata'>Mapbox geodata </a>
+            
+          
+            
+               <a class='small block truncate' href='/tilemill/docs/manual/tilemill-settings'>TileMill settings </a>
+            
+          
+         </div>
+      
+         <div class='space-bottom1'>
+           <a href='../../../changelog/index.html' class='block strong small quiet truncate'>Changelog </a>
+          
+         </div>
+      
+     </nav>
+   </div></div>
+ </div>
+
+ <div class='limiter clearfix'>
+   <div class='pad2y'>
+     <nav class='contain z10 margin3 col9 fill-denim space-bottom round small'>
+       <div class='col3 dark round-left keyline-right pad2y pad1x center truncate'>
+         <strong class='icon tilemill'>TileMill </strong>
+       </div>
+       <div class='col6 dark tabs mobile-cols pad1'><!--
+        --><a href='../../crashcourse/introduction/index.html' class='col6 truncate active'>Documentation </a><!--
+        --><a href='../../../../carto/index.html' class='col6 truncate'>CartoCSS Reference </a>
+       </div>
+       <div id='docs-search' class='col3 pad1 keyline-left'>
+         <fieldset class='col12 with-icon dark'>
+           <span class='icon search'></span>
+           <input type='text' class='col12 round clean' />
+         </fieldset>
+       </div>
+     </nav>
+   </div>
+   <div class='contain margin3 col9' data-swiftype-index="true">
+     <div class='prose pad2 doc round fill-white keyline-all'>
+   <h1 id='symbol_drawing_order'>Symbol Drawing Order </h1>
+   <div class="keyline-all fill-darken0 round space-bottom2">
+   <div class="pad1y pad2x keyline-bottom strong small clearfix">
+    __ you've found yourself on ____ page, we're assuming you've
+   </div>
+   <div class="fill-white round-bottom pad1">
+     <ul>
+      
+       <li><p><a href="../../install/index.html">Installed </a> TileMill on your ________. </p>
+ </li>
+      
+       <li><p>Reviewed  <a href="../../crashcourse/introduction/index.html">Crash Course </a></p>
+ </li>
+      
+     </ul>
+   </div>
+ </div>
+
+ <p>Objects in TileMill are _____ using a  <a href="http://en.wikipedia.org/wiki/Painter's_algorithm">Painter’s Algorithm </a>, meaning everything is _____ in a specific order, ___ things that are drawn _____ might be covered by ______ that are drawn later.  </p>
+
+ <h2 id="overview">Overview </h2>
+
+ <p>The order in which _______ are drawn depends on ___ following conditions. See the ________ that follow for more _______. </p>
+
+ <ol>
+   <li>Layers: “Higher” layers obscure “_____” ones. </li>
+   <li>Stylesheets are applied from ____ to right. </li>
+   <li>Rules within a Stylesheet ___ applied from top to ______. This means two things:
+ _. objects matched by later _____ will be drawn over _____ defined by earlier rules; ___
+ b. attachments may be _________ by later rules. </li>
+   <li>Attachments (eg,   <code>::glow { ... } </code>) within a Stylesheet ___ applied from top to ______. </li>
+   <li>Lastly, all else being _____, objects are drawn in ___ order in which they ___ found, such as in _______. </li>
+ </ol>
+
+ <h2 id="order-vs-priority">Order vs. Priority </h2>
+
+ <p>For things like lines ___ areas, objects that are _____ first are less likely __ be fully visible. Objects ____ in the stack might __________ obscure other objects, thus ___ might associate these with _ high ‘priority’ or ‘importance’. </p>
+
+ <p>However for things like ____, markers, and icons that ____ their  <em>allow-overlap </em> properties set to _____ (the default) things work _ bit differently. Objects that ___ drawn first are  <strong>more </strong> likely to be _______; instead of letting things ___ on top of each _____, overlapping objects are simply _______. Since such objects higher __ the stack are less ______ to be drawn, you _____ associate these with a ___ ‘priority’ or ‘importance’. </p>
+
+ <h2 id="layer-ordering">Layer Ordering </h2>
+
+ <p>Layers are the most _____ and explicit way of ___________ the order of elements __ a map in TileMill. ______ are rendered in order ________ at the bottom of ___  <a href="/tilemill/docs/manual/interface-tour/#layers_list">layers list </a> moving up. You ___ adjust the position of ____ layer in the stack __ clicking and draggin on ___ geometry icon. </p>
+
+ <p>If you look at ___ example projects that come ____ TileMill, you can see ____ the basic parts of ___ map (eg. landuse areas, _____) are in layers at ___ bottom of the list. ___ things that shouldn’t be _______ up by anything else (__. labels, icons) are in ______ at the top of ___ list. </p>
+
+ <h2 id="attachment-ordering">Attachment Ordering </h2>
+
+ <p>Within a layer, styles ___ be broken up into ‘___________’ with the  <code>:: </code> syntax. Think of ___________ like sub-layers. </p>
+
+ <p><img src="/tilemill/assets/pages/symbol-order-0.png" class="fig-right" /></p>
+
+ <pre><code>#layer {
+  ::outline {
+    line-width: 6;
+    line-color: _____;
+  }
+  ::inline {
+    line-width: 2;
+    line-color: _____;
+  }
+}
+ </code></pre>
+
+ <p>Attachments are drawn in ___ order they are first _______, so in the example _____ the  <code>::outline </code> lines will be _____ below the  <code>::inline </code> lines. </p>
+
+ <p>Note that all styles ___ nested inside attachments. If ___ don’t explicitly define one, _ default attachment still exists. ____ the following style produces ___ same result as the ___ above. </p>
+
+ <p><img src="/tilemill/assets/pages/symbol-order-0.png" class="fig-right" /></p>
+
+ <pre><code>#layer {
+  ::outline {
+    line-width: 6;
+    line-color: _____;
+  }
+  line-width: 2;
+  line-color: white;
+}
+ </code></pre>
+
+ <h2 id="data-ordering">Data Ordering </h2>
+
+ <p>Within each attachment, the _____ that your data is ______/_________ in is also significant. </p>
+
+ <p>When styling city labels, ___ example, it’s good to ______ that the order of ____ data makes sense for _____ prioritization. For data coming ____ an SQL database you ______  <code>ORDER BY </code> a population column __ some other prioritization field __ the select statement. </p>
+
+ <p>Data coming from files ___ read from the beginning __ the file to the ___ and cannot be re-ordered __-___-___ by TileMill. You’ll want __ pre-process such files to ____ sure the ordering makes _____. </p>
+
+ <p>You can do this ____ the terminal with  <code>ogr2ogr </code> (see  <a href="/tilemill/docs/guides/gdal/">Setting up GDAL </a>). This example rearranges ___ the objects in  <code>cities.shp </code> based on the  <code>population </code> field in descending _____ (highest population first). </p>
+
+ <pre><code>ogr2ogr -sql \
+  '______ * from cities order __ population desc' \
+  ______________.___ cities.shp
+ </code></pre>
+
+ <h2 id="symbolizer-ordering">Symbolizer Ordering </h2>
+
+ <p>Each object in each __________ may have multiple  <em>symbolizers </em> applied to it. ____ is, a polygon might ____ both a fill and __ outline. In this case, ___ styles are drawn in ___ same order they are _______. </p>
+
+ <p>In this style, the _______ will be drawn below ___ fill: </p>
+
+ <p><img src="/tilemill/assets/pages/symbol-order-1.png" class="fig-right" /></p>
+
+ <pre><code>#layer {
+  line-width: 6;
+  polygon-fill: #aec;
+  _______-_______: 0.8;
+}
+ </code></pre>
+
+ <p>In this style, the ____ is drawn on top __ the fill: </p>
+
+ <p><img src="/tilemill/assets/pages/symbol-order-2.png" class="fig-right" /></p>
+
+ <pre><code>#layer {
+  polygon-fill: #___;
+  polygon-opacity: 0.8;
+  ____-_____: 6;
+}
+ </code></pre>
+
+ <p>It’s also possible to ______ multiple symbols of the ____ type within an attachment _____ named  <em>instances </em>. Like attachments, their _____ are arbitrary. </p>
+
+ <p><img src="/tilemill/assets/pages/symbol-order-3.png" class="fig-right" /></p>
+
+ <pre><code>#layer {
+  bottomline/line-width: 6;
+  middleline/line-width: 4;
+  __________/____-_____: white;
+  topline/line-color: red;
+}
+ </code></pre>
+
+ <p>Note that symbolizer ordering _______ after all other types __ ordering - so an _______ might be on top __ one polygon but beneath _ neighboring polygon. If you ____ to ensure lines are ______ below fills, use separate ___________. </p>
+
+ </div>
+
+   </div>
+ </div>
+
+ <script>
+$('#docs-search input').swiftype({
+    autocompleteContainingElement: $('#docs-search'),
+    filters: {
+      page: {
+        type: ['tilemill-docs', 'carto-docs']
+      }
+    }
+});
+</script>
+ </div>
+
+ <div class='footer pad4y clearfix hide-mobile fill-light'>
+   <div class='limiter'>
+    <div class='clearfix'> 
+     <div class='col8 small mobile-cols'>
+       <div class='col12 clearfix'>
+         <div class='col3'>
+          
+           <a id='footer-design' class='space-bottom0 col12 strong' href='../../../../design/index.html'>Design </a>
+          
+           <a id='footer-data' class='space-bottom0 col12 strong' href='../../../../data-platform/index.html'>Data </a>
+          
+           <a id='footer-developers' class='space-bottom0 col12 strong' href='../../../../developers/index.html'>Developers </a>
+          
+           <a id='footer-showcase' class='space-bottom0 col12 strong' href='../../../../showcase/index.html'>Showcase </a>
+          
+           <a id='footer-enterprise' class='space-bottom0 col12 strong' href='../../../../enterprise/index.html'>Enterprise </a>
+          
+         </div>
+         <div class='col3'>
+          
+           <a id='footer-plans' class='space-bottom0 col12 quiet strong' href='../../../../plans/index.html'>Plans </a>
+          
+           <a id='footer-blog' class='space-bottom0 col12 quiet strong' href='../../../../blog/index.html'>Blog </a>
+          
+           <a id='footer-help' class='space-bottom0 col12 quiet strong' href='../../../../help/index.html'>Help </a>
+          
+           <a id='footer-status' class='space-bottom0 col12 quiet strong' href='../../../../status/index.html'>Status </a>
+          
+           <a id='footer-contact' class='space-bottom0 col12 quiet strong' href='../../../../contact/index.html'>Contact </a>
+          
+         </div>
+         <div class='col3'>     
+          
+           <a id='footer-about' class='space-bottom0 col12 quiet strong' href='../../../../about/index.html'>About </a>
+          
+           <a id='footer-team' class='space-bottom0 col12 quiet strong' href='../../../../about/team/index.html'>Team </a>
+          
+           <a id='footer-jobs' class='space-bottom0 col12 quiet strong' href='../../../../jobs/index.html'>Jobs </a>
+          
+           <a id='footer-press' class='space-bottom0 col12 quiet strong' href='../../../../about/press/index.html'>Press </a>
+          
+           <a id='footer-press-kit' class='space-bottom0 col12 quiet strong' href='../../../../about/press-kit/index.html'>Press Kit </a>
+          
+         </div>
+          <div class='col3'>
+            <div class='space-bottom0 strong'>Tools </div>
+          
+           <a id='footer-studio' class='space-bottom0 col12 quiet strong' href='../../../../mapbox-studio/index.html'>Studio </a>
+          
+           <a id='footer-maki' class='space-bottom0 col12 quiet strong' href='../../../../maki/index.html'>Maki </a>
+          
+         </div>
+       </div>
+     </div>
+
+     <div class='col4 footer-social'>
+       <div class='animate footer-animation col6'></div>
+       <div class='footer-dialog fr small strong quiet pad2 col6 contain round fill-gray'>
+      Follow Mapbox on  <a href='https://twitter.com/mapbox'>Twitter </a>,  <a href='https://www.facebook.com/Mapbox'>Facebook </a>, and  <a href='https://instagram.com/mapbox'>Instagram </a>.
+       </div>
+     </div>  
+   </div>
+   </div>
+
+   <div class="limiter industries-footer">
+   <p class='space-bottom1 strong small space-top2 industries-footer-title'>Industries </p>
+   <div class='clearfix pad2y pad4x fill-gray round space-bottom4 industries-footer'>
+         <div class='clearfix'>
+            <div class='col3'>
+            
+             <a id='footer-real-estate' class='space-bottom0 col12 strong quiet small' href='../../../../industries/realestate/index.html'>Real Estate </a>
+            
+             <a id='footer-transportation' class='space-bottom0 col12 strong quiet small' href='../../../../industries/transportation/index.html'>Transportation </a>
+            
+             <a id='footer-agriculture' class='space-bottom0 col12 strong quiet small' href='../../../../industries/agriculture/index.html'>Agriculture </a>
+            
+           </div>
+            <div class='col3'>
+            
+             <a id='footer-social' class='space-bottom0 col12 strong quiet small' href='../../../../industries/social/index.html'>Social </a>
+            
+             <a id='footer-government' class='space-bottom0 col12 strong quiet small' href='../../../../industries/government/index.html'>Government </a>
+            
+             <a id='footer-fitness-&amp;-outdoors' class='space-bottom0 col12 strong quiet small' href='../../../../industries/outdoors/index.html'>Fitness &amp; outdoors </a>
+            
+           </div>
+            <div class='col3'>
+            
+             <a id='footer-finance' class='space-bottom0 col12 strong quiet small' href='../../../../industries/finance/index.html'>Finance </a>
+            
+             <a id='footer-insurance' class='space-bottom0 col12 strong quiet small' href='../../../../industries/insurance/index.html'>Insurance </a>
+            
+             <a id='footer-natural-resources' class='space-bottom0 col12 strong quiet small' href='../../../../industries/naturalresources/index.html'>Natural Resources </a>
+            
+           </div>
+           <div class='col3'>
+            
+                 <a id='footer-security' class='space-bottom0 col12 strong quiet small' href='../../../../industries/security/index.html'>Security </a>
+            
+                 <a id='footer-health' class='space-bottom0 col12 strong quiet small' href='../../../../industries/health/index.html'>Health </a>
+            
+                 <a id='footer-media' class='space-bottom0 col12 strong quiet small' href='../../../../industries/media/index.html'>Media </a>
+            
+           </div>
+          </div> 
+       </div>
+   </div>
+
+   <div class='limiter newsletter-copyright clearfix'>
+   <div class='col8 contain newsletter'>
+         <form id='newsletter' method='post'>
+           <fieldset class='clearfix input-pill col10 pill mobile-cols with-icon'>
+             <span class='icon mail quiet'></span>
+             <input type='text' value='' placeholder='Sign up for our newsletter' name='email' class='col9 required email' />
+             <input type='submit' value='Subscribe' class='col3 quiet' />
+           </fieldset>
+         </form>
+        </div> 
+
+       <div class='col4 footer-copyright small space-top1 col4 noprint fill-light contain'>
+           <div class='pin-right'>
+             <a href='../../../../tos/index.html'>Terms </a> +
+             <a href='../../../../privacy/index.html'>Privacy </a>
+            &copy; Mapbox
+           </div>
+       </div>
+   </div>
+
+ </div>
+
+ <div class='footer-copyright small center noprint fill-light show-mobile'>
+   <div class='limiter'>
+     <div class='pad2y'>
+             <a href='../../../../tos/index.html'>Terms </a> +
+             <a href='../../../../privacy/index.html'>Privacy </a>
+      &copy; Mapbox
+     </div>
+   </div>
+ </div>
+
+
+
+ <div id='modal-content' class='animate modal modal-content'></div>
+ </div>
+ </body>
+ </html>
+ 

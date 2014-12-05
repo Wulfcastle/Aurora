@@ -1,1 +1,0 @@
-$(function(){$('#myPortlet').portlet({onRefresh:function(){setTimeout(function(){$('#myPortlet').portlet({refresh:false});},2000);}});});

@@ -1,0 +1,257 @@
+#social {
+  background: url(header.jpg) center bottom no-repeat;
+  background-size: cover;
+  height: 580px;
+}
+
+/* this should be in base */
+.fill-midnight {
+  background-color: #142736;
+}
+
+/*********  STICKY NAV  *********/
+.sticky-nav ul li {
+  float: right;
+  text-align: right;
+}
+.sticky-nav ul li:first-of-type {
+  padding-right: 0px;
+}
+
+.sticky-nav ul li a {
+  color: #909090;
+}
+
+.sticky-nav ul li a.active {
+  color: rgba(55, 132, 186, 1.000);
+}
+
+.sticky {  
+    position: fixed;  
+    width: 100%;  
+    left: 0;  
+    top: 0;  
+    z-index: 100;  
+    border-top: 0;  
+} 
+
+
+/* Customer logos
+------------------------------------------------------- */
+
+a[class*='customer-big-'] {
+  display: block;
+  width: 100%;
+  height: 0;
+  padding-bottom: 30%;
+  background: url(color-logos.png) 0 0 no-repeat;
+  background-size: cover;
+  overflow: hidden;
+  text-indent: 100%;
+  white-space: nowrap;
+}
+
+a.customer-big-foursquare { background-position: 0 0; }
+a.customer-big-pinterest  { background-position: 0 5%; }
+a.customer-big-nat-geo    { background-position: 0 10%; }
+a.customer-big-evernote   { background-position: 0 15%; }
+a.customer-big-ft         { background-position: 0 20%; }
+a.customer-big-github     { background-position: 0 25%; }
+a.customer-big-square     { background-position: 0 30%; }
+a.customer-big-roadtrippers     { background-position: 0 35%; }
+a.customer-big-scoot     { background-position: 0 40%; }
+a.customer-big-etsy     { background-position: 0 45%; }
+a.customer-big-instacart     { background-position: 0 50%; }
+a.customer-big-automatic     { background-position: 0 55%; }
+a.customer-big-vk     { background-position: 0 60%; }
+
+.blog-item-small span.upper {
+  display: block;
+  text-transform: uppercase;
+}
+
+.example-image-streateasy, .example-image-automatic {
+  position: absolute;
+  right: -30%;
+  top: 0;
+}
+
+.example-image-instacart {
+  position: absolute;
+  top: -30px;
+  left: -15%;
+}
+
+.mapbox-js-examples ul li div {
+  background-color: rgba(165, 215, 255, 0.150);
+  height: 140px;
+  width: 140px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+}
+
+/************* EXAMPLES ********/
+.device-browser {
+  width: 100%;
+}
+
+/* right */
+.demo-pinterest {
+  position: absolute;
+  top: 30px;
+  right: -10%;
+}
+.demo-etsy {
+  position: absolute;
+  top: 0px;
+  right: -10%;
+}
+
+/* left */
+.demo-foursquare {
+  position: absolute;
+  top: 20px;
+  left: -40%;
+}
+.demo-github {
+  position: absolute;
+  top: 0px;
+  left: -35%;
+}
+
+.demo-vk {
+  position: absolute;
+  top: 0px;
+  left: -30%;
+}
+
+/* otherwise ff doesn't scale right */
+.demo-foursquare .device-content, .demo-vk .device-content, .demo-github .device-content {
+  height: 0px;
+  width: 100%;
+  padding-bottom: 70%;
+}
+
+/* phone */
+.demo-natgeo .device.device-phone-v .device-content {
+    max-height: 800px;
+}
+/* tablet */
+.demo-pinterest .device.device-tablet-v .device-content, .demo-etsy .device.device-tablet-v .device-content  {
+    max-height: 800px;
+}
+
+/* rounded corners */
+.device-content img {
+  border-radius: 0 0 10px 10px;
+}
+
+
+/********** MOBILE SECTION **********/
+#mobile .mobile-iphone {
+  height: 880px;
+  width: 400px;
+  position: absolute;
+  background: url(iphone.png) right 70px no-repeat;
+  background-size: 100% auto;
+  right: 0px;
+  top:  -100px;
+  margin-right: auto;
+  -moz-transition: all 1s ease-in;
+  -webkit-transition: all 1s ease-in;
+  transition: all 1s ease-in;
+}
+
+/********** DESIGN SECTION **********/
+.studio {
+  background: url(studio.png) left top no-repeat;
+  display: block;
+  background-size: 100% auto;
+  top: 260px;
+}
+
+.studio-features p, .studio-features h3, .bullet-list p, .bullet-list h3 {
+  padding-left: 60px;
+}
+.studio-features li, .bullet-list li {
+  padding-bottom: 30px;
+}
+
+#design-tools .icon.check:before {
+  color: #39abc7;
+}
+
+/********** LEARN MORE SECTION **********/
+.blog-tweets {
+  display: block;
+  background: url(assets/blog-tweets.jpg) left top no-repeat;
+  background-size: cover;
+}
+
+/********** CONTACT SECTION **********/
+#contact .half {
+  z-index: -10;
+  position: absolute;
+  width: 50%;
+  height: 320px;
+}
+
+.second-half {
+  left: 50%;
+}
+
+
+/* Retina Screens @2x icons
+------------------------------------------------------- */
+
+@media only screen and (max-width: 800px){
+  #design-tools .studio {
+    display: none;
+  }
+
+  #design-tools ul.col4 {
+    width: 90%;
+  }
+  #design-tools ul li {
+    width: 100%;
+  }
+  #mobile .mobile-iphone {
+    width: 300px;
+    top: 0px;
+  }
+
+  #mobile .iphone, #mobile .android {
+    padding: 40px;
+  }
+  #social {
+  background: url(header.jpg) left bottom no-repeat;
+  background-size: cover;
+  }
+
+}
+
+@media only screen and (max-width: 730px){
+    .sticky-nav ul li.pad2x {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+}
+
+@media only screen and (max-width: 640px){
+  ul li .pad4x {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  .bullet-list span.col10 {
+    width: 80%;
+  }
+  #mobile .mobile-ipad {
+    width: 800px;
+    background: url(ipad.png)-120px 180px no-repeat;
+    background-size: 100% auto;
+    left:-15%;
+  }
+
+}

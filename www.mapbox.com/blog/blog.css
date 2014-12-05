@@ -1,0 +1,212 @@
+/* Base overrides
+------------------------------------------------------- */
+
+.blog .prose blockquote {
+  color: rgba(0,0,0,.5);
+  padding: 0 0 0 30px;
+  background: transparent;
+  position: relative;
+}
+
+.blog .dark blockquote,
+.dark .prose blockquote {
+  color: rgba(255,255,255,.5);
+}
+
+.blog .prose blockquote::after {
+  content: '';
+  position: absolute;
+  width: 4px;
+  left: 0;
+  bottom: 0;
+  top: 35px;
+  background-color: rgba(0,0,0,.1);
+}
+
+.blog .dark blockquote::after,
+.dark.blog blockquote::after {
+  background-color: rgba(255,255,255,.05);
+}
+
+.blog .prose blockquote::before {
+  content: '\201C';
+  padding-top: 15px;
+  font-family: Georgia, serif;
+  font-size: 60px;
+  font-weight: bold;
+  color: rgba(0,0,0,.1);
+  position: absolute;
+  left: -20px;
+  top: 0px;
+  height: 35px;
+}
+
+.blog .dark blockquote::before,
+.dark.blog blockquote::before {
+  color: rgba(255,255,255,.1);
+}
+
+/* Blog: Shared
+------------------------------------------------------- */
+
+.blog .masthead { background-color: #28353d;}
+
+[class*='blog-fixed-'] {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.blog-fixed-prev {
+  left: 0;
+}
+
+.blog-fixed-next {
+  right: 0;
+}
+
+/* Blog: Feed
+------------------------------------------------------- */
+
+.blog-item .dark { color: white; }
+
+.blog-stream {
+  max-width: 1800px;
+  margin: auto;
+}
+
+.blog-item-image {
+  height: 0;
+  padding-bottom: 100%;
+  background-size: cover;
+  background-position: 50%;
+}
+
+@media only screen and (max-width:1200px) {
+  .blog-item { width: 33.3333%;}
+}
+
+/* drop down to 50% columns at smaller screen size */
+@media only screen and (max-width:900px) {
+  .blog-item { width: 50%;}
+}
+
+@media only screen and (max-width:640px) {
+  .blog-item.blog-item { width: 100%;}
+  .blog-item-image { padding-bottom: 50%;}
+  /* offset for fixed bottom buttons */
+  body.blog { margin-bottom: 60px;}
+  /* duplicating classes for more css priority */
+  a.blog-fixed-next.button.button,
+  a.blog-fixed-prev.button.button {
+    position: relative;
+    float: left;
+    top: auto;
+    height: 60px;
+    padding: 20px 10px;
+    width: 50%;
+    border-radius: 0;
+  }
+  /* if only one button, make full width */
+  a.blog-fixed-prev.button.button:last-child,
+  a.blog-fixed-next.button.button:nth-child(2n) {
+    width: 100%;
+  }
+}
+
+/* Blog: Single Post
+------------------------------------------------------- */
+.blog .map-legends {
+  display:none;
+  }
+.blog .thumb {
+  height:30px;
+  width:30px;
+  background-size:100%;
+  background-position:50% 50%;
+  background-repeat:no-repeat;
+  vertical-align:middle;
+  margin:0 5px;
+  }
+.prose p > img,
+.prose p a > img,
+.prose li > img,
+.prose li a > img {
+  max-height:700px;
+}
+
+/* Video embeds */
+.prose .video {
+  height: 0;
+  position: relative;
+}
+
+.prose .video iframe {
+  position: absolute;
+}
+
+/* Twitter feed */
+.med-graphic {
+  height: 80px;
+  width: 80px;
+}
+
+.blog-footer .blog-author-description,
+.blog-footer .blog-tweet-contents {
+  margin-left: 100px;
+}
+
+.blog-author-block .med-graphic {
+  background-size: cover;
+}
+
+.blog-footer .med-graphic { padding: 20px 0;}
+.pill > a:only-of-type {
+  border-radius: 3px;
+}
+
+@media only screen and (max-width: 640px) {
+  .blog-footer .blog-author-block p,
+  .blog-footer .blog-twitter-block div.tweet-contents {
+    padding-right: 0;
+  }
+}
+
+/* If you set class:bleed-section on an element
+-------------------------------------------------- */
+
+/* Hide overflow to account for imperfect margin
+calculations for bleed section that cause vertical scrollbars */
+body { overflow-x: hidden; }
+
+/* under 640 */
+.bleed-section {
+  margin-left:-20px;
+  margin-right:-20px;
+  max-width:none;
+  }
+
+@media only screen and (min-width:640px) {
+  .bleed-section {
+    margin-left:calc(-10% - 20px);
+    margin-right:calc(-10% - 20px);
+  }
+}
+
+@media only screen and (min-width:900px) {
+  .bleed-section {
+    margin-left:-22%;
+    margin-right:-22%;
+  }
+}
+
+@media only screen and (min-width:1200px) {
+  .bleed-section {
+    /* fallback for browsers that don't support vw in calc */
+    margin-left:-15%;
+    margin-right:-15%;
+    margin-left:calc(50% - 50vw);
+    margin-right:calc(50% - 50vw);
+  }
+}

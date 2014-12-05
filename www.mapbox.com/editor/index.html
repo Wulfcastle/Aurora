@@ -1,0 +1,328 @@
+<!DOCTYPE html >
+ <html>
+ <head>
+<!-- Original URL: https://www.mapbox.com/editor/
+Date Downloaded: 2014-12-05 09:26:42 PM !-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  
+   <meta charset='UTF-8' />
+   <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+   <meta name='robots' content='index' />
+   <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  
+   <title>Mapbox | Design and _______ beautiful maps </title>
+
+   <meta name='st:title' content='Mapbox' />
+   <meta name='st:type' content='site' />
+   <meta name='st:info' content='site' />
+
+  
+
+   <link href='../base/latest/base_8f8b1251.css' rel='stylesheet' />
+   <link href='../css/site.css' rel='stylesheet' />
+   <!--[if IE 9]><link href='../css/site-ie9.css' rel='stylesheet' /><![endif]-->
+   <link rel='shortcut icon' href='../img/favicon.ico' type='image/x-icon' />
+   <link rel='alternate' type='application/rss+xml' title='RSS' href='../blog/blog.rss' />
+   <link href='../../api.tiles.mapbox.com/mapbox.js/v2.1.2/mapbox.css' rel='stylesheet' />
+
+   <!--[if lt IE 9 ]><script src='../js/redirect-ie.js'></script><![endif]-->
+   <script src='../../js.stripe.com/v2/index.html.js'></script>
+   <script>
+  var KM_COOKIE_DOMAIN = 'www.mapbox.com';
+  var analytics=analytics||[];(function(){var e=['identify','track','trackLink','trackForm','trackClick','trackSubmit','page','pageview','ab','alias','ready','group'],t=function(e){return function(){analytics.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var n=0;n<e.length;n++)analytics[e[n]]=t(e[n])})(),analytics.load=function(e){var t=document.createElement('script');t.type='text/javascript',t.async=!0,t.src=('https:'===document.location.protocol?'https://':"http://")+'d2dq2ahtl5zl1z.cloudfront.net/analytics.js/v1/'+e+'/analytics.min.js';var n=document.getElementsByTagName('script')[0];n.parentNode.insertBefore(t,n)};
+  analytics.load(window.location.hostname.indexOf('mapbox.com') !== -1 ? 'fl0c8p240n' : '0biiejpgfj');
+
+  Stripe.setPublishableKey(window.location.hostname.indexOf('mapbox.com') !== -1 ?
+    'pk_live_hI6mmOTIg7KkywK6vo3vJvpk' : 'pk_test_gmIyREg3sKzAiyMkAEeCsxUG');
+  </script>
+   <script src='../../api.tiles.mapbox.com/mapbox.js/v2.1.2/mapbox.js'></script>
+
+   <script>
+  window.mapbox_api = 'https://www.mapbox.com/core';
+  window.mapbox_tileApi = '../../api.tiles.mapbox.com/index.html';
+  window.mapbox_accessToken = '' || 'pk.eyJ1IjoibWFwYm94IiwiYSI6IlhHVkZmaW8ifQ.hAMX5hSW-QnTeRCMAy9A8Q'
+  if (L.mapbox.VERSION[0] === '2') {
+      L.mapbox.accessToken = window.mapbox_accessToken;
+      L.mapbox.config.FORCE_HTTPS = true;
+      L.mapbox.config.HTTPS_URL = window.mapbox_tileApi + '/v4';
+  }
+  </script>
+   <script src='../base.js/dist/base.js'></script>
+  
+   <link href='../maki/www/maki-sprite.css' rel='stylesheet' />
+ <link href='editor.css' rel='stylesheet' />
+ <link href='leaflet-draw/dist/leaflet.draw.min.css' rel='stylesheet' />
+ <script src='../maki/www/maki.js'></script>
+ <script src='jquery.sortable.js'></script>
+ <script src='leaflet-draw/dist/leaflet.draw.js'></script>
+ <script src='editor.js'></script>
+
+ </head>
+ <body class=' '><div style="z-index: 9999; position: fixed; width: 100%; border: 0px; padding: 5px; margin: 0px; background-color: transparent;  font-size: 12pt; font-family: sans-serif;" id="web2disk_nag" onclick="javascript: document.getElementById('web2disk_nag').style.display = 'none';">
+		<div style="color: #000000; background-color:#F1F1F1; margin-left: auto; margin-right: auto; border-width: 2px; border-style: solid; width: 550px; ">
+			<div style="width: 100%; text-align: center; font-weight: bold; border: 0px; margin: 0px; padding: 0px">Hey, where did my words go? (Click to hide)</div>
+			<p>In the trial version of Web2Disk every fifth word is blanked out. 
+			To copy this site with all the words, please upgrade to the full version and copy this website again.</p>
+			<div style="width: 100%; text-align: center; font-weight: bold; border: 0px; margin: 0px; padding: 0px">
+				<a href="http://www.inspyder.com/products/Web2Disk/">Inspyder Web2Disk: The Website Downloader</a>
+			</div>
+		</div>
+	</div>
+  <div class='fill-midnight offcanvas-top row3 industries-subnav animate dark pin-top hide-mobile' id='industries'>
+    <div class='limiter pad2y space-top1 small strong contain'>
+       <ul class='space-bottom0 clearfix'>
+         <li class='col2'><a href="../industries/realestate/index.html" class="primary-nav-button inline pad1x pad0y round">Real Estate </a></li>
+         <li class='col2'><a href="../industries/transportation/index.html" class="primary-nav-button inline pad1x pad0y round">Transportation </a></li>
+         <li class='col2'><a href="../industries/agriculture/index.html" class="primary-nav-button inline pad1x pad0y round ">Agriculture </a></li>
+         <li class='col2'><a href="../industries/social/index.html" class="primary-nav-button inline pad1x pad0y round">Social </a></li>
+         <li class='col2'><a href="../industries/government/index.html" class="primary-nav-button inline pad1x pad0y round ">Government </a></li>        
+         <li class='col2'><a href="../industries/outdoors/index.html" class="primary-nav-button inline pad0x pad0y round">Fitness &amp; Outdoors </a></li>
+       </ul>
+       <ul class='clearfix'>
+          <li class='col2'><a href="../industries/finance/index.html" class="primary-nav-button inline pad1x pad0y round ">Finance </a></li>
+          <li class='col2'><a href="../industries/insurance/index.html" class="primary-nav-button inline pad1x pad0y round ">Insurance </a></li>
+          <li class='col2'><a href="../industries/naturalresources/index.html" class="primary-nav-button inline pad1x pad0y round ">Natural Resources </a></li>
+          <li class='col2'><a href="../industries/security/index.html" class="primary-nav-button inline pad1x pad0y round ">Security </a></li>
+          <li class='col2'><a href="../industries/health/index.html" class="primary-nav-button inline pad1x pad0y round ">Health </a></li>
+          <li class='col2'><a href="../industries/media/index.html" class="primary-nav-button inline pad0x pad0y round ">Media </a></li>
+       </ul> 
+    </div>
+  </div>
+ <div class='page-content'> 
+
+ <a id='app' class='app'></a>
+
+ <!--Map UI: first-time welcome -->
+ <div id='welcome' class='map-help animate col5 fill-white small hide-mobile pad2'>
+   <a href='#' class='quiet icon close pin-right js-help-toggle pad1'></a>
+   <div class='pad2 pin-left'><img class='dot' src='img/help-welcome.png' /></div>
+   <h3>Welcome to the Mapbox ______ </h3>
+  Create, design, ___ publish maps in the ______ Editor.
+   <div class='pad1y quiet'>To have full control ____ your map design with ______ fonts, textures, and data, _____ out  <a href='../mapbox-studio/index.html' class='strong'>Mapbox Studio </a>, our desktop map ______ app. </div>
+   <div class='text-right'>
+     <a href='#style'>Customize the map <span class='icon next'></span></a>
+   </div>
+ </div>
+
+ <!--Map UI: Search -->
+ <div id='search' class='module app animate pad2 row2 col5 animate fill-white round-bottom'>
+   <form class='col12 contain' method='post'>
+     <fieldset class='with-icon'>
+       <span class='icon search'></span>
+       <input type='text' class='big stretch' autocomplete='off' placeholder='Search' tabindex='-1' />
+     </fieldset>
+   </form>
+   <div id='search-results' class='contain row4 col12'></div>
+   <div id='search-empty' class='pin-top pad2 small center prose col12'>
+     <!--<p>Search for a ZIP code, city, state, country, or coordinate.</p>-->
+   </div>
+ </div>
+
+ <div id='search-help' class='map-help animate col5 fill-white small hide-mobile pad2'>
+   <a href='#search' class='quiet icon close pin-right js-help-toggle pad1'></a>
+   <div class='pad2 pin-left'><img class='dot' src='img/help-search.png' /></div>
+   <h3>Search </h3>
+  Search for _ city, state, or lat/lon ___________ to jump to any _____ on the map.
+   <div class='text-right'>
+     <a href='../help/geocoding-api/index.html' class='icon help strong' target='_blank'>Learn more </a>
+   </div>
+ </div>
+
+ <!--Map UI: Data -->
+ <div id='data' class='module app animate row1 col5'>
+   <div class='draw-controls js-tabs row1 block contain pad4x dark fill-blue'><!--
+    --><a href='#browse' id='draw-browse' class='pin-left button unround icon hand' title='Browse'></a><!--
+    --><a href='#point' id='draw-point' class='col4 button unround keyline-left place-marker icon marker' title='Place marker'>Marker </a><!--
+    --><a href='#linestring' id='draw-linestring' class='col4 button unround keyline-left icon polyline' title='Draw a line'>Line </a><!--
+    --><a href='#polygon' id='draw-polygon' class='col4 button unround keyline-left icon polygon' title='Draw a polygon'>Polygon </a><!--
+    --><a href='#menu' id='draw-menu' class='pin-right button unround keyline-left icon menu' title='Menu'></a>
+   </div>
+   <div id='marker-help' class='animate pin-top fill-white row1 small'></div>
+   <div id='marker-pane' class='animate pin-top round-bottom fill-white clip'>
+     <div id='marker-edit' class='animate col12 row6 pin-top'></div>
+     <div id='marker-menu' class='animate col12 row6 pin-top pad4y'>
+       <div class='sliding h row5 active1 clip'>
+         <div id='marker-objects' class='row5 col12 animate scroll-v'>
+           <div id='marker-tray'></div>
+           <div class='pad2 hidden'>
+             <h3>Draw markers, lines, &amp; ________. </h3>
+             <small>You can also drag &amp; drop or  <a class='marker-import-manual' href='#data'>manually import </a>
+            .geojson, .csv, .___, .gpx, files. </small>
+           </div>
+         </div>
+         <div id='project-layers' class='row5 col12 animate scroll-v'>
+           <div class='plus'></div>
+           <div class='base'></div>
+           <div class='pad2 hidden'>
+             <h3>Add data overlays to ____ map. </h3>
+             <small>Create and upload data ____  <a href='../tilemill/index.html' target='_blank'>TileMill </a>
+            to add ______ to your project. </small>
+           </div>
+         </div>
+       </div>
+       <div class='row1 pad1 keyline-bottom pin-top'>
+         <a href='#addlayers' class='addlayers icon plus small strong animate'>Add layers </a>
+         <div class='fr js-tabs rounded-toggle clearfix'>
+           <input id='marker-menu-tray' type='radio' name='marker-menu' value='marker-objects' checked='checked' />
+           <label id='features-tab' for='marker-menu-tray' class='animate'>features </label>
+           <input id='marker-menu-layers' type='radio' name='marker-menu' value='project-layers' />
+           <label id='layers-tab' for='marker-menu-layers' class='animate'>layers </label>
+         </div>
+       </div>
+     </div>
+   </div>
+   <div><input id='manual-import' type='file' class='hidden' name='' value='' /></div>
+ </div>
+
+ <div id='data-help' class='map-help animate col5 fill-white small hide-mobile pad2'>
+   <a href='#data' class='quiet icon close pin-right js-help-toggle pad1'></a>
+   <div class='pad2 pin-left'><img class='dot' src='img/help-data.png' /></div>
+   <h3>Draw or import data </h3>
+  Add markers, _____, or polygon data to ____ project.
+   <div class='text-right'>
+     <a href='../help/adding-features/index.html' class='icon help strong' target='_blank'>Need help? </a>
+   </div>
+ </div>
+
+ <!--Map UI: Style -->
+ <div id='style' class='module app animate col5 row7 fill-white round-bottom'>
+   <div class='pin-bottom fill-gray row1 keyline-top round-bottom'>
+     <div class='pin-bottom js-tabs tabs clearfix'>
+       <a href='#style-color' class='col4 active'>Color </a>
+       <a href='#style-type' class='col4'>Baselayer </a>
+       <a href='#style-l10n' class='col4'>Language </a>
+     </div>
+   </div>
+
+   <div class='fill-white fl clip animate sliding col12 h row6 active1'>
+     <!-- Colors -->
+     <div id='style-color' class='clip dummy-slide col12 animate row6'>
+       <div id='style-tint' class='fill-white col12 clearfix animate row5 contain'></div>
+     </div>
+
+     <!-- Layers -->
+     <div id='style-type' class='clip animate col12 pad2 row3'>
+       <div class='js-tabs pill clearfix'><!--
+      --><input id='style-type-streets' class='label-select' type='radio' name='type' value='streets' /><!--
+      --><label for='style-type-streets' class='col4 button tall big icon street'>Streets </label><!--
+      --><input id='style-type-terrain' class='label-select' type='radio' name='type' value='terrain' /><!--
+      --><label for='style-type-terrain' class='col4 button tall big icon mt'>Terrain </label><!--
+      --><input id='style-type-satellite' class='label-select' type='radio' name='type' value='satellite' /><!--
+      --><label for='style-type-satellite' class='col4 button tall big icon satellite'>Satellite </label><!--
+      --></div>
+       <div class='center col12 fl pad1'><label>Select streets, terrain, or  <a href='../help/enabling-satellite-imagery/index.html' target='_blank'>satellite </a> as the map _________ </label></div>
+     </div>
+
+     <!-- Labels -->
+     <div id='style-l10n' class='clip animate pad2 col12 row5'>
+       <div class='js-tabs pill clearfix'><!--
+      --><input id='style-l10n-' class='label-select' type='radio' name='l10n' value='' /><!--
+      --><label for='style-l10n-' class='col3 button tall big'>Localized </label><!--
+      --><input id='style-l10n-en' class='label-select' type='radio' name='l10n' value='en' /><!--
+      --><label for='style-l10n-en' class='col3 button tall big'>English </label><!--
+      --><input id='style-l10n-fr' class='label-select' type='radio' name='l10n' value='fr' /><!--
+      --><label for='style-l10n-fr' class='col3 button tall big'>Français </label><!--
+      --><input id='style-l10n-es' class='label-select' type='radio' name='l10n' value='es' /><!--
+      --><label for='style-l10n-es' class='col3 button tall big'>Español </label><!--
+      --></div>
+       <div class='center pad1'><label>Select a primary language ___  <a href='../help/changing-label-language/index.html' target='_blank'>map labels </a></label></div>
+     </div>
+   </div>
+ </div>
+
+ <div id='style-help' class='map-help animate col5 fill-white small hide-mobile pad2'>
+   <a href='#style' class='quiet icon close pin-right js-help-toggle pad1'></a>
+   <div class='pin-left pad2'><img src='img/help-style.png' class='dot' /></div>
+   <h3>Map style </h3>
+  Customize your ___ by changing colors, picking _ different baselayer, or changing ___ language.
+   <div class='text-right'>
+     <a href='../help/customizing-map-colors/index.html' class='icon help strong' target='_blank'>Need help? </a>
+   </div>
+ </div>
+
+ <!--Map UI: Project Information -->
+ <div id='project' class='module hide-mobile app round-bottom col5 row10 fill-white animate'>
+   <div class='sliding h active1 col12 row9 clip'>
+   <div id='project-info' class='col12 animate active row9'></div>
+   <div id='project-settings' class='col12 pad2 animate active row6'>
+     <div class='space-bottom1'>
+       <input type='text' name='name' class='big stretch' />
+       <label>Name your project </label>
+     </div>
+     <div>
+       <textarea name='description' class='big stretch' rows='2'></textarea>
+       <label>Describe your project </label>
+     </div>
+   </div>
+   <div id='project-advanced' class='col12 animate pad2 row6'>
+     <div class='space-bottom1 checkbox'>
+       <input type='checkbox' id='save-center' name='save-center' value='1' />
+       <label for='save-center' class='block round icon check'>Save current map position </label>
+     </div>
+     <div class='space-bottom1 checkbox'>
+       <input type='checkbox' id='private' name='private' value='1' />
+       <label for='private' class='block round icon lock'> Hide project from ______ API </label>
+     </div>
+   </div>
+   </div>
+   <div class='pin-bottom fill-gray keyline-top round-bottom row1'>
+     <div class='js-tabs tabs pin-bottom col12 row1'>
+       <a href='#project-info' class='col4 active'>Info </a>
+       <a href='#project-settings' class='col4'>Settings </a>
+       <a href='#project-advanced' class='col4'>Advanced </a>
+     </div>
+   </div>
+ </div>
+
+ <div id='project-help' class='map-help animate col5 fill-white small hide-mobile pad2'>
+   <a href='#project' class='quiet icon close pin-right js-help-toggle pad1'></a>
+   <div class='pin-left pad2'><div class='fill-purple dot small-graphic pad1 dark'><div class='icon big mobile'></div></div></div>
+   <h3>Start developing </h3>
+  Save your _______ and grab the  <strong>Map ID </strong> to integrate your _______ with your apps and _____.
+   <div class='text-right'>
+     <a href='../developers/index.html' class='icon help strong' target='_blank'>Learn more </a>
+   </div>
+ </div>
+
+ <!--Map UI: Saved helper -->
+ <div id='saved' class='map-help animate col5 fill-white small hide-mobile pad2'>
+   <a href='#' class='quiet icon close pin-right js-help-toggle pad1'></a>
+   <div class='pin-left pad2'><div class='fill-green dark dot small-graphic pad1 dark'><div class='icon big check'></div></div></div>
+   <h3>Saved </h3>
+  Your project __ now saved to  <code class='project-id'></code>. Use it with ___ JavaScript, iOS, Android, and ___ services to integrate with ____ apps.
+   <div class='strong pad1y'>Note: changes to your ___ may take up to 1 hour to appear on ___ live map. </div>
+   <div class='text-right'>
+     <a href='../developers/index.html' class='icon help strong' target='_blank'>Learn more </a>
+   </div>
+ </div>
+
+ <div id='mapview' class='zoom-controls small round app clip dark fill-darken2'></div>
+ <a id='maphelp' href='#' class='icon quiet round fill-white help animate js-help-toggle'></a>
+
+ <div id='dropzone' class='dropzone animate pin-left col12 fill-darken1'></div>
+
+ <!--Map UI: Controls -->
+
+ <div class='app animate col5 modes bottom small pad4x dark fill-denim'>
+   <a id='avatar' href='../projects/index.html' class='pin-left button unround icon'></a>
+   <a id='nav-style' class='pad1y button hide-mobile unround keyline-left col4 icon sun' href='#style'>Style </a>
+   <a id='nav-data' class='pad1y button unround hide-mobile keyline-left col4 icon data' href='#data'>Data </a>
+   <a id='nav-project' class='pad1 button unround keyline-left hide-mobile col4 icon sprocket' href='#project'>Project </a>
+   <a id='nav-search' class='pad1y button unround hide-mobile keyline-left icon search pin-right' href='#search'></a>
+   <div class='hide-mobile pin-left margin12 col4'>
+     <div id='map-saveshare' class='clip sliding v active1 row1'>
+       <div class='full button icon floppy animate project-saved round-right fill-darken1'>Saved </div>
+       <a href='#app' class='full button icon floppy animate project-save round-right loud'>Save </a>
+     </div>
+   </div>
+ </div>
+
+ <div id='map-app' class='animate'></div>
+
+
+
+ <div id='modal-content' class='animate modal modal-content'></div>
+ </div>
+ </body>
+ </html>
+ 

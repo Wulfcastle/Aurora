@@ -1,0 +1,18 @@
+@font-face {
+  font-family: 'Bree Serif';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/breeserif/v5/LQ7WLTaITDg4OSRuOZCps1QlYEbsez9cZjKsNMjLOwM.eot);
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/opensans/v10/cJZKeOuBrn4kERxqtaUH3fY6323mHUZFJMgTvxaG2iE.eot);
+}
+@font-face {
+  font-family: 'Open Sans Condensed';
+  font-style: normal;
+  font-weight: 700;
+  src: url(https://fonts.gstatic.com/s/opensanscondensed/v10/gk5FxslNkTTHtojXrkp-xK1G_hHhJSbmG3TYw9dbn0A.eot);
+}

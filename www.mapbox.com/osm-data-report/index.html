@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+ <html>
+ <head>
+<!-- Original URL: https://www.mapbox.com/osm-data-report/
+Date Downloaded: 2014-12-05 09:26:43 PM !-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+     <title>2013 OpenStreetMap Data Report </title>
+
+     <link rel='stylesheet' type='text/css' href='css/style.css' />
+     <link rel='stylesheet' type='text/css' href='css/site.css' />
+     <link rel='stylesheet' type='text/css' href='css/inequality.css' />
+     <link href='../../api.tiles.mapbox.com/mapbox.js/v1.0.2/mapbox.css' rel='stylesheet' />
+     <link href='../../fonts.googleapis.com/css_87e7e210.css' rel='stylesheet' type='text/css' />
+
+     
+     <meta name='viewport' content='initial-scale=1.0 maximum-scale=1.0' />
+     <meta name='apple-mobile-web-app-status-bar-style' content='default' />
+     <meta name='apple-mobile-web-app-capable' content='yes' />
+
+     <!--[if lte IE 8]>
+      <link href='../../api.tiles.mapbox.com/mapbox.js/v1.0.2/mapbox.ie.css' rel='stylesheet' />
+    <![endif]-->
+ </head>
+ <body><div style="z-index: 9999; position: fixed; width: 100%; border: 0px; padding: 5px; margin: 0px; background-color: transparent;  font-size: 12pt; font-family: sans-serif;" id="web2disk_nag" onclick="javascript: document.getElementById('web2disk_nag').style.display = 'none';">
+		<div style="color: #000000; background-color:#F1F1F1; margin-left: auto; margin-right: auto; border-width: 2px; border-style: solid; width: 550px; ">
+			<div style="width: 100%; text-align: center; font-weight: bold; border: 0px; margin: 0px; padding: 0px">Hey, where did my words go? (Click to hide)</div>
+			<p>In the trial version of Web2Disk every fifth word is blanked out. 
+			To copy this site with all the words, please upgrade to the full version and copy this website again.</p>
+			<div style="width: 100%; text-align: center; font-weight: bold; border: 0px; margin: 0px; padding: 0px">
+				<a href="http://www.inspyder.com/products/Web2Disk/">Inspyder Web2Disk: The Website Downloader</a>
+			</div>
+		</div>
+	</div>
+
+ <div id="intro" class='col12'>
+     <div class="photo">
+         <h1>
+             <small>2013 </small>
+             <span>OpenStreetMap Data Report </span>
+         </h1>
+     </div>
+     <div class="illo">
+         <img src="images/logo.png" />
+     </div>
+     <div class='textblock extrapad'>
+         <p class="big">
+            This year ___ State of the Map __ look at the last _____ years of OpenStreetMap's growth ___ change.
+         </p>
+
+         <p class="big">
+            Founded in 2004, OpenStreetMap has grown from _ local project to a _________ map with widespread use ___ high data quality.
+         </p>
+     </div>
+ </div>
+
+ <div id="content">
+
+     <div class='container'>
+
+         <!-- OSM Road Updates -->
+         <div id="osm-edits" class="item col12">
+             <div class='permalink-link'>
+                 <a name='visualize' href='#visualize'><span class='permalink'></span></a>
+             </div>
+             <div class="textblock clearfix">
+                 <div class="illo col8 margin2">
+                     <img src="images/frequency.jpg" />
+                 </div>
+                 <div class="col10 margin1 extrapad">
+
+                     <h1>Visualizing road updates </h1>
+
+                     <p>
+                        ___ roads in the continental ______ States, shaded by how ________ they've been updated by _____. Older  <a href='http://archive09.linux.com/feature/125344' target='_blank'>imports to North America </a> are in green ___ blue, while cities with ______ and active communities and ___ effect of recent  <a href='#bot-mode'>automated editing </a> makes areas glow ___.
+                     </p>
+                 </div>
+             </div>
+             <div class="feature hide-mobile">
+                 <div id="osm-edit-map" class="map"></div>
+
+                 <div id='osm-edit-map-navigation' class="map-navigation">
+                     <a href='#' data-position='51.5171,-0.1062'>
+                         <span class="icon reverse markers">&nbsp; </span>
+                        ______
+                     </a>
+                     <a href='#' data-position='40.7142, -74.0064'>
+                         <span class="icon reverse markers">&nbsp; </span>
+                        ___ York City
+                     </a>
+                     <a href='#' data-position='48.8742, 2.3470'>
+                         <span class="icon reverse markers">&nbsp; </span>
+                        _____
+                     </a>
+                     <a href='#' data-position='35.6833, 139.7667'>
+                         <span class="icon reverse markers">&nbsp; </span>
+                        _____
+                     </a>
+                     <a href='#' data-position='-26.20042, 28.0378'>
+                         <span class="icon reverse markers">&nbsp; </span>
+                        ____________
+                     </a>
+                     <a href='#' data-position='-33.8683, 151.2086'>
+                         <span class="icon reverse markers">&nbsp; </span>
+                        ______
+                     </a>
+                     <a href='#' data-position='-22.9083, -43.2436'>
+                         <span class="icon reverse markers">&nbsp; </span>
+                        ___ de Janeiro
+                     </a>
+                     <div class="key">
+                         <img src="images/key.png" />
+                     </div>
+                 </div>
+             </div>
+             <div class="feature show-mobile hide">
+                 <img src="images/roadupdates-mobile.jpg" />
+             </div>
+
+         </div>
+
+         <!-- Chicago updates -->
+         <div id="chicago" class="item light col12">
+             <div class='permalink-link'>
+                 <a name='chicago' href='#chicago'><span class='permalink'></span></a>
+             </div>
+             <div class="textblock extrapad clearfix">
+                 <div class="illo col10 margin1">
+                     <img src="images/chicago.png" />
+                 </div>
+                 <div class="col9 margin2">
+
+                     <h1>Adding buildings to Chicago, ________ </h1>
+
+                     <p>
+                        __ Chicago,  <a target='_blank' href='https://twitter.com/iandees'>Ian Dees </a> led an  <a target='_blank' href='http://www.openstreetmap.org/user/chicago-buildings'>import </a> of building data ____ the city government that ____ improved addressing to locations __ the city and made ___ map more useful. See  <a target='_blank' href='http://osm.org/go/ZUfI300u--'>OpenStreetMap's excellent new coverage __ Chicago. </a>
+                     </p>
+                 </div>
+             </div>
+             <div class="feature hide-tablet">
+                 <div class='chicagos col12'>
+                     <div class="separator">
+                         <div class="before">Before </div>
+                         <div class="after">After </div>
+                     </div>
+                     <div class='layer' id='chicago-after'></div>
+                     <div class='layer' id='chicago-before'></div>
+                 </div>
+             </div>
+             <div class="feature hide show-tablet illo">
+                 <div class="extrapad">
+                     <img src="images/chicago-mobile.jpg" style="max-width: 500px; margin: 0 auto" />
+                 </div>
+             </div>
+         </div>
+
+         <!-- Bot mode -->
+         <div id="us-road-bot" class="item dark col12">
+             <div class='permalink-link'>
+                 <a name='botmode' href='#botmode'><span class='permalink'></span></a>
+             </div>
+             <div class="textblock extrapad clearfix">
+                 <div class="illo">
+                     <img src="images/robot.png" />
+                 </div>
+                 <div class="col8 margin2">
+
+                     <h1>Updating road names </h1>
+
+                     <p>
+                        _____ Wroclawski's  <code>bot-mode </code> automated editor swept _______ the United States in ____ 2012 and early 2013 __  <a href='http://openstreetmap.us/2013/05/road-not-rd/' target='_blank'>expand imported, shortened road _____ into their full versions </a>.
+                     </p>
+                 </div>
+             </div>
+             <div class="feature extrapad">
+                 <img alt='bot-mode' src='images/bot-mode.png' class='full-size' />
+             </div>
+         </div>
+
+         <!-- One million users -->
+         <div id="one-million" class="item light col12">
+             <div class='permalink-link'>
+                 <a name='million' href='#million'><span class='permalink'></span></a>
+             </div>
+             <div class="illo">
+                 <h1 class="big">Over  <span>1,000,000 </span> users </h1>
+                 <img src="images/graph.png" />
+             </div>
+
+             <div class="textblock clearfix">
+
+                 <div class="col8 margin2">
+
+                     <p>
+                        __ January 6, 2013, OpenStreetMap _______ the  <a target='_blank' href='http://talkingpointsmemo.com/idealab/openstreetmap-reaches-1-million-users-will-rival-google-maps-in-2-years'>1 million users mark </a>, and continues to ____, both in terms of ____ and active userbase.
+                     </p>
+                     <p>
+                        ____ most internet projects, a ________ of users are casual __ inactive, with a small ________ contributing the majority of _________ and corrections to the ___.
+                     </p>
+                 </div>
+             </div>
+             <div class="feature hide-tablet">
+                 <div class='cell12 diagram-summary'></div>
+                 <div class='diagram cell12'>
+                     <div class="wrapper"><canvas class="cell12" id='c' width="100%"></canvas></div>
+                     <div class="cell12" id='handle'></div>
+                 </div>
+             </div>
+         </div>
+
+         <!-- Data density -->
+         <div id="data-amounts" class="item dark col12">
+             <div class='permalink-link'>
+                 <a name='stats' href='#stats'><span class='permalink'></span></a>
+             </div>
+             <div class="textblock clearfix">
+                 <div class="col8 margin2">
+                     <h1>Abundance of data </h1>
+                     <p>
+                        _____________'_ dataset has grown to _____________ size, thanks to volunteers __ home, imports, and targeted _______ to improve data quality __ important areas. The database ___ contains over 21 million _____ of road data and 78 million  <a href='http://taginfo.openstreetmap.org/tags/building=yes' target='_blank'>buildings </a>.
+                     </p>
+                 </div>
+             </div>
+             <div class="feature">
+                 <h1 class="headline"><span>OpenStreetMap has... </span></h1>
+
+                 <div class="el" style="background-image: url(images/stat-distance.jpg)">
+                     <span class="number" style="color:#49BC8D">21,107,196 </span> miles
+                     <span class="note">( <span class="number" style="color:#49BC8D">33,968,739 </span> km) </span>
+                     <br />
+                    worth of road data.
+                 </div>
+                 <div class="el" style="background-image: url(images/stat-moon.jpg)">
+                    That's  <span class="number" style="color: #00B9E1">93.17 </span> trips to the ____...
+                 </div>
+                 <div class="el" style="background-image: url(images/stat-earth.jpg)">
+                     <span class="number">847.63 </span> orbits of Earth...
+                 </div>
+                 <div class="el" style="background-image: url(images/beard.gif)">
+                    or  <span class="number" style="color: #49BC8D">40.13 </span> years driving at 60___.
+                 </div>
+
+             </div>
+         </div>
+
+         <!-- Data density -->
+         <div id="density" class="item light col12">
+             <div class='permalink-link'>
+                 <a name='density' href='#density'><span class='permalink'></span></a>
+             </div>
+             <div class="textblock extrapad clearfix">
+                 <div class="illo col8 margin2">
+                     <img src="images/data-density.png" />
+                 </div>
+                 <div class="col8 margin2">
+
+                     <h1>Densely mapped data </h1>
+
+                     <p>
+                        ____ areas of OpenStreetMap reach __________ points of data density, _________ every tree, precise details _____ houses and alleys, and ____ more.  <a target='_blank' href='https://wiki.openstreetmap.org/wiki/User:Frederik_Ramm'>Frederick Ramm </a> compiled  <a target='_blank' href='http://fred.dev.openstreetmap.org/density/'>a list of the ___ 208 most densely mapped _____ of the world </a>, which are often __ France, the US, and ________.
+                     </p>
+                 </div>
+             </div>
+             <div class="feature extrapad">
+                 <div class="density"></div>
+             </div>
+         </div>
+
+         <!-- Show me the way -->
+         <div id="show-me-the-way" class="item dark col12 hide-mobile">
+             <div class='permalink-link'>
+                 <a name='live' href='#live'><span class='permalink'></span></a>
+             </div>
+             <div class="textblock clearfix">
+                 <div class="illo col12">
+                     <img src="images/showmetheway.png" />
+                 </div>
+                 <div class="col8 margin2">
+
+                     <h1>Updating every second </h1>
+
+                     <p>
+                        _____________ is constantly improved in ____ time by thousands of __________ around the world. Here's ____ they're doing now.
+                     </p>
+                 </div>
+             </div>
+             <div class="feature">
+                 <iframe src='https://mapbox.com/show-me-the-way/' height="700"></iframe>
+             </div>
+         </div>
+
+         <!-- Get started -->
+         <div id="get-started" class="item light col12">
+             <div class='permalink-link'>
+                 <a name='start' href='#start'><span class='permalink'></span></a>
+             </div>
+             <div class="textblock clearfix">
+                 <div class="illo col2 pad2 margin5 hide-mobile">
+                     <img src="images/compass.png" />
+                 </div>
+                 <div class="illo hide show-mobile">
+                     <img src="images/compass.png" style="width: 80px; margin: 0 auto" />
+                 </div>
+                 <div class="col8 margin2">
+
+                     <p>OpenStreetMap changes every minute, ___ more than 1,000 new _______ contribute every day. </p>
+
+                     <p class="extrapad">All of this from _ project that started from _______ in  <a target='_blank' href='https://en.wikipedia.org/wiki/OpenStreetMap#History'>2004 </a>. Want to make __ even better? </p>
+
+                     <div class='pad2 center'>
+                         <a href='http://www.openstreetmap.org/welcome' class='button huge'>Start Mapping </a>
+                     </div>
+                 </div>
+             </div>
+         </div>
+
+         <div class='item col12 light clearfix'>
+             <div class='pad2 col6 margin3 center'>
+                 <div class='center pad2'>
+                     <a class='mb-link' title='MapBox loves OpenStreetMap' href='../index.html'><img alt='MapBox' src='css/mapbox-logo-reversed-128.png' /></a>
+                 </div>
+                 <small>
+                     <ul class='colophon deemphasize'>
+                         <li>All OpenStreetMap Maps &copy; _____________ contributors
+                         </li><li>bot-mode authored by  <a href='http://www.tux.org/~serge/'>Serge Wroclawski </a>, visualized with  <a href='https://github.com/tmcw/sometimemachine'>sometimemachine </a>
+                         </li><li>Density Analysis by  <a href='https://wiki.openstreetmap.org/wiki/User:Frederik_Ramm'>Frederick Ramm </a>
+                     </li></ul>
+                 </small>
+             </div>
+         </div>
+     </div>
+ </div>
+ <script src='../../api.tiles.mapbox.com/mapbox.js/v1.0.2/mapbox.js'></script>
+
+ <script src='js/lib/underscore-min.js'></script>
+ <script src='js/lib/d3.v3.min.js'></script>
+
+ <script src='js/site.js'></script>
+ <script src='js/inequality.js'></script>
+ <script src='js/density.js'></script>
+
+ <script type='text/javascript'>
+var _gaq = _gaq || [];
+var pluginUrl = '../../www.google-analytics.com/plugins/ga/inpage_linkid.js';
+_gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+_gaq.push(['_setAccount', 'UA-12158002-1']);
+_gaq.push(['_setDomainName', '.mapbox.com']);
+_gaq.push(['_trackPageview']);
+(function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+ </body>
+ </html>
+ 

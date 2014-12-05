@@ -1,0 +1,52 @@
+.install > div        { display:none; }
+.install:target > div { display:block; }
+
+.contentContainer dl {
+  margin:0 0 20px;
+  }
+a[name] {
+  display:block;
+  position:relative;
+  top:-80px;
+  z-index:-1;
+  }
+
+ul.inheritance {
+  list-style:none;
+  border-left:4px solid #ddd;
+  margin:0 0 20px 0;
+  padding-left:10px;
+  }
+  ul.inheritance ul       { margin-left:20px; }
+  ul.inheritance ul ul    { margin-left:40px; }
+  ul.inheritance ul ul ul { margin-left:60px; }
+
+caption {
+  text-align:left;
+  }
+
+.snippet {
+  box-shadow:rgba(0,0,0,0.1) 0 -10px 10px 5px;
+  z-index:100;
+  }
+.snippet:before,
+.snippet:after {
+  content:'';
+  display:block;
+  position:absolute;
+  }
+.snippet:before {
+  left:20px; right:0px;
+  top:-20px; height:20px;
+  background:#f8f8f8;
+  }
+.snippet:after {
+  width:0; height:0;
+  border-width:10px;
+  border-color:transparent #e8e8e8 #e8e8e8 transparent;
+  border-style:solid;
+  position:absolute;
+  left:0; top:-20px;
+  }
+.snippet .highlight { width:200%; }
+.highlight pre { background-color:#f8f8f8; }

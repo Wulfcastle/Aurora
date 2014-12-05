@@ -1,0 +1,267 @@
+#security {
+  background: url(header.jpg) center top no-repeat;
+  background-size: cover;
+  height: 550px;
+}
+
+#insurance iframe {
+  position: absolute;
+  top: -2px;
+}
+/* this should be in base */
+.fill-midnight {
+  background-color: #142736;
+}
+
+/*********  STICKY NAV  *********/
+.sticky-nav ul li {
+  float: right;
+  text-align: right;
+}
+.sticky-nav ul li:first-of-type {
+  padding-right: 0px;
+}
+
+.sticky-nav ul li a {
+  color: #909090;
+}
+
+.sticky-nav ul li a.active {
+  color: rgba(55, 132, 186, 1.000);
+}
+
+.sticky {  
+    position: fixed;  
+    width: 100%;  
+    left: 0;  
+    top: 0;  
+    z-index: 100;  
+    border-top: 0;  
+} 
+
+a.block:hover .quiet {
+  color: white;
+}
+
+a.block:hover .quiet {
+  color: white;
+}
+
+.blog-item-small {
+  clear: both;
+}
+
+.blog-item-small span.upper {
+  display: block;
+  text-transform: uppercase;
+}
+
+.demo-gunshots {
+  position: absolute;
+  right: -30%;
+  top: -20px;
+}
+
+.demo-drones {
+  position: absolute;
+  left: -25%;
+  top: 0px;
+}
+
+.demo-policeuk {
+  position: absolute;
+  left: -35%;
+  top:-20px;
+}
+.demo-hdfromspace {
+  margin-bottom: -8px;
+}
+
+.demo-hdfromspace .device.device-browser .device-content {
+  max-height: 700px;
+}
+
+.demo-tracing iframe {
+  margin-bottom: -5px;
+}
+.device.device-browser {
+  width: 100%;
+}
+
+.device.device-tablet-h {
+  width: 100%;
+}
+
+
+/* tablet */
+.demo-fcc  .device.device-tablet-h .device-content  {
+    max-width: 800px;
+}
+
+/* rounded corners */
+.device-content img {
+  border-radius: 0 0 10px 10px;
+}
+
+.enterprise-ad {
+  background: url(enterprise.png) left bottom no-repeat;
+  background-size: auto 100%;
+  width: 900px;
+  left: -23%;
+}
+
+
+#droneimagery {
+  background: url(dronesimagery.jpg) center top no-repeat;
+  background-size: cover;
+}
+
+/********** MOBILE SECTION **********/
+#mobile .mobile-iphone {
+  height: 880px;
+  width: 300px;
+  position: absolute;
+  background: url(iphone.png) right 70px no-repeat;
+  background-size: 100% auto;
+  right: 0px;
+  top:  -100px;
+  margin-right: auto;
+  -moz-transition: all 1s ease-in;
+  -webkit-transition: all 1s ease-in;
+  transition: all 1s ease-in;
+}
+
+/********** CONTACT SECTION **********/
+#contact .half {
+  z-index: -10;
+  position: absolute;
+  width: 50%;
+  height: 320px;
+}
+
+.second-half {
+  left: 50%;
+}
+
+/* Retina Screens @2x icons
+------------------------------------------------------- */
+@media only screen and (max-width: 1060px){
+   .sticky-nav ul li.pad2x {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+ 
+}
+@media only screen and (max-width: 1024px){
+  .text-rearrange {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+  .enterprise-ad {
+   left: -39%;
+  }
+  .demo-microsatellite {
+    left: -35%;
+  }
+}
+
+
+@media only screen and (max-width: 950px){
+  .text-rearrange {
+    margin-left: 0px;
+    width: 100%;
+    margin-bottom: 65%;
+    max-width: 100%;
+  }
+  .demo-rearrange {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    top: 360px;
+    width: 95%;
+  }
+
+  #gunshots .demo-rearrange { top: 500px;}
+  #drones .demo-rearrange { top: 230px;}
+  #gunshots .text-rearrange { margin-bottom: 85%;}
+
+  .sticky-nav ul li a.mail {
+    display: none;
+  }
+  .wp-logo {
+      width: 50;
+      margin-left: -20px;
+      width: 320px;
+      padding-bottom: 20%;  
+      margin-top: -20px;
+      margin-bottom: 20px;
+    }
+}
+
+@media only screen and (max-width: 850px){
+  .demo-mobile {
+    right: -32%;
+    top: 130px;
+  }
+
+  #mobile .mobile-iphone {
+    width: 300px;
+    top: 0px;
+  }
+
+  #mobile .iphone, #mobile .android {
+    padding: 10px;
+  }
+}
+
+@media only screen and (max-width: 750px){
+  #twitter .demo-rearrange {
+    top: 420px;
+  }
+  #nyc .demo-rearrange { top: 500px;}
+  #microsatellite .demo-rearrange { display: none;}
+  #microsatellite  .text-rearrange {
+    margin-bottom: 40px;
+  }
+  .enterprise-ad { background: none;}
+  .hide-in-enterprise .col5 {
+    width: 100%;
+    margin-left: 0px;
+  }
+  #gunshots .demo-rearrange { top: 530px;}
+}
+
+@media only screen and (max-width: 640px){
+  .text-rearrange {
+    margin-bottom: 40px;
+  }
+  .blog-item-small .col4 {
+    width: 30%;
+  }
+  ul li .pad4x {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  .bullet-list span.col10 {
+    width: 80%;
+  }
+  #finance {
+    background: url(header.jpg) center top no-repeat;
+    background-size: cover;
+    height: 550px;
+  }
+  .hamburg .col3 {
+    width: 90%;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hamburg {
+    bottom: -180px;
+  }
+}

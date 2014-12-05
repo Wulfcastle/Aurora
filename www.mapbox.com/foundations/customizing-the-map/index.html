@@ -1,0 +1,441 @@
+<!DOCTYPE html >
+ <html>
+ <head>
+<!-- Original URL: https://www.mapbox.com/foundations/customizing-the-map/
+Date Downloaded: 2014-12-05 09:31:42 PM !-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  
+   <meta charset='UTF-8' />
+   <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+   <meta name='robots' content='index' />
+   <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  
+   <title>Customizing the map | ______ </title>
+
+   <meta name='st:title' content='Customizing the map' />
+   <meta name='st:type' content='basics' />
+   <meta name='st:info' content='site' />
+
+  
+
+   <link href='../../base/latest/base_8f8b1251.css' rel='stylesheet' />
+   <link href='../../css/site.css' rel='stylesheet' />
+   <!--[if IE 9]><link href='../../css/site-ie9.css' rel='stylesheet' /><![endif]-->
+   <link rel='shortcut icon' href='../../img/favicon.ico' type='image/x-icon' />
+   <link rel='alternate' type='application/rss+xml' title='RSS' href='../../blog/blog.rss' />
+   <link href='../../../api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.css' rel='stylesheet' />
+
+   <!--[if lt IE 9 ]><script src='../../js/redirect-ie.js'></script><![endif]-->
+   <script src='../../../js.stripe.com/v2/index.html.js'></script>
+   <script>
+  var KM_COOKIE_DOMAIN = 'www.mapbox.com';
+  var analytics=analytics||[];(function(){var e=['identify','track','trackLink','trackForm','trackClick','trackSubmit','page','pageview','ab','alias','ready','group'],t=function(e){return function(){analytics.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var n=0;n<e.length;n++)analytics[e[n]]=t(e[n])})(),analytics.load=function(e){var t=document.createElement('script');t.type='text/javascript',t.async=!0,t.src=('https:'===document.location.protocol?'https://':"http://")+'d2dq2ahtl5zl1z.cloudfront.net/analytics.js/v1/'+e+'/analytics.min.js';var n=document.getElementsByTagName('script')[0];n.parentNode.insertBefore(t,n)};
+  analytics.load(window.location.hostname.indexOf('mapbox.com') !== -1 ? 'fl0c8p240n' : '0biiejpgfj');
+
+  Stripe.setPublishableKey(window.location.hostname.indexOf('mapbox.com') !== -1 ?
+    'pk_live_hI6mmOTIg7KkywK6vo3vJvpk' : 'pk_test_gmIyREg3sKzAiyMkAEeCsxUG');
+  </script>
+   <script src='../../../api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.js'></script>
+
+   <script>
+  window.mapbox_api = 'https://www.mapbox.com/core';
+  window.mapbox_tileApi = '../../../api.tiles.mapbox.com/index.html';
+  window.mapbox_accessToken = '' || 'pk.eyJ1IjoibWFwYm94IiwiYSI6IlhHVkZmaW8ifQ.hAMX5hSW-QnTeRCMAy9A8Q'
+  if (L.mapbox.VERSION[0] === '2') {
+      L.mapbox.accessToken = window.mapbox_accessToken;
+      L.mapbox.config.FORCE_HTTPS = true;
+      L.mapbox.config.HTTPS_URL = window.mapbox_tileApi + '/v4';
+  }
+  </script>
+   <script src='../../base.js/dist/base.js'></script>
+  
+  
+ </head>
+ <body class=' full bleed'><div style="z-index: 9999; position: fixed; width: 100%; border: 0px; padding: 5px; margin: 0px; background-color: transparent;  font-size: 12pt; font-family: sans-serif;" id="web2disk_nag" onclick="javascript: document.getElementById('web2disk_nag').style.display = 'none';">
+		<div style="color: #000000; background-color:#F1F1F1; margin-left: auto; margin-right: auto; border-width: 2px; border-style: solid; width: 550px; ">
+			<div style="width: 100%; text-align: center; font-weight: bold; border: 0px; margin: 0px; padding: 0px">Hey, where did my words go? (Click to hide)</div>
+			<p>In the trial version of Web2Disk every fifth word is blanked out. 
+			To copy this site with all the words, please upgrade to the full version and copy this website again.</p>
+			<div style="width: 100%; text-align: center; font-weight: bold; border: 0px; margin: 0px; padding: 0px">
+				<a href="http://www.inspyder.com/products/Web2Disk/">Inspyder Web2Disk: The Website Downloader</a>
+			</div>
+		</div>
+	</div>
+  <div class='fill-midnight offcanvas-top row3 industries-subnav animate dark pin-top hide-mobile' id='industries'>
+    <div class='limiter pad2y space-top1 small strong contain'>
+       <ul class='space-bottom0 clearfix'>
+         <li class='col2'><a href="../../industries/realestate/index.html" class="primary-nav-button inline pad1x pad0y round">Real Estate </a></li>
+         <li class='col2'><a href="../../industries/transportation/index.html" class="primary-nav-button inline pad1x pad0y round">Transportation </a></li>
+         <li class='col2'><a href="../../industries/agriculture/index.html" class="primary-nav-button inline pad1x pad0y round ">Agriculture </a></li>
+         <li class='col2'><a href="../../industries/social/index.html" class="primary-nav-button inline pad1x pad0y round">Social </a></li>
+         <li class='col2'><a href="../../industries/government/index.html" class="primary-nav-button inline pad1x pad0y round ">Government </a></li>        
+         <li class='col2'><a href="../../industries/outdoors/index.html" class="primary-nav-button inline pad0x pad0y round">Fitness &amp; Outdoors </a></li>
+       </ul>
+       <ul class='clearfix'>
+          <li class='col2'><a href="../../industries/finance/index.html" class="primary-nav-button inline pad1x pad0y round ">Finance </a></li>
+          <li class='col2'><a href="../../industries/insurance/index.html" class="primary-nav-button inline pad1x pad0y round ">Insurance </a></li>
+          <li class='col2'><a href="../../industries/naturalresources/index.html" class="primary-nav-button inline pad1x pad0y round ">Natural Resources </a></li>
+          <li class='col2'><a href="../../industries/security/index.html" class="primary-nav-button inline pad1x pad0y round ">Security </a></li>
+          <li class='col2'><a href="../../industries/health/index.html" class="primary-nav-button inline pad1x pad0y round ">Health </a></li>
+          <li class='col2'><a href="../../industries/media/index.html" class="primary-nav-button inline pad0x pad0y round ">Media </a></li>
+       </ul> 
+    </div>
+  </div>
+ <div class='page-content'> 
+
+ <div class='masthead show-in-loaded col12 clearfix  dark'>
+   <div class='limiter clearfix'>
+     <nav class='col12 text-right pad2y contain animate clearfix noprint'>
+       <a class='fl mb-logo' href='../../index.html'></a>
+       <h4 class='logo-enterpriseaddon pin-topleft text-aqua block-in-enterprise'>Enterprise </h4>
+       <div id='nav'>
+       </div>
+     </nav>
+   </div>
+ </div>
+
+ <div class=''><script src='../../js/olark.js'></script>
+ <link href='../site.css' rel='stylesheet' />
+
+ <div class='splash fill-basics'>
+   <div class='dark limiter pad4y head-img' style='background-image:url("../img/topics/customize.png");'>
+     <div class='pad4y'>
+       <h2><a href='../index.html'>Guides to getting started </a></h2>
+       <h1 class='block space-bottom0'>Customizing the map </h1>
+     </div>
+   </div>
+ </div>
+
+ <div class='limiter contain'>
+   <div class='clearfix pad4y'>
+
+     <div class='col2 toc'>
+       <div class='toc-wrap' data-spy='affix'>
+         <ul class='nav'><li class="h2 space-top1"><a href="#choose-a-baselayer" class="strong block" title="Choose a baselayer">Choose a baselayer </a></li><li class="h2 space-top1"><a href="#preset" class="strong block" title="Use a preset">Use a preset </a></li><li class="h2 space-top1"><a href="#custom-palette" class="strong block" title="Create a custom palette">Create a custom palette </a></li><li class="h3"><a href="#color-picker" class="block" title="Color picker">Color picker </a></li><li class="h3"><a href="#filter-intensity" class="block" title="Filter intensity">Filter intensity </a></li><li class="h3"><a href="#invert-hide-layers" class="block" title="Invert or hide layers">Invert or hide layers </a></li><li class="h2 space-top1"><a href="#next-steps" class="strong block" title="Next steps">Next steps </a></li><li class="h2 space-top1"><a href="#share" class="strong block" title="Show us your map">Show us your map </a></li></ul>
+       </div>
+      &nbsp;
+     </div>
+
+     <div class='col9 prose pad2xm margin1'>
+       <div class='space-bottom4 doc'>
+         <p>If you&rsquo;re coming from ___  <a href="../make-your-first-map/index.html">Make your first map </a> guide, then you’re ________ looking for even more ____ to give your map _ completely personal look. </p>
+
+ <p>In this guide, we’ll ___ more style to a ______ baselayer by diving deeper ____ the  <strong>Style </strong> component of the ______&_____;_ toolbar. </p>
+
+ <p>To start, select  <strong>Create project </strong> from your  <a href="https://mapbox.com/projects/">Projects page </a>. </p>
+
+ <p><img src="/foundations/img/pages/create-new-project.png" alt="create a new project" /></p>
+
+ <h2 id='choose-a-baselayer'>Choose a baselayer </h2>
+
+
+ <p><aside>Don&rsquo;t see satellite as __ option from the Editor? __&_____;_ available when you sign __ for a  <a href='https://mapbox.com/plans/'>paid plan </a>. </aside></p>
+
+ <p>When you create a ___ project, Editor opens with ___ default baselayer, Mapbox Streets. </p>
+
+ <p>All Mapbox baselayers are ______ detailed, ever evolving world ____ that are composed of ________ layers. A discrete layer ___ be water, buildings, or _______. </p>
+
+ <p>Let’s stick with the  <strong>Streets </strong> baselayer for our ___. </p>
+
+ <p><img src="/foundations/img/pages/editor/style-tab-2.png" alt="" /></p>
+
+ <p>The Streets baselayer is ____ up of streets, buildings, _____, water, and land. You ___ style each of these ______ from the  <strong>Color </strong> panel. </p>
+
+ <p><img src="/foundations/img/pages/editor/style-tab-1.png" alt="" /></p>
+
+ <h2 id='preset'>Use a preset </h2>
+
+
+ <p>We created presets to ___ started. A preset is _ group of colors that __ think look great as ____________ to the default style __ Mapbox Streets. </p>
+
+ <p><img src="/foundations/img/pages/customizing-the-map/presets.gif" alt="presets" /></p>
+
+ <p>For this guide, we _________ that you start with _ preset and then customize __. To select a preset, _____  <strong>Discard palette </strong>. </p>
+
+ <p><img src="/foundations/img/pages/editor/style-tab-1-discard.png" alt="" /></p>
+
+ <p>You should see the _______ panel, it looks like ____: </p>
+
+ <p><img src="/foundations/img/pages/editor/style-tab-1-palette.png" alt="" /></p>
+
+ <p>Click a preset to _____ it to your Project. </p>
+
+ <p><img src="/foundations/img/pages/customizing-the-map/customizing-presets.png" alt="" /></p>
+
+ <p>Each preset has alternate _____ schemes:  <strong>Basic, Accent, </strong> or  <strong>Bold </strong>. Let’s choose  <strong>Basic </strong> for a simple _____ scheme. </p>
+
+ <p><img src="/foundations/img/pages/customizing-the-map/customizing-presets-basic.png" alt="" /></p>
+
+ <p>Next, we’ll customize the ______. </p>
+
+ <h2 id='custom-palette'>Create a custom palette </h2>
+
+
+ <p>You can make individual ___________ to each layer by _________  <strong>Customize </strong>. </p>
+
+ <p><img src="/foundations/img/pages/editor/style-tab-1-palette-customize.png" alt="" /></p>
+
+ <p>Now we can select ____ layer to give it _ personal touch. Let’s practice __ making the Buildings layer _____ out, but not overwhelm ___ marker. To start, select  <strong>Bdgs </strong> (short for Buildings). </p>
+
+ <h3 id='color-picker'>Color picker </h3>
+
+
+ <p>You can move any __ the controls in the _____ picker or type in ____ favorite hex code like  <code>#dad5b8 </code>. </p>
+
+ <p><img src="/foundations/img/pages/customizing-the-map/customizing-presets-basic-bldg.png" alt="" /></p>
+
+ <p>With the  <strong>Bdgs </strong> layer selected, change ___ color of this layer __ entering a hex code __ picking a color. </p>
+
+ <h3 id='filter-intensity'>Filter intensity </h3>
+
+
+ <p>Currently, the filters under  <strong>Filter intensity </strong> are all set __ 100%. This means that ___ true color is represented. ___’_ play around with these ________. </p>
+
+ <p>Slide the  <strong>H </strong> (hue) filter to ___ left and watch the _____ shift in the spectrum. </p>
+
+ <p>Similarly, sliding the  <strong>S </strong> (saturation) and  <strong>L </strong> (lightness) to its ______ value desaturates and reduces ___ lightness of the original _____ by 50%. </p>
+
+ <p><img src="/foundations/img/pages/customizing-the-map/filter-intensity.gif" alt="Filter intensity" /></p>
+
+ <p>You can also reduce ___ transparency of a layer __ sliding the  <strong>A </strong> (alpha) control. </p>
+
+ <p>HSL filters range in ______ from 50% to 100% ___ alpha from 0% to 100%. (Head ups &ndash; not ___ layers have filters.) </p>
+
+ <h3 id='invert-hide-layers'>Invert or hide layers </h3>
+
+
+ <p>There are two more _______ in the Style tab:  <strong>Invert </strong> and  <strong>Hide </strong>. </p>
+
+ <p><img src="/foundations/img/pages/editor/style-tab-1-palette-customize-invert.png" alt="" /></p>
+
+ <p>The  <strong>Invert </strong> option is great ___ creating dark themes and __ only available when the  <strong>L </strong> (lightness) is below 100%. When inverting the Streets _____, the labels and surrounding _____ will reverse. </p>
+
+ <p><img src="/foundations/img/pages/customizing-the-map/invert.gif" alt="invert layer" /></p>
+
+ <p>The  <strong>Hide </strong> option completely removes _ layer from the map. </p>
+
+ <p><img src="/foundations/img/pages/customizing-the-map/hide.gif" alt="hide layer" /></p>
+
+ <p>Where we’re going, we ___’_ need roads. </p>
+
+ <h2 id='next-steps'>Next steps </h2>
+
+
+ <p>To finish off your ___, go through and customize ____ layer until the map _____  <em>just right </em>. </p>
+
+ <p>Hop on over to ___ next guide,  <a href="/foundations/adding-features-and-data/">Adding data features and ______ </a> to take your ___ to the next level. __ check out the  <a href="/foundations/share-your-map/">Share your map </a> guide to learn ___ the different ways to ___ your map. </p>
+
+ <h2 id='share'>Show us your map </h2>
+
+
+ <p><strong>Congrats! </strong> You&rsquo;ve learned how __ customize a map. When ___ publish your map to ___ world let us know __  <a href="http://twitter.com/mapbox/">tweeting at @mapbox </a>. </p>
+
+       </div>
+
+       <div class='round keyline-all clip col12'>
+         <form id='help-feedback' class='pad2'>
+           <fieldset>
+             <label>How could we improve ____ article? </label>
+             <input type='text' class='col12' />
+           </fieldset>
+           <fieldset class='clearfix'>
+             <input type='submit' class='col4 animate' value='Send feedback' />
+           </fieldset>
+         </form>
+       </div>
+
+       <div class='round-bottom space-bottom4 block guides-twitter-block clearfix contain space-top4'>
+   <div class='contain med-graphic dot fill-darken1 dark center fl pad2y'>
+     <span class='icon inline twitter js-twitter-count strong pad1y'></span>
+   </div>
+   <div class='prose prose-big guides-tweet-contents'>
+     <span class='quiet'>Tweet: </span>
+     <a class='js-tweets' href="http://twitter.com/intent/tweet?status=Customizing the map https://www.mapbox.com/foundations/customizing-the-map via @Mapbox">"Customizing the map" </a>
+   </div>
+ </div>
+
+
+       <div class='hide-mobile clearfix'>
+         <div class='js-show-signup quiet pad2y'>
+          New to Mapbox?  <a href='../../signup/index.html'>Sign up now to _____ making maps </a>
+         </div>
+       </div>
+     </div>
+
+
+   </div>
+ </div>
+
+
+ <div class='limiter clearfix'>
+   <div class='col9 space-bottom4 margin3'>
+     <a class='next-block row2 clip contain col12 block animate round keyline-all fill-basics' href='/foundations/adding-features-and-data'>
+       <div class='fill-white animate round col12 pin-left'>
+         <div class='pad2x pad1y'>
+           <div class='pad0y'>
+             <strong class='show-mobile dark small'>Read next:  </strong>
+             <span class='small quiet strong inline'>Adding data features and ______ </span>
+             <p class='small quiet truncate block'>Tell a story with ____ map by adding data. ____ it or import it, __’__ walk you through it. __ this guide, learn how __ add geographic data and ___ custom tile layers that ___ built in Mapbox Studio. </p>
+           </div>
+         </div>
+       </div>
+       <div class='hide-mobile contain z10 button keyline-left animate dark unround fr row2 pad4x fill-basics'>Read next </div>
+     </a>
+   </div>
+ </div>
+
+
+ <script src='../js/affix.js'></script>
+ <script src='../js/scrollspy.js'></script>
+ <script src='../site.js'></script>
+
+ <script>$(function() { mapboxguides('/customizing-the-map') });</script>
+ </div>
+
+ <div class='footer pad4y clearfix hide-mobile fill-light'>
+   <div class='limiter'>
+    <div class='clearfix'> 
+     <div class='col8 small mobile-cols'>
+       <div class='col12 clearfix'>
+         <div class='col3'>
+          
+           <a id='footer-design' class='space-bottom0 col12 strong' href='../../design/index.html'>Design </a>
+          
+           <a id='footer-data' class='space-bottom0 col12 strong' href='../../data-platform/index.html'>Data </a>
+          
+           <a id='footer-developers' class='space-bottom0 col12 strong' href='../../developers/index.html'>Developers </a>
+          
+           <a id='footer-showcase' class='space-bottom0 col12 strong' href='../../showcase/index.html'>Showcase </a>
+          
+           <a id='footer-enterprise' class='space-bottom0 col12 strong' href='../../enterprise/index.html'>Enterprise </a>
+          
+         </div>
+         <div class='col3'>
+          
+           <a id='footer-plans' class='space-bottom0 col12 quiet strong' href='../../plans/index.html'>Plans </a>
+          
+           <a id='footer-blog' class='space-bottom0 col12 quiet strong' href='../../blog/index.html'>Blog </a>
+          
+           <a id='footer-help' class='space-bottom0 col12 quiet strong' href='../../help/index.html'>Help </a>
+          
+           <a id='footer-status' class='space-bottom0 col12 quiet strong' href='../../status/index.html'>Status </a>
+          
+           <a id='footer-contact' class='space-bottom0 col12 quiet strong' href='../../contact/index.html'>Contact </a>
+          
+         </div>
+         <div class='col3'>     
+          
+           <a id='footer-about' class='space-bottom0 col12 quiet strong' href='../../about/index.html'>About </a>
+          
+           <a id='footer-team' class='space-bottom0 col12 quiet strong' href='../../about/team/index.html'>Team </a>
+          
+           <a id='footer-jobs' class='space-bottom0 col12 quiet strong' href='../../jobs/index.html'>Jobs </a>
+          
+           <a id='footer-press' class='space-bottom0 col12 quiet strong' href='../../about/press/index.html'>Press </a>
+          
+           <a id='footer-press-kit' class='space-bottom0 col12 quiet strong' href='../../about/press-kit/index.html'>Press Kit </a>
+          
+         </div>
+          <div class='col3'>
+            <div class='space-bottom0 strong'>Tools </div>
+          
+           <a id='footer-studio' class='space-bottom0 col12 quiet strong' href='../../mapbox-studio/index.html'>Studio </a>
+          
+           <a id='footer-maki' class='space-bottom0 col12 quiet strong' href='../../maki/index.html'>Maki </a>
+          
+         </div>
+       </div>
+     </div>
+
+     <div class='col4 footer-social'>
+       <div class='animate footer-animation col6'></div>
+       <div class='footer-dialog fr small strong quiet pad2 col6 contain round fill-gray'>
+      Follow Mapbox on  <a href='https://twitter.com/mapbox'>Twitter </a>,  <a href='https://www.facebook.com/Mapbox'>Facebook </a>, and  <a href='https://instagram.com/mapbox'>Instagram </a>.
+       </div>
+     </div>  
+   </div>
+   </div>
+
+   <div class="limiter industries-footer">
+   <p class='space-bottom1 strong small space-top2 industries-footer-title'>Industries </p>
+   <div class='clearfix pad2y pad4x fill-gray round space-bottom4 industries-footer'>
+         <div class='clearfix'>
+            <div class='col3'>
+            
+             <a id='footer-real-estate' class='space-bottom0 col12 strong quiet small' href='../../industries/realestate/index.html'>Real Estate </a>
+            
+             <a id='footer-transportation' class='space-bottom0 col12 strong quiet small' href='../../industries/transportation/index.html'>Transportation </a>
+            
+             <a id='footer-agriculture' class='space-bottom0 col12 strong quiet small' href='../../industries/agriculture/index.html'>Agriculture </a>
+            
+           </div>
+            <div class='col3'>
+            
+             <a id='footer-social' class='space-bottom0 col12 strong quiet small' href='../../industries/social/index.html'>Social </a>
+            
+             <a id='footer-government' class='space-bottom0 col12 strong quiet small' href='../../industries/government/index.html'>Government </a>
+            
+             <a id='footer-fitness-&amp;-outdoors' class='space-bottom0 col12 strong quiet small' href='../../industries/outdoors/index.html'>Fitness &amp; outdoors </a>
+            
+           </div>
+            <div class='col3'>
+            
+             <a id='footer-finance' class='space-bottom0 col12 strong quiet small' href='../../industries/finance/index.html'>Finance </a>
+            
+             <a id='footer-insurance' class='space-bottom0 col12 strong quiet small' href='../../industries/insurance/index.html'>Insurance </a>
+            
+             <a id='footer-natural-resources' class='space-bottom0 col12 strong quiet small' href='../../industries/naturalresources/index.html'>Natural Resources </a>
+            
+           </div>
+           <div class='col3'>
+            
+                 <a id='footer-security' class='space-bottom0 col12 strong quiet small' href='../../industries/security/index.html'>Security </a>
+            
+                 <a id='footer-health' class='space-bottom0 col12 strong quiet small' href='../../industries/health/index.html'>Health </a>
+            
+                 <a id='footer-media' class='space-bottom0 col12 strong quiet small' href='../../industries/media/index.html'>Media </a>
+            
+           </div>
+          </div> 
+       </div>
+   </div>
+
+   <div class='limiter newsletter-copyright clearfix'>
+   <div class='col8 contain newsletter'>
+         <form id='newsletter' method='post'>
+           <fieldset class='clearfix input-pill col10 pill mobile-cols with-icon'>
+             <span class='icon mail quiet'></span>
+             <input type='text' value='' placeholder='Sign up for our newsletter' name='email' class='col9 required email' />
+             <input type='submit' value='Subscribe' class='col3 quiet' />
+           </fieldset>
+         </form>
+        </div> 
+
+       <div class='col4 footer-copyright small space-top1 col4 noprint fill-light contain'>
+           <div class='pin-right'>
+             <a href='../../tos/index.html'>Terms </a> +
+             <a href='../../privacy/index.html'>Privacy </a>
+            &copy; Mapbox
+           </div>
+       </div>
+   </div>
+
+ </div>
+
+ <div class='footer-copyright small center noprint fill-light show-mobile'>
+   <div class='limiter'>
+     <div class='pad2y'>
+             <a href='../../tos/index.html'>Terms </a> +
+             <a href='../../privacy/index.html'>Privacy </a>
+      &copy; Mapbox
+     </div>
+   </div>
+ </div>
+
+
+
+ <div id='modal-content' class='animate modal modal-content'></div>
+ </div>
+ </body>
+ </html>
+ 
