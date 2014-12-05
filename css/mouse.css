@@ -1,0 +1,5 @@
+.aniWrap{margin:-16px auto;display:block;width:28px;}.mouse{width:28px;height:50px;border:2px solid white;border-radius:14px;}.scroller{width:4px;height:4px;border-radius:2px;background:white;position:relative;top:10px;left:12px;-webkit-animation:scrolls 1.3s ease-out infinite;}@-webkit-keyframes scrolls {
+    0%   {top: 10px; opacity: 1; height: 4px}
+    95% {top: 18px; opacity: 0; height: 10px}
+    100% {top: 8px; opacity: 1; height: 4px}
+}

@@ -1,0 +1,3 @@
+var navItems=$('.sidebar > .nav > li');var pageTitle=$('.page-title').text().trim().toLowerCase();var isFound=false;navItems.each(function(){var subNavItems=$(this).find('.nav > li');if(!subNavItems.length){if($(this).find('a').text().trim().toLowerCase()==pageTitle){navItems.find('.active').removeClass('active');$(this).addClass('active');}
+return;}
+subNavItems.each(function(){if($(this).find('a').text().trim().toLowerCase()==pageTitle){navItems.find('.active').removeClass('active');$(this).addClass('active');$(this).parent().parent().addClass('active');isFound=true;return;}});if(isFound)return;});$('.sidebar').find('li > a').on('click',function(e){$(".sidebar ul ul").slideUp(200);if(!$(this).next().is(":visible")){$(this).next().slideDown(200);}});
