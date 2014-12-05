@@ -1,6 +1,0 @@
-{
-  "error": {
-    "type": "invalid_request_error",
-    "message": "This URL (/v1) does not support GET requests.  It only supports POST requests.  See https://stripe.com/api."
-  }
-}
