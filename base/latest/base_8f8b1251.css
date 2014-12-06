@@ -2778,26 +2778,21 @@ Note: :after rules and alternative names need to be added manually.
   }
 
 .mb-logo {
-  background:transparent url(base@2x.png) no-repeat 0 0;
+  background:transparent url(./logo.png) no-repeat 0 0;
   display:inline-block;
   vertical-align:top;
   height:40px;
   width:100px;
   text-indent:-999em;
   overflow:hidden;
-  -webkit-background-size:100px 350px;
-          background-size:100px 350px;
   }
-  .dark .mb-logo,
-  .mb-logo.white { background-position:0px -60px; }
-  .mb-logo.quiet { background-position:0px -120px; }
+
   .mb-logo.small {
     width:65px;
     height:20px;
     background-position:0 -180px;
     }
-  .mb-logo.small.white { background-position:0 -240px;}
-  .mb-logo.small.quiet { background-position:0 -300px;}
+
 
 /* Pygments Syntax Highlighting
 ------------------------------------------------------- */
